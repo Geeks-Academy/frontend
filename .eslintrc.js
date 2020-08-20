@@ -9,6 +9,7 @@ module.exports = {
   },
   rules: {
     'react/jsx-props-no-spreading': 0,
+    'import/prefer-default-export': 0,
     'react/jsx-filename-extension': [
       1,
       {
