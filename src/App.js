@@ -1,5 +1,5 @@
 import React from 'react';
-import SocialButton from './shared/components/SocialButton/SocialButton';
+import SocialButton from './shared/components/SocialButton';
 
 function App() {
   return (
