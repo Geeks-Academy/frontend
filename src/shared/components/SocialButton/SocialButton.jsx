@@ -1,12 +1,18 @@
 import React from 'react'
-import { SocialButtonStyled } from './SocialButtonStyles';
-import GithubLogo from '../../images/github-logo.svg';
+import { SocialButtonStyled, SocialButtonParagraph } from './SocialButtonStyles';
+import {ReactComponent as GithubLogo } from '../../images/github-logo.svg';
+import {ReactComponent as GoogleLogo } from '../../images/google-logo.svg';
 
-const SocialButton = () => {
+const SocialButton = (props) => {
   return (
     <div>
-      <GithubLogo/>
-      <SocialButtonStyled />
+      <SocialButtonStyled>
+      {props.logo === 'github' && <GithubLogo/>}
+      {props.logo === 'google' && <GoogleLogo/>}
+      <SocialButtonParagraph>
+        {props.text}
+      </SocialButtonParagraph>
+      </SocialButtonStyled>
     </div>
   )
 }
