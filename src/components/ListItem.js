@@ -5,7 +5,6 @@ import { BrowserRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const ListItem = ({ className }) => {
-  console.log(className);
   const items = [
     {
       id: 1,
