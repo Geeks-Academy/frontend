@@ -1,0 +1,13 @@
+name: Auto Assign
+
+on: pull_request
+
+jobs:
+  add-reviewers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: add reviewers & assign author
+        uses: kentaro-m/auto-assign-action@v1.1.1
+        with:
+          repo-token: ${{ secrets.GH_PAT }}
+          configuration-path: ".github/workflows/auto-assign-config.yml"
