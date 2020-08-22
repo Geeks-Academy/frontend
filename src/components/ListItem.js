@@ -1,8 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import listItemIcon from '../images/listItemIcon.svg';
 import { List, ListItems, IconList, StyledLink } from './ListItem.styled';
-
-import PropTypes from 'prop-types';
 
 const ListItem = ({ className }) => {
   const items = [
@@ -42,7 +41,11 @@ const ListItem = ({ className }) => {
 };
 
 ListItem.propTypes = {
-  className: PropTypes.object,
+  className: PropTypes.shape({}),
+};
+
+ListItem.defaultProps = {
+  className: {},
 };
 
 export default ListItem;
