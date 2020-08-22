@@ -1,10 +1,9 @@
 import React from 'react';
-import ListItem from './ListItem';
+import ListItem from './components/ListItem';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello World</h1>
       <ListItem />
     </div>
   );
