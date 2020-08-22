@@ -2,8 +2,10 @@ import React from 'react';
 import icon from '../images/Vector.svg';
 import { List, ListItems, IconList, StyledLink } from './ListItem.styled';
 import { BrowserRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const ListItem = ({ className }) => {
+  console.log(className);
   const items = [
     {
       id: 1,
@@ -36,6 +38,10 @@ const ListItem = ({ className }) => {
       <List>{renderedList}</List>
     </BrowserRouter>
   );
+};
+
+ListItem.propTypes = {
+  className: PropTypes.object,
 };
 
 export default ListItem;
