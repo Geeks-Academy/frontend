@@ -7,9 +7,9 @@ import colors from '../styles/colors';
 
 const Title = styled.h1`
   color: ${colors.text.NeutralBlack};
-  ${typography.header.bold.L} 
-  
-  @media ${device.mobile} { 
+  ${typography.header.bold.L}
+
+  ${device.mobile} {
     ${typography.header.bold.S}
   }
 `;
@@ -19,12 +19,7 @@ function Header({ title }) {
 }
 
 Header.propTypes = {
-  title: PropTypes.string,
-};
-
-Header.defaultProps = {
-  title:
-    'Join our IT platform to share ideas, exchange knowledge and build a team!',
+  title: PropTypes.string.isRequired,
 };
 
 export default Header;
