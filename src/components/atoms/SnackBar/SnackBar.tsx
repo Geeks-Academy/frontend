@@ -3,7 +3,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import { StyledAlert } from './SnackBar.styled';
 
 interface SnackBarProps {
-  className?: object;
+  className?: string;
   open: boolean;
   error: boolean;
 }
