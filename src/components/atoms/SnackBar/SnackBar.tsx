@@ -19,7 +19,7 @@ const SnackBar = ({ className, open, error }: SnackBarProps) => {
       autoHideDuration={5000}
       anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
     >
-      <StyledAlert className={className} icon={false} alertcolor={error}>
+      <StyledAlert className={className} icon={false} severity={error ? 'error' : 'success'}>
         {text}
       </StyledAlert>
     </Snackbar>

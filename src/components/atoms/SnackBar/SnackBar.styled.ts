@@ -8,8 +8,8 @@ export const StyledAlert = styled(Alert)`
   color: ${colors.text.Success60};
   background-color: ${colors.background.Success60};
 
-  ${({ alertcolor }) =>
-    alertcolor &&
+  ${({ severity }) =>
+    severity === 'error' &&
     css`
       color: ${colors.text.Error60};
       background-color: ${colors.background.Error60};
