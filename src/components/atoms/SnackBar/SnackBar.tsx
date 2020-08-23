@@ -1,26 +1,23 @@
 import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
+
 import { StyledAlert } from './SnackBar.styled';
 
-interface SnackBarProps {
-  className?: string;
+interface IProps {
   open: boolean;
-  error: boolean;
+  successMessage?: string;
+  errorMessage?: string;
 }
 
-const SnackBar = ({ className, open, error }: SnackBarProps) => {
-  const text = error
-    ? 'Error! Message after unsuccessful login'
-    : 'Success! Message after successful login';
-
+const SnackBar = ({ open, successMessage, errorMessage }: IProps) => {
   return (
     <Snackbar
       open={open}
       autoHideDuration={5000}
       anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
     >
-      <StyledAlert className={className} icon={false} severity={error ? 'error' : 'success'}>
-        {text}
+      <StyledAlert icon={false} severity={errorMessage ? 'error' : 'success'}>
+        {errorMessage || successMessage}
       </StyledAlert>
     </Snackbar>
   );
