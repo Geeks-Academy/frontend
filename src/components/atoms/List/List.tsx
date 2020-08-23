@@ -2,22 +2,17 @@ import React from 'react';
 
 import ListItem from 'components/atoms/ListItem'
 import { StyledList } from './List.styled';
+import { ILink, IListElement } from './List.model'
 
-interface ItemProps {
-  id: number;
-  txt: string;
-  link?: null | { url: string; text: string };
-}
-
-interface ListProps {
+interface IProps {
   icon: string;
-  items: ItemProps[];
+  items: IListElement[];
 }
 
-const List = ({ icon, items }: ListProps) => {
+const List = ({ icon, items }: IProps) => {
   return (
     <StyledList>
-      {items.map((item: ItemProps) => (
+      {items.map((item: IListElement) => (
         <ListItem key={item.id} item={item} icon={icon} />
       ))}
     </StyledList>
