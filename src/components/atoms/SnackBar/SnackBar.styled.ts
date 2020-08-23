@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
-import colors from '../styles/colors';
 import Alert from '@material-ui/lab/Alert';
+
+import colors from 'styles/colors';
 
 export const StyledAlert = styled(Alert)`
   border-radius: 6px;

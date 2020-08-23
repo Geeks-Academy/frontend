@@ -2,7 +2,13 @@ import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import { StyledAlert } from './SnackBar.styled';
 
-const SnackBar = ({ className, open, error }) => {
+interface SnackBarProps {
+  className?: object;
+  open: boolean;
+  error: boolean;
+}
+
+const SnackBar = ({ className, open, error }: SnackBarProps) => {
   const text = error
     ? 'Error! Message after unsuccessful login'
     : 'Success! Message after successful login';
