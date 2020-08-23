@@ -4,12 +4,12 @@ import ListItem from 'components/atoms/ListItem'
 import { StyledList } from './List.styled';
 import { ILink, IListElement } from './List.model'
 
-interface IListProps {
+interface IProps {
   icon: string;
   items: IListElement[];
 }
 
-const List = ({ icon, items }: IListProps) => {
+const List = ({ icon, items }: IProps) => {
   return (
     <StyledList>
       {items.map((item: IListElement) => (
