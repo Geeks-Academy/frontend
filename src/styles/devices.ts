@@ -4,4 +4,5 @@ const device = {
   desktop: `(min-width: 992)`,
   desktopFHD: `(min-width: 1920)`,
 };
+
 export default device;
