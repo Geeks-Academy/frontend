@@ -4,7 +4,7 @@ export const Button = styled.button`
   width: 120px;
   height: 40px;
   background-color: tomato;
-  ${({ size }) =>
+  ${({ size }: {size: string}) =>
     size === 'small' &&
     css`
       width: 80px;
@@ -13,7 +13,7 @@ export const Button = styled.button`
         background-color: white;
       }
     `}
-  ${({ size }) =>
+  ${({ size }: {size: string}) =>
     size === 'large' &&
     css`
       width: 140px;

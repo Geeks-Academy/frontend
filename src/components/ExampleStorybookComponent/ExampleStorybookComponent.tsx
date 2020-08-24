@@ -1,11 +1,10 @@
 import React from 'react';
 
 import { Button } from './ExampleStorybookComponent.styled';
-import { Size } from './ExampleStorybookComponent.model'
 
 interface IProps {
   label: string;
-  size: Size;
+  size: string;
 }
 
 const ExampleStorybookComponent = ({ label, size }: IProps) => (
