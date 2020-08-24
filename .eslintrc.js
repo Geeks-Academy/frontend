@@ -8,11 +8,14 @@ module.exports = {
     document: true,
   },
   rules: {
+    'import/no-unresolved': 0,
     'react/jsx-props-no-spreading': 0,
+    'import/prefer-default-export': 0,
+    'import/no-extraneous-dependencies': 0,
     'react/jsx-filename-extension': [
       1,
       {
-        extensions: ['.js'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     ],
   },
