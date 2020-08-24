@@ -14,7 +14,7 @@ export default {
   },
 };
 
-export const Default = (props) => <ExampleButton {...props} label="Default" />;
+export const Default = (props) => < ExampleButton {...props} label="Default" />;
 
 export const Small = (props) => (
   <ExampleButton {...props} label="Small" size="small" />
