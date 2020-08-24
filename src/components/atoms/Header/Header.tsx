@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Title } from './Header.styled'
 
-interface IProps {
+export interface IProps {
   title: string;
 }
 
