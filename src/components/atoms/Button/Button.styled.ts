@@ -14,7 +14,6 @@ const BaseButton = styled.button<{ iconPos: EIconPosition }>`
   outline: none;
   flex-direction: ${({ iconPos }) =>
     iconPos === EIconPosition.RIGHT ? 'row-reverse' : 'row'};
-  
 `;
 
 export const FillButton = styled(BaseButton)`
@@ -36,13 +35,6 @@ export const DisableButton = styled(BaseButton)`
 export const TransparentButton = styled(BaseButton)`
   background: transparent;
   color: ${colors.text.Primary40};
-`;
-
-export const Image = styled.img<{ iconPos: EIconPosition }>`
-  margin-left: ${({ iconPos: pos }) =>
-    pos === EIconPosition.RIGHT ? '16px' : '0'};
-  margin-right: ${({ iconPos: pos }) =>
-    pos === EIconPosition.LEFT ? '16px' : '0'};
 `;
 
 export const createIcon = (
