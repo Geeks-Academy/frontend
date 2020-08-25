@@ -33,7 +33,7 @@ export const DisableButton = styled(BaseButton)`
 `;
 
 export const TransparentButton = styled(BaseButton)`
-  background: transparent;
+  background-color: transparent;
   color: ${colors.text.Primary40};
 `;
 
