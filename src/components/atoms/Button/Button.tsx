@@ -3,22 +3,24 @@ import { IButton, EIconPosition } from './Button.model';
 import {
   FillButton,
   OutlineButton,
-  Image,
   DisableButton,
-  TransparentButton
+  TransparentButton,
+  createIcon
 } from './Button.styled';
 
 const Button = ({
   children,
-  icon = undefined,
+  icon: Icon = undefined,
   iconPos = EIconPosition.NONE,
   type = 'fill'
 }: IButton) => {
+  const StyledIcon = createIcon(Icon);
+
   const content = () => {
-    if (icon && iconPos !== EIconPosition.NONE) {
+    if (Icon && iconPos !== EIconPosition.NONE) {
       return (
         <>
-          <Image src={icon} alt="" iconPos={iconPos} />
+          <StyledIcon type={type} iconPos={iconPos}/>
           { children }
         </>
       );

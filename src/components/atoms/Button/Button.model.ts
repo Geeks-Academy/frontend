@@ -1,4 +1,4 @@
-type ButtonType = 'fill' | 'outline' | 'disabled' | 'transparent';
+export type ButtonType = 'fill' | 'outline' | 'disabled' | 'transparent';
 
 export enum EIconPosition {
   NONE,
@@ -8,7 +8,7 @@ export enum EIconPosition {
 
 export interface IButton {
   children: string;
-  icon?: string;
+  icon?: any;
   iconPos?: EIconPosition;
   type?: ButtonType;
 }
