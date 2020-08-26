@@ -11,11 +11,11 @@ import {
 const Button = ({
   children,
   icon: Icon = undefined,
-  iconPos = 'none',
+  iconPos = null,
   type = 'fill'
 }: IButton) => {
   const content = () => {
-    if (Icon && iconPos !== 'none') {
+    if (Icon && iconPos) {
       return (
         <>
           <ButtonIcon type={type} iconPos={iconPos}>

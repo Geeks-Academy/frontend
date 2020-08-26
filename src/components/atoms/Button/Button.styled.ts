@@ -43,7 +43,7 @@ const setIconPosition = (pos: IconPosition) => {
       return '0 16px 0 0';
     case 'right':
       return '0 0 0 16px';
-    case 'none':
+    default:
       return '0';
   }
 }
