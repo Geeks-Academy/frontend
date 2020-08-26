@@ -8,7 +8,7 @@ export const Title = styled.h1`
   color: ${colors.background.NeutralBlack};
   ${typography.header.bold.L} 
   
-  @media ${device.mobile} { 
+  ${device.mobile} { 
     ${typography.header.bold.S}
   }
 `;
