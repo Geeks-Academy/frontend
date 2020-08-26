@@ -1,4 +1,4 @@
 export enum Size {
-    SMALL = 'small',
-    LARGE = 'large'
+  SMALL = 'small',
+  LARGE = 'large',
 }
