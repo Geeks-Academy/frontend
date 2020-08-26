@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import typography from 'styles/typography';
 import colors from 'styles/colors';
-import { EIconPosition, ButtonType } from './Button.model';
+import { IconPosition, ButtonType } from './Button.model';
 
-const BaseButton = styled.button<{ iconPos: EIconPosition }>`
+const BaseButton = styled.button<{ iconPos: IconPosition }>`
   padding: 14.5px 24px;
   border-radius: 6px;
   border: none;
@@ -13,7 +13,7 @@ const BaseButton = styled.button<{ iconPos: EIconPosition }>`
   font-weight: 600;
   outline: none;
   flex-direction: ${({ iconPos }) =>
-    iconPos === EIconPosition.RIGHT ? 'row-reverse' : 'row'};
+    iconPos === 'right' ? 'row-reverse' : 'row'};
 `;
 
 export const FillButton = styled(BaseButton)`
@@ -33,18 +33,26 @@ export const DisableButton = styled(BaseButton)`
 `;
 
 export const TransparentButton = styled(BaseButton)`
-  background-color: transparent;
+  background: transparent;
   color: ${colors.text.Primary40};
 `;
 
-export const createIcon = (
-  Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
-) => {
-  const icon = styled(Icon)<{ type: ButtonType, iconPos: EIconPosition }>`
-    margin-left: ${({ iconPos: pos }) =>
-    pos === EIconPosition.RIGHT ? '16px' : '0'};
-  margin-right: ${({ iconPos: pos }) =>
-    pos === EIconPosition.LEFT ? '16px' : '0'};
+const setIconPosition = (pos: IconPosition) => {
+  switch (pos) {
+    case 'left':
+      return '0 16px 0 0';
+    case 'right':
+      return '0 0 0 16px';
+    case 'none':
+      return '0';
+  }
+}
+
+export const ButtonIcon = styled.div<{ type: ButtonType, iconPos: IconPosition}>`
+  svg {
+    width: 24px;
+    height: 24px;
+    margin: ${({ iconPos }) => setIconPosition(iconPos)};
     path {
       fill: ${({ type }) => {
         if (type === 'fill') return colors.background.NeutralWhite;
@@ -53,6 +61,5 @@ export const createIcon = (
         else return colors.background.Neutral40;
       }};
     }
-  `;
-  return icon;
-};
+  }
+`;

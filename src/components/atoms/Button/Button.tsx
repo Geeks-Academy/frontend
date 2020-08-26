@@ -1,26 +1,26 @@
 import React from 'react'
-import { IButton, EIconPosition } from './Button.model';
+import { IButton } from './Button.model';
 import {
   FillButton,
   OutlineButton,
   DisableButton,
   TransparentButton,
-  createIcon
+  ButtonIcon
 } from './Button.styled';
 
 const Button = ({
   children,
   icon: Icon = undefined,
-  iconPos = EIconPosition.NONE,
+  iconPos = 'none',
   type = 'fill'
 }: IButton) => {
-  const StyledIcon = createIcon(Icon);
-
   const content = () => {
-    if (Icon && iconPos !== EIconPosition.NONE) {
+    if (Icon && iconPos !== 'none') {
       return (
         <>
-          <StyledIcon type={type} iconPos={iconPos}/>
+          <ButtonIcon type={type} iconPos={iconPos}>
+            <Icon />
+          </ButtonIcon>
           { children }
         </>
       );
