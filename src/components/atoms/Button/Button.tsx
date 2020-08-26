@@ -10,13 +10,8 @@ import {
 
 const Button = ({
   children,
-<<<<<<< HEAD
   icon: Icon,
-  iconPos = 'none',
-=======
-  icon: Icon = undefined,
   iconPos = null,
->>>>>>> 63c1205b65c172e89124de44a244cae85157b711
   type = 'fill'
 }: IButton) => {
   const content = () => {
