@@ -19,9 +19,7 @@ interface IProps {
   size: string;
 }
 
-export const Default = (props: IProps) => (
-  <ExampleStorybookComponent {...props} label="Default" />
-);
+export const Default = (props: IProps) => <ExampleStorybookComponent {...props} label="Default" />;
 
 export const Small = (props: IProps) => (
   <ExampleStorybookComponent {...props} label="Small" size="small" />
