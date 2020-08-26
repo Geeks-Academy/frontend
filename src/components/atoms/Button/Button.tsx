@@ -10,7 +10,7 @@ import {
 
 const Button = ({
   children,
-  icon: Icon = undefined,
+  icon: Icon,
   iconPos = 'none',
   type = 'fill'
 }: IButton) => {
@@ -21,13 +21,13 @@ const Button = ({
           <ButtonIcon type={type} iconPos={iconPos}>
             <Icon />
           </ButtonIcon>
-          { children }
+          {children}
         </>
       );
     }
     return (
       <>
-        { children }
+        {children}
       </>
     );
   };

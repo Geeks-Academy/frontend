@@ -48,18 +48,22 @@ const setIconPosition = (pos: IconPosition) => {
   }
 }
 
-export const ButtonIcon = styled.div<{ type: ButtonType, iconPos: IconPosition}>`
+const setBackgroundColor = (type: ButtonType): string => {
+  switch (type) {
+    case 'fill': return colors.background.NeutralWhite;
+    case 'outline': return colors.background.Primary40;
+    case 'transparent': return colors.background.Primary40;
+    default: return colors.background.Neutral40;
+  }
+}
+
+export const ButtonIcon = styled.div<{ type: ButtonType, iconPos: IconPosition }>`
   svg {
     width: 24px;
     height: 24px;
     margin: ${({ iconPos }) => setIconPosition(iconPos)};
     path {
-      fill: ${({ type }) => {
-        if (type === 'fill') return colors.background.NeutralWhite;
-        else if (type === 'outline' || type === 'transparent')
-          return colors.background.Primary40;
-        else return colors.background.Neutral40;
-      }};
+      fill: ${({ type }) => setBackgroundColor(type)};
     }
   }
 `;
