@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
+    "@commitlint/cli": "^9.1.2",
     "@storybook/addon-actions": "^6.0.16",
     "@storybook/addon-essentials": "^6.0.16",
     "@storybook/addon-links": "^6.0.16",
@@ -68,7 +69,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
