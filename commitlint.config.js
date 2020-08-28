@@ -1,5 +1,12 @@
+const customParser = {
+  parserOpts: {
+    headerPattern: /^(\w+)-(\d+) - (.*)$/,
+    headerCorrespondence: ['type', 'id', 'subject'],
+  },
+};
+
 module.exports = {
-  parserPreset: './parser-preset.js',
+  parserPreset: customParser,
   rules: {
     'type-enum': [2, 'always', [`FRDQ`]],
     'commit-message-rule': [2, 'always'],
