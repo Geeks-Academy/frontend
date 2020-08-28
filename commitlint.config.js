@@ -1,3 +1,5 @@
+const PREFIX = 'FRDQ';
+
 const customParser = {
   parserOpts: {
     headerPattern: /^(\w+)-(\d+) - (.*)$/,
@@ -17,7 +19,6 @@ module.exports = {
     {
       rules: {
         'commit-message-rule': ({ type, id }) => {
-          const PREFIX = `FRDQ`;
           const ID = parseInt(id, 10);
 
           return [
