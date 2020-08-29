@@ -1,12 +1,14 @@
 import React from 'react';
-import SnackBar from './SnackBar';
+import SnackBar, { IProps } from './SnackBar';
 
 export default {
   title: 'atoms/SnackBar',
   component: SnackBar,
   argTypes: {
     open: {
-      control: { type: 'boolean' },
+      name: 'open',
+      type: { name: 'boolean', required: true },
+      defaultValue: true,
     },
     successMessage: {
       control: { type: 'text' },
@@ -17,21 +19,12 @@ export default {
   },
 };
 
-export interface IProps {
-  open: boolean;
-  successMessage: string;
-  errorMessage: string;
-}
+export const Default = (props: IProps): JSX.Element => (
+  <SnackBar successMessage="Success" {...props} />
+);
 
-export const Default = (props: IProps) => {
-  console.log(props);
-  return <SnackBar {...props} />;
-};
+export const Success = (props: IProps): JSX.Element => (
+  <SnackBar {...props} successMessage="success" />
+);
 
-export const Success = (props: IProps) => {
-  return <SnackBar {...props} successMessage="success" />;
-};
-
-export const Error = (props: IProps) => {
-  return <SnackBar {...props} errorMessage="error" />;
-};
+export const Error = (props: IProps): JSX.Element => <SnackBar {...props} errorMessage="error" />;
