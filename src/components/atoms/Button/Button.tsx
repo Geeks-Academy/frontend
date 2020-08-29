@@ -8,12 +8,7 @@ import {
   TransparentButton,
 } from './Button.styled';
 
-const Button: React.FC<IButton> = ({
-  children,
-  icon: Icon,
-  iconPos = null,
-  type = 'fill',
-}: IButton) => {
+const Button: JSX.Element = ({ children, icon: Icon, iconPos = null, type = 'fill' }: IButton) => {
   const content = () => {
     if (Icon && iconPos) {
       return (
