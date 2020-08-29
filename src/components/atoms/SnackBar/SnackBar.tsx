@@ -3,13 +3,13 @@ import Snackbar from '@material-ui/core/Snackbar';
 
 import { StyledAlert } from './SnackBar.styled';
 
-interface IProps {
+export interface IProps {
   open: boolean;
   successMessage?: string;
   errorMessage?: string;
 }
 
-const SnackBar = ({ open, successMessage, errorMessage }: IProps) => {
+const SnackBar = ({ open, successMessage, errorMessage }: IProps): JSX.Element => {
   return (
     <Snackbar
       open={open}
