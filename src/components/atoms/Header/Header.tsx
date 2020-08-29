@@ -6,7 +6,7 @@ export interface IProps {
   title: string;
 }
 
-const Header = ({ title }: IProps) => {
+const Header = ({ title }: IProps): JSX.Element => {
   return <Title>{title}</Title>;
 }
 
