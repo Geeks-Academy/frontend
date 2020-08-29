@@ -25,16 +25,13 @@ export default {
 
 export const Default = (props: IProps): JSX.Element => <ListItem {...props} />;
 
-export const WithLink = ({ icon, item: { txt, link, ...args } }: IProps): JSX.Element => (
-  <ListItem
-    item={{
-      txt,
-      link: {
-        url: 'https://bit.ly/3hHhnSW',
-        text: 'and more!',
-      },
-      ...args,
-    }}
-    icon={icon}
-  />
-);
+export const WithLink = Default.bind({});
+WithLink.args = {
+  item: {
+    txt: 'Find support you need and help other people',
+    link: {
+      url: 'https://bit.ly/3hHhnSW',
+      text: 'and more!',
+    },
+  },
+};
