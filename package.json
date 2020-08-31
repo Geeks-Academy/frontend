@@ -15,7 +15,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "CI=true react-scripts test --env=jsdom",
+    "test:coverage": "npm test -- --coverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -77,6 +78,14 @@
     "*.{js,jsx,ts,tsx}": [
       "prettier --config .prettierrc --write",
       "eslint --fix"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.tsx",
+      "src/**/*.ts",
+      "!src/**/*.styled.ts",
+      "!src/**/*.stories.tsx"
     ]
   }
 }
