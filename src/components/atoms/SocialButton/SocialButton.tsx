@@ -4,18 +4,18 @@ import { ReactComponent as GoogleLogo } from 'assets/google-logo.svg';
 import { SocialButtonParagraph, SocialButtonStyled } from './SocialButton.styled';
 import { Logo, Role } from './SocialButton.model';
 
-interface IProps {
+export interface IProps {
   logo: Logo;
-  text: Role;
+  roleDependText: Role;
 }
 
-const SocialButton = ({ logo, text }: IProps) => {
+const SocialButton = ({ logo, roleDependText }: IProps): JSX.Element => {
   return (
     <div>
       <SocialButtonStyled>
         {logo === Logo.GITHUB && <GithubLogo />}
         {logo === Logo.GOOGLE && <GoogleLogo />}
-        <SocialButtonParagraph>{text}</SocialButtonParagraph>
+        <SocialButtonParagraph>{roleDependText}</SocialButtonParagraph>
       </SocialButtonStyled>
     </div>
   );
