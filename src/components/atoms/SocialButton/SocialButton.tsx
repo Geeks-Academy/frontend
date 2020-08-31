@@ -9,7 +9,7 @@ export interface IProps {
   roleDependText: Role;
 }
 
-const SocialButton = ({ logo, roleDependText }: IProps) => {
+const SocialButton = ({ logo, roleDependText }: IProps): JSX.Element => {
   return (
     <div>
       <SocialButtonStyled>
