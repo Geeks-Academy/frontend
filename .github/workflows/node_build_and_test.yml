@@ -29,3 +29,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         with:
           changes-only: true
+          test-command: "npm tun test:coverage"
