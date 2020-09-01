@@ -1,4 +1,4 @@
-name: NodeJS Build & Test
+name: Coverage Report
 
 on:
   pull_request:
