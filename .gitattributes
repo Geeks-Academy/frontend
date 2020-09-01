@@ -1,0 +1,3 @@
+.storybook/* linguist-vendored
+public/index.html linguist-generated
+commitlint.config.js linguist-vendored
