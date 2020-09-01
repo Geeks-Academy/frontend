@@ -12,6 +12,7 @@ export interface IProps {
 const SnackBar = ({ open, successMessage, errorMessage }: IProps): JSX.Element => {
   return (
     <Snackbar
+      data-testid="notification"
       open={open}
       autoHideDuration={5000}
       anchorOrigin={{ vertical: 'top', horizontal: 'center' }}

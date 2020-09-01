@@ -1,25 +1,21 @@
 import React from 'react';
 
 import { Item, StyledLink } from './ListItem.styled';
-import { ILink, IListItem } from './ListItem.model'
+import { IListItem } from './ListItem.model';
 
-interface IProps {
+export interface IProps {
   item: IListItem;
   icon: string;
 }
 
-const ListItem = ({ item, icon }: IProps) => {
+const ListItem = ({ item, icon }: IProps): JSX.Element => {
   return (
     <Item>
       <img src={icon} alt="icon" />
       {item.txt}
-      {item.link && (
-        <StyledLink to={item.link.url}>
-          {item.link.text}
-        </StyledLink>
-      )}
+      {item.link && <StyledLink to={item.link.url}>{item.link.text}</StyledLink>}
     </Item>
-  )
+  );
 };
 
 export default ListItem;
