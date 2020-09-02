@@ -81,10 +81,11 @@ export const StyledButtonsWrapper = styled.div`
   }
 `;
 
-export const StyledHeroImg = styled.img`
+export const StyledHomeImg = styled.img`
   display: none;
   ${device.desktop} {
     display: block;
     padding-left: 70px;
+    padding-top: 100px;
   }
 `;

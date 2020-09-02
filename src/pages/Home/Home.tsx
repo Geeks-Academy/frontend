@@ -8,7 +8,7 @@ import {
   StyledButtonsWrapper,
   StyledContainer,
   StyledHeading,
-  StyledHeroImg,
+  StyledHomeImg,
   StyledInnerWrapper,
   StyledList,
   StyledParagraph,
@@ -32,7 +32,7 @@ const Home = (): JSX.Element => (
             <SocialButton logo={Logo.GOOGLE} roleDependText={Role.NONDEVELOPER} />
           </StyledButtonsWrapper>
         </StyledContainer>
-        <StyledHeroImg src={HeroImage} alt="Hero image" />
+        <StyledHomeImg src={HeroImage} alt="Hero image" />
       </StyledInnerWrapper>
     </main>
   </StyledWrapper>
