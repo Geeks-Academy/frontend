@@ -36,7 +36,7 @@ const typography = {
       L: `
           font-weight: bold;
           font-size: 29px;
-          line-height: 140%;`,
+          line-height: 135%;`,
       M: `
           font-weight: bold;
           font-size: 25px;
@@ -51,7 +51,7 @@ const typography = {
     L: `
         font-weight: normal;
         font-size: 17px;
-        line-height: 140%;`,
+        line-height: 135%;`,
     M: `
         font-weight: normal;
         font-size: 15px;
@@ -64,7 +64,7 @@ const typography = {
       L: `
           font-weight: bold;
           font-size: 17px;
-          line-height: 140%;`,
+          line-height: 135%;`,
       M: `
           font-weight: bold;
           font-size: 15px;

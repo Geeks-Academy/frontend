@@ -13,8 +13,7 @@ const ListItem = ({ item, icon }: IProps): JSX.Element => {
     <Item>
       <img src={icon} alt="icon" />
       <p>
-        {item.txt}
-        {item.link && <StyledLink to={item.link.url}> {item.link.text}</StyledLink>}
+        {item.txt} {item.link && <StyledLink to={item.link.url}>{item.link.text}</StyledLink>}
       </p>
     </Item>
   );

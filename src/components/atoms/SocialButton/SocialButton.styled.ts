@@ -10,11 +10,10 @@ export const SocialButtonStyled = styled.button`
   box-shadow: 0px 4px 8px rgba(232, 234, 238, 0.1), 0px 8px 16px rgba(232, 234, 238, 0.2);
   border-radius: 50px;
   ${typography.body.bold.L}
-  color: ${colors.text.Neutral60};
   background-color: ${colors.background.NeutralWhite};
   cursor: pointer;
   :hover {
-    background-color: ${colors.background.Neutral80}
+    background-color: ${colors.background.Neutral80};
   }
 `;
 
@@ -23,4 +22,5 @@ export const SocialButtonParagraph = styled.p`
   order: 1;
   align-self: center;
   margin: 0px 0px 0px 14px;
+  color: ${colors.text.Neutral60};
 `;
