@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import colors from 'styles/colors';
 import Header from 'components/atoms/Header';
 import List from 'components/atoms/List';
@@ -28,27 +28,22 @@ export const StyledContainer = styled.div`
   }
 `;
 
-// I want to overwrite Header - remove same style from core component to check
-
 export const StyledHeading = styled(Header)`
-  /* margin: 32px 0; */
-  /* text-align: center;
+  margin-bottom: 32px;
+  text-align: center;
   ${device.desktop} {
-  /* text-align: left;
-  } */
+    text-align: left;
+  }
 `;
 
-// I want to overwrite List - remove same style from core component to check
-
 export const StyledList = styled(List)`
-  /* margin: 0; */
-  /* padding: 0 40px; */
-  /* ${device.tablet} {
+  padding: 0 40px;
+  ${device.tablet} {
     padding: 0 0 0 40px;
   }
   ${device.desktop} {
     padding: 0;
-  } */
+  }
 `;
 
 export const StyledParagraph = styled.p`
@@ -57,16 +52,6 @@ export const StyledParagraph = styled.p`
   text-align: center;
 `;
 
-const buttonsStyle = css`
-  flex-direction: row;
-  height: auto;
-  div:first-child {
-    margin-right: 16px;
-  }
-`;
-
-// Is the possibility another way to set same styles for few views? Something like device.tablet + device.desktop {styles}?
-
 export const StyledButtonsWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -74,10 +59,11 @@ export const StyledButtonsWrapper = styled.div`
   align-items: center;
   height: 120px;
   ${device.tablet} {
-    ${buttonsStyle}
-  }
-  ${device.desktop} {
-    ${buttonsStyle}
+    flex-direction: row;
+    height: auto;
+    div:first-child {
+      margin-right: 16px;
+    }
   }
 `;
 
