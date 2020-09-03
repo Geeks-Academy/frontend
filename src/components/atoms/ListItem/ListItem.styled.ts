@@ -5,10 +5,13 @@ import colors from 'styles/colors';
 
 export const Item = styled.li`
   margin: 14px 0px;
-  display: flex;
+  list-style-type: none;
 
   img {
-    margin-right: 14px;
+    margin-right: 8px;
+  }
+  p {
+    display: inline;
   }
 `;
 
