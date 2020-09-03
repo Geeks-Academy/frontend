@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import typography from 'styles/typography';
 import colors from 'styles/colors';
-import { IconPosition, ButtonType } from './Button.model';
+import { ButtonType, IconPosition } from './Button.model';
 
 const BaseButton = styled.button<{ iconPos: IconPosition }>`
-  padding: 14.5px 24px;
+  padding: 14px 24px;
   border-radius: 6px;
   border: none;
   ${typography.body.bold.L}
@@ -12,8 +12,7 @@ const BaseButton = styled.button<{ iconPos: IconPosition }>`
   align-items: center;
   font-weight: 600;
   outline: none;
-  flex-direction: ${({ iconPos }) =>
-    iconPos === 'right' ? 'row-reverse' : 'row'};
+  flex-direction: ${({ iconPos }) => (iconPos === 'right' ? 'row-reverse' : 'row')};
 `;
 
 export const FillButton = styled(BaseButton)`
@@ -24,7 +23,20 @@ export const FillButton = styled(BaseButton)`
 export const OutlineButton = styled(BaseButton)`
   background-color: ${colors.background.NeutralWhite};
   color: ${colors.text.Primary40};
-  border: 1px solid ${colors.text.Primary40};
+  position: relative;
+  ::after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    left: 0px;
+    top: 0px;
+    padding: -1px;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    border-radius: 6px;
+    border: 1px solid ${colors.text.Primary40};
+    background: transparent;
+  }
 `;
 
 export const DisableButton = styled(BaseButton)`
@@ -40,24 +52,28 @@ export const TransparentButton = styled(BaseButton)`
 const setIconPosition = (pos: IconPosition) => {
   switch (pos) {
     case 'left':
-      return '0 16px 0 0';
+      return '0 14px 0 0';
     case 'right':
-      return '0 0 0 16px';
+      return '0 0 0 14px';
     default:
       return '0';
   }
-}
+};
 
 const setBackgroundColor = (type: ButtonType): string => {
   switch (type) {
-    case 'fill': return colors.background.NeutralWhite;
-    case 'outline': return colors.background.Primary40;
-    case 'transparent': return colors.background.Primary40;
-    default: return colors.background.Neutral40;
+    case 'fill':
+      return colors.background.NeutralWhite;
+    case 'outline':
+      return colors.background.Primary40;
+    case 'transparent':
+      return colors.background.Primary40;
+    default:
+      return colors.background.Neutral40;
   }
-}
+};
 
-export const ButtonIcon = styled.div<{ type: ButtonType, iconPos: IconPosition }>`
+export const ButtonIcon = styled.div<{ type: ButtonType; iconPos: IconPosition }>`
   svg {
     width: 24px;
     height: 24px;
