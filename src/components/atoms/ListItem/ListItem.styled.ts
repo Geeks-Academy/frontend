@@ -4,16 +4,14 @@ import { Link } from 'react-router-dom';
 import colors from 'styles/colors';
 
 export const Item = styled.li`
+  display: flex;
   margin: 14px 0px;
   list-style-type: none;
-
   img {
     margin-right: 8px;
   }
   p {
     display: inline;
-  }
-  p {
     margin: 0;
   }
 `;
