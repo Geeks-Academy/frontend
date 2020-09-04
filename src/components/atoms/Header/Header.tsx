@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Title } from './Header.styled'
+import { Title } from './Header.styled';
 
 export interface IProps {
   title: string;
@@ -8,6 +8,6 @@ export interface IProps {
 
 const Header = ({ title }: IProps): JSX.Element => {
   return <Title>{title}</Title>;
-}
+};
 
 export default Header;

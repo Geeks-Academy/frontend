@@ -9,7 +9,7 @@ export interface IProps {
   items: IListElement[];
 }
 
-const List = ({ icon, items }: IProps) => {
+const List = ({ icon, items }: IProps): JSX.Element => {
   return (
     <StyledList>
       {items.map((item: IListElement) => (

@@ -6,7 +6,7 @@ interface IProps {
   size: string;
 }
 
-const ExampleStorybookComponent = ({ label, size }: IProps) => (
+const ExampleStorybookComponent = ({ label, size }: IProps): JSX.Element => (
   <Button type="button" size={size}>
     {label}
   </Button>
