@@ -4,11 +4,11 @@ import device from 'styles/devices';
 import typography from 'styles/typography';
 import colors from 'styles/colors';
 
-export const StyledParagraph = styled.h1`
+export const StyledParagraph = styled.p`
   color: ${colors.background.NeutralBlack};
   ${typography.body.M}
 
   ${device.tablet} {
-    ${typography.body.bold.L}
+    ${typography.body.L}
   }
 `;
