@@ -12,6 +12,7 @@ export const Item = styled.li`
   }
   p {
     display: inline;
+    color: ${colors.text.Neutral20};
     margin: 0;
   }
 `;
