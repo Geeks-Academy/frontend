@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import colors from 'styles/colors';
+import device from 'styles/devices';
+import typography from 'styles/typography';
 
 export const Item = styled.li`
   display: flex;
@@ -12,8 +14,13 @@ export const Item = styled.li`
   }
   p {
     display: inline;
-    color: ${colors.text.Neutral20};
     margin: 0;
+    ${typography.body.S}
+    color: ${colors.text.Neutral20};
+
+    ${device.tablet} {
+      ${typography.body.L}
+    }
   }
 `;
 

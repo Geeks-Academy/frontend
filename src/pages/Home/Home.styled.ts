@@ -37,9 +37,9 @@ export const StyledHeading = styled(Header)`
 `;
 
 export const StyledList = styled(List)`
-  padding: 0 40px;
+  padding: 0 67px;
   ${device.tablet} {
-    padding: 0 0 0 40px;
+    padding: 0 0 0 25px;
   }
   ${device.desktop} {
     padding: 0;
