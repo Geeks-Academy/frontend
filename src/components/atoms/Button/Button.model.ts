@@ -3,7 +3,7 @@ export type IconPosition = 'left' | 'right' | null;
 
 export interface IButton {
   children: string;
-  icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  icon?: string;
   iconPos?: IconPosition;
   type?: ButtonType;
 }

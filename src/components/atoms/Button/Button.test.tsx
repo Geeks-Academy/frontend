@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from 'components/atoms/Button';
-import { ReactComponent as icon } from 'assets/button-icon.svg';
+import { ButtonIcon } from 'assets/index';
 import { cleanup, render } from '@testing-library/react';
 
 afterEach(cleanup);
@@ -32,7 +32,7 @@ describe('Button Component', () => {
 
   test('checks that icon has rendered', () => {
     const { getByTestId } = render(
-      <Button icon={icon} iconPos="left">
+      <Button icon={ButtonIcon} iconPos="left">
         Click
       </Button>
     );
@@ -40,7 +40,7 @@ describe('Button Component', () => {
   });
 
   test('if icon or iconPos not passed then icon shouldnt render', () => {
-    const { getByTestId, rerender } = render(<Button icon={icon}>Click</Button>);
+    const { getByTestId, rerender } = render(<Button icon={ButtonIcon}>Click</Button>);
     expect(getByTestId('fill').querySelector('svg')).not.toBeInTheDocument();
 
     rerender(<Button iconPos="left">Click</Button>);
