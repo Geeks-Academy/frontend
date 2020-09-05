@@ -1,10 +1,13 @@
 import React from 'react';
+import Home from 'pages/Home';
+import GlobalStyles from 'styles/GlobalStyles';
 
 function App(): JSX.Element {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+    <>
+      <GlobalStyles />
+      <Home />
+    </>
   );
 }
 
