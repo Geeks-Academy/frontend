@@ -43,7 +43,7 @@ export const StyledList = styled(List)`
     margin-bottom: 0;
   }
   ${device.tablet} {
-    padding: 0 0 0 40px;
+    padding: 0 0 0 25px;
   }
   ${device.desktop} {
     padding: 0;
