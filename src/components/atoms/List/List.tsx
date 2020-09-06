@@ -12,7 +12,7 @@ export interface IProps {
 
 const List = ({ icon, items, className }: IProps): JSX.Element => {
   return (
-    <StyledList className={className}>
+    <StyledList data-testid="list" className={className}>
       {items.map((item: IListElement) => (
         <ListItem key={item.id} item={item} icon={icon} />
       ))}
