@@ -7,12 +7,14 @@ export interface IProps {
   open: boolean;
   successMessage?: string;
   errorMessage?: string;
+  className?: string;
 }
 
-const SnackBar = ({ open, successMessage, errorMessage }: IProps): JSX.Element => {
+const SnackBar = ({ className, open, successMessage, errorMessage }: IProps): JSX.Element => {
   return (
     <Snackbar
       data-testid="notification"
+      className={className}
       open={open}
       autoHideDuration={5000}
       anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
