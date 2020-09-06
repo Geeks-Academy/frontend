@@ -11,10 +11,19 @@ const BaseButton = styled.button<{ iconPos: IconPosition }>`
   box-sizing: border-box;
   ${typography.body.bold.L}
   display: flex;
-  align-items: center;
   font-weight: 600;
   outline: none;
-  flex-direction: ${({ iconPos }) => (iconPos === 'right' ? 'row-reverse' : 'row')};
+  div {
+    display: flex;
+    height: 24px;
+    align-content: space-between;
+    align-items: center;
+    flex-direction: ${({ iconPos }) => (iconPos === 'right' ? 'row-reverse' : 'row')};
+  }
+  span {
+    height: 24px;
+    color: #fff;
+  }
 `;
 
 export const FillButton = styled(BaseButton)`
@@ -25,18 +34,37 @@ export const FillButton = styled(BaseButton)`
 export const OutlineButton = styled(BaseButton)`
   background-color: ${colors.background.NeutralWhite};
   color: ${colors.text.Primary40};
-  padding: 13.5px 23px;
-  border: 1px solid ${colors.text.Primary40};
+  position: relative;
+  ::after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    left: 0px;
+    top: 0px;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    transform: translate(1px);
+    border-radius: 6px;
+    border: 1px solid ${colors.text.Primary40};
+    background: transparent;
+  }
+  span {
+    color: ${colors.text.Primary40};
+  }
 `;
 
 export const DisableButton = styled(BaseButton)`
   background-color: ${colors.background.Neutral80};
-  color: ${colors.background.Neutral40};
+  span {
+    color: ${colors.background.Neutral40};
+  }
 `;
 
 export const TransparentButton = styled(BaseButton)`
   background: transparent;
-  color: ${colors.text.Primary40};
+  span {
+    color: ${colors.text.Primary40};
+  }
 `;
 
 const setIconMargin = (pos: IconPosition) => {
@@ -64,10 +92,11 @@ const setBackgroundColor = (type: ButtonType): string => {
 };
 
 export const ButtonIcon = styled.div<{ type: ButtonType; iconPos: IconPosition }>`
+  height: 24px;
+  margin: ${({ iconPos }) => setIconMargin(iconPos)};
   svg {
     width: 24px;
     height: 24px;
-    margin: ${({ iconPos }) => setIconMargin(iconPos)};
     path {
       fill: ${({ type }) => setBackgroundColor(type)};
     }
