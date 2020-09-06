@@ -22,7 +22,7 @@ MultipleElement.args = {
     { id: 1, txt: 'Improve your skills and work on amazing IT projects' },
     {
       id: 2,
-      txt: 'Find support you need and help other people ',
+      txt: 'Find support you need and help other people',
       link: {
         text: 'and more!',
         url: 'https://bit.ly/3hHhnSW',
