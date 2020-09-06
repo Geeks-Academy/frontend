@@ -7,7 +7,7 @@ import typography from 'styles/typography';
 
 export const Item = styled.li`
   display: flex;
-  margin: 14px 0px;
+  margin-bottom: 14px;
   list-style-type: none;
   img {
     margin-right: 8px;
