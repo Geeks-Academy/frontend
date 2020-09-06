@@ -11,16 +11,16 @@ const BaseButton = styled.button<{ iconPos: IconPosition }>`
   display: flex;
   font-weight: 600;
   outline: none;
-  flex-direction: ${({ iconPos }) => (iconPos === 'right' ? 'row-reverse' : 'row')};
   div {
     display: flex;
     height: 24px;
     align-content: space-between;
     align-items: center;
-    span {
-      height: 24px;
-      color: #fff;
-    }
+    flex-direction: ${({ iconPos }) => (iconPos === 'right' ? 'row-reverse' : 'row')};
+  }
+  span {
+    height: 24px;
+    color: #fff;
   }
 `;
 
@@ -39,23 +39,30 @@ export const OutlineButton = styled(BaseButton)`
     z-index: 2;
     left: 0px;
     top: 0px;
-    padding: -1px;
     width: calc(100% - 2px);
     height: calc(100% - 2px);
+    transform: translate(1px);
     border-radius: 6px;
     border: 1px solid ${colors.text.Primary40};
     background: transparent;
+  }
+  span {
+    color: ${colors.text.Primary40};
   }
 `;
 
 export const DisableButton = styled(BaseButton)`
   background-color: ${colors.background.Neutral80};
-  color: ${colors.background.Neutral40};
+  span {
+    color: ${colors.background.Neutral40};
+  }
 `;
 
 export const TransparentButton = styled(BaseButton)`
   background: transparent;
-  color: ${colors.text.Primary40};
+  span {
+    color: ${colors.text.Primary40};
+  }
 `;
 
 const setIconPosition = (pos: IconPosition) => {
@@ -84,10 +91,10 @@ const setBackgroundColor = (type: ButtonType): string => {
 
 export const ButtonIcon = styled.div<{ type: ButtonType; iconPos: IconPosition }>`
   height: 24px;
+  margin: ${({ iconPos }) => setIconPosition(iconPos)};
   svg {
     width: 24px;
     height: 24px;
-    margin: ${({ iconPos }) => setIconPosition(iconPos)};
     path {
       fill: ${({ type }) => setBackgroundColor(type)};
     }
