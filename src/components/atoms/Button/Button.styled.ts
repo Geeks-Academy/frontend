@@ -9,10 +9,19 @@ const BaseButton = styled.button<{ iconPos: IconPosition }>`
   border: none;
   ${typography.body.bold.L}
   display: flex;
-  align-items: center;
   font-weight: 600;
   outline: none;
   flex-direction: ${({ iconPos }) => (iconPos === 'right' ? 'row-reverse' : 'row')};
+  div {
+    display: flex;
+    height: 24px;
+    align-content: space-between;
+    align-items: center;
+    span {
+      height: 24px;
+      color: #fff;
+    }
+  }
 `;
 
 export const FillButton = styled(BaseButton)`
@@ -74,6 +83,7 @@ const setBackgroundColor = (type: ButtonType): string => {
 };
 
 export const ButtonIcon = styled.div<{ type: ButtonType; iconPos: IconPosition }>`
+  height: 24px;
   svg {
     width: 24px;
     height: 24px;
