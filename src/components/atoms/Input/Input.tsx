@@ -10,7 +10,7 @@ const Input = ({ type = 'text', icon: Icon, label, ...props }: IProps): JSX.Elem
       <InputWrapper>
         <StyledInput icon={Icon} type={type} {...props} />
         {Icon ? (
-          <StyledIcon>
+          <StyledIcon data-testid="icon">
             <Icon />
           </StyledIcon>
         ) : null}
