@@ -8,7 +8,13 @@ import {
   TransparentButton,
 } from './Button.styled';
 
-const Button = ({ children, icon: Icon, iconPos = null, type = 'fill' }: IButton): JSX.Element => {
+const Button = ({
+  children,
+  className,
+  icon: Icon,
+  iconPos = null,
+  type = 'fill',
+}: IButton): JSX.Element => {
   const content = () => {
     if (Icon && iconPos) {
       return (
@@ -25,31 +31,31 @@ const Button = ({ children, icon: Icon, iconPos = null, type = 'fill' }: IButton
   switch (type) {
     case 'outline':
       return (
-        <OutlineButton data-testid="outline" iconPos={iconPos}>
+        <OutlineButton data-testid="outline" className={className} iconPos={iconPos}>
           {content()}
         </OutlineButton>
       );
     case 'disabled':
       return (
-        <DisableButton data-testid="disabled" iconPos={iconPos}>
+        <DisableButton data-testid="disabled" className={className} iconPos={iconPos}>
           {content()}
         </DisableButton>
       );
     case 'transparent':
       return (
-        <TransparentButton data-testid="transparent" iconPos={iconPos}>
+        <TransparentButton data-testid="transparent" className={className} iconPos={iconPos}>
           {content()}
         </TransparentButton>
       );
     case 'fill':
       return (
-        <FillButton data-testid="fill" iconPos={iconPos}>
+        <FillButton data-testid="fill" className={className} iconPos={iconPos}>
           {content()}
         </FillButton>
       );
     default:
       return (
-        <FillButton data-testid="fill" iconPos={iconPos}>
+        <FillButton data-testid="fill" className={className} iconPos={iconPos}>
           {content()}
         </FillButton>
       );

@@ -19,12 +19,14 @@ interface IProps {
   size: string;
 }
 
-export const Default = (props: IProps) => <ExampleStorybookComponent {...props} label="Default" />;
+export const Default = (props: IProps): JSX.Element => (
+  <ExampleStorybookComponent {...props} label="Default" />
+);
 
-export const Small = (props: IProps) => (
+export const Small = (props: IProps): JSX.Element => (
   <ExampleStorybookComponent {...props} label="Small" size="small" />
 );
 
-export const Large = (props: IProps) => (
+export const Large = (props: IProps): JSX.Element => (
   <ExampleStorybookComponent {...props} label="Large" size="large" />
 );

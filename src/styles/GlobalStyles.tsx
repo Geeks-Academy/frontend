@@ -3,7 +3,11 @@ import typography from './typography';
 
 const GlobalStyles = createGlobalStyle`
 * {
-    ${typography.globalStyles}
-}`;
+    ${typography.globalStyles};
+}
+body{
+    margin: 0;
+}
+`;
 
 export default GlobalStyles;
