@@ -1,10 +1,10 @@
 export interface ILink {
-    url: string;
-    text: string;
+  url: string;
+  text: string;
 }
 
 export interface IListItem {
-    id: number;
-    txt: string;
-    link?: ILink;
+  id: number;
+  txt: string;
+  link?: ILink;
 }

@@ -6,4 +6,5 @@ export interface IButton {
   icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   iconPos?: IconPosition;
   type?: ButtonType;
+  className?: string;
 }
