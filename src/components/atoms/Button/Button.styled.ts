@@ -4,9 +4,11 @@ import colors from 'styles/colors';
 import { ButtonType, IconPosition } from './Button.model';
 
 const BaseButton = styled.button<{ iconPos: IconPosition }>`
-  padding: 14.5px 24px;
+  padding: 14px 24px;
   border-radius: 6px;
   border: none;
+  height: 52px;
+  box-sizing: border-box;
   ${typography.body.bold.L}
   display: flex;
   align-items: center;
@@ -23,6 +25,7 @@ export const FillButton = styled(BaseButton)`
 export const OutlineButton = styled(BaseButton)`
   background-color: ${colors.background.NeutralWhite};
   color: ${colors.text.Primary40};
+  padding: 13.5px 23px;
   border: 1px solid ${colors.text.Primary40};
 `;
 
@@ -36,12 +39,12 @@ export const TransparentButton = styled(BaseButton)`
   color: ${colors.text.Primary40};
 `;
 
-const setIconPosition = (pos: IconPosition) => {
+const setIconMargin = (pos: IconPosition) => {
   switch (pos) {
     case 'left':
-      return '0 16px 0 0';
+      return '0 14px 0 0';
     case 'right':
-      return '0 0 0 16px';
+      return '0 0 0 14px';
     default:
       return '0';
   }
@@ -64,7 +67,7 @@ export const ButtonIcon = styled.div<{ type: ButtonType; iconPos: IconPosition }
   svg {
     width: 24px;
     height: 24px;
-    margin: ${({ iconPos }) => setIconPosition(iconPos)};
+    margin: ${({ iconPos }) => setIconMargin(iconPos)};
     path {
       fill: ${({ type }) => setBackgroundColor(type)};
     }
