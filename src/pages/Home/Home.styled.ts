@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import colors from 'styles/colors';
+import device from 'styles/devices';
 import Header from 'components/atoms/Header';
 import List from 'components/atoms/List';
-import device from 'styles/devices';
+import Paragraph from 'components/atoms/Paragraph';
 
 export const StyledWrapper = styled.div`
   padding: 0 16px;
@@ -38,15 +39,18 @@ export const StyledHeading = styled(Header)`
 
 export const StyledList = styled(List)`
   padding: 0 40px;
+  li:nth-last-of-type(1) {
+    margin-bottom: 0;
+  }
   ${device.tablet} {
-    padding: 0 0 0 40px;
+    padding: 0 0 0 25px;
   }
   ${device.desktop} {
     padding: 0;
   }
 `;
 
-export const StyledParagraph = styled.p`
+export const StyledParagraph = styled(Paragraph)`
   margin: 32px 0;
   color: ${colors.text.Neutral20};
   text-align: center;
@@ -72,6 +76,6 @@ export const StyledHomeImg = styled.img`
   ${device.desktop} {
     display: block;
     padding-left: 70px;
-    padding-top: 100px;
+    padding-top: 70px;
   }
 `;

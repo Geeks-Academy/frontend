@@ -7,6 +7,8 @@ const BaseButton = styled.button<{ iconPos: IconPosition }>`
   padding: 14px 24px;
   border-radius: 6px;
   border: none;
+  height: 52px;
+  box-sizing: border-box;
   ${typography.body.bold.L}
   display: flex;
   font-weight: 600;
@@ -65,7 +67,7 @@ export const TransparentButton = styled(BaseButton)`
   }
 `;
 
-const setIconPosition = (pos: IconPosition) => {
+const setIconMargin = (pos: IconPosition) => {
   switch (pos) {
     case 'left':
       return '0 14px 0 0';
@@ -91,7 +93,7 @@ const setBackgroundColor = (type: ButtonType): string => {
 
 export const ButtonIcon = styled.div<{ type: ButtonType; iconPos: IconPosition }>`
   height: 24px;
-  margin: ${({ iconPos }) => setIconPosition(iconPos)};
+  margin: ${({ iconPos }) => setIconMargin(iconPos)};
   svg {
     width: 24px;
     height: 24px;
