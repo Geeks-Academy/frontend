@@ -3,4 +3,5 @@ export interface IProps {
   placeholder: string;
   icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   label?: string;
+  className?: string;
 }
