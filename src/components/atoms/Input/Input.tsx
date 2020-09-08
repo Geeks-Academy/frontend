@@ -17,7 +17,7 @@ const Input = ({
       <InputWrapper>
         <StyledInput isIcon={!!Icon} type={type} placeholder={placeholder} {...props} />
         {Icon && (
-          <StyledIcon>
+          <StyledIcon data-testid="icon">
             <Icon />
           </StyledIcon>
         )}
