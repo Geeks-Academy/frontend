@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputWrapper, Label, StyledIcon, StyledInput } from './Input.styled';
+import { Container, InputWrapper, Label, StyledIcon, StyledInput } from './Input.styled';
 import { IProps } from './Input.model';
 
 const Input = ({
@@ -12,17 +12,17 @@ const Input = ({
 }: IProps): JSX.Element => {
   const renderLabel = () => label && <Label>{label}</Label>;
   return (
-    <div className={className}>
+    <Container className={className}>
       {renderLabel()}
       <InputWrapper>
-        <StyledInput isIcon={Icon !== undefined} type={type} placeholder={placeholder} {...props} />
+        <StyledInput isIcon={!!Icon} type={type} placeholder={placeholder} {...props} />
         {Icon && (
           <StyledIcon>
             <Icon />
           </StyledIcon>
         )}
       </InputWrapper>
-    </div>
+    </Container>
   );
 };
 

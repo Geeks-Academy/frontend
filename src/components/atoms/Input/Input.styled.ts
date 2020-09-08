@@ -2,6 +2,10 @@ import styled from 'styled-components';
 import colors from 'styles/colors';
 import typography from 'styles/typography';
 
+export const Container = styled.div`
+  max-width: 328px;
+`;
+
 export const InputWrapper = styled.div`
   height: 52px;
   padding: 14px 14px 14px 24px;
@@ -16,7 +20,7 @@ export const InputWrapper = styled.div`
 export const StyledInput = styled.input<{ isIcon: boolean }>`
   outline: 0;
   border: none;
-  width: ${({ isIcon }) => (isIcon ? 'calc(100% - 40px)' : '100%')};
+  width: ${({ isIcon }) => (isIcon ? '90%' : '100%')};
   ${typography.body.L}
 `;
 
