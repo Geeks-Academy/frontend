@@ -25,7 +25,7 @@ MultipleElement.args = {
       txt: 'Find support you need and help other people',
       link: {
         text: 'and more!',
-        url: 'https://bit.ly/3hHhnSW',
+        url: '/',
       },
     },
   ],
