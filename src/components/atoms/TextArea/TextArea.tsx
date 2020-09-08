@@ -3,18 +3,19 @@ import { StyledTextArea } from './TextArea.styled';
 
 export interface IProps {
   className?: string;
+  placeholder?: string;
 }
 
-const TextArea = ({ className }: IProps): JSX.Element => {
-  const [textAreaValue, setTextAreaValue] = useState<string>('');
+const TextArea = ({ className, placeholder = 'Type something...' }: IProps): JSX.Element => {
+  const [value, setValue] = useState<string>('');
 
   return (
     <StyledTextArea
       className={className}
-      placeholder="Type something..."
-      value={textAreaValue}
+      placeholder={placeholder}
+      value={value}
       onChange={({ target }: React.ChangeEvent<HTMLTextAreaElement>): void =>
-        setTextAreaValue(target.value)
+        setValue(target.value)
       }
     />
   );
