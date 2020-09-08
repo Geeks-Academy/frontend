@@ -2,9 +2,13 @@ import styled from 'styled-components';
 import colors from 'styles/colors';
 import typography from 'styles/typography';
 
+export const Container = styled.div`
+  max-width: 328px;
+`;
+
 export const InputWrapper = styled.div`
-  box-sizing: border-box;
   height: 52px;
+  padding: 14px 14px 14px 24px;
   border-radius: 4px;
   border: 1px solid ${colors.background.Neutral80};
   background: ${colors.background.NeutralWhite};
@@ -13,11 +17,10 @@ export const InputWrapper = styled.div`
   position: relative;
 `;
 
-export const StyledInput = styled.input<{ icon: any }>`
-  outline: none;
+export const StyledInput = styled.input<{ isIcon: boolean }>`
+  outline: 0;
   border: none;
-  width: ${({ icon }) => (icon ? 'calc(100% - 65px)' : '100%')};
-  padding: 14px 14px 14px 24px;
+  width: ${({ isIcon }) => (isIcon ? '90%' : '100%')};
   ${typography.body.L}
 `;
 

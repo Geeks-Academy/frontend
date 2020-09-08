@@ -1,21 +1,28 @@
 import React from 'react';
-import { InputWrapper, Label, StyledIcon, StyledInput } from './Input.styled';
+import { Container, InputWrapper, Label, StyledIcon, StyledInput } from './Input.styled';
 import { IProps } from './Input.model';
 
-const Input = ({ type = 'text', icon: Icon, label, ...props }: IProps): JSX.Element => {
-  const renderLabel = () => (label ? <Label>{label}</Label> : null);
+const Input = ({
+  type = 'text',
+  icon: Icon,
+  label,
+  className,
+  placeholder,
+  ...props
+}: IProps): JSX.Element => {
+  const renderLabel = () => label && <Label>{label}</Label>;
   return (
-    <div>
+    <Container className={className}>
       {renderLabel()}
       <InputWrapper>
-        <StyledInput icon={Icon} type={type} {...props} />
-        {Icon ? (
-          <StyledIcon data-testid="icon">
+        <StyledInput isIcon={!!Icon} type={type} placeholder={placeholder} {...props} />
+        {Icon && (
+          <StyledIcon>
             <Icon />
           </StyledIcon>
-        ) : null}
+        )}
       </InputWrapper>
-    </div>
+    </Container>
   );
 };
 
