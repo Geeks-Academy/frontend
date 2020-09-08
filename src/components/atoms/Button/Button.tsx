@@ -18,15 +18,15 @@ const Button = ({
   const content = () => {
     if (Icon && iconPos) {
       return (
-        <>
+        <div>
           <ButtonIcon type={type} iconPos={iconPos}>
             <Icon />
           </ButtonIcon>
-          {children}
-        </>
+          <span>{children}</span>
+        </div>
       );
     }
-    return <>{children}</>;
+    return <span>{children}</span>;
   };
   switch (type) {
     case 'outline':

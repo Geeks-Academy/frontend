@@ -23,7 +23,7 @@ const Home = (): JSX.Element => (
         <StyledContainer>
           <StyledHeading title={data.header} />
           <StyledList icon={listItemIcon} items={data.listDescription} />
-          <StyledParagraph>{data.paragraph}</StyledParagraph>
+          <StyledParagraph txt={data.paragraph} />
           <StyledButtonsWrapper>
             <SocialButton logo={Logo.GITHUB} roleDependText={Role.DEVELOPER} />
             <SocialButton logo={Logo.GOOGLE} roleDependText={Role.NONDEVELOPER} />

@@ -31,7 +31,7 @@ WithLink.args = {
     id: 0,
     txt: 'Find support you need and help other people',
     link: {
-      url: 'https://bit.ly/3hHhnSW',
+      url: '/',
       text: 'and more!',
     },
   },
