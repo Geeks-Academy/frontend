@@ -70,7 +70,7 @@ jobs:
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
-        task-definition: ./frontend/frontend_task_definition.json
+        task-definition: ./frontend_task_definition.json
         container-name: frontend
         image: ${{ steps.build-image.outputs.image }}
 
