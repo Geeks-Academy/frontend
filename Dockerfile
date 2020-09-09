@@ -1,19 +1,30 @@
-FROM node:14.9.0-alpine3.10
+# stage1 as builder
+FROM node:14-alpine as builder
 
-# Create app directory
-WORKDIR /usr/src/app
+# copy the package.json to install dependencies
+COPY package.json package-lock.json ./
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
+# Install the dependencies and make the folder
+RUN npm install && mkdir /react-ui && mv ./node_modules ./react-ui
 
-RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
+WORKDIR /react-ui
 
-# Bundle app source
 COPY . .
 
-EXPOSE 3000
-CMD [ "npm", "start" ]
+# Build the project and copy the files
+RUN npm run build
+
+
+FROM nginx:alpine
+#!/bin/sh
+COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
+
+ ## Remove default nginx index page
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy from the stahg 1
+COPY --from=builder /react-ui/build /usr/share/nginx/html
+
+EXPOSE 3000 80
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
