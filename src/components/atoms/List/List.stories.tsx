@@ -3,7 +3,7 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { Meta, Story } from '@storybook/react/types-6-0';
 
-import listItemIcon from 'assets/listItemIcon.svg';
+import { listItemIcon } from 'assets';
 import List, { IProps } from './List';
 
 export default {
