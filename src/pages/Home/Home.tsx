@@ -16,25 +16,23 @@ import {
 
 // "StyledWrapper - div" and "main" tags in future can use in template and remove from here.
 
-const Home = (): JSX.Element => {
-  return (
-    <StyledWrapper>
-      <main>
-        <StyledInnerWrapper>
-          <StyledContainer>
-            <StyledHeading title={data.header} />
-            <StyledList icon={listItemIcon} items={data.listDescription} />
-            <StyledParagraph>{data.paragraph}</StyledParagraph>
-            <StyledButtonsWrapper>
-              <SocialButton logo={Logo.GITHUB} roleDependText={Role.DEVELOPER} />
-              <SocialButton logo={Logo.GOOGLE} roleDependText={Role.NONDEVELOPER} />
-            </StyledButtonsWrapper>
-          </StyledContainer>
-          <StyledHomeImg src={HomePageImg_1} alt="Register" />
-        </StyledInnerWrapper>
-      </main>
-    </StyledWrapper>
-  );
-};
+const Home = (): JSX.Element => (
+  <StyledWrapper>
+    <main>
+      <StyledInnerWrapper>
+        <StyledContainer>
+          <StyledHeading title={data.header} />
+          <StyledList icon={listItemIcon} items={data.listDescription} />
+          <StyledParagraph txt={data.paragraph} />
+          <StyledButtonsWrapper>
+            <SocialButton logo={Logo.GITHUB} roleDependText={Role.DEVELOPER} />
+            <SocialButton logo={Logo.GOOGLE} roleDependText={Role.NONDEVELOPER} />
+          </StyledButtonsWrapper>
+        </StyledContainer>
+        <StyledHomeImg src={HomePageImg_1} alt="Register" />
+      </StyledInnerWrapper>
+    </main>
+  </StyledWrapper>
+);
 
 export default Home;
