@@ -38,15 +38,15 @@ export const StyledHeading = styled(Header)`
 `;
 
 export const StyledList = styled(List)`
-  padding: 0 40px;
-  li:nth-last-of-type(1) {
-    margin-bottom: 0;
-  }
+  padding: 0 67px;
   ${device.tablet} {
     padding: 0 0 0 25px;
   }
   ${device.desktop} {
     padding: 0;
+  }
+  li:nth-last-of-type(1) {
+    margin-bottom: 0;
   }
 `;
 

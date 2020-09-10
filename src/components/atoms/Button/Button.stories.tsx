@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as Icon } from 'assets/button-icon.svg';
+import { ButtonIcon } from 'assets';
 import Button from './Button';
 import { IButton } from './Button.model';
 
@@ -8,7 +8,7 @@ export default {
   component: Button,
   args: {
     children: 'Click',
-    icon: Icon,
+    icon: ButtonIcon,
     iconPos: null,
   },
   argTypes: {

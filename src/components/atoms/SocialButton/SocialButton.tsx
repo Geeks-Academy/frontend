@@ -1,6 +1,5 @@
 import React from 'react';
-import { ReactComponent as GithubLogo } from 'assets/github-logo.svg';
-import { ReactComponent as GoogleLogo } from 'assets/google-logo.svg';
+import { GithubLogo, GoogleLogo } from 'assets';
 import { SocialButtonParagraph, SocialButtonStyled } from './SocialButton.styled';
 import { Logo, Role } from './SocialButton.model';
 

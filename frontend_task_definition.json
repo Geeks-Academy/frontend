@@ -1,0 +1,18 @@
+{
+    "family": "frontend",
+    "containerDefinitions": [
+        {
+            "name": "frontend",
+            "image": "",
+            "cpu": 10,
+            "memory": 128,
+            "portMappings": [
+                {
+                    "containerPort": 80,
+                    "hostPort": 3060,
+                    "protocol": "tcp"
+                }
+            ]
+        }
+    ]
+}
