@@ -12,6 +12,7 @@ const TextArea = ({ className, placeholder = 'Type something...' }: IProps): JSX
   return (
     <StyledTextArea
       className={className}
+      data-testid="textarea"
       placeholder={placeholder}
       value={value}
       onChange={({ target }: React.ChangeEvent<HTMLTextAreaElement>): void =>
