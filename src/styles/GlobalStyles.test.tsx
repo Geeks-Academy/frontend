@@ -10,4 +10,8 @@ describe('GlobalStyles', () => {
     const { container } = render(<GlobalStyles />);
     expect(container).toHaveStyle(typography.globalStyles);
   });
+  test('render GlobalStyles has box-sizing set', () => {
+    const { container } = render(<GlobalStyles />);
+    expect(container).toHaveStyle('box-sizing: border-box');
+  });
 });
