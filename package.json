@@ -83,8 +83,8 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.tsx",
-      "src/**/*.ts",
       "!src/**/*.styled.ts",
+      "src/**/*.ts",
       "!src/**/*.stories.tsx"
     ]
   }
