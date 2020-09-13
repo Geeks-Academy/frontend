@@ -7,9 +7,7 @@ export default {
   argTypes: {
     placeholder: {
       defaultValue: 'Type something...',
-      controls: {
-        type: 'text',
-      },
+      type: 'string',
     },
   },
 };
