@@ -13,7 +13,7 @@ const Button = ({
   className,
   icon: Icon,
   iconPos = null,
-  type = 'fill',
+  type,
 }: IButton): JSX.Element => {
   const content = () => {
     if (Icon && iconPos) {

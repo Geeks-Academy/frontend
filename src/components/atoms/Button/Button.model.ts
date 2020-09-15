@@ -1,4 +1,4 @@
-export type ButtonType = 'fill' | 'outline' | 'disabled' | 'transparent';
+export type ButtonType = 'fill' | 'outline' | 'disabled' | 'transparent' | undefined;
 export type IconPosition = 'left' | 'right' | null;
 
 export interface IButton {
