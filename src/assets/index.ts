@@ -8,4 +8,4 @@ export { ReactComponent as ButtonIcon } from './button-icon.svg';
 
 export { default as HomePageImg_1 } from './homepage-image-1.svg';
 export { default as listItemIcon } from './listItemIcon.svg';
-export { default as VectorIcon } from './vector-icon.svg';
+export { default as ArrowIcon } from './arrow-icon.svg';

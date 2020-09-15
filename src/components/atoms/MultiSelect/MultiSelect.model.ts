@@ -1,4 +1,4 @@
 export interface IMultiSelect {
   isMulti?: boolean;
-  handleOnClick: any;
+  handleOnClick?: () => void;
 }
