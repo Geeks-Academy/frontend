@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Input, Label, StyledWrapper } from './Range.styled';
 import { IProps } from './Range.model';
 
-const Range = ({ className }: IProps): JSX.Element => {
+const Range = ({ className, type }: IProps): JSX.Element => {
   const [rangeValue, setRangeValue] = useState(1);
 
   return (
@@ -10,7 +10,7 @@ const Range = ({ className }: IProps): JSX.Element => {
       <Label htmlFor="range" id="range" aria-label="Range">
         <Input
           onChange={(e) => setRangeValue(+e.target.value as number)}
-          type="range"
+          type={type}
           id="range"
           name="range"
           min="0"
