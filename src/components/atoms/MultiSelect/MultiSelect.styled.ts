@@ -37,26 +37,3 @@ export const StyledSelect = styled.ul`
   list-style: none;
   padding: 0;
 `;
-
-export const StyledOption = styled.li<{ isSelected: boolean }>`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  /* background-color: ${({ isSelected }) => (isSelected ? 'green' : 'red')}; */
-`;
-
-export const StyledOptionParagraph = styled.p`
-  ${typography.body.M};
-  color: ${colors.background.Neutral40};
-  pointer-events: none;
-`;
-
-export const StyledCircle = styled.span`
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 2px solid ${colors.background.Neutral40};
-  margin-right: 14px;
-  pointer-events: none;
-`;
