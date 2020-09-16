@@ -1,9 +1,9 @@
 import React from 'react';
-import { DefaultToastHeaders, DefaultToastInfo, IToast } from './Toast.model';
+import { ToastIconError, ToastIconInfo, ToastIconSuccess } from 'assets';
+import { DefaultToastHeaders, DefaultToastInfo, IProps } from './Toast.model';
 import { ToastContent, ToastHeader, ToastIconWrapper, ToastInfo } from './Toast.styled';
-import { ToastIconError, ToastIconInfo, ToastIconSuccess } from '../../../assets';
 
-const Toast = ({ className, header, info, type = 'error' }: IToast): JSX.Element => {
+const Toast = ({ className, header, info, type }: IProps): JSX.Element => {
   switch (type) {
     case 'success':
       return (
@@ -12,8 +12,8 @@ const Toast = ({ className, header, info, type = 'error' }: IToast): JSX.Element
             <ToastIconSuccess />
           </ToastIconWrapper>
           <div>
-            <ToastHeader>{!header ? DefaultToastHeaders.SUCCESS : header}</ToastHeader>
-            <ToastInfo>{!info ? DefaultToastInfo.SUCCESS : info}</ToastInfo>
+            <ToastHeader>{header || DefaultToastHeaders.SUCCESS}</ToastHeader>
+            <ToastInfo>{info || DefaultToastInfo.SUCCESS}</ToastInfo>
           </div>
         </ToastContent>
       );
@@ -24,8 +24,8 @@ const Toast = ({ className, header, info, type = 'error' }: IToast): JSX.Element
             <ToastIconError />
           </ToastIconWrapper>
           <div>
-            <ToastHeader>{!header ? DefaultToastHeaders.ERROR : header}</ToastHeader>
-            <ToastInfo>{!info ? DefaultToastInfo.ERROR : info}</ToastInfo>
+            <ToastHeader>{header || DefaultToastHeaders.ERROR}</ToastHeader>
+            <ToastInfo>{info || DefaultToastInfo.ERROR}</ToastInfo>
           </div>
         </ToastContent>
       );
@@ -36,22 +36,20 @@ const Toast = ({ className, header, info, type = 'error' }: IToast): JSX.Element
             <ToastIconInfo />
           </ToastIconWrapper>
           <div>
-            <ToastHeader>{!header ? DefaultToastHeaders.INFO : header}</ToastHeader>
-            <ToastInfo>{!info ? DefaultToastInfo.INFO : info}</ToastInfo>
+            <ToastHeader>{header || DefaultToastHeaders.INFO}</ToastHeader>
+            <ToastInfo>{info || DefaultToastInfo.INFO}</ToastInfo>
           </div>
         </ToastContent>
       );
     default:
       return (
         <ToastContent data-testid="toastDefault" className={className}>
+          <ToastIconWrapper>
+            <ToastIconError />
+          </ToastIconWrapper>
           <div>
-            <ToastIconWrapper>
-              <ToastIconError />
-            </ToastIconWrapper>
-            <div>
-              <ToastHeader>{!header ? DefaultToastHeaders.ERROR : header}</ToastHeader>
-              <ToastInfo>{!info ? null : info}</ToastInfo>
-            </div>
+            <ToastHeader>{header || DefaultToastHeaders.ERROR}</ToastHeader>
+            <ToastInfo>{info || null}</ToastInfo>
           </div>
         </ToastContent>
       );

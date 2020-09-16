@@ -1,7 +1,7 @@
-export type ButtonType = 'success' | 'error' | 'info';
+export type ToastType = 'success' | 'error' | 'info';
 
-export interface IToast {
-  type?: ButtonType;
+export interface IProps {
+  type?: ToastType;
   className?: string;
   header?: string;
   info?: string;
