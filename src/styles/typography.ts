@@ -1,78 +1,74 @@
+const defaultStyles = `
+font-family: Lato;
+font-style: normal;
+font-weight: normal;
+color: #000000;
+line-height: 135%;`;
+
 const typography = {
-  globalStyles: `
-      font-family: Lato;
-      font-style: normal;
-      color: #000000;`,
+  globalStyles: defaultStyles,
   header: {
     XXL: `
-        font-weight: normal;
-        font-size: 37px;
-        line-height: 135%;`,
+        ${defaultStyles}
+        font-size: 37px;`,
     XL: `
-        font-weight: normal;
-        font-size: 33px;
-        line-height: 135%;`,
+        ${defaultStyles}
+        font-size: 33px;`,
     L: `
-        font-weight: normal;
-        font-size: 29px;
-        line-height: 135%; `,
+        ${defaultStyles}
+        font-size: 29px;`,
     M: `
-        font-weight: normal;
-        font-size: 25px;
-        line-height: 135%;`,
+        ${defaultStyles}
+        font-size: 25px;`,
     S: `
-        font-weight: normal;
-        font-size: 21px;
-        line-height: 135%;`,
+        ${defaultStyles};
+        font-size: 21px;`,
     bold: {
       XXL: `
+          ${defaultStyles}
           font-weight: bold;
-          font-size: 37px;
-          line-height: 135%;`,
+          font-size: 37px;`,
       XL: `
+          ${defaultStyles}
           font-weight: bold;
-          font-size: 33px;
-          line-height: 135%;`,
+          font-size: 33px;`,
       L: `
+          ${defaultStyles}
           font-weight: bold;
-          font-size: 29px;
-          line-height: 135%;`,
+          font-size: 29px;`,
       M: `
+          ${defaultStyles}
           font-weight: bold;
-          font-size: 25px;
-          line-height: 135%;`,
+          font-size: 25px;`,
       S: `
+          ${defaultStyles}
           font-weight: bold;
-          font-size: 21px;
-          line-height: 135%;`,
+          font-size: 21px;`,
     },
   },
   body: {
     L: `
-        font-weight: normal;
-        font-size: 17px;
-        line-height: 135%;`,
+        ${defaultStyles}
+        font-size: 17px;`,
     M: `
-        font-weight: normal;
-        font-size: 15px;
-        line-height: 135%;`,
+        ${defaultStyles}
+        font-size: 15px;`,
     S: `
-        font-weight: normal;
-        font-size: 13px;
-        line-height: 135%;`,
+        ${defaultStyles}
+        font-size: 13px;`,
     bold: {
       L: `
+          ${defaultStyles}
           font-weight: bold;
-          font-size: 17px;
-          line-height: 135%;`,
+          font-size: 17px;`,
       M: `
+          ${defaultStyles}
           font-weight: bold;
-          font-size: 15px;
-          line-height: 135%;`,
+          font-size: 15px;`,
       S: `
+          ${defaultStyles}
           font-weight: bold;
-          font-size: 13px;
-          line-height: 135%;`,
+          font-size: 13px;`,
     },
   },
 };
