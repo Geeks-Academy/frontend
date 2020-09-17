@@ -3,16 +3,27 @@ import { CheckedOptionIcon, UnCheckedOptionIcon } from 'assets/index';
 import { IOption } from './Option.model';
 import { StyledCircle, StyledOption, StyledOptionParagraph } from './Option.styled';
 
-const Option = ({ text }: IOption): JSX.Element => {
-  const [isSelected, setIsSelected] = useState(false);
+const Option = ({ text, value, updateSelectedOptions, selectedOptions }: IOption): JSX.Element => {
+  const [isSelected, setIsSelected] = useState(() => {
+    return selectedOptions.includes(value);
+  });
+
+  const testFunction = () => {
+    updateSelectedOptions(value);
+    setIsSelected(!isSelected);
+  };
 
   return (
     <StyledOption
-      onClick={() => setIsSelected(!isSelected)}
+      onClick={() => testFunction()}
       aria-selected={isSelected}
+      value={value}
       role="option"
     >
-      <StyledCircle src={isSelected ? CheckedOptionIcon : UnCheckedOptionIcon} />
+      <StyledCircle
+        alt={isSelected ? 'Checked option' : 'Unchecked option'}
+        src={isSelected ? CheckedOptionIcon : UnCheckedOptionIcon}
+      />
       <StyledOptionParagraph> {text} </StyledOptionParagraph>
     </StyledOption>
   );

@@ -9,7 +9,6 @@ export const StyledWrapper = styled.div`
   border-radius: 4px;
   width: 328px;
   outline: none;
-  padding: 14px 24px;
 `;
 
 export const StyledSelectCaption = styled.span`
@@ -21,6 +20,7 @@ export const StyledTopWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 14px 24px;
 `;
 
 export const StyledArrowImage = styled.img<{ isSelectOpened: boolean }>`
@@ -35,5 +35,5 @@ export const StyledSelect = styled.ul`
   flex-direction: column;
   width: 100%;
   list-style: none;
-  padding: 0;
+  padding: 0 24px;
 `;
