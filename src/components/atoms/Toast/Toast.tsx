@@ -49,7 +49,7 @@ const Toast = ({ className, header, info, type }: IProps): JSX.Element => {
           </ToastIconWrapper>
           <div>
             <ToastHeader>{header || DefaultToastHeaders.ERROR}</ToastHeader>
-            <ToastInfo>{info || null}</ToastInfo>
+            {info && <ToastInfo>{info}</ToastInfo>}
           </div>
         </ToastContent>
       );
