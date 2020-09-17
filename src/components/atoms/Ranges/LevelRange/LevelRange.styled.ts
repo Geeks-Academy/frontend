@@ -1,12 +1,9 @@
 import styled from 'styled-components';
 import colors from 'styles/colors';
+import typography from 'styles/typography';
 
-export const StyledWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
+export const Container = styled.div`
+  max-width: 328px;
 `;
 export const Label = styled.label`
   position: relative;
@@ -25,8 +22,8 @@ export const ThumbWrapper = styled.div<{ value: number }>`
 export const ThumbSlider = styled.span<{ value: number }>`
   position: absolute;
   top: 0;
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   background: ${colors.background.NeutralWhite};
   border-radius: 50%;
   border: 2px solid ${colors.background.Primary20};
@@ -38,14 +35,10 @@ export const ThumbSlider = styled.span<{ value: number }>`
     display: block;
     text-align: center;
     width: 100%;
-    font-family: Lato;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 17px;
-    line-height: 135%;
-    cursor: default;
+    ${typography.body.L}
+    cursor: pointer;
     text-align: center;
-    color: #0d54a5;
+    color: ${colors.background.Primary20};
   }
 `;
 
@@ -61,8 +54,8 @@ export const Input = styled.input<{ value: number }>`
   z-index: 5;
   ::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     background-color: transparent;
     cursor: pointer;
@@ -72,8 +65,8 @@ export const Input = styled.input<{ value: number }>`
   ::-moz-range-thumb {
     -webkit-appearance: none;
     -moz-appearance: none;
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     background: ${colors.background.NeutralWhite};
     background-color: transparent;
     border-radius: 50%;
@@ -86,12 +79,15 @@ export const Input = styled.input<{ value: number }>`
 
 export const Datalist = styled.datalist`
   position: absolute;
-  top: 12px;
+  top: 10px;
   left: 0;
   display: flex;
   width: 100%;
   height: 6px;
   background: transparent;
+  @supports (-moz-appearance: none) {
+    top: 12px;
+  }
 `;
 
 export const Option = styled.option`
@@ -137,11 +133,7 @@ export const Option = styled.option`
   ::after {
     content: attr(aria-label);
     display: block;
-    font-family: Lato;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 17px;
-    line-height: 135%;
+    ${typography.body.L}
     text-align: center;
   }
   :nth-of-type(1) {

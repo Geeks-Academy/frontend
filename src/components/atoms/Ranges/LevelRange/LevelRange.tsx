@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
 import {
+  Container,
   Datalist,
   Input,
   Label,
   Option,
-  StyledWrapper,
   ThumbSlider,
   ThumbWrapper,
 } from './LevelRange.styled';
+import { data } from './data';
 import { IProps } from './LevelRange.model';
 
-const LevelRange = ({ className, type }: IProps): JSX.Element => {
-  const [rangeValue, setRangeValue] = useState(1);
+const LevelRange = ({ className }: IProps): JSX.Element => {
+  const [rangeValue, setRangeValue] = useState<number>(1);
 
   return (
-    <StyledWrapper className={className}>
+    <Container className={className}>
       <Label htmlFor="range" aria-label="range">
         <Input
-          onChange={(e) => setRangeValue(+e.target.value as number)}
-          type={type}
+          onChange={(e) => setRangeValue(+e.target.value)}
+          type="range"
           id="range"
           name="range"
           min="0"
@@ -31,13 +32,12 @@ const LevelRange = ({ className, type }: IProps): JSX.Element => {
           <ThumbSlider value={rangeValue} />
         </ThumbWrapper>
         <Datalist id="level">
-          <Option aria-label="newbie" />
-          <Option aria-label="junior" />
-          <Option aria-label="mid" />
-          <Option aria-label="senior" />
+          {data.map(({ id, label, value }) => (
+            <Option key={id} aria-label={label} value={value} />
+          ))}
         </Datalist>
       </Label>
-    </StyledWrapper>
+    </Container>
   );
 };
 
