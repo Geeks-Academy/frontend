@@ -24,6 +24,12 @@ const colors = {
     Information20: '#FFFFFF',
     Information40: '#FFFFFF',
     Information60: '#026688',
+    addons: {
+      Blue10: '#B0D1F9',
+      Blue20: '#4694F0',
+      Blue30: '#1066CC',
+      Blue40: '#0B478C',
+    },
   },
   background: {
     Primary20: '#0D54A5',
@@ -50,6 +56,12 @@ const colors = {
     Information20: '#026688',
     Information40: '#1CC8FF',
     Information60: '#A3EAFF',
+    addons: {
+      Blue10: '#B0D1F9',
+      Blue20: '#4694F0',
+      Blue30: '#1066CC',
+      Blue40: '#0B478C',
+    },
   },
 };
 
