@@ -3,12 +3,10 @@ import typography from 'styles/typography';
 import colors from 'styles/colors';
 
 export const StyledWrapper = styled.div`
-  position: relative;
   border: 1px solid ${colors.background.Neutral80};
   background: ${colors.background.NeutralWhite};
   border-radius: 4px;
   width: 328px;
-  outline: none;
 `;
 
 export const StyledSelectCaption = styled.span`
@@ -28,7 +26,6 @@ export const StyledArrowImage = styled.img<{ isSelectOpened: boolean }>`
   transform: ${({ isSelectOpened }) => (isSelectOpened ? `rotateX(180deg)` : `rotateX(0)`)};
 `;
 
-// Select and option
 export const StyledSelect = styled.ul`
   display: flex;
   align-items: flex-start;
