@@ -67,7 +67,6 @@ export const Input = styled.input<{ value: number }>`
     -moz-appearance: none;
     width: 22px;
     height: 22px;
-    background: ${colors.background.NeutralWhite};
     background-color: transparent;
     border-radius: 50%;
     border: none;
@@ -106,26 +105,26 @@ export const Option = styled.option`
   }
   :nth-of-type(1) {
     ::before {
-      background-color: ${colors.background.Primary60};
+      background-color: ${colors.background.addons.Blue10};
       border-radius: 50px 0 0 50px;
       left: 0;
     }
   }
   :nth-of-type(2) {
     ::before {
-      background-color: #4694f0;
+      background-color: ${colors.background.addons.Blue20};
       left: 25%;
     }
   }
   :nth-of-type(3) {
     ::before {
-      background-color: ${colors.background.Primary40};
+      background-color: ${colors.background.addons.Blue30};
       left: 50%;
     }
   }
   :nth-of-type(4) {
     ::before {
-      background-color: ${colors.background.Primary20};
+      background-color: ${colors.background.addons.Blue40};
       border-radius: 0 50px 50px 0;
       left: 75%;
     }
@@ -138,22 +137,22 @@ export const Option = styled.option`
   }
   :nth-of-type(1) {
     ::after {
-      color: ${colors.background.Primary60};
+      color: ${colors.text.addons.Blue10};
     }
   }
   :nth-of-type(2) {
     ::after {
-      color: #4694f0;
+      color: ${colors.text.addons.Blue20};
     }
   }
   :nth-of-type(3) {
     ::after {
-      color: ${colors.background.Primary40};
+      color: ${colors.text.addons.Blue30};
     }
   }
   :nth-of-type(4) {
     ::after {
-      color: ${colors.background.Primary20};
+      color: ${colors.text.addons.Blue40};
     }
   }
 `;
