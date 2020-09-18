@@ -4,8 +4,13 @@ import typography from 'styles/typography';
 
 export const Container = styled.div`
   max-width: 328px;
+  height: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 export const Label = styled.label`
+  margin-top: -10px;
   position: relative;
 `;
 

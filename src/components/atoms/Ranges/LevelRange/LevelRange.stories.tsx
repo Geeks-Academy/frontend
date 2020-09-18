@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Meta } from '@storybook/react/types-6-0';
 
 import LevelRange from './LevelRange';
@@ -22,8 +21,4 @@ export default {
   },
 } as Meta;
 
-const StyledLevelRange = styled(LevelRange)`
-  margin-top: 10px;
-`;
-
-export const RangeWithLevel = (props: IProps): JSX.Element => <StyledLevelRange {...props} />;
+export const RangeWithLevel = (props: IProps): JSX.Element => <LevelRange {...props} />;
