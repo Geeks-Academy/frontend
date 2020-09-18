@@ -4,8 +4,14 @@ import Toast from './Toast';
 import { DefaultToastHeaders, DefaultToastInfo } from './Toast.model';
 
 describe('Toast', () => {
-  test('render default Toast component', () => {
+  test('render default Toast component without info', () => {
     const { getByTestId, getByText } = render(<Toast />);
+    expect(getByTestId('toastDefault')).toBeInTheDocument();
+    expect(getByText(DefaultToastHeaders.ERROR)).toBeInTheDocument();
+  });
+  test('render default Toast component with info', () => {
+    const info = 'Test info';
+    const { getByTestId, getByText } = render(<Toast info={info} />);
     expect(getByTestId('toastDefault')).toBeInTheDocument();
     expect(getByText(DefaultToastHeaders.ERROR)).toBeInTheDocument();
   });
