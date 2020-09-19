@@ -6,7 +6,10 @@ export const StyledOption = styled.li`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 100%;
+  width: 97px;
+  height: 24px;
+  margin-bottom: 24px;
+  cursor: pointer;
 `;
 
 export const StyledOptionParagraph = styled.p`

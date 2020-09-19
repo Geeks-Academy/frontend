@@ -1,4 +1,10 @@
+export interface ISingleOption {
+  id: number;
+  value: string;
+}
+
 export interface ISelect {
-  handleOnClick: (callback: () => any[]) => void | undefined;
+  handleOnClick: (callback: () => ISingleOption[]) => void | undefined;
+  options: ISingleOption[];
   isMulti: boolean;
 }

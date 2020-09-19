@@ -8,31 +8,29 @@ import {
   StyledWrapper,
 } from './Select.styled';
 import Option from '../Option';
-import { ISelect } from './Select.model';
+import { ISelect, ISingleOption } from './Select.model';
 
-const Select = ({ isMulti, handleOnClick }: ISelect): JSX.Element => {
+const Select = ({ isMulti, handleOnClick, options }: ISelect): JSX.Element => {
   const [isSelectOpened, setIsSelectOpened] = useState<boolean>(false);
-  const [selectedOptions, setSelectedOptions] = useState<(string | number)[]>([]);
-  const [currentOptionValue, setCurrentOptionValue] = useState<any>(null);
+  const [selectedOptions, setSelectedOptions] = useState<ISingleOption[]>([]);
+  const [currentOptionValue, setCurrentOptionValue] = useState<string>('');
 
-  const removeSpecificItemFromArray = (array: any[], value: any) => {
-    const indexValue = array.indexOf(value);
-    array.splice(indexValue, 1);
-    return array;
+  const doesArrayConsistValue = (value: string) => {
+    return selectedOptions.filter((element) => element.value === value).length;
   };
 
-  const updateSelectedOptions = (value: string | number, e: any) => {
-    const clickedOptionValue = e.currentTarget.getAttribute('value');
-    setCurrentOptionValue(clickedOptionValue);
+  const updateSelectedOptions = (option: ISingleOption): void => {
+    const { value } = option;
+    setCurrentOptionValue(value);
     if (isMulti) {
-      if (!selectedOptions.includes(value)) {
-        setSelectedOptions([value, ...selectedOptions]);
+      if (!doesArrayConsistValue(value)) {
+        setSelectedOptions([option, ...selectedOptions]);
       } else {
-        const newArray = removeSpecificItemFromArray(selectedOptions, value);
+        const newArray = selectedOptions.filter((element) => element.value !== value);
         setSelectedOptions([...newArray]);
       }
     } else {
-      setSelectedOptions([clickedOptionValue]);
+      setSelectedOptions([option]);
     }
   };
 
@@ -52,38 +50,16 @@ const Select = ({ isMulti, handleOnClick }: ISelect): JSX.Element => {
       </StyledTopWrapper>
       {isSelectOpened && (
         <StyledSelect aria-multiselectable={isMulti} aria-labelledby="selectCaption" role="listbox">
-          <Option
-            text="Vue"
-            value="Vue"
-            isMulti={isMulti}
-            selectedOptions={selectedOptions}
-            currentOptionValue={currentOptionValue}
-            updateSelectedOptions={updateSelectedOptions}
-          />
-          <Option
-            text="React"
-            value="React"
-            isMulti={isMulti}
-            selectedOptions={selectedOptions}
-            currentOptionValue={currentOptionValue}
-            updateSelectedOptions={updateSelectedOptions}
-          />
-          <Option
-            text="Bootstrap"
-            value="Bootstrap"
-            isMulti={isMulti}
-            selectedOptions={selectedOptions}
-            currentOptionValue={currentOptionValue}
-            updateSelectedOptions={updateSelectedOptions}
-          />
-          <Option
-            text="WordPress"
-            value="WordPress"
-            isMulti={isMulti}
-            selectedOptions={selectedOptions}
-            currentOptionValue={currentOptionValue}
-            updateSelectedOptions={updateSelectedOptions}
-          />
+          {options.map((option) => (
+            <Option
+              key={option.id}
+              option={option}
+              isMulti={isMulti}
+              selectedOptions={selectedOptions}
+              currentOptionValue={currentOptionValue}
+              updateSelectedOptions={updateSelectedOptions}
+            />
+          ))}
         </StyledSelect>
       )}
     </StyledWrapper>

@@ -4,19 +4,18 @@ import { IOption } from './Option.model';
 import { StyledCircle, StyledOption, StyledOptionParagraph } from './Option.styled';
 
 const Option = ({
-  text,
-  value,
+  option,
   isMulti,
   selectedOptions,
   currentOptionValue,
   updateSelectedOptions,
 }: IOption): JSX.Element => {
   const [isSelected, setIsSelected] = useState(() => {
-    return selectedOptions.includes(value);
+    return selectedOptions.some((element) => element.value === option.value);
   });
 
-  const handleOnOptionClick = (e: React.MouseEvent<HTMLLIElement>) => {
-    updateSelectedOptions(value, e);
+  const handleOnOptionClick = () => {
+    updateSelectedOptions(option);
     if (isMulti) {
       setIsSelected(!isSelected);
     }
@@ -24,7 +23,7 @@ const Option = ({
 
   const manageIsSelectedState = () => {
     if (!isMulti) {
-      if (value === currentOptionValue) {
+      if (option.value === currentOptionValue) {
         setIsSelected(true);
       } else {
         setIsSelected(false);
@@ -38,16 +37,16 @@ const Option = ({
 
   return (
     <StyledOption
-      onClick={(e: React.MouseEvent<HTMLLIElement>) => handleOnOptionClick(e)}
+      onClick={() => handleOnOptionClick()}
       aria-selected={isSelected}
-      value={value}
+      value={option.value}
       role="option"
     >
       <StyledCircle
         alt={isSelected ? 'Checked option' : 'Unchecked option'}
         src={isSelected ? CheckedOptionIcon : UnCheckedOptionIcon}
       />
-      <StyledOptionParagraph>{text}</StyledOptionParagraph>
+      <StyledOptionParagraph>{option.value}</StyledOptionParagraph>
     </StyledOption>
   );
 };
