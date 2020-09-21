@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import typography from 'styles/typography';
 import colors from 'styles/colors';
-import { CheckedOptionIcon, UnCheckedOptionIcon } from 'assets/index';
+import { CheckedOptionIcon, UnCheckedOptionIcon } from 'assets';
 
 export const StyledOption = styled.li`
   display: flex;
