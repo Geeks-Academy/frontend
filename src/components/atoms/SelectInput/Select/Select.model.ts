@@ -1,7 +1,4 @@
-export interface ISingleOption {
-  id: number;
-  value: string;
-}
+import { ISingleOption } from '../SelectInput.model';
 
 export interface ISelect {
   handleOnClick: (callback: () => ISingleOption[]) => void | undefined;

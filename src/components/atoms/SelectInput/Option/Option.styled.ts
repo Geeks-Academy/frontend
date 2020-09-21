@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import typography from 'styles/typography';
 import colors from 'styles/colors';
+import { CheckedOptionIcon, UnCheckedOptionIcon } from 'assets/index';
 
 export const StyledOption = styled.li`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 97px;
   height: 24px;
   margin-bottom: 24px;
   cursor: pointer;
@@ -18,10 +18,10 @@ export const StyledOptionParagraph = styled.p`
   pointer-events: none;
 `;
 
-export const StyledCircle = styled.img`
-  position: relative;
-  width: 24px;
-  height: 24px;
+export const StyledUnCheckedOptionIcon = styled(UnCheckedOptionIcon)`
   margin-right: 14px;
-  pointer-events: none;
+`;
+
+export const StyledCheckedOptionIcon = styled(CheckedOptionIcon)`
+  margin-right: 14px;
 `;

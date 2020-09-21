@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowIcon } from 'assets/index';
+import { ArrowIcon } from 'assets';
 import {
   StyledArrowImage,
   StyledSelect,
@@ -8,7 +8,8 @@ import {
   StyledWrapper,
 } from './Select.styled';
 import Option from '../Option';
-import { ISelect, ISingleOption } from './Select.model';
+import { ISelect } from './Select.model';
+import { ISingleOption } from '../SelectInput.model';
 
 const Select = ({ isMulti, handleOnClick, options }: ISelect): JSX.Element => {
   const [isSelectOpened, setIsSelectOpened] = useState<boolean>(false);
@@ -16,7 +17,7 @@ const Select = ({ isMulti, handleOnClick, options }: ISelect): JSX.Element => {
   const [currentOptionValue, setCurrentOptionValue] = useState<string>('');
 
   const doesArrayConsistValue = (value: string) => {
-    return selectedOptions.filter((element) => element.value === value).length;
+    return selectedOptions.filter((element: ISingleOption) => element.value === value).length;
   };
 
   const updateSelectedOptions = (option: ISingleOption): void => {
@@ -26,7 +27,9 @@ const Select = ({ isMulti, handleOnClick, options }: ISelect): JSX.Element => {
       if (!doesArrayConsistValue(value)) {
         setSelectedOptions([option, ...selectedOptions]);
       } else {
-        const newArray = selectedOptions.filter((element) => element.value !== value);
+        const newArray = selectedOptions.filter(
+          (element: ISingleOption) => element.value !== value
+        );
         setSelectedOptions([...newArray]);
       }
     } else {
