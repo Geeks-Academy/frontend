@@ -16,11 +16,12 @@ const LevelRange = ({ className }: IProps): JSX.Element => {
 
   return (
     <Container className={className}>
-      <Label htmlFor="range" aria-label="range">
+      <Label htmlFor="range" aria-label="level-range">
         <Input
           onChange={(e) => setRangeValue(+e.target.value)}
           type="range"
           id="range"
+          aria-label="level-range-input"
           name="range"
           min="0"
           max="100"

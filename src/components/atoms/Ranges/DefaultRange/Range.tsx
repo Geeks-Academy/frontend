@@ -7,11 +7,12 @@ const Range = ({ className }: IProps): JSX.Element => {
 
   return (
     <Container className={className}>
-      <label htmlFor="range" id="range" aria-label="Range">
+      <label htmlFor="range" id="range" aria-label="range">
         <Input
           onChange={(e) => setRangeValue(+e.target.value)}
           type="range"
           id="range"
+          aria-label="range-input"
           name="range"
           min="0"
           max="100"
