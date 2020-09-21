@@ -11,11 +11,11 @@ const Option = ({
   option,
   isMulti,
   selectedOptions,
-  currentOptionValue,
+  currentOptionId,
   updateSelectedOptions,
 }: IOption): JSX.Element => {
   const [isSelected, setIsSelected] = useState(() => {
-    return selectedOptions.some((element) => element.value === option.value);
+    return selectedOptions.some((element) => element.id === option.id);
   });
 
   const handleOnOptionClick = () => {
@@ -27,7 +27,7 @@ const Option = ({
 
   const manageIsSelectedState = () => {
     if (!isMulti) {
-      if (option.value === currentOptionValue) {
+      if (option.id === currentOptionId) {
         setIsSelected(true);
       } else {
         setIsSelected(false);

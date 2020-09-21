@@ -14,22 +14,20 @@ import { ISingleOption } from '../SelectInput.model';
 const Select = ({ isMulti, handleOnClick, options }: ISelect): JSX.Element => {
   const [isSelectOpened, setIsSelectOpened] = useState<boolean>(false);
   const [selectedOptions, setSelectedOptions] = useState<ISingleOption[]>([]);
-  const [currentOptionValue, setCurrentOptionValue] = useState<string>('');
+  const [currentOptionId, setCurrentOptionId] = useState<number>(0);
 
-  const doesArrayConsistValue = (value: string) => {
-    return selectedOptions.filter((element: ISingleOption) => element.value === value).length;
+  const doesArrayConsistValue = (id: number) => {
+    return selectedOptions.filter((element: ISingleOption) => element.id === id).length;
   };
 
   const updateSelectedOptions = (option: ISingleOption): void => {
-    const { value } = option;
-    setCurrentOptionValue(value);
+    const { id } = option;
+    setCurrentOptionId(id);
     if (isMulti) {
-      if (!doesArrayConsistValue(value)) {
+      if (!doesArrayConsistValue(id)) {
         setSelectedOptions([option, ...selectedOptions]);
       } else {
-        const newArray = selectedOptions.filter(
-          (element: ISingleOption) => element.value !== value
-        );
+        const newArray = selectedOptions.filter((element: ISingleOption) => element.id !== id);
         setSelectedOptions([...newArray]);
       }
     } else {
@@ -59,7 +57,7 @@ const Select = ({ isMulti, handleOnClick, options }: ISelect): JSX.Element => {
               option={option}
               isMulti={isMulti}
               selectedOptions={selectedOptions}
-              currentOptionValue={currentOptionValue}
+              currentOptionId={currentOptionId}
               updateSelectedOptions={updateSelectedOptions}
             />
           ))}

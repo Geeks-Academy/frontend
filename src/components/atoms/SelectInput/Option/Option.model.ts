@@ -4,6 +4,6 @@ export interface IOption {
   isMulti: boolean;
   option: ISingleOption;
   selectedOptions: ISingleOption[];
-  currentOptionValue: string;
+  currentOptionId: number;
   updateSelectedOptions: (option: ISingleOption) => void;
 }
