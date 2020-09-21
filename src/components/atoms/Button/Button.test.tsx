@@ -6,9 +6,15 @@ import { cleanup, render } from '@testing-library/react';
 afterEach(cleanup);
 
 describe('Button Component', () => {
+  test('default button render', () => {
+    const { getByTestId } = render(<Button>Click</Button>);
+    expect(getByTestId('fill')).toBeInTheDocument();
+  });
+
   test('render button with text', () => {
-    const { getByText } = render(<Button>Click</Button>);
+    const { getByText, getByTestId } = render(<Button>Click</Button>);
     expect(getByText('Click')).toHaveTextContent(/click/i);
+    expect(getByTestId('fill')).toBeInTheDocument();
   });
 
   test('that fill button is default', () => {

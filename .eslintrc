@@ -37,6 +37,11 @@
         "memberSyntaxSortOrder": ["none", "single", "multiple", "all"]
       }
     ],
+    "jsx-a11y/label-has-associated-control": [ "error", {
+        "required": {
+          "some": [ "nesting", "id"  ]
+        }
+    }],
     "no-unused-vars": 0,
     "@typescript-eslint/no-unused-vars": ["error"],
     "import/no-unresolved": 0,
