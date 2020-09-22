@@ -1,4 +1,4 @@
-name : CodeQL Configuration
+name : CodeQL Configuratin
 
 paths:
   - './src'
