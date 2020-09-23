@@ -1,6 +1,8 @@
 # frontend
 Microservice for UI of application
 
+[![CodeFactor](https://www.codefactor.io/repository/github/programmers-only-group/frontend/badge)](https://www.codefactor.io/repository/github/programmers-only-group/frontend)
+
 
 ### Commitlint configuration:
 
