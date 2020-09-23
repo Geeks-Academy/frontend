@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ArrowIcon } from 'assets';
 import {
   StyledArrowImage,
+  StyledInput,
   StyledSelect,
   StyledSelectCaption,
   StyledTopWrapper,
@@ -11,12 +12,19 @@ import Option from '../Option';
 import { ISelect } from './Select.model';
 import { ISingleOption } from '../SelectInput.model';
 
-const Select = ({ isMulti, handleOnClick, options }: ISelect): JSX.Element => {
+const Select = ({
+  isMulti,
+  options,
+  handleOnClick,
+  selectCaption,
+  inputPlaceholder,
+}: ISelect): JSX.Element => {
   const [isSelectOpened, setIsSelectOpened] = useState<boolean>(false);
   const [selectedOptions, setSelectedOptions] = useState<ISingleOption[]>([]);
-  const [currentOptionId, setCurrentOptionId] = useState<number>(0);
+  const [currentOptionId, setCurrentOptionId] = useState<string>('');
+  const [mutableOptions, setMutableOptions] = useState<ISingleOption[]>(options);
 
-  const doesArrayConsistValue = (id: number) => {
+  const doesArrayConsistValue = (id: string) => {
     return selectedOptions.filter((element: ISingleOption) => element.id === id).length;
   };
 
@@ -35,6 +43,32 @@ const Select = ({ isMulti, handleOnClick, options }: ISelect): JSX.Element => {
     }
   };
 
+  const isInputTextMatch = (inputText: string, value: string) => {
+    const regex = new RegExp(`^${inputText}`, 'i');
+    return regex.test(value);
+  };
+
+  const isInputEmpty = (value: string) => {
+    return value === '';
+  };
+
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    const tempOptions: ISingleOption[] = [];
+
+    options.forEach((option) => {
+      if (isInputTextMatch(inputValue, option.value)) {
+        tempOptions.push(option);
+      }
+    });
+
+    if (!isInputEmpty(inputValue)) {
+      setMutableOptions(tempOptions);
+    } else {
+      setMutableOptions(options);
+    }
+  };
+
   useEffect(() => {
     handleOnClick(() => {
       return selectedOptions;
@@ -43,15 +77,24 @@ const Select = ({ isMulti, handleOnClick, options }: ISelect): JSX.Element => {
 
   return (
     <StyledWrapper>
-      <StyledTopWrapper onClick={() => setIsSelectOpened(!isSelectOpened)}>
-        <StyledSelectCaption id="selectCaption">
-          {isSelectOpened ? 'Start typing..' : 'Menu select'}
-        </StyledSelectCaption>
-        <StyledArrowImage src={ArrowIcon} isSelectOpened={isSelectOpened} />
+      <StyledTopWrapper>
+        {isSelectOpened ? (
+          <StyledInput
+            placeholder={inputPlaceholder}
+            handleOnChange={(e: React.ChangeEvent<HTMLInputElement>) => handleOnChange(e)}
+          />
+        ) : (
+          <StyledSelectCaption id="selectCaption">{selectCaption}</StyledSelectCaption>
+        )}
+        <StyledArrowImage
+          onClick={() => setIsSelectOpened(!isSelectOpened)}
+          isSelectOpened={isSelectOpened}
+          src={ArrowIcon}
+        />
       </StyledTopWrapper>
       {isSelectOpened && (
         <StyledSelect aria-multiselectable={isMulti} aria-labelledby="selectCaption" role="listbox">
-          {options.map((option) => (
+          {mutableOptions.map((option) => (
             <Option
               key={option.id}
               option={option}

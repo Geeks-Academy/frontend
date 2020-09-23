@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import typography from 'styles/typography';
 import colors from 'styles/colors';
+import Input from 'components/atoms/Input';
 
 export const StyledWrapper = styled.div`
   border: 1px solid ${colors.background.Neutral80};
@@ -24,7 +25,6 @@ export const StyledTopWrapper = styled.div`
 `;
 
 export const StyledArrowImage = styled.img<{ isSelectOpened: boolean }>`
-  pointer-events: none;
   transform: ${({ isSelectOpened }) => (isSelectOpened ? `rotateX(180deg)` : `rotateX(0)`)};
   margin: 14px;
 `;
@@ -39,4 +39,16 @@ export const StyledSelect = styled.ul`
   padding: 0 24px;
   height: 168px;
   overflow-y: scroll;
+`;
+
+export const StyledInput = styled(Input)`
+  width: 100%;
+  div {
+    border: none;
+    input {
+      padding: 0;
+      ${typography.body.L};
+      color: ${colors.background.Neutral40};
+    }
+  }
 `;

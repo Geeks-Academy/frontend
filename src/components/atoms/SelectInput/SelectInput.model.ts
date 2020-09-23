@@ -1,10 +1,12 @@
 export interface ISingleOption {
-  id: number;
+  id: string;
   value: string;
 }
 
 export interface ISelectInput {
-  isMulti: boolean;
+  isMulti?: boolean;
+  selectCaption: string;
+  inputPlaceholder: string;
   options: ISingleOption[];
   handleOnClick: (callback: () => ISingleOption[]) => void | undefined;
 }

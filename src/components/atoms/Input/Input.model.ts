@@ -6,4 +6,5 @@ export interface IProps {
   icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   label?: string;
   className?: string;
+  handleOnChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
