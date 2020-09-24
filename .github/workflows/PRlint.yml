@@ -10,6 +10,6 @@ jobs:
     steps:
     - uses: seferov/pr-lint-action@master
       with:
-        title-regex: '^\FRDQ-\d+ - '
+        title-regex: '^\FRDQ-\d+( - )?.*'
         title-regex-flags: 'g' # optional
         error-message: 'Add Vivify ID to your title'
