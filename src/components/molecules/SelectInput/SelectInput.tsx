@@ -13,8 +13,8 @@ const SelectInput = ({
     <Select
       inputPlaceholder={inputPlaceholder}
       selectCaption={selectCaption}
-      onClick={onClick}
       isMulti={!!isMulti}
+      onClick={onClick}
       options={options}
     />
   );
