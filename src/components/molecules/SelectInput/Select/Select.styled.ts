@@ -24,8 +24,8 @@ export const StyledTopWrapper = styled.div`
   cursor: pointer;
 `;
 
-export const StyledArrowImage = styled.img<{ isSelectOpened: boolean }>`
-  transform: ${({ isSelectOpened }) => (isSelectOpened ? `rotateX(180deg)` : `rotateX(0)`)};
+export const StyledArrowImage = styled.img<{ isOpen: boolean }>`
+  transform: ${({ isOpen }) => (isOpen ? `rotateX(180deg)` : `rotateX(0)`)};
   margin: 14px;
 `;
 

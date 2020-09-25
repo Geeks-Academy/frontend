@@ -19,17 +19,13 @@ const Select = ({
   selectCaption,
   inputPlaceholder,
 }: ISelect): JSX.Element => {
-  const [currentOptionId, setCurrentOptionId] = useState<string>('');
-  const [isSelectOpened, setIsSelectOpened] = useState<boolean>(false);
-  const [selectedOptions, setSelectedOptions] = useState<ISingleOption[]>([]);
   const [mutableOptions, setMutableOptions] = useState<ISingleOption[]>(options);
+  const [selectedOptions, setSelectedOptions] = useState<ISingleOption[]>([]);
+  const [currentOptionId, setCurrentOptionId] = useState<string>('');
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const doesArrayConsistValue = (id: string) => {
     return selectedOptions.filter((element: ISingleOption) => element.id === id).length;
-  };
-
-  const isInputEmpty = (value: string) => {
-    return value === '';
   };
 
   const isInputTextMatch = (inputText: string, value: string) => {
@@ -52,31 +48,17 @@ const Select = ({
     }
   };
 
-  const hideList = () => {
-    setIsSelectOpened(false);
-  };
-
   const filterOptions = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
-    const tempOptions: ISingleOption[] = [];
-
-    options.forEach((option) => {
-      if (isInputTextMatch(inputValue, option.value)) {
-        tempOptions.push(option);
-      }
-    });
-
-    if (!isInputEmpty(inputValue)) {
-      setMutableOptions(tempOptions);
-    } else {
-      setMutableOptions(options);
-    }
+    const filteredOptions = options.filter((option) => isInputTextMatch(inputValue, option.value));
+    setMutableOptions(filteredOptions);
   };
 
   const toggleList = (e: MouseEvent<HTMLDivElement>) => {
     const clickedElementName = (e.target as HTMLDivElement).localName;
+    setMutableOptions(options);
     if (clickedElementName !== 'input') {
-      setIsSelectOpened(!isSelectOpened);
+      setIsOpen(!isOpen);
     }
   };
 
@@ -87,9 +69,9 @@ const Select = ({
   }, [selectedOptions, handleOnClick]);
 
   return (
-    <StyledWrapper onMouseLeave={() => hideList()}>
+    <StyledWrapper>
       <StyledTopWrapper onClick={(e: MouseEvent<HTMLDivElement>) => toggleList(e)}>
-        {isSelectOpened ? (
+        {isOpen ? (
           <StyledInput
             placeholder={inputPlaceholder}
             handleOnChange={(e: React.ChangeEvent<HTMLInputElement>) => filterOptions(e)}
@@ -97,9 +79,9 @@ const Select = ({
         ) : (
           <StyledSelectCaption id="selectCaption">{selectCaption}</StyledSelectCaption>
         )}
-        <StyledArrowImage isSelectOpened={isSelectOpened} src={ArrowIcon} />
+        <StyledArrowImage isOpen={isOpen} src={ArrowIcon} />
       </StyledTopWrapper>
-      {isSelectOpened && (
+      {isOpen && (
         <StyledSelect aria-multiselectable={isMulti} aria-labelledby="selectCaption" role="listbox">
           {mutableOptions.map((option) => (
             <Option

@@ -6,6 +6,7 @@ const Input = ({
   type = 'text',
   icon: Icon,
   label,
+  ref,
   className,
   placeholder,
   handleOnChange,
