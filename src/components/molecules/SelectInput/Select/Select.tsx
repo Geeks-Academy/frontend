@@ -1,6 +1,6 @@
 import React, { MouseEvent, useEffect, useRef, useState } from 'react';
 import { ArrowIcon } from 'assets';
-import useOutsideClick from 'Hooks/useOutsideClick';
+import { useOutsideClick } from 'hooks';
 import {
   StyledArrowImage,
   StyledInput,
@@ -16,7 +16,7 @@ import { ISingleOption } from '../SelectInput.model';
 const Select = ({
   isMulti,
   options,
-  handleOnClick,
+  onClick,
   selectCaption,
   inputPlaceholder,
 }: ISelect): JSX.Element => {
@@ -69,19 +69,14 @@ const Select = ({
   };
 
   useEffect(() => {
-    handleOnClick(() => {
-      return selectedOptions;
-    });
-  }, [selectedOptions, handleOnClick]);
+    onClick(() => selectedOptions);
+  }, [selectedOptions, onClick]);
 
   return (
     <StyledWrapper ref={containerRef}>
-      <StyledTopWrapper onClick={(e: MouseEvent<HTMLDivElement>) => toggleList(e)}>
+      <StyledTopWrapper onClick={toggleList}>
         {isOpen ? (
-          <StyledInput
-            placeholder={inputPlaceholder}
-            handleOnChange={(e: React.ChangeEvent<HTMLInputElement>) => filterOptions(e)}
-          />
+          <StyledInput placeholder={inputPlaceholder} handleOnChange={filterOptions} />
         ) : (
           <StyledSelectCaption id="selectCaption">{selectCaption}</StyledSelectCaption>
         )}

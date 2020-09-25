@@ -9,7 +9,7 @@ function App(): JSX.Element {
       <SelectInput
         selectCaption="MultiSelect"
         inputPlaceholder="Start typing.."
-        handleOnClick={(e) => console.log(e())}
+        onClick={(e) => console.log(e())}
         options={[
           { id: '1', value: 'React' },
           { id: '2', value: 'React1' },

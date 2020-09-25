@@ -8,5 +8,5 @@ export interface ISelectInput {
   selectCaption: string;
   inputPlaceholder: string;
   options: ISingleOption[];
-  handleOnClick: (callback: () => ISingleOption[]) => void;
+  onClick: (callback: () => ISingleOption[]) => void;
 }
