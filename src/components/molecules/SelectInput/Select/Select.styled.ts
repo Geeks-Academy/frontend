@@ -15,6 +15,7 @@ export const StyledSelectCaption = styled.span`
   ${typography.body.L};
   color: ${colors.background.Neutral40};
   margin: 14px 0 14px 24px;
+  pointer-events: none;
 `;
 
 export const StyledTopWrapper = styled.div`

@@ -1,5 +1,6 @@
-import React, { MouseEvent, useEffect, useState } from 'react';
+import React, { MouseEvent, useEffect, useRef, useState } from 'react';
 import { ArrowIcon } from 'assets';
+import useOutsideClick from 'Hooks/useOutsideClick';
 import {
   StyledArrowImage,
   StyledInput,
@@ -23,6 +24,11 @@ const Select = ({
   const [selectedOptions, setSelectedOptions] = useState<ISingleOption[]>([]);
   const [currentOptionId, setCurrentOptionId] = useState<string>('');
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useOutsideClick(containerRef, () => {
+    setIsOpen(false);
+  });
 
   const doesArrayConsistValue = (id: string) => {
     return selectedOptions.filter((element: ISingleOption) => element.id === id).length;
@@ -69,7 +75,7 @@ const Select = ({
   }, [selectedOptions, handleOnClick]);
 
   return (
-    <StyledWrapper>
+    <StyledWrapper ref={containerRef}>
       <StyledTopWrapper onClick={(e: MouseEvent<HTMLDivElement>) => toggleList(e)}>
         {isOpen ? (
           <StyledInput
