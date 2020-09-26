@@ -22,12 +22,10 @@ describe('SelectInput', () => {
         selectCaption="selectCaption"
         options={[option1]}
         onClick={mock}
+        isOpen
       />
     );
 
-    // open the select dropdown
-    fireEvent.click(getByText('selectCaption'));
-    // select some option
     fireEvent.click(getByText(option1.value));
 
     expect(mock).toHaveBeenLastCalledWith([option1]);

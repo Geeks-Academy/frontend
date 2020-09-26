@@ -8,6 +8,7 @@ const SelectInput = ({
   onClick,
   selectCaption,
   inputPlaceholder,
+  isOpen,
 }: ISelectInput): JSX.Element => {
   return (
     <Select
@@ -16,6 +17,7 @@ const SelectInput = ({
       isMulti={!!isMulti}
       onClick={onClick}
       options={options}
+      isOpen={isOpen}
     />
   );
 };

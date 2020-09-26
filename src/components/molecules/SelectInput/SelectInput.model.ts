@@ -9,4 +9,5 @@ export interface ISelectInput {
   inputPlaceholder: string;
   options: ISingleOption[];
   onClick: (callback: () => ISingleOption[]) => void;
+  isOpen?: boolean;
 }
