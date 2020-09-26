@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { Container, Input } from './Range.styled';
 import { IProps } from './Range.model';
+import newId from '../../utils/newid';
 
 const Range = ({ className }: IProps): JSX.Element => {
   const [rangeValue, setRangeValue] = useState<number>(1);
+  const [id] = useState(newId('range-'));
 
   return (
     <Container className={className}>
-      <label htmlFor="range" id="range" aria-label="range">
+      <label htmlFor={id} aria-label="range">
         <Input
           onChange={(e) => setRangeValue(+e.target.value)}
           type="range"
-          id="range"
+          id={id}
           aria-label="range-input"
           name="range"
           min="0"

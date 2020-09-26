@@ -10,17 +10,19 @@ import {
 } from './LevelRange.styled';
 import { data } from './data';
 import { IProps } from './LevelRange.model';
+import newId from '../../utils/newid';
 
 const LevelRange = ({ className }: IProps): JSX.Element => {
   const [rangeValue, setRangeValue] = useState<number>(1);
+  const [rangeId] = useState(newId('range-'));
 
   return (
     <Container className={className}>
-      <Label htmlFor="range" aria-label="level-range">
+      <Label htmlFor={rangeId} aria-label="level-range">
         <Input
           onChange={(e) => setRangeValue(+e.target.value)}
           type="range"
-          id="range"
+          id={rangeId}
           aria-label="level-range-input"
           name="range"
           min="0"
