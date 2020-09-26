@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, InputWrapper, Label, StyledIcon, StyledInput } from './Input.styled';
 import { IProps } from './Input.model';
+import newId from '../utils/newid';
 
 const Input = ({
   type = 'text',
@@ -10,12 +11,20 @@ const Input = ({
   placeholder,
   ...props
 }: IProps): JSX.Element => {
-  const renderLabel = () => label && <Label>{label}</Label>;
+  const [inputId] = useState(newId('input-'));
+  const renderLabel = (id: string) => label && <Label htmlFor={id}>{label}</Label>;
+
   return (
     <Container className={className}>
-      {renderLabel()}
+      {renderLabel(inputId)}
       <InputWrapper>
-        <StyledInput isIcon={!!Icon} type={type} placeholder={placeholder} {...props} />
+        <StyledInput
+          isIcon={!!Icon}
+          type={type}
+          placeholder={placeholder}
+          {...props}
+          id={inputId}
+        />
         {Icon && (
           <StyledIcon data-testid="icon">
             <Icon />
