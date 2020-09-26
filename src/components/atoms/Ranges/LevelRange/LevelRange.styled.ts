@@ -42,7 +42,6 @@ export const ThumbSlider = styled.span<{ value: number }>`
     width: 100%;
     ${typography.body.L}
     cursor: pointer;
-    text-align: center;
     color: ${colors.background.Primary20};
   }
 `;
@@ -108,6 +107,12 @@ export const Option = styled.option`
     top: 0;
     right: 0;
   }
+  ::after {
+    content: attr(aria-label);
+    display: block;
+    ${typography.body.L}
+    text-align: center;
+  }
   :nth-of-type(1) {
     ::before {
       background-color: ${colors.background.addons.Blue10};
@@ -145,11 +150,5 @@ export const Option = styled.option`
     ::after {
       color: ${colors.text.addons.Blue40};
     }
-  }
-  ::after {
-    content: attr(aria-label);
-    display: block;
-    ${typography.body.L}
-    text-align: center;
   }
 `;
