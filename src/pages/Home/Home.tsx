@@ -1,6 +1,5 @@
 import React from 'react';
 import SocialButton from 'components/atoms/SocialButton';
-import { Logo, Role } from 'components/atoms/SocialButton/SocialButton.model';
 import { HomePageImg_1, listItemIcon } from 'assets';
 import { data } from './data';
 import {
@@ -25,8 +24,8 @@ const Home = (): JSX.Element => (
           <StyledList icon={listItemIcon} items={data.listDescription} />
           <StyledParagraph txt={data.paragraph} />
           <StyledButtonsWrapper>
-            <SocialButton logo={Logo.GITHUB} roleDependText={Role.DEVELOPER} />
-            <SocialButton logo={Logo.GOOGLE} roleDependText={Role.NONDEVELOPER} />
+            <SocialButton logo="github" userRole="developer" />
+            <SocialButton logo="google" userRole="non-developer" />
           </StyledButtonsWrapper>
         </StyledContainer>
         <StyledHomeImg src={HomePageImg_1} alt="Register" />
