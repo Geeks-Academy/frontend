@@ -6,8 +6,10 @@ const Input = ({
   type = 'text',
   icon: Icon,
   label,
+  ref,
   className,
   placeholder,
+  handleOnChange,
   ...props
 }: IProps): JSX.Element => {
   const renderLabel = () => label && <Label>{label}</Label>;
@@ -15,7 +17,13 @@ const Input = ({
     <Container className={className}>
       {renderLabel()}
       <InputWrapper>
-        <StyledInput isIcon={!!Icon} type={type} placeholder={placeholder} {...props} />
+        <StyledInput
+          isIcon={!!Icon}
+          type={type}
+          placeholder={placeholder}
+          onChange={handleOnChange}
+          {...props}
+        />
         {Icon && (
           <StyledIcon data-testid="icon">
             <Icon />
