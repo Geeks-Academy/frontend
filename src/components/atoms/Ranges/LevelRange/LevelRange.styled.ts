@@ -42,7 +42,6 @@ export const ThumbSlider = styled.span<{ value: number }>`
     width: 100%;
     ${typography.body.L}
     cursor: pointer;
-    text-align: center;
     color: ${colors.background.Primary20};
   }
 `;
@@ -108,11 +107,20 @@ export const Option = styled.option`
     top: 0;
     right: 0;
   }
+  ::after {
+    content: attr(aria-label);
+    display: block;
+    ${typography.body.L}
+    text-align: center;
+  }
   :nth-of-type(1) {
     ::before {
       background-color: ${colors.background.addons.Blue10};
       border-radius: 50px 0 0 50px;
       left: 0;
+    }
+    ::after {
+      color: ${colors.text.addons.Blue10};
     }
   }
   :nth-of-type(2) {
@@ -120,11 +128,17 @@ export const Option = styled.option`
       background-color: ${colors.background.addons.Blue20};
       left: 25%;
     }
+    ::after {
+      color: ${colors.text.addons.Blue20};
+    }
   }
   :nth-of-type(3) {
     ::before {
       background-color: ${colors.background.addons.Blue30};
       left: 50%;
+    }
+    ::after {
+      color: ${colors.text.addons.Blue30};
     }
   }
   :nth-of-type(4) {
@@ -133,29 +147,6 @@ export const Option = styled.option`
       border-radius: 0 50px 50px 0;
       left: 75%;
     }
-  }
-  ::after {
-    content: attr(aria-label);
-    display: block;
-    ${typography.body.L}
-    text-align: center;
-  }
-  :nth-of-type(1) {
-    ::after {
-      color: ${colors.text.addons.Blue10};
-    }
-  }
-  :nth-of-type(2) {
-    ::after {
-      color: ${colors.text.addons.Blue20};
-    }
-  }
-  :nth-of-type(3) {
-    ::after {
-      color: ${colors.text.addons.Blue30};
-    }
-  }
-  :nth-of-type(4) {
     ::after {
       color: ${colors.text.addons.Blue40};
     }
