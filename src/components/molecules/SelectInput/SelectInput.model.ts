@@ -8,5 +8,6 @@ export interface ISelectInput {
   selectCaption: string;
   inputPlaceholder: string;
   options: ISingleOption[];
-  onClick: (callback: () => ISingleOption[]) => void;
+  onChange: (selection: ISingleOption[]) => void;
+  isOpen?: boolean;
 }

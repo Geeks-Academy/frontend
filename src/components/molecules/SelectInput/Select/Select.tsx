@@ -16,18 +16,19 @@ import { ISingleOption } from '../SelectInput.model';
 const Select = ({
   isMulti,
   options,
-  onClick,
+  onChange,
   selectCaption,
   inputPlaceholder,
+  isOpen,
 }: ISelect): JSX.Element => {
   const [mutableOptions, setMutableOptions] = useState<ISingleOption[]>(options);
   const [selectedOptions, setSelectedOptions] = useState<ISingleOption[]>([]);
   const [currentOptionId, setCurrentOptionId] = useState<string>('');
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpenState, setIsOpenState] = useState<boolean>(isOpen || false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useOutsideClick(containerRef, () => {
-    setIsOpen(false);
+    setIsOpenState(false);
   });
 
   const doesArrayConsistValue = (id: string) => {
@@ -64,25 +65,25 @@ const Select = ({
     const clickedElementName = (e.target as HTMLDivElement).localName;
     setMutableOptions(options);
     if (clickedElementName !== 'input') {
-      setIsOpen(!isOpen);
+      setIsOpenState(!isOpenState);
     }
   };
 
   useEffect(() => {
-    onClick(() => selectedOptions);
-  }, [selectedOptions, onClick]);
+    onChange(selectedOptions);
+  }, [selectedOptions, onChange]);
 
   return (
     <StyledWrapper ref={containerRef}>
       <StyledTopWrapper onClick={toggleList}>
-        {isOpen ? (
+        {isOpenState ? (
           <StyledInput placeholder={inputPlaceholder} handleOnChange={filterOptions} />
         ) : (
           <StyledSelectCaption id="selectCaption">{selectCaption}</StyledSelectCaption>
         )}
-        <StyledArrowImage isOpen={isOpen} src={ArrowIcon} />
+        <StyledArrowImage isOpen={isOpenState} src={ArrowIcon} />
       </StyledTopWrapper>
-      {isOpen && (
+      {isOpenState && (
         <StyledSelect aria-multiselectable={isMulti} aria-labelledby="selectCaption" role="listbox">
           {mutableOptions.map((option) => (
             <Option
