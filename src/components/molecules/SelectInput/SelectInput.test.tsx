@@ -9,25 +9,25 @@ describe('SelectInput', () => {
         inputPlaceholder="inputplaceholder"
         selectCaption=""
         options={[{ id: '0', value: 'Option 1' }]}
-        onClick={() => {}}
+        onChange={() => {}}
       />
     );
   });
   test('fires OnClick event on selection change', () => {
-    const mock = jest.fn();
+    const selectionChangedMock = jest.fn();
     const option1 = { id: '0', value: 'Option 1' };
     const { getByText } = render(
       <SelectInput
         inputPlaceholder="inputplaceholder"
         selectCaption="selectCaption"
         options={[option1]}
-        onClick={mock}
+        onChange={selectionChangedMock}
         isOpen
       />
     );
 
     fireEvent.click(getByText(option1.value));
 
-    expect(mock).toHaveBeenLastCalledWith([option1]);
+    expect(selectionChangedMock).toHaveBeenLastCalledWith([option1]);
   });
 });

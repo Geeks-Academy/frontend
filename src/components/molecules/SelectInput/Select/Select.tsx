@@ -16,7 +16,7 @@ import { ISingleOption } from '../SelectInput.model';
 const Select = ({
   isMulti,
   options,
-  onClick,
+  onChange,
   selectCaption,
   inputPlaceholder,
   isOpen,
@@ -70,8 +70,8 @@ const Select = ({
   };
 
   useEffect(() => {
-    onClick(selectedOptions);
-  }, [selectedOptions, onClick]);
+    onChange(selectedOptions);
+  }, [selectedOptions, onChange]);
 
   return (
     <StyledWrapper ref={containerRef}>

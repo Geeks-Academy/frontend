@@ -5,7 +5,7 @@ import { ISelectInput } from './SelectInput.model';
 const SelectInput = ({
   isMulti,
   options,
-  onClick,
+  onChange,
   selectCaption,
   inputPlaceholder,
   isOpen,
@@ -15,7 +15,7 @@ const SelectInput = ({
       inputPlaceholder={inputPlaceholder}
       selectCaption={selectCaption}
       isMulti={!!isMulti}
-      onClick={onClick}
+      onChange={onChange}
       options={options}
       isOpen={isOpen}
     />
