@@ -7,8 +7,10 @@ const Input = ({
   type = 'text',
   icon: Icon,
   label,
+  ref,
   className,
   placeholder,
+  handleOnChange,
   ...props
 }: IProps): JSX.Element => {
   const [inputId] = useState(newId('input-'));
@@ -22,6 +24,7 @@ const Input = ({
           isIcon={!!Icon}
           type={type}
           placeholder={placeholder}
+          onChange={handleOnChange}
           {...props}
           id={inputId}
         />
