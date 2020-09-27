@@ -1,8 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { RootState } from 'store';
 
 const Loader = (): JSX.Element => {
-  const loader = useSelector((state: any) => state.loader);
+  const loader = useSelector((state: RootState) => state.loader);
 
   return (
     <>
