@@ -5,7 +5,7 @@ import { SpinnerDots, SpinnerWrapper } from './Spinner.styled';
 
 const Spinner = ({ className }: IProps): JSX.Element => {
   return (
-    <SpinnerWrapper className={className}>
+    <SpinnerWrapper data-testid="spinner" className={className}>
       <div className="bracketLeft">
         <SpinnerLeftBracketSVG />
       </div>
