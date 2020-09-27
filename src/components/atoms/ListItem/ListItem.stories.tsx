@@ -10,6 +10,13 @@ export default {
   title: 'atoms/ListItem',
   component: ListItem,
   decorators: [(story) => <MemoryRouter>{story()}</MemoryRouter>],
+  argTypes: {
+    className: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 } as Meta;
 
 const Template: Story<IProps> = (props: IProps): JSX.Element => <ListItem {...props} />;
