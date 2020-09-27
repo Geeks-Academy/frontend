@@ -7,6 +7,13 @@ import Paragraph, { IProps } from './Paragraph';
 export default {
   title: 'atoms/Paragraph',
   component: Paragraph,
+  argTypes: {
+    className: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 } as Meta;
 
 const Template: Story<IProps> = (props: IProps): JSX.Element => <Paragraph {...props} />;

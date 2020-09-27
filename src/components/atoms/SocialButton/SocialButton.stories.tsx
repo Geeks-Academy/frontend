@@ -5,6 +5,13 @@ import { Logo, Role } from './SocialButton.model';
 export default {
   title: 'atoms/SocialButton',
   component: SocialButton,
+  argTypes: {
+    className: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 };
 
 export const GoogleButton = (): JSX.Element => (

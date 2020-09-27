@@ -11,6 +11,11 @@ export default {
         type: 'text',
       },
     },
+    className: {
+      control: {
+        disable: true,
+      },
+    },
   },
 };
 

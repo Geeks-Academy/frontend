@@ -10,6 +10,13 @@ export default {
   title: 'atoms/List',
   component: List,
   decorators: [(story) => <MemoryRouter>{story()}</MemoryRouter>],
+  argTypes: {
+    className: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 } as Meta;
 
 const Template: Story<IProps> = (props: IProps): JSX.Element => <List {...props} />;
