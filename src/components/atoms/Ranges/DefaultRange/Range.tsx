@@ -5,7 +5,7 @@ import newId from '../../utils/newid';
 
 const Range = ({ className }: IProps): JSX.Element => {
   const [rangeValue, setRangeValue] = useState<number>(1);
-  const [id] = useState(newId('range-'));
+  const id = newId('range-');
 
   return (
     <Container className={className}>
