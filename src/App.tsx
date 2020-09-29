@@ -1,4 +1,4 @@
-import Home from 'pages/Home';
+import SkillCard from 'components/molecules/SkillCard';
 import React from 'react';
 import GlobalStyles from 'styles/GlobalStyles';
 
@@ -6,7 +6,7 @@ function App(): JSX.Element {
   return (
     <>
       <GlobalStyles />
-      <Home />
+      <SkillCard title="WordPress" content="What's your skill level?" />
     </>
   );
 }
