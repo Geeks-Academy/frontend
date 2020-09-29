@@ -2,22 +2,22 @@ import React from 'react';
 import { ISkillCard } from './SkillCard.model';
 import {
   StyledCheckedOptionIcon,
+  StyledContent,
   StyledLevelRange,
-  StyledParagraph,
   StyledSkillCard,
   StyledTextWrapper,
   StyledTitle,
   StyledWrapper,
 } from './SkillCard.styled';
 
-const SkillCard = ({ paragraphText, titleText }: ISkillCard): JSX.Element => {
+const SkillCard = ({ title, content }: ISkillCard): JSX.Element => {
   return (
     <StyledSkillCard>
       <StyledWrapper>
         <StyledCheckedOptionIcon />
         <StyledTextWrapper>
-          <StyledTitle txt={titleText} />
-          <StyledParagraph txt={paragraphText} />
+          <StyledTitle txt={title} />
+          <StyledContent txt={content} />
         </StyledTextWrapper>
       </StyledWrapper>
       <StyledLevelRange />

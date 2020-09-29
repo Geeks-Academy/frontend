@@ -29,7 +29,7 @@ export const StyledTitle = styled(Paragraph)`
   margin: 0;
 `;
 
-export const StyledParagraph = styled(Paragraph)`
+export const StyledContent = styled(Paragraph)`
   color: ${colors.background.Neutral40};
   font-size: 15px;
   margin: 0;

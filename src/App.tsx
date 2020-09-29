@@ -6,7 +6,7 @@ function App(): JSX.Element {
   return (
     <>
       <GlobalStyles />
-      <SkillCard titleText="WordPress" paragraphText="What's your skill level?" />
+      <SkillCard title="WordPress" content="What's your skill level?" />
     </>
   );
 }

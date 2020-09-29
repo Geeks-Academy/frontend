@@ -1,4 +1,4 @@
 export interface ISkillCard {
-  titleText: string;
-  paragraphText: string;
+  title: string;
+  content: string;
 }
