@@ -19,7 +19,7 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "lint:css": "stylelint './src/**/*.styled.ts'"
+    "lint:css": "stylelint './src/**/*.ts'"
   },
   "browserslist": {
     "production": [
@@ -80,7 +80,7 @@
     }
   },
   "lint-staged": {
-    "*.styled.{js,jsx,ts,tsx}": [
+    "*.{js,jsx,ts,tsx}": [
       "prettier --config .prettierrc --write",
       "npm run lint:css",
       "eslint --fix"
