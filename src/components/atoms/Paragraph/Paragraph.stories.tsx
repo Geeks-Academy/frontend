@@ -20,6 +20,6 @@ const Template: Story<IProps> = (props: IProps): JSX.Element => <Paragraph {...p
 
 export const Default = Template.bind({});
 Default.args = {
-  txt: 'Paragraph text test',
+  children: 'Paragraph text test',
   className: 'paragraphTestClass',
 };
