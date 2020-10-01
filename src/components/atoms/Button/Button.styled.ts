@@ -4,21 +4,21 @@ import colors from 'styles/colors';
 import { ButtonType, IconPosition } from './Button.model';
 
 const BaseButton = styled.button<{ iconPos: IconPosition }>`
-  padding: 14px 24px;
-  border-radius: 6px;
-  border: none;
-  height: 52px;
   box-sizing: border-box;
-  ${typography.body.bold.L}
   display: flex;
+  padding: 14px 24px;
+  height: 52px;
+  border: none;
+  border-radius: 6px;
+  ${typography.body.bold.L}
   font-weight: 600;
   outline: none;
   div {
     display: flex;
-    height: 24px;
+    flex-direction: ${({ iconPos }) => (iconPos === 'right' ? 'row-reverse' : 'row')};
     align-content: space-between;
     align-items: center;
-    flex-direction: ${({ iconPos }) => (iconPos === 'right' ? 'row-reverse' : 'row')};
+    height: 24px;
   }
   span {
     height: 24px;
@@ -32,20 +32,20 @@ export const FillButton = styled(BaseButton)`
 `;
 
 export const OutlineButton = styled(BaseButton)`
+  position: relative;
   background-color: ${colors.background.NeutralWhite};
   color: ${colors.text.Primary40};
-  position: relative;
   ::after {
     content: '';
     position: absolute;
-    z-index: 2;
-    left: 0px;
     top: 0px;
+    left: 0px;
+    z-index: 2;
     width: calc(100% - 2px);
     height: calc(100% - 2px);
     transform: translate(1px);
-    border-radius: 6px;
     border: 1px solid ${colors.text.Primary40};
+    border-radius: 6px;
     background: transparent;
   }
   span {
@@ -92,8 +92,8 @@ const setBackgroundColor = (type: ButtonType): string => {
 };
 
 export const ButtonIcon = styled.div<{ type: ButtonType; iconPos: IconPosition }>`
-  height: 24px;
   margin: ${({ iconPos }) => setIconMargin(iconPos)};
+  height: 24px;
   svg {
     width: 24px;
     height: 24px;

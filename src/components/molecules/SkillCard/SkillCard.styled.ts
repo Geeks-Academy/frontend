@@ -7,8 +7,8 @@ import { CheckedOptionIcon } from 'assets';
 export const StyledSkillCard = styled.div`
   width: 328px;
   height: 145px;
-  border-radius: 4px;
   border: 2px solid ${colors.background.Neutral80};
+  border-radius: 4px;
 `;
 
 export const StyledWrapper = styled.div`
@@ -24,15 +24,15 @@ export const StyledTextWrapper = styled.div`
 `;
 
 export const StyledTitle = styled(Paragraph)`
+  margin: 0;
   color: ${colors.background.Neutral20};
   font-size: 15px;
-  margin: 0;
 `;
 
 export const StyledContent = styled(Paragraph)`
+  margin: 0;
   color: ${colors.background.Neutral40};
   font-size: 15px;
-  margin: 0;
 `;
 
 export const StyledCheckedOptionIcon = styled(CheckedOptionIcon)`
