@@ -25,7 +25,7 @@ export const Item = styled.li`
 `;
 
 export const StyledLink = styled(Link)`
+  margin-left: 1px;
   color: ${colors.text.Primary40};
   font-weight: 700;
-  margin-left: 1px;
 `;

@@ -7,28 +7,28 @@ export const Container = styled.div`
 `;
 
 export const InputWrapper = styled.div`
-  height: 52px;
-  padding: 14px 14px 14px 24px;
-  border-radius: 4px;
-  border: 1px solid ${colors.background.Neutral80};
-  background: ${colors.background.NeutralWhite};
+  position: relative;
   display: flex;
   align-items: center;
-  position: relative;
+  padding: 14px 14px 14px 24px;
+  height: 52px;
+  border: 1px solid ${colors.background.Neutral80};
+  border-radius: 4px;
+  background: ${colors.background.NeutralWhite};
 `;
 
 export const StyledInput = styled.input<{ isIcon: boolean }>`
   outline: 0;
-  border: none;
   width: ${({ isIcon }) => (isIcon ? '90%' : '100%')};
   ${typography.body.L}
+  border: none;
 `;
 
 export const StyledIcon = styled.div`
-  height: 24px;
-  width: 24px;
-  right: 14px;
   position: absolute;
+  right: 14px;
+  width: 24px;
+  height: 24px;
 `;
 
 export const Label = styled.label`

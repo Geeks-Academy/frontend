@@ -75,7 +75,7 @@ export const StyledHomeImg = styled.img`
   display: none;
   ${device.desktop} {
     display: block;
-    padding-left: 70px;
     padding-top: 70px;
+    padding-left: 70px;
   }
 `;
