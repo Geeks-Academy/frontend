@@ -16,8 +16,8 @@ const SkillCard = ({ title, content }: ISkillCard): JSX.Element => {
       <StyledWrapper>
         <StyledCheckedOptionIcon />
         <StyledTextWrapper>
-          <StyledTitle txt={title} />
-          <StyledContent txt={content} />
+          <StyledTitle>{title}</StyledTitle>
+          <StyledContent>{content}</StyledContent>
         </StyledTextWrapper>
       </StyledWrapper>
       <StyledLevelRange />
