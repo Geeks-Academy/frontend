@@ -3,12 +3,12 @@ import React from 'react';
 import { Title } from './Header.styled';
 
 export interface IProps {
-  title: string;
   className?: string;
+  children: string;
 }
 
-const Header = ({ title, className }: IProps): JSX.Element => {
-  return <Title className={className}>{title}</Title>;
+const Header = ({ children, className }: IProps): JSX.Element => {
+  return <Title className={className}>{children}</Title>;
 };
 
 export default Header;
