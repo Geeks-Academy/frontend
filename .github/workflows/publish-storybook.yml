@@ -18,6 +18,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: ${GITHUB_REF##*/} # The branch the action should deploy to.
+          BRANCH: ${{ github.head_ref }} # The branch the action should deploy to.
           FOLDER: storybook-static # The folder the action should deploy.
           CLEAN: true # Automatically remove deleted files from the deploy branch
