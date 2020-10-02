@@ -1,4 +1,4 @@
-name: CI
+name: Publish storybook
 on: [push, pull_request]
 jobs:
   custom_command:
