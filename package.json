@@ -80,10 +80,14 @@
     }
   },
   "lint-staged": {
+    "!(*styled).{js,jsx,ts,tsx}": [
+      "prettier --config .prettierrc --write",
+      "eslint --fix"
+    ],
     "*.styled.{js,jsx,ts,tsx}": [
       "prettier --config .prettierrc --write",
-      "npm run lint:css",
-      "eslint --fix"
+      "eslint --fix",
+      "npm run lint:css"
     ]
   },
   "jest": {
