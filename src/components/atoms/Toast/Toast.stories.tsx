@@ -4,6 +4,13 @@ import Toast from './Toast';
 export default {
   title: 'atoms/Toast',
   component: Toast,
+  argTypes: {
+    className: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 };
 
 export const ToastWithoutAnyProps = (): JSX.Element => <Toast />;

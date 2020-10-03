@@ -3,15 +3,15 @@ import colors from 'styles/colors';
 import typography from 'styles/typography';
 
 export const ToastContent = styled.div`
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  border-radius: 4px;
-  border: solid 1px ${colors.background.Neutral80};
-  background-color: ${colors.background.NeutralWhite};
-  height: 71px;
   min-width: 328px;
   max-width: 550px;
-  box-sizing: border-box;
+  height: 71px;
+  border: solid 1px ${colors.background.Neutral80};
+  border-radius: 4px;
+  background-color: ${colors.background.NeutralWhite};
   div {
     display: flex;
     flex-direction: column;
@@ -19,9 +19,9 @@ export const ToastContent = styled.div`
 `;
 
 export const ToastIconWrapper = styled.div`
-  height: 24px;
-  width: 24px;
   margin: 24px;
+  width: 24px;
+  height: 24px;
   svg {
     width: 24px;
     height: 24px;
@@ -35,6 +35,6 @@ export const ToastHeader = styled.div`
 
 export const ToastInfo = styled.div`
   ${typography.body.M};
-  color: ${colors.text.Neutral20};
   margin-bottom: 14px;
+  color: ${colors.text.Neutral20};
 `;

@@ -5,17 +5,19 @@ import { ISelectInput } from './SelectInput.model';
 const SelectInput = ({
   isMulti,
   options,
-  onClick,
+  onChange,
   selectCaption,
   inputPlaceholder,
+  isOpen,
 }: ISelectInput): JSX.Element => {
   return (
     <Select
       inputPlaceholder={inputPlaceholder}
       selectCaption={selectCaption}
       isMulti={!!isMulti}
-      onClick={onClick}
+      onChange={onChange}
       options={options}
+      isOpen={isOpen}
     />
   );
 };

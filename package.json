@@ -14,6 +14,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "cross-env CI=true react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test --env=jsdom",
     "test:coverage": "npm test -- --coverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
@@ -70,6 +71,7 @@
     "stylelint": "^13.7.1",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-order": "^4.1.0",
     "stylelint-processor-styled-components": "^1.10.0"
   },
   "husky": {
@@ -81,6 +83,7 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "prettier --config .prettierrc --write",
+      "npm run lint:css",
       "eslint --fix"
     ]
   },

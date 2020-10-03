@@ -1,16 +1,20 @@
 import React from 'react';
 import SocialButton from './SocialButton';
-import { Logo, Role } from './SocialButton.model';
 
 export default {
   title: 'atoms/SocialButton',
   component: SocialButton,
+  argTypes: {
+    className: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 };
 
 export const GoogleButton = (): JSX.Element => (
-  <SocialButton logo={Logo.GOOGLE} roleDependText={Role.NONDEVELOPER} />
+  <SocialButton logo="google" userRole="non-developer" />
 );
 
-export const GithubButton = (): JSX.Element => (
-  <SocialButton logo={Logo.GITHUB} roleDependText={Role.DEVELOPER} />
-);
+export const GithubButton = (): JSX.Element => <SocialButton logo="github" userRole="developer" />;
