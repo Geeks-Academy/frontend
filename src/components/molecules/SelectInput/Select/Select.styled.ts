@@ -50,6 +50,9 @@ export const StyledInput = styled(Input)`
       padding: 0;
       ${typography.body.L};
       color: ${colors.background.Neutral40};
+      ::placeholder {
+        color: ${colors.background.Neutral40};
+      }
     }
   }
 `;
