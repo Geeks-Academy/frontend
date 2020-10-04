@@ -85,8 +85,6 @@
       "eslint --fix"
     ],
     "*.styled.{js,jsx,ts,tsx}": [
-      "prettier --config .prettierrc --write",
-      "eslint --fix",
       "npm run lint:css"
     ]
   },
