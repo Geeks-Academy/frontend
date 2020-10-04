@@ -56,6 +56,11 @@ const typography = {
     S: `
         ${defaultStyles}
         font-size: 13px;`,
+    XS: `
+        ${defaultStyles};
+        font-size: 11px;
+        letter-spacing: .03em;
+    `,
     bold: {
       L: `
           ${defaultStyles}
@@ -69,6 +74,12 @@ const typography = {
           ${defaultStyles}
           font-weight: bold;
           font-size: 13px;`,
+      XS: `
+          ${defaultStyles};
+          font-size: 11px;
+          font-weight: bold;
+          letter-spacing: .03em;
+        `,
     },
   },
 };
