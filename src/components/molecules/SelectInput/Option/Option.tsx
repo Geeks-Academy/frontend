@@ -47,7 +47,7 @@ const Option = ({
       role="option"
     >
       {isSelected ? <StyledCheckedOptionIcon /> : <StyledUnCheckedOptionIcon />}
-      <StyledOptionParagraph>{option.value}</StyledOptionParagraph>
+      <StyledOptionParagraph isSelected={isSelected}>{option.value}</StyledOptionParagraph>
     </StyledOption>
   );
 };
