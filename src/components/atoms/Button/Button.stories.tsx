@@ -34,6 +34,11 @@ export default {
         disable: true,
       },
     },
+    className: {
+      control: {
+        disable: true,
+      },
+    },
   },
 };
 

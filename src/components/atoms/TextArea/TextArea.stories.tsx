@@ -9,6 +9,11 @@ export default {
       defaultValue: 'Type something...',
       type: 'string',
     },
+    className: {
+      control: {
+        disable: true,
+      },
+    },
   },
 };
 

@@ -9,6 +9,8 @@ export { ReactComponent as UnCheckedOptionIcon } from './unchecked-option-icon.s
 export { ReactComponent as ToastIconSuccess } from './toast-icon-success.svg';
 export { ReactComponent as ToastIconError } from './toast-icon-error.svg';
 export { ReactComponent as ToastIconInfo } from './toast-icon-info.svg';
+export { ReactComponent as SpinnerLeftBracketSVG } from './spinner-left-bracket.svg';
+export { ReactComponent as SpinnerRightBracketSVG } from './spinner-right-bracket.svg';
 
 // Exports for src Imgs
 

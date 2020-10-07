@@ -1,17 +1,23 @@
 import React from 'react';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import Header, { IProps } from './Header';
 
 export default {
   title: 'atoms/header',
   component: Header,
   argTypes: {
-    title: {
-      defaultValue: 'Join our IT platform to share ideas, exchange knowledge and build a team!',
-      controls: {
-        type: 'text',
+    className: {
+      control: {
+        disable: true,
       },
     },
   },
-};
+} as Meta;
 
-export const Default = (props: IProps): JSX.Element => <Header {...props} />;
+const Template: Story<IProps> = (props: IProps): JSX.Element => <Header {...props} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  children: 'Join our IT platform to share ideas, exchange knowledge and build a team!',
+  className: 'headerTestClass',
+};

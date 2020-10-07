@@ -22,5 +22,5 @@ jobs:
       - run: npm run build --if-present
       - uses: hayuna/jest-reporter-action@v0.1.4
         with:
-          github-token: ${{ secrets.GH_PAT }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           test-command: "npm run test:coverage"

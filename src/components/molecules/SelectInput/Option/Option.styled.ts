@@ -5,16 +5,17 @@ import { CheckedOptionIcon, UnCheckedOptionIcon } from 'assets';
 
 export const StyledOption = styled.li`
   display: flex;
-  align-items: center;
   justify-content: flex-start;
-  height: 24px;
+  align-items: center;
   margin-bottom: 24px;
+  height: 24px;
   cursor: pointer;
 `;
 
-export const StyledOptionParagraph = styled.p`
+export const StyledOptionParagraph = styled.p<{ isSelected: boolean }>`
   ${typography.body.M};
-  color: ${colors.background.Neutral40};
+  color: ${({ isSelected }) =>
+    isSelected ? colors.background.Neutral20 : colors.background.Neutral40};
   pointer-events: none;
 `;
 
