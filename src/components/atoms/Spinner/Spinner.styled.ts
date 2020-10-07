@@ -47,10 +47,10 @@ export const SpinnerDots = styled.div`
   justify-content: center;
   align-items: center;
   .spinnerDot {
-    height: 6px;
-    width: 6px;
-    border-radius: 50%;
     margin: 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
     animation: ${dotPulsing} 0.9s linear infinite;
     :nth-child(1) {
       animation-delay: 0.6s;

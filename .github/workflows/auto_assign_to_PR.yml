@@ -11,4 +11,4 @@ jobs:
       - name: add reviewers & assign author
         uses: kentaro-m/auto-assign-action@v1.1.1
         with:
-          repo-token: ${{ secrets.GH_PAT }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}

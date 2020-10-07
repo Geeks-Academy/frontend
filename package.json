@@ -19,7 +19,7 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "lint:css": "stylelint './src/**/*.styled.ts'"
+    "lint:css": "stylelint './src/**/*.ts'"
   },
   "browserslist": {
     "production": [
@@ -71,6 +71,7 @@
     "stylelint": "^13.7.1",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-order": "^4.1.0",
     "stylelint-processor-styled-components": "^1.10.0"
   },
   "husky": {

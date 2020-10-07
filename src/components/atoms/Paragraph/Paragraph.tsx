@@ -1,14 +1,13 @@
 import React from 'react';
-
 import { StyledParagraph } from './Paragraph.styled';
 
 export interface IProps {
-  txt: string;
   className?: string;
+  children: string;
 }
 
-const Paragraph = ({ txt, className }: IProps): JSX.Element => {
-  return <StyledParagraph className={className}>{txt}</StyledParagraph>;
+const Paragraph = ({ children, className }: IProps): JSX.Element => {
+  return <StyledParagraph className={className}>{children}</StyledParagraph>;
 };
 
 export default Paragraph;

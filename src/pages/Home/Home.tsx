@@ -20,9 +20,9 @@ const Home = (): JSX.Element => (
     <main>
       <StyledInnerWrapper>
         <StyledContainer>
-          <StyledHeading title={data.header} />
+          <StyledHeading>{data.header}</StyledHeading>
           <StyledList icon={listItemIcon} items={data.listDescription} />
-          <StyledParagraph txt={data.paragraph} />
+          <StyledParagraph>{data.paragraph}</StyledParagraph>
           <StyledButtonsWrapper>
             <SocialButton logo="github" userRole="developer" />
             <SocialButton logo="google" userRole="non-developer" />
