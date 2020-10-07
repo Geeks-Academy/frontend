@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { fireEvent } from '@testing-library/react';
-import { useRef } from 'react';
+import { RefObject, useRef } from 'react';
 import useEventListener from './useEventListener';
 
 describe('useEventListener hook', () => {
@@ -30,5 +30,15 @@ describe('useEventListener hook', () => {
 
     fireEvent.click(targetElement);
     expect(eventListener).toHaveBeenCalledTimes(1);
+  });
+
+  test('should not call handler function when addEventListener is not support', () => {
+    const targetElement = { current: {} } as RefObject<HTMLElement>;
+    const eventListener = jest.fn<void, [MouseEvent]>();
+
+    renderHook(() => {
+      useEventListener('click', eventListener, targetElement);
+    });
+    expect(eventListener).toHaveBeenCalledTimes(0);
   });
 });
