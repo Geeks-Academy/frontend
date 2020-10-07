@@ -7,7 +7,6 @@ const useOutsideClick = (ref: RefObject<HTMLElement>, callback: () => void): voi
       callback();
     }
   };
-
   useEventListener('click', handleClick);
 };
 
