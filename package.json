@@ -83,8 +83,10 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "prettier --config .prettierrc --write",
-      "npm run lint:css",
       "eslint --fix"
+    ],
+    "*.styled.{js,jsx,ts,tsx}": [
+      "npm run lint:css"
     ]
   },
   "jest": {
