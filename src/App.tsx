@@ -1,12 +1,12 @@
-import Home from 'pages/Home';
 import React from 'react';
 import GlobalStyles from 'styles/GlobalStyles';
+import DataInput from 'components/molecules/DateInput';
 
 function App(): JSX.Element {
   return (
     <>
       <GlobalStyles />
-      <Home />
+      <DataInput labelName="Label name" />
     </>
   );
 }
