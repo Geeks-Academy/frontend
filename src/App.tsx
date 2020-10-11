@@ -6,7 +6,16 @@ function App(): JSX.Element {
   return (
     <>
       <GlobalStyles />
-      <DataInput labelName="Label name" />
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: ' 100vh',
+        }}
+      >
+        <DataInput labelName="Label name" isOpen />
+      </div>
     </>
   );
 }
