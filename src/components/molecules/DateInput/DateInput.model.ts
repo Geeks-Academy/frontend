@@ -3,6 +3,8 @@ export interface IDateInput {
   labelName: string;
 }
 
+export const daysOfTheWeek = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+
 export const months = [
   'January',
   'February',

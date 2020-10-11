@@ -29,6 +29,14 @@ export const StyledCalendarIcon = styled(CalendarIcon)`
   color: ${colors.background.Neutral40};
 `;
 
+export const StyledLabel = styled.label`
+  position: absolute;
+  bottom: 100%;
+  width: 100%;
+  ${typhography.body.L};
+  color: ${colors.background.Neutral20};
+`;
+
 export const StyledInput = styled(Input)`
   margin-right: 10px;
   width: 100%;
@@ -39,15 +47,9 @@ export const StyledInput = styled(Input)`
 
 export const StyledBottomWrapper = styled.div`
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   width: 100%;
   height: 319px;
-`;
-
-export const StyledLabel = styled.label`
-  position: absolute;
-  bottom: 100%;
-  width: 100%;
-  ${typhography.body.L};
-  color: ${colors.background.Neutral20};
 `;

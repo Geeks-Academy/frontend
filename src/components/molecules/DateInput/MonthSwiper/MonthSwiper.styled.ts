@@ -6,7 +6,9 @@ export const StyledMonthSwiper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 328px;
+  margin: 15px 0 14px;
+  width: 296px;
+  height: 25px;
   background-color: white;
 `;
 

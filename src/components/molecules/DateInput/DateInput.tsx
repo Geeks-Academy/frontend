@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IDateInput, months } from './DateInput.model';
+import { IDateInput, daysOfTheWeek, months } from './DateInput.model';
 import {
   StyledBottomWrapper,
   StyledCalendarIcon,
@@ -8,6 +8,7 @@ import {
   StyledLabel,
   StyledTopWrapper,
 } from './DateInput.styled';
+import DaysBar from './DaysBar';
 import MonthSwiper from './MonthSwiper';
 
 const currentDateToString = (day: number, month: number, year: number) => {
@@ -19,7 +20,7 @@ const DateInput = ({ isOpen, labelName }: IDateInput): JSX.Element => {
 
   const [currentDay] = useState(today.getDate());
   const [currentMonth, setCurrentMonth] = useState(today.getMonth() + 1);
-  const [currentYear] = useState(today.getFullYear());
+  const [currentYear, setCurrentYear] = useState(today.getFullYear());
   const [currentDate, setCurrentDate] = useState(
     currentDateToString(currentDay, currentMonth, currentYear)
   );
@@ -34,6 +35,7 @@ const DateInput = ({ isOpen, labelName }: IDateInput): JSX.Element => {
     if (type === 'INCREMENT') {
       if (currentMonth === 12) {
         setCurrentMonth(1);
+        setCurrentYear(currentYear + 1);
         return;
       }
       setCurrentMonth(currentMonth + 1);
@@ -41,6 +43,7 @@ const DateInput = ({ isOpen, labelName }: IDateInput): JSX.Element => {
     if (type === 'DECREMENT') {
       if (currentMonth <= 1) {
         setCurrentMonth(12);
+        setCurrentYear(currentYear - 1);
         return;
       }
       setCurrentMonth(currentMonth - 1);
@@ -71,6 +74,7 @@ const DateInput = ({ isOpen, labelName }: IDateInput): JSX.Element => {
             handleLeftArrow={handleLeftArrow}
             handleRightArrow={handleRightArrow}
           />
+          <DaysBar daysOfTheWeek={daysOfTheWeek} />
         </StyledBottomWrapper>
       )}
     </StyledDateInput>
