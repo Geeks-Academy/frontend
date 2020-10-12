@@ -26,5 +26,6 @@ export const StyledSquare = styled.span`
     border-radius: 4px;
     background-color: ${colors.background.Primary40};
     color: ${colors.background.NeutralWhite};
+    transition: 0.2s ease-in;
   }
 `;

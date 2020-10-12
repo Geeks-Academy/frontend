@@ -13,11 +13,12 @@ import MonthSwiper from './MonthSwiper';
 import { currentDateToString, daysInMonth, getDaysArray } from './helpers';
 import DaysGrid from './DaysGrid';
 import YearBar from './YearBar';
+import { Days } from './DaysGrid/DaysGrid.model';
 
 const DateInput = ({ isOpen, labelName }: IDateInput): JSX.Element => {
   const [isOpenState, setIsOpenState] = useState(isOpen);
   const [today, setToday] = useState(new Date());
-  const [currentDay] = useState(today.getDate());
+  const [currentDay, setCurrentDay] = useState(today.getDate());
   const [currentMonth, setCurrentMonth] = useState(today.getMonth() + 1);
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
   const [currentDateString, setCurrentDateString] = useState(
@@ -56,6 +57,23 @@ const DateInput = ({ isOpen, labelName }: IDateInput): JSX.Element => {
     }
   };
 
+  const handleOnClick = (day: Days) => {
+    const { value, class: className } = day;
+    switch (className) {
+      case 'prevDay':
+        setCurrentDay(value);
+        modifyCurrentMonth('DECREMENT');
+        break;
+      case 'nextDay':
+        setCurrentDay(value);
+        modifyCurrentMonth('INCREMENT');
+        break;
+      default:
+        setCurrentDay(value);
+        break;
+    }
+  };
+
   return (
     <StyledDateInput>
       <StyledLabel>{labelName}</StyledLabel>
@@ -71,7 +89,7 @@ const DateInput = ({ isOpen, labelName }: IDateInput): JSX.Element => {
             handleRightArrow={() => modifyCurrentMonth('INCREMENT')}
           />
           <DaysBar daysOfTheWeek={daysOfTheWeek} />
-          <DaysGrid days={currentDays} currentDay={currentDay} />
+          <DaysGrid days={currentDays} currentDay={currentDay} handleOnClick={handleOnClick} />
           <YearBar year={currentYear} />
         </StyledBottomWrapper>
       )}
