@@ -6,4 +6,5 @@ export interface Days {
 
 export interface IDaysGrid {
   days: Days[];
+  currentDay: number;
 }

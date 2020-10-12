@@ -12,8 +12,10 @@ import DaysBar from './WeekBar';
 import MonthSwiper from './MonthSwiper';
 import { currentDateToString, daysInMonth, getDaysArray } from './helpers';
 import DaysGrid from './DaysGrid';
+import YearBar from './YearBar';
 
 const DateInput = ({ isOpen, labelName }: IDateInput): JSX.Element => {
+  const [isOpenState, setIsOpenState] = useState(isOpen);
   const [today, setToday] = useState(new Date());
   const [currentDay] = useState(today.getDate());
   const [currentMonth, setCurrentMonth] = useState(today.getMonth() + 1);
@@ -21,7 +23,6 @@ const DateInput = ({ isOpen, labelName }: IDateInput): JSX.Element => {
   const [currentDateString, setCurrentDateString] = useState(
     currentDateToString(currentDay, currentMonth, currentYear)
   );
-  const [isOpenState, setIsOpenState] = useState(isOpen);
   const [amountOfDaysInMonth, setAmountOfDaysInMonth] = useState(
     daysInMonth(currentMonth, currentYear)
   );
@@ -70,7 +71,8 @@ const DateInput = ({ isOpen, labelName }: IDateInput): JSX.Element => {
             handleRightArrow={() => modifyCurrentMonth('INCREMENT')}
           />
           <DaysBar daysOfTheWeek={daysOfTheWeek} />
-          <DaysGrid days={currentDays} />
+          <DaysGrid days={currentDays} currentDay={currentDay} />
+          <YearBar year={currentYear} />
         </StyledBottomWrapper>
       )}
     </StyledDateInput>

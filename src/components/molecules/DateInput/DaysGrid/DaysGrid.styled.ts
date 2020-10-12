@@ -20,4 +20,11 @@ export const StyledSquare = styled.span`
   &.prevDay {
     color: ${colors.background.Neutral40};
   }
+
+  &.point {
+    ${typography.body.bold.L};
+    border-radius: 4px;
+    background-color: ${colors.background.Primary40};
+    color: ${colors.background.NeutralWhite};
+  }
 `;

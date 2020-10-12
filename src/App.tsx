@@ -14,7 +14,7 @@ function App(): JSX.Element {
           height: ' 100vh',
         }}
       >
-        <DataInput labelName="Label name" />
+        <DataInput labelName="Label name" isOpen />
       </div>
     </>
   );
