@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import colors from 'styles/colors';
 import typography from 'styles/typography';
 
-export const StyledDaysBar = styled.div`
+export const StyledWeekBar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,11 +20,11 @@ export const StyledList = styled.ul`
 `;
 
 export const StyledListItem = styled.li`
+  ${typography.body.bold.XS};
   display: flex;
   justify-content: center;
   align-items: center;
   width: 44px;
   height: 100%;
   color: ${colors.background.Neutral40};
-  ${typography.body.bold.XS};
 `;

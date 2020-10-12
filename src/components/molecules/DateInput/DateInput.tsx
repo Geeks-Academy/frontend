@@ -8,28 +8,33 @@ import {
   StyledLabel,
   StyledTopWrapper,
 } from './DateInput.styled';
-import DaysBar from './DaysBar';
+import DaysBar from './WeekBar';
 import MonthSwiper from './MonthSwiper';
-
-const currentDateToString = (day: number, month: number, year: number) => {
-  return `${day !== 0 ? day : '01'}-${month < 10 ? `0${month}` : month}-${year}`;
-};
+import { currentDateToString, daysInMonth, getDaysArray } from './helpers';
+import DaysGrid from './DaysGrid';
 
 const DateInput = ({ isOpen, labelName }: IDateInput): JSX.Element => {
-  const today = new Date();
-
+  const [today, setToday] = useState(new Date());
   const [currentDay] = useState(today.getDate());
   const [currentMonth, setCurrentMonth] = useState(today.getMonth() + 1);
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
-  const [currentDate, setCurrentDate] = useState(
+  const [currentDateString, setCurrentDateString] = useState(
     currentDateToString(currentDay, currentMonth, currentYear)
   );
-
   const [isOpenState, setIsOpenState] = useState(isOpen);
+  const [amountOfDaysInMonth, setAmountOfDaysInMonth] = useState(
+    daysInMonth(currentMonth, currentYear)
+  );
+  const [currentDays, setCurrentDays] = useState(
+    getDaysArray(currentYear, currentMonth, amountOfDaysInMonth)
+  );
 
   useEffect(() => {
-    setCurrentDate(currentDateToString(currentDay, currentMonth, currentYear));
-  }, [currentDay, currentMonth, currentYear]);
+    setCurrentDateString(currentDateToString(currentDay, currentMonth, currentYear));
+    setToday(new Date(currentDateToString(currentYear, currentMonth, currentDay)));
+    setAmountOfDaysInMonth(daysInMonth(currentMonth, currentYear));
+    setCurrentDays(getDaysArray(currentYear, currentMonth, amountOfDaysInMonth));
+  }, [currentDay, currentMonth, currentYear, amountOfDaysInMonth]);
 
   const modifyCurrentMonth = (type: string) => {
     if (type === 'INCREMENT') {
@@ -50,31 +55,22 @@ const DateInput = ({ isOpen, labelName }: IDateInput): JSX.Element => {
     }
   };
 
-  const handleLeftArrow = () => {
-    modifyCurrentMonth('DECREMENT');
-    console.log('left');
-  };
-
-  const handleRightArrow = () => {
-    modifyCurrentMonth('INCREMENT');
-    console.log('right');
-  };
-
   return (
     <StyledDateInput>
       <StyledLabel>{labelName}</StyledLabel>
       <StyledTopWrapper>
-        <StyledInput placeholder={currentDate} />
+        <StyledInput placeholder={currentDateString} />
         <StyledCalendarIcon onClick={() => setIsOpenState(!isOpenState)} />
       </StyledTopWrapper>
       {isOpenState && (
         <StyledBottomWrapper>
           <MonthSwiper
             month={months[currentMonth - 1]}
-            handleLeftArrow={handleLeftArrow}
-            handleRightArrow={handleRightArrow}
+            handleLeftArrow={() => modifyCurrentMonth('DECREMENT')}
+            handleRightArrow={() => modifyCurrentMonth('INCREMENT')}
           />
           <DaysBar daysOfTheWeek={daysOfTheWeek} />
+          <DaysGrid days={currentDays} />
         </StyledBottomWrapper>
       )}
     </StyledDateInput>

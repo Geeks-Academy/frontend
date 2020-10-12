@@ -1,3 +1,3 @@
-export interface IDaysBar {
+export interface IWeekBar {
   daysOfTheWeek: string[];
 }
