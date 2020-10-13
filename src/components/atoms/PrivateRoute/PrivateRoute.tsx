@@ -1,4 +1,4 @@
-import { Redirect, Route, RouteProps } from 'react-router';
+import { Redirect, Route, RouteProps, useLocation } from 'react-router';
 import React from 'react';
 import { fakeAuth } from 'Routes/helpers';
 
