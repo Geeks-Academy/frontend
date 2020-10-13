@@ -1,6 +1,6 @@
 import { Redirect, Route, RouteProps, useLocation } from 'react-router';
 import React from 'react';
-import { fakeAuth } from 'routes/helpers';
+import { fakeAuth } from 'Routes/helpers';
 
 const PrivateRoute = ({ children, ...rest }: RouteProps): JSX.Element => {
   const location = useLocation();
