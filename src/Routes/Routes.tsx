@@ -1,28 +1,9 @@
 import Home from 'pages/Home';
 import React from 'react';
-import { Redirect, Route, RouteProps, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Spinner from 'components/atoms/Spinner';
-import { LoginPage, fakeAuth } from './helpers';
-
-const PrivateRoute = ({ children, ...rest }: RouteProps): JSX.Element => {
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        fakeAuth.isAuthenticated ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/login',
-              state: { from: location },
-            }}
-          />
-        )
-      }
-    />
-  );
-};
+import { LoginPage } from 'Routes/helpers';
+import PrivateRoute from 'components/atoms/PrivateRoute/PrivateRoute';
 
 const Routes = (): JSX.Element => {
   return (
