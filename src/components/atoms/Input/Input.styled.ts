@@ -22,6 +22,10 @@ export const StyledInput = styled.input<{ isIcon: boolean }>`
   width: ${({ isIcon }) => (isIcon ? '90%' : '100%')};
   ${typography.body.L}
   border: none;
+  color: ${colors.background.Neutral20};
+  ::placeholder {
+    color: ${colors.background.Neutral40};
+  }
 `;
 
 export const StyledIcon = styled.div`
@@ -34,4 +38,5 @@ export const StyledIcon = styled.div`
 export const Label = styled.label`
   ${typography.body.M}
   margin-bottom: 4px;
+  color: ${colors.background.Neutral20};
 `;
