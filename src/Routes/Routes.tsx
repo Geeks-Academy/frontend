@@ -2,8 +2,8 @@ import Home from 'pages/Home';
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Spinner from 'components/atoms/Spinner';
-import { LoginPage } from 'Routes/helpers';
-import PrivateRoute from 'components/atoms/PrivateRoute/PrivateRoute';
+import { LoginPage } from 'routes/helpers';
+import PrivateRoute from 'routes/PrivateRoute';
 
 const Routes = (): JSX.Element => {
   return (

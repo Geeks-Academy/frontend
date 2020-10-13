@@ -1,6 +1,6 @@
 import React from 'react';
 import GlobalStyles from 'styles/GlobalStyles';
-import Routes from './Routes';
+import Routes from 'routes';
 
 function App(): JSX.Element {
   return (
