@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useOutsideClick } from 'hooks';
 import { IDateInput, daysOfTheWeek, months } from './DateInput.model';
 import {
   StyledBottomWrapper,
@@ -16,6 +17,8 @@ import YearBar from './YearBar';
 import { Days } from './DaysGrid/DaysGrid.model';
 
 const DateInput = ({ isOpen, labelName }: IDateInput): JSX.Element => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const [isOpenState, setIsOpenState] = useState(isOpen);
   const [today, setToday] = useState(new Date());
   const [currentDay, setCurrentDay] = useState(today.getDate());
@@ -30,6 +33,10 @@ const DateInput = ({ isOpen, labelName }: IDateInput): JSX.Element => {
   const [currentDays, setCurrentDays] = useState(
     getDaysArray(currentYear, currentMonth, amountOfDaysInMonth)
   );
+
+  useOutsideClick(containerRef, () => {
+    setIsOpenState(false);
+  });
 
   useEffect(() => {
     setCurrentDateString(currentDateToString(currentDay, currentMonth, currentYear));
@@ -75,7 +82,7 @@ const DateInput = ({ isOpen, labelName }: IDateInput): JSX.Element => {
   };
 
   return (
-    <StyledDateInput>
+    <StyledDateInput ref={containerRef}>
       <StyledLabel>{labelName}</StyledLabel>
       <StyledTopWrapper>
         <StyledInput placeholder={currentDateString} />
