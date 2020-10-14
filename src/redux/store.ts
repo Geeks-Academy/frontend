@@ -6,3 +6,5 @@ export const store = configureStore({
     loader: loader.reducer,
   },
 });
+
+export type RootState = ReturnType<typeof store.getState>;

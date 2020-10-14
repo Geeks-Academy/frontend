@@ -1,10 +1,11 @@
 import React from 'react';
 import loader from 'redux/reducers/loader';
-import { store } from 'redux/store';
+import { RootState, store } from 'redux/store';
+import { useSelector } from 'react-redux';
 import Spinner from '../../components/atoms/Spinner';
 
 const ReduxTestComponent = (): JSX.Element => {
-  const showLoader = store.getState().loader.isLoading;
+  const showLoader = useSelector((state: RootState) => state.loader.isLoading);
   const { show, hide } = loader.actions;
   return (
     <>
