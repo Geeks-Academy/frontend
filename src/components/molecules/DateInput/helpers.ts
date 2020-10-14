@@ -1,7 +1,7 @@
 import { Days } from './DaysGrid/DaysGrid.model';
 
 export const currentDateToString = (day: number, month: number, year: number) => {
-  return `${day !== 0 ? day : '01'}-${month < 10 ? `0${month}` : month}-${year}`;
+  return `${year}-${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}` : day}`;
 };
 
 export const daysInMonth = (month: number, year: number) => {

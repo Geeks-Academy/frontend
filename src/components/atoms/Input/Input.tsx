@@ -7,6 +7,11 @@ const Input = ({
   icon: Icon,
   label,
   ref,
+  min,
+  max,
+  value,
+  pattern,
+  defaultValue,
   className,
   placeholder,
   handleOnChange,
@@ -20,6 +25,11 @@ const Input = ({
         <StyledInput
           isIcon={!!Icon}
           type={type}
+          min={min}
+          max={max}
+          pattern={pattern}
+          value={value}
+          defaultValue={defaultValue}
           placeholder={placeholder}
           onChange={handleOnChange}
           {...props}

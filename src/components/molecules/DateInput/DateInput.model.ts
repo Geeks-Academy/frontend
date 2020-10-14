@@ -1,6 +1,7 @@
 export interface IDateInput {
   isOpen?: boolean;
   labelName: string;
+  handleDate: (date: string) => void;
 }
 
 export const daysOfTheWeek = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];

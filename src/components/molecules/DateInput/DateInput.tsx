@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useOutsideClick } from 'hooks';
-import { IDateInput, daysOfTheWeek, months } from './DateInput.model';
+import { IDateInput, daysOfTheWeek } from './DateInput.model';
 import {
   StyledBottomWrapper,
   StyledCalendarIcon,
@@ -16,51 +16,51 @@ import DaysGrid from './DaysGrid';
 import YearBar from './YearBar';
 import { Days } from './DaysGrid/DaysGrid.model';
 
-const DateInput = ({ isOpen, labelName }: IDateInput): JSX.Element => {
+const DateInput = ({ isOpen, labelName, handleDate }: IDateInput): JSX.Element => {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const [isAnimationStart, setIsAnimationStart] = useState(false);
+  const [animationClassName, setAnimationClassName] = useState('');
+
   const [isOpenState, setIsOpenState] = useState(isOpen);
-  const [today, setToday] = useState(new Date());
-  const [currentDay, setCurrentDay] = useState(today.getDate());
-  const [currentMonth, setCurrentMonth] = useState(today.getMonth() + 1);
-  const [currentYear, setCurrentYear] = useState(today.getFullYear());
+  const [today] = useState(new Date());
+  const [selectedDay, setselectedDay] = useState(today.getDate());
+  const [selectedMonth, setselectedMonth] = useState(today.getMonth() + 1);
+  const [selectedYear, setselectedYear] = useState(today.getFullYear());
   const [currentDateString, setCurrentDateString] = useState(
-    currentDateToString(currentDay, currentMonth, currentYear)
+    currentDateToString(selectedDay, selectedMonth, selectedYear)
   );
   const [amountOfDaysInMonth, setAmountOfDaysInMonth] = useState(
-    daysInMonth(currentMonth, currentYear)
+    daysInMonth(selectedMonth, selectedYear)
   );
-  const [currentDays, setCurrentDays] = useState(
-    getDaysArray(currentYear, currentMonth, amountOfDaysInMonth)
+  const [selectedDays, setselectedDays] = useState(
+    getDaysArray(selectedYear, selectedMonth, amountOfDaysInMonth)
   );
 
   useOutsideClick(containerRef, () => {
     setIsOpenState(false);
   });
 
-  useEffect(() => {
-    setCurrentDateString(currentDateToString(currentDay, currentMonth, currentYear));
-    setToday(new Date(currentDateToString(currentYear, currentMonth, currentDay)));
-    setAmountOfDaysInMonth(daysInMonth(currentMonth, currentYear));
-    setCurrentDays(getDaysArray(currentYear, currentMonth, amountOfDaysInMonth));
-  }, [currentDay, currentMonth, currentYear, amountOfDaysInMonth]);
-
-  const modifyCurrentMonth = (type: string) => {
+  const modifyselectedMonth = (type: string) => {
+    setIsAnimationStart(true);
     if (type === 'INCREMENT') {
-      if (currentMonth === 12) {
-        setCurrentMonth(1);
-        setCurrentYear(currentYear + 1);
+      setAnimationClassName('prev');
+      if (selectedMonth === 12) {
+        setselectedMonth(1);
+        setselectedYear(selectedYear + 1);
         return;
       }
-      setCurrentMonth(currentMonth + 1);
+      setselectedMonth(selectedMonth + 1);
     }
     if (type === 'DECREMENT') {
-      if (currentMonth <= 1) {
-        setCurrentMonth(12);
-        setCurrentYear(currentYear - 1);
+      setAnimationClassName('next');
+
+      if (selectedMonth <= 1) {
+        setselectedMonth(12);
+        setselectedYear(selectedYear - 1);
         return;
       }
-      setCurrentMonth(currentMonth - 1);
+      setselectedMonth(selectedMonth - 1);
     }
   };
 
@@ -68,36 +68,77 @@ const DateInput = ({ isOpen, labelName }: IDateInput): JSX.Element => {
     const { value, class: className } = day;
     switch (className) {
       case 'prevDay':
-        setCurrentDay(value);
-        modifyCurrentMonth('DECREMENT');
+        setselectedDay(value);
+        modifyselectedMonth('DECREMENT');
         break;
       case 'nextDay':
-        setCurrentDay(value);
-        modifyCurrentMonth('INCREMENT');
+        setselectedDay(value);
+        modifyselectedMonth('INCREMENT');
         break;
       default:
-        setCurrentDay(value);
+        setselectedDay(value);
         break;
     }
   };
+
+  const handleOnChange = (e: any) => {
+    const { value } = e.target;
+    const dateArray = value.split('-');
+    const [year, month, day] = dateArray;
+    const selectedDaysInMonth = daysInMonth(+month, +year);
+
+    if (+year && +month <= 12 && +month > 0 && +day > 0 && +day <= selectedDaysInMonth) {
+      setselectedDay(+day);
+      setselectedMonth(+month);
+      setselectedYear(+year);
+    } else {
+      setselectedDay(today.getDate());
+      setselectedMonth(today.getMonth() + 1);
+      setselectedYear(today.getFullYear());
+    }
+  };
+
+  useEffect(() => {
+    setCurrentDateString(currentDateToString(selectedDay, selectedMonth, selectedYear));
+    setAmountOfDaysInMonth(daysInMonth(selectedMonth, selectedYear));
+    setselectedDays(getDaysArray(selectedYear, selectedMonth, amountOfDaysInMonth));
+  }, [selectedDay, selectedMonth, selectedYear, amountOfDaysInMonth]);
+
+  useEffect(() => {
+    handleDate(currentDateString);
+  }, [currentDateString, handleDate]);
 
   return (
     <StyledDateInput ref={containerRef}>
       <StyledLabel>{labelName}</StyledLabel>
       <StyledTopWrapper>
-        <StyledInput placeholder={currentDateString} />
+        <StyledInput
+          type="text"
+          placeholder={currentDateString}
+          handleOnChange={(e) => handleOnChange(e)}
+        />
         <StyledCalendarIcon onClick={() => setIsOpenState(!isOpenState)} />
       </StyledTopWrapper>
       {isOpenState && (
         <StyledBottomWrapper>
           <MonthSwiper
-            month={months[currentMonth - 1]}
-            handleLeftArrow={() => modifyCurrentMonth('DECREMENT')}
-            handleRightArrow={() => modifyCurrentMonth('INCREMENT')}
+            handleRightArrow={() => modifyselectedMonth('INCREMENT')}
+            handleLeftArrow={() => modifyselectedMonth('DECREMENT')}
+            setIsAnimationStart={setIsAnimationStart}
+            animationClassName={animationClassName}
+            isAnimationStart={isAnimationStart}
+            monthNumber={selectedMonth - 1}
           />
           <DaysBar daysOfTheWeek={daysOfTheWeek} />
-          <DaysGrid days={currentDays} currentDay={currentDay} handleOnClick={handleOnClick} />
-          <YearBar year={currentYear} />
+          <DaysGrid
+            setIsAnimationStart={setIsAnimationStart}
+            animationClassName={animationClassName}
+            isAnimationStart={isAnimationStart}
+            handleOnClick={handleOnClick}
+            currentDay={selectedDay}
+            days={selectedDays}
+          />
+          <YearBar year={selectedYear} />
         </StyledBottomWrapper>
       )}
     </StyledDateInput>

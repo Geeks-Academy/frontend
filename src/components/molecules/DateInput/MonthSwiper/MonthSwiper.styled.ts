@@ -1,8 +1,23 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { ArrowIconComponent } from 'assets';
 import colors from 'styles/colors';
 
+const moveHorizontally = () => keyframes`
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0);
+
+  }
+  100% {
+    transform: scale(1);
+
+  }
+`;
 export const StyledMonthSwiper = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,4 +39,11 @@ export const StyledArrowIcon = styled(ArrowIconComponent)<{ position: string }>`
 
 export const StyledMonthText = styled.span`
   color: ${colors.background.Neutral20};
+
+  &.next {
+    animation: ${moveHorizontally()} 0.2s;
+  }
+  &.prev {
+    animation: ${moveHorizontally()} 0.2s;
+  }
 `;

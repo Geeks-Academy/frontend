@@ -1,5 +1,8 @@
 export interface IMonthSwiper {
-  month: string;
+  monthNumber: number;
+  animationClassName: string;
   handleRightArrow: () => void;
   handleLeftArrow: () => void;
+  isAnimationStart: boolean;
+  setIsAnimationStart: (state: boolean) => void;
 }
