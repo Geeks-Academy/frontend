@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Spinner from 'components/atoms/Spinner';
 import { LoginPage } from 'Routes/helpers';
 import PrivateRoute from 'Routes/PrivateRoute';
-import ReduxTestComponent from '../redux/ReduxTestComponent/ReduxTestComponent';
+import ReduxTestComponent from 'redux/ReduxTestComponent/ReduxTestComponent';
 
 const Routes = (): JSX.Element => {
   return (

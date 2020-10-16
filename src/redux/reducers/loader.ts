@@ -8,13 +8,8 @@ const loader = createSlice({
   name: 'loader',
   initialState,
   reducers: {
-    show: (state): void => {
-      // eslint-disable-next-line no-param-reassign
-      state.isLoading = true;
-    },
-    hide: (state): void => {
-      // eslint-disable-next-line no-param-reassign
-      state.isLoading = false;
+    toggleLoader: (state): void => {
+      state.isLoading = !state.isLoading;
     },
   },
 });
