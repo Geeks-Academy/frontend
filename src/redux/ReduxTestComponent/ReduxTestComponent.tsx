@@ -9,7 +9,7 @@ const ReduxTestComponent = (): JSX.Element => {
   const { toggleLoader } = loader.actions;
   return (
     <>
-      {!showLoader ? null : <Spinner />}
+      {showLoader && <Spinner />}
       <button type="button" onClick={() => store.dispatch(toggleLoader())}>
         {!showLoader ? 'Show loader' : 'Hide Loader'}
       </button>
