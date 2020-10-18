@@ -10,6 +10,7 @@ export const StyledDateInput = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  overflow: hidden;
   width: 328px;
   border: 2px solid ${colors.background.Neutral80};
   border-radius: 4px;

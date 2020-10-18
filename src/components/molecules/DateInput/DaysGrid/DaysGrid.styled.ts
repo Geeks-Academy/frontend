@@ -35,6 +35,7 @@ export const StyledSquare = styled.span`
   align-items: center;
   height: 35px;
   color: ${colors.background.NeutralBlack};
+  cursor: pointer;
   &.nextDay,
   &.prevDay {
     color: ${colors.background.Neutral40};

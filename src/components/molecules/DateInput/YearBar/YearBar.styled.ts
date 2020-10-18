@@ -4,26 +4,58 @@ import typography from 'styles/typography';
 
 export const StyledYearBar = styled.div`
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 16px 0;
-  width: 308px;
-  height: 23px;
+  width: 328px;
+  height: 55px;
 `;
 
-export const StyledBox = styled.div`
+export const StyledCenterBox = styled.div`
   width: 40px;
   height: 100%;
-  border: 1px solid black;
+  border: 1px dashed black;
 `;
 
-export const StyledYear = styled.p`
-  ${typography.body.L}
+export const StyledWrapper = styled.div`
+  position: absolute;
   display: flex;
+  justify-content: center;
   align-items: center;
-  margin: 0 10px;
+  width: 100%;
+  height: 55px;
+
+  &:first-of-type {
+    z-index: 999;
+    display: inline-block;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    user-select: none;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &.active {
+      cursor: grabbing;
+    }
+  }
+`;
+
+export const StyledYear = styled.div`
+  ${typography.body.L}
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 16px;
+  width: 40px;
+  height: 55px;
   color: ${colors.background.Neutral20};
+  &:first-of-type {
+    margin-left: 0;
+  }
+  &:last-of-type {
+    margin-right: 0;
+  }
+
   &.first {
     color: ${colors.background.Neutral40};
   }

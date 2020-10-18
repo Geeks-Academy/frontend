@@ -10,7 +10,7 @@ export interface IProps {
   value?: string | number;
   pattern?: string;
   className?: string;
-  ref?: HTMLInputElement;
+  inputRef?: any;
   defaultValue?: string | number;
   handleOnChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

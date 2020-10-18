@@ -6,7 +6,7 @@ const Input = ({
   type = 'text',
   icon: Icon,
   label,
-  ref,
+  inputRef,
   min,
   max,
   value,
@@ -27,6 +27,7 @@ const Input = ({
           type={type}
           min={min}
           max={max}
+          ref={inputRef}
           pattern={pattern}
           value={value}
           defaultValue={defaultValue}
