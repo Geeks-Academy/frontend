@@ -62,3 +62,18 @@ export const getDaysArray = (year: number, month: number, amountOfDaysInMonth: n
 
   return getFinalArray(valuesArray);
 };
+
+export const scrollToCurrentYear = (element: any, position: number, behavior = 'smooth') => {
+  switch (behavior) {
+    case 'smooth':
+      element.current?.scrollTo({ left: position, behavior: 'smooth' });
+      break;
+
+    case 'auto':
+      element.current?.scrollTo({ left: position, behavior: 'auto' });
+      break;
+
+    default:
+      element.current?.scrollTo({ left: position, behavior: undefined });
+  }
+};

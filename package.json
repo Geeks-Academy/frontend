@@ -71,7 +71,6 @@
     "prettier": "^2.1.1",
     "react-indiana-drag-scroll": "^1.7.0",
     "react-test-renderer": "^16.13.1",
-    "scroll-into-view": "^1.15.0",
     "stylelint": "^13.7.1",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",

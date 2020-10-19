@@ -137,7 +137,7 @@ const DateInput = ({ isOpen, labelName, handleDate }: IDateInput): JSX.Element =
             currentDay={selectedDay}
             days={selectedDays}
           />
-          <YearBar year={selectedYear} />
+          <YearBar year={selectedYear} setSelectedYear={setSelectedYear} />
         </StyledBottomWrapper>
       )}
     </StyledDateInput>
