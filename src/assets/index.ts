@@ -11,9 +11,11 @@ export { ReactComponent as ToastIconError } from './toast-icon-error.svg';
 export { ReactComponent as ToastIconInfo } from './toast-icon-info.svg';
 export { ReactComponent as SpinnerLeftBracketSVG } from './spinner-left-bracket.svg';
 export { ReactComponent as SpinnerRightBracketSVG } from './spinner-right-bracket.svg';
+export { ReactComponent as Logo } from './logo.svg';
 
 // Exports for src Imgs
 
 export { default as HomePageImg_1 } from './homepage-image-1.svg';
 export { default as listItemIcon } from './listItemIcon.svg';
 export { default as ArrowIcon } from './arrow-icon.svg';
+export { default as RatingHeader } from './rating-header-bg.jpg';
