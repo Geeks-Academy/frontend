@@ -114,6 +114,7 @@ export const SearchCourseInput = styled(Input)`
 export const Filters = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   margin-top: 130px;
   & > * {
     margin-right: 16px;

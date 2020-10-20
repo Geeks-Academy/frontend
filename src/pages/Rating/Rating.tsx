@@ -22,7 +22,9 @@ import {
 import { courseOptions, levelOptions, priceOptions, technologyOptions } from './options';
 
 const Rating = (): JSX.Element => {
-  const handleSelectChange = () => {};
+  const handleSelectChange = () => {
+    console.log(1);
+  };
 
   return (
     <StyledHeader background={RatingHeader}>
@@ -62,7 +64,7 @@ const Rating = (): JSX.Element => {
         </StyledInfo>
         <Filters>
           <SelectInput
-            isMulti
+            isOpen={false}
             inputPlaceholder="Filter course"
             options={courseOptions}
             onChange={handleSelectChange}
@@ -70,6 +72,7 @@ const Rating = (): JSX.Element => {
           />
           <SelectInput
             isMulti
+            isOpen={false}
             inputPlaceholder="Filter technology"
             options={technologyOptions}
             onChange={handleSelectChange}
@@ -77,6 +80,7 @@ const Rating = (): JSX.Element => {
           />
           <SelectInput
             isMulti
+            isOpen={false}
             inputPlaceholder="Filter price"
             onChange={handleSelectChange}
             options={priceOptions}
@@ -84,6 +88,7 @@ const Rating = (): JSX.Element => {
           />
           <SelectInput
             isMulti
+            isOpen={false}
             inputPlaceholder="Filter level"
             options={levelOptions}
             onChange={handleSelectChange}
