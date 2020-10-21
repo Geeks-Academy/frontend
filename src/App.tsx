@@ -17,6 +17,8 @@ function App(): JSX.Element {
         <DataInput
           labelName="Label name"
           isOpen
+          minYear={2000}
+          maxYear={2050}
           handleDate={(date) => console.log(`Selected date: ${date}`)}
         />
       </div>

@@ -1,32 +1,25 @@
-import React, { createRef, useCallback, useEffect, useState } from 'react';
-import { fillArray, scrollToCurrentYear } from '../helpers';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { getYearsArray, scrollToCurrentYear } from '../helpers';
 import { IYearBar } from './YearBar.model';
 import { StyledGradient, StyledWrapper, StyledYear, StyledYearBar } from './YearBar.styled';
 
-const setYearsArray = (minYear: number, maxYear: number) => {
-  const amountOfElements = maxYear - minYear + 1;
-  const array = fillArray(amountOfElements).map((element) => {
-    return { value: element + minYear - 1, position: (element - 1) * 72 };
-  });
-  return array;
-};
+const YearBar = ({
+  year,
+  minYear,
+  maxYear,
+  setSelectedYear,
+  handleAddClass,
+  handleRemoveClass,
+}: IYearBar): JSX.Element => {
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
-const YearBar = ({ year, setSelectedYear }: IYearBar): JSX.Element => {
-  const wrapperRef = createRef<HTMLDivElement>();
-  const [isMouseDown, setIsMouseDown] = useState(false);
   const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState<number>(0);
-  const [boxes] = useState(setYearsArray(2000, 2050));
   const [currentYear, setCurrentYear] = useState(year);
+  const [isMouseDown, setIsMouseDown] = useState(false);
+  const [scrollLeft, setScrollLeft] = useState<number>(0);
   const [isFirstRender, setIsFirstRender] = useState(true);
-
-  // const manageCurrentPosition = (selectedYear: number) => boxes.find(element => element.value === +selectedYear)?.position;
-  const manageCurrentPosition = useCallback(
-    (selectedYear: number) => {
-      return boxes.find((element) => element.value === +selectedYear)?.position;
-    },
-    [boxes]
-  );
+  const [boxes] = useState(getYearsArray(minYear, maxYear));
+  const [wasTheChangeInYearBar, setWasTheChangeInYearBar] = useState(true);
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     setIsMouseDown(true);
@@ -48,6 +41,7 @@ const YearBar = ({ year, setSelectedYear }: IYearBar): JSX.Element => {
     const selectedYear = +(e.target as HTMLDivElement).id;
     setCurrentYear(selectedYear);
     setIsMouseDown(false);
+    setWasTheChangeInYearBar(true);
   };
 
   const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -56,10 +50,7 @@ const YearBar = ({ year, setSelectedYear }: IYearBar): JSX.Element => {
       setCurrentYear(selectedYear);
     }
     setIsMouseDown(false);
-  };
-
-  const handleTouchStart = () => {
-    setIsMouseDown(true);
+    setWasTheChangeInYearBar(true);
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -72,6 +63,13 @@ const YearBar = ({ year, setSelectedYear }: IYearBar): JSX.Element => {
     }
   };
 
+  const manageCurrentPosition = useCallback(
+    (selectedYear: number) => {
+      return boxes.find((element) => element.value === +selectedYear)?.position;
+    },
+    [boxes]
+  );
+
   const handleScrolling = useCallback(() => {
     if (isFirstRender) {
       scrollToCurrentYear(wrapperRef, +`${manageCurrentPosition(year)}`, 'auto');
@@ -81,17 +79,27 @@ const YearBar = ({ year, setSelectedYear }: IYearBar): JSX.Element => {
   }, [manageCurrentPosition, isFirstRender, wrapperRef, year]);
 
   useEffect(() => {
-    setSelectedYear(currentYear);
+    setWasTheChangeInYearBar(false);
+  }, [setWasTheChangeInYearBar, wasTheChangeInYearBar]);
+
+  useEffect(() => {
+    if (wasTheChangeInYearBar) {
+      setSelectedYear(currentYear);
+    }
     handleScrolling();
   }, [
     year,
     currentYear,
-    isFirstRender,
-    manageCurrentPosition,
     setSelectedYear,
-    wrapperRef,
     handleScrolling,
+    wasTheChangeInYearBar,
+    setWasTheChangeInYearBar,
   ]);
+
+  useEffect(() => {
+    handleRemoveClass(wrapperRef);
+    handleAddClass(wrapperRef, year);
+  }, [wrapperRef, year, handleRemoveClass, handleAddClass]);
 
   useEffect(() => {
     setIsFirstRender(false);
@@ -100,18 +108,18 @@ const YearBar = ({ year, setSelectedYear }: IYearBar): JSX.Element => {
   return (
     <StyledYearBar>
       <StyledGradient className="left" />
-      <StyledWrapper
-        onMouseDown={(e) => handleMouseDown(e)}
-        onMouseLeave={(e) => handleMouseLeave(e)}
-        onMouseUp={(e) => handleMouseUp(e)}
-        onMouseMove={(e) => handleMouseMove(e)}
-        onTouchEnd={(e) => handleTouchEnd(e)}
-        onTouchStart={() => handleTouchStart()}
-        className={isMouseDown ? 'active' : ''}
-        ref={wrapperRef}
-      >
+      <StyledWrapper className={isMouseDown ? 'active' : ''} ref={wrapperRef}>
         {boxes.map(({ value }) => (
-          <StyledYear id={`${value}`} key={value}>
+          <StyledYear
+            onMouseDown={(e) => handleMouseDown(e)}
+            onMouseLeave={(e) => handleMouseLeave(e)}
+            onMouseUp={(e) => handleMouseUp(e)}
+            onMouseMove={(e) => handleMouseMove(e)}
+            onTouchEnd={(e) => handleTouchEnd(e)}
+            onTouchStart={() => setIsMouseDown(true)}
+            id={`${value}`}
+            key={value}
+          >
             {value}
           </StyledYear>
         ))}

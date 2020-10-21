@@ -1,6 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { useOutsideClick } from 'hooks';
-import { IDateInput, daysOfTheWeek } from './DateInput.model';
+import WeekBar from './WeekBar';
+import MonthSwiper from './MonthSwiper';
+import DaysGrid from './DaysGrid';
+import YearBar from './YearBar';
+import { IDateInput, SwipeOption, SwipeType, daysOfTheWeek } from './DateInput.model';
+import {
+  addYearClasses,
+  currentDateToString,
+  getDaysArray,
+  getDaysInMonth,
+  removeYearClasses,
+} from './helpers';
+import { Days } from './DaysGrid/DaysGrid.model';
 import {
   StyledBottomWrapper,
   StyledCalendarIcon,
@@ -9,41 +21,63 @@ import {
   StyledLabel,
   StyledTopWrapper,
 } from './DateInput.styled';
-import DaysBar from './WeekBar';
-import MonthSwiper from './MonthSwiper';
-import { currentDateToString, daysInMonth, getDaysArray } from './helpers';
-import DaysGrid from './DaysGrid';
-import YearBar from './YearBar';
-import { Days } from './DaysGrid/DaysGrid.model';
 
-const DateInput = ({ isOpen, labelName, handleDate }: IDateInput): JSX.Element => {
+const DateInput = ({
+  isOpen,
+  labelName,
+  handleDate,
+  minYear,
+  maxYear,
+}: IDateInput): JSX.Element => {
   const containerRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const [today] = useState(new Date());
   const [selectedDay, setSelectedDay] = useState(today.getDate());
   const [selectedMonth, setSelectedMonth] = useState(today.getMonth() + 1);
   const [selectedYear, setSelectedYear] = useState(today.getFullYear());
+  const [inputText, setInputText] = useState('');
+  const [isAnimationStart, setIsAnimationStart] = useState(false);
+  const [animationClassName, setAnimationClassName] = useState('');
+  const [isOpenState, setIsOpenState] = useState(isOpen);
   const [currentDateString, setCurrentDateString] = useState(
     currentDateToString(selectedDay, selectedMonth, selectedYear)
   );
   const [amountOfDaysInMonth, setAmountOfDaysInMonth] = useState(
-    daysInMonth(selectedMonth, selectedYear)
+    getDaysInMonth(selectedMonth, selectedYear)
   );
   const [selectedDays, setSelectedDays] = useState(
     getDaysArray(selectedYear, selectedMonth, amountOfDaysInMonth)
   );
-  const [isAnimationStart, setIsAnimationStart] = useState(false);
-  const [animationClassName, setAnimationClassName] = useState('');
-  const [isOpenState, setIsOpenState] = useState(isOpen);
+  const [isLeftButtonDisabled, setIsLeftButtonDisabled] = useState(false);
+  const [isRightButtonDisabled, setIsRightButtonDisabled] = useState(false);
 
   useOutsideClick(containerRef, () => {
     setIsOpenState(false);
   });
 
-  const modifySelectedMonth = (type: string) => {
-    setIsAnimationStart(true);
-    if (type === 'INCREMENT') {
-      setAnimationClassName('prev');
+  const handleArrowButtons = useCallback(() => {
+    if (selectedYear <= minYear && selectedMonth < 2) {
+      setIsLeftButtonDisabled(true);
+    } else {
+      setIsLeftButtonDisabled(false);
+    }
+    if (selectedYear >= maxYear && selectedMonth > 11) {
+      setIsRightButtonDisabled(true);
+    } else {
+      setIsRightButtonDisabled(false);
+    }
+  }, [minYear, maxYear, selectedMonth, selectedYear]);
+
+  const swipeMonth = (swipeType: SwipeType) => {
+    if (swipeType === SwipeOption.INCREMENT) {
+      const daysInNextMonth = getDaysInMonth(
+        selectedMonth === 12 ? 1 : selectedMonth + 1,
+        selectedYear
+      );
+      if (selectedDay > daysInNextMonth) {
+        setSelectedDay(daysInNextMonth);
+      }
       if (selectedMonth === 12) {
         setSelectedMonth(1);
         setSelectedYear(selectedYear + 1);
@@ -51,9 +85,15 @@ const DateInput = ({ isOpen, labelName, handleDate }: IDateInput): JSX.Element =
       }
       setSelectedMonth(selectedMonth + 1);
     }
-    if (type === 'DECREMENT') {
-      setAnimationClassName('next');
+    if (swipeType === SwipeOption.DECREMENT) {
+      const daysInPrevMonth = getDaysInMonth(
+        selectedMonth <= 1 ? 12 : selectedMonth - 1,
+        selectedYear
+      );
 
+      if (selectedDay > daysInPrevMonth) {
+        setSelectedDay(daysInPrevMonth);
+      }
       if (selectedMonth <= 1) {
         setSelectedMonth(12);
         setSelectedYear(selectedYear - 1);
@@ -68,11 +108,11 @@ const DateInput = ({ isOpen, labelName, handleDate }: IDateInput): JSX.Element =
     switch (className) {
       case 'prevDay':
         setSelectedDay(value);
-        modifySelectedMonth('DECREMENT');
+        swipeMonth(SwipeOption.DECREMENT);
         break;
       case 'nextDay':
         setSelectedDay(value);
-        modifySelectedMonth('INCREMENT');
+        swipeMonth(SwipeOption.INCREMENT);
         break;
       default:
         setSelectedDay(value);
@@ -80,38 +120,59 @@ const DateInput = ({ isOpen, labelName, handleDate }: IDateInput): JSX.Element =
     }
   };
 
-  const handleOnChange = (e: any) => {
-    const { value } = e.target;
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target as HTMLInputElement;
     const dateArray = value.split('-');
     const [year, month, day] = dateArray;
-    const selectedDaysInMonth = daysInMonth(+month, +year);
+    const selectedDaysInMonth = getDaysInMonth(+month, +year);
 
-    if (+year >= 1900 && +month <= 12 && +month > 0 && +day > 0 && +day <= selectedDaysInMonth) {
+    setInputText(value);
+    if (
+      +year >= minYear &&
+      +year <= maxYear &&
+      +month <= 12 &&
+      +month > 0 &&
+      +day > 0 &&
+      +day <= selectedDaysInMonth
+    ) {
       setSelectedDay(+day);
       setSelectedMonth(+month);
       setSelectedYear(+year);
     } else {
-      setSelectedDay(today.getDate());
-      setSelectedMonth(today.getMonth() + 1);
-      setSelectedYear(today.getFullYear());
+      setSelectedDay(selectedDay);
+      setSelectedMonth(selectedMonth);
+      setSelectedYear(selectedYear);
     }
+  };
+
+  const twinkleAnimation = () => {
+    setIsAnimationStart(true);
+    setAnimationClassName('twinkle');
   };
 
   useEffect(() => {
     setCurrentDateString(currentDateToString(selectedDay, selectedMonth, selectedYear));
-    setAmountOfDaysInMonth(daysInMonth(selectedMonth, selectedYear));
+    setAmountOfDaysInMonth(getDaysInMonth(selectedMonth, selectedYear));
     setSelectedDays(getDaysArray(selectedYear, selectedMonth, amountOfDaysInMonth));
+    setInputText(currentDateToString(selectedDay, selectedMonth, selectedYear));
   }, [selectedDay, selectedMonth, selectedYear, amountOfDaysInMonth]);
 
   useEffect(() => {
-    handleDate(currentDateString);
-  }, [currentDateString, handleDate]);
+    handleArrowButtons();
+    handleDate(currentDateToString(selectedDay, selectedMonth, selectedYear));
+  }, [selectedDay, selectedMonth, selectedYear, handleDate, currentDateString, handleArrowButtons]);
+
+  useEffect(() => {
+    twinkleAnimation();
+  }, [selectedMonth]);
 
   return (
     <StyledDateInput ref={containerRef}>
       <StyledLabel>{labelName}</StyledLabel>
       <StyledTopWrapper>
         <StyledInput
+          inputRef={inputRef}
+          value={inputText}
           type="text"
           placeholder={currentDateString}
           handleOnChange={(e) => handleOnChange(e)}
@@ -121,14 +182,16 @@ const DateInput = ({ isOpen, labelName, handleDate }: IDateInput): JSX.Element =
       {isOpenState && (
         <StyledBottomWrapper>
           <MonthSwiper
-            handleRightArrow={() => modifySelectedMonth('INCREMENT')}
-            handleLeftArrow={() => modifySelectedMonth('DECREMENT')}
+            handleRightArrow={() => swipeMonth('INCREMENT')}
+            handleLeftArrow={() => swipeMonth('DECREMENT')}
             setIsAnimationStart={setIsAnimationStart}
+            isRightButtonDisabled={isRightButtonDisabled}
+            isLeftButtonDisabled={isLeftButtonDisabled}
             animationClassName={animationClassName}
             isAnimationStart={isAnimationStart}
             monthNumber={selectedMonth - 1}
           />
-          <DaysBar daysOfTheWeek={daysOfTheWeek} />
+          <WeekBar daysOfTheWeek={daysOfTheWeek} />
           <DaysGrid
             setIsAnimationStart={setIsAnimationStart}
             animationClassName={animationClassName}
@@ -137,7 +200,14 @@ const DateInput = ({ isOpen, labelName, handleDate }: IDateInput): JSX.Element =
             currentDay={selectedDay}
             days={selectedDays}
           />
-          <YearBar year={selectedYear} setSelectedYear={setSelectedYear} />
+          <YearBar
+            minYear={minYear}
+            maxYear={maxYear}
+            year={selectedYear}
+            setSelectedYear={setSelectedYear}
+            handleRemoveClass={removeYearClasses}
+            handleAddClass={addYearClasses}
+          />
         </StyledBottomWrapper>
       )}
     </StyledDateInput>

@@ -1,8 +1,10 @@
 export interface IMonthSwiper {
   monthNumber: number;
-  animationClassName: string;
-  handleRightArrow: () => void;
-  handleLeftArrow: () => void;
   isAnimationStart: boolean;
+  animationClassName: string;
+  isLeftButtonDisabled: boolean;
+  isRightButtonDisabled: boolean;
+  handleLeftArrow: () => void;
+  handleRightArrow: () => void;
   setIsAnimationStart: (state: boolean) => void;
 }

@@ -8,13 +8,11 @@ export const StyledYearBar = styled.div`
 `;
 
 export const StyledWrapper = styled.div`
-  z-index: 99;
   display: inline-block;
+  overflow: auto;
   padding: 0 128px;
   width: 100%;
   height: 55px;
-  overflow-x: scroll;
-  overflow-y: hidden;
   user-select: none;
   white-space: nowrap;
   cursor: pointer;
@@ -34,13 +32,18 @@ export const StyledYear = styled.div`
   align-items: center;
   width: 72px;
   height: 55px;
-  /* border: 1px solid black; */
-  color: ${colors.background.Neutral20};
+  color: ${colors.background.Neutral60};
+
   &:first-of-type {
     margin-left: 0;
   }
+
   &:last-of-type {
     margin-right: 0;
+  }
+
+  &.center {
+    color: ${colors.background.Neutral20};
   }
 
   &.first {
@@ -56,14 +59,15 @@ export const StyledGradient = styled.span`
   position: absolute;
   z-index: 999;
   width: 39px;
-  height: 100%;
+  height: 50px;
   pointer-events: none;
   &.left {
-    left: 0;
+    border-left: 2px solid ${colors.background.Neutral80};
     background: linear-gradient(90deg, #ffffff 0%, #ffffff 22.92%, rgba(255, 255, 255, 0) 100%);
   }
   &.right {
-    right: 0;
+    right: -2px;
+    border-right: 2px solid ${colors.background.Neutral80};
     background: linear-gradient(-90deg, #ffffff 0%, #ffffff 22.92%, rgba(255, 255, 255, 0) 100%);
   }
 `;

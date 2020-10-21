@@ -15,30 +15,21 @@ const MonthSwiper = ({
   setIsAnimationStart,
   handleLeftArrow,
   handleRightArrow,
+  isLeftButtonDisabled,
+  isRightButtonDisabled,
 }: IMonthSwiper): JSX.Element => {
-  const getMonth = (type?: string) => {
-    switch (type) {
-      case 'left':
-        return monthNumber < 1 ? months[11] : months[monthNumber - 1];
-      case 'right':
-        return monthNumber === 11 ? months[0] : months[monthNumber + 1];
-      default:
-        return months[monthNumber];
-    }
-  };
-
   return (
     <StyledMonthSwiper>
-      <StyledArrowButton onClick={() => handleLeftArrow()}>
+      <StyledArrowButton disabled={isLeftButtonDisabled} onClick={() => handleLeftArrow()}>
         <StyledArrowIcon position="left" />
       </StyledArrowButton>
       <StyledMonthText
         onAnimationEnd={() => setIsAnimationStart(false)}
         className={isAnimationStart ? animationClassName : ''}
       >
-        {getMonth()}
+        {months[monthNumber]}
       </StyledMonthText>
-      <StyledArrowButton onClick={() => handleRightArrow()}>
+      <StyledArrowButton disabled={isRightButtonDisabled} onClick={() => handleRightArrow()}>
         <StyledArrowIcon position="right" />
       </StyledArrowButton>
     </StyledMonthSwiper>

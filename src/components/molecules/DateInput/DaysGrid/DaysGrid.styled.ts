@@ -1,20 +1,7 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import colors from 'styles/colors';
 import typography from 'styles/typography';
-
-const moveHorizontally = () => keyframes`
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(0);
-
-  }
-  100% {
-    transform: scale(1);
-  }
-`;
+import { twinkleAnimation } from '../DateInput.styled';
 
 export const StyledDaysGrid = styled.div`
   display: grid;
@@ -22,9 +9,8 @@ export const StyledDaysGrid = styled.div`
   grid-template-columns: repeat(7, 1fr);
   width: 308px;
 
-  &.next,
-  &.prev {
-    animation: ${moveHorizontally()} 0.1s;
+  &.twinkle {
+    animation: ${twinkleAnimation()} 0.2s;
   }
 `;
 

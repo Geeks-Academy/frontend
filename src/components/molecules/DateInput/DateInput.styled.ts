@@ -1,8 +1,20 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { CalendarIcon } from 'assets';
 import Input from 'components/atoms/Input';
 import colors from 'styles/colors';
 import typhography from 'styles/typography';
+
+export const twinkleAnimation = () => keyframes`
+  0% {
+    transform: scale(1);
+  } 
+  50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
 
 export const StyledDateInput = styled.div`
   position: relative;
@@ -10,7 +22,6 @@ export const StyledDateInput = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  overflow: hidden;
   width: 328px;
   border: 2px solid ${colors.background.Neutral80};
   border-radius: 4px;
