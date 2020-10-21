@@ -64,6 +64,7 @@ const Rating = (): JSX.Element => {
         </StyledInfo>
         <Filters>
           <SelectInput
+            isMulti
             isOpen={false}
             inputPlaceholder="Filter course"
             options={courseOptions}
