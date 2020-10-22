@@ -8,7 +8,7 @@ jobs:
   pr-lint:
     runs-on: ubuntu-latest
     steps:
-    - uses: hayuna/pr-lint-action@v1.1.2
+    - uses: hayuna/pr-lint-action@v1.1.3
       with:
         title-regex: '^\FRDQ-\d+( - )?.*'
         title-regex-flags: 'g' # optional
