@@ -1,6 +1,7 @@
 import { Days } from './DaysGrid/DaysGrid.model';
 
 export const currentDateToString = (day: number, month: number, year: number) => {
+  // "sd".padStart()
   return `${year}-${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}` : day}`;
 };
 
@@ -115,6 +116,7 @@ export const addYearClasses = (ref: React.RefObject<HTMLElement>, currentYear: n
           element.classList.add('second');
           break;
         default:
+          break;
       }
     });
   }

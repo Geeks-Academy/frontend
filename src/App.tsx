@@ -15,11 +15,11 @@ function App(): JSX.Element {
         }}
       >
         <DataInput
-          labelName="Label name"
+          label="Label name elo elo"
           isOpen
-          minYear={2000}
+          minYear={2000} // infinitive
           maxYear={2050}
-          handleDate={(date) => console.log(`Selected date: ${date}`)}
+          handleDate={(date) => console.log(`Selected date: ${date}`)} // onClickDate
         />
       </div>
     </>

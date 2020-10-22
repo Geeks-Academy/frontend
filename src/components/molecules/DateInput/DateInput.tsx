@@ -22,13 +22,7 @@ import {
   StyledTopWrapper,
 } from './DateInput.styled';
 
-const DateInput = ({
-  isOpen,
-  labelName,
-  handleDate,
-  minYear,
-  maxYear,
-}: IDateInput): JSX.Element => {
+const DateInput = ({ isOpen, label, handleDate, minYear, maxYear }: IDateInput): JSX.Element => {
   const containerRef = useRef(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -49,7 +43,7 @@ const DateInput = ({
   const [selectedDays, setSelectedDays] = useState(
     getDaysArray(selectedYear, selectedMonth, amountOfDaysInMonth)
   );
-  const [isLeftButtonDisabled, setIsLeftButtonDisabled] = useState(false);
+  const [isLeftButtonDisabled, setIsLeftButtonDisabled] = useState(false); // disabledLeftButton
   const [isRightButtonDisabled, setIsRightButtonDisabled] = useState(false);
 
   useOutsideClick(containerRef, () => {
@@ -57,16 +51,8 @@ const DateInput = ({
   });
 
   const handleArrowButtons = useCallback(() => {
-    if (selectedYear <= minYear && selectedMonth < 2) {
-      setIsLeftButtonDisabled(true);
-    } else {
-      setIsLeftButtonDisabled(false);
-    }
-    if (selectedYear >= maxYear && selectedMonth > 11) {
-      setIsRightButtonDisabled(true);
-    } else {
-      setIsRightButtonDisabled(false);
-    }
+    setIsLeftButtonDisabled(selectedYear <= minYear && selectedMonth < 2);
+    setIsRightButtonDisabled(selectedYear >= maxYear && selectedMonth > 11);
   }, [minYear, maxYear, selectedMonth, selectedYear]);
 
   const swipeMonth = (swipeType: SwipeType) => {
@@ -105,17 +91,15 @@ const DateInput = ({
 
   const handleOnClick = (day: Days) => {
     const { value, class: className } = day;
+    setSelectedDay(value);
     switch (className) {
       case 'prevDay':
-        setSelectedDay(value);
         swipeMonth(SwipeOption.DECREMENT);
         break;
       case 'nextDay':
-        setSelectedDay(value);
         swipeMonth(SwipeOption.INCREMENT);
         break;
       default:
-        setSelectedDay(value);
         break;
     }
   };
@@ -168,7 +152,7 @@ const DateInput = ({
 
   return (
     <StyledDateInput ref={containerRef}>
-      <StyledLabel>{labelName}</StyledLabel>
+      <StyledLabel>{label}</StyledLabel>
       <StyledTopWrapper>
         <StyledInput
           inputRef={inputRef}

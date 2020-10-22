@@ -1,6 +1,6 @@
 export interface IDateInput {
   isOpen?: boolean;
-  labelName: string;
+  label: string;
   minYear: number;
   maxYear: number;
   handleDate: (date: string) => void;
