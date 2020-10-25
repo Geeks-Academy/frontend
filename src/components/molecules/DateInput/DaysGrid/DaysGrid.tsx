@@ -15,7 +15,9 @@ const DaysGrid = ({
       onAnimationEnd={() => setIsAnimationStart(false)}
       className={isAnimationStart ? animationClassName : ''}
     >
-      {days.map((day) => (
+      {days.map((
+        day // install class lib...
+      ) => (
         <StyledSquare
           className={`${day.class} ${
             day.value === currentDay && day.class === 'currentDay' ? 'point' : ''

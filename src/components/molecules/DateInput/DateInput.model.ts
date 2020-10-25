@@ -1,3 +1,6 @@
+export type SwipeType = 'INCREMENT' | 'DECREMENT' | null;
+export type ScrollType = 'auto' | 'smooth' | undefined;
+
 export interface IDateInput {
   isOpen?: boolean;
   label: string;
@@ -6,13 +9,12 @@ export interface IDateInput {
   handleDate: (date: string) => void;
 }
 
-export type SwipeType = 'INCREMENT' | 'DECREMENT' | null;
 export enum SwipeOption {
   INCREMENT = 'INCREMENT',
   DECREMENT = 'DECREMENT',
 }
 
-export const daysOfTheWeek = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+export const daysOfTheWeek = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']; // utilsy
 
 export const months = [
   'January',

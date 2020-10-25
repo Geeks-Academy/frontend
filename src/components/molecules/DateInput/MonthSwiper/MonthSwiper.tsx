@@ -20,7 +20,7 @@ const MonthSwiper = ({
 }: IMonthSwiper): JSX.Element => {
   return (
     <StyledMonthSwiper>
-      <StyledArrowButton disabled={isLeftButtonDisabled} onClick={() => handleLeftArrow()}>
+      <StyledArrowButton disabled={isLeftButtonDisabled} onClick={handleLeftArrow}>
         <StyledArrowIcon position="left" />
       </StyledArrowButton>
       <StyledMonthText
@@ -29,7 +29,7 @@ const MonthSwiper = ({
       >
         {months[monthNumber]}
       </StyledMonthText>
-      <StyledArrowButton disabled={isRightButtonDisabled} onClick={() => handleRightArrow()}>
+      <StyledArrowButton disabled={isRightButtonDisabled} onClick={handleRightArrow}>
         <StyledArrowIcon position="right" />
       </StyledArrowButton>
     </StyledMonthSwiper>

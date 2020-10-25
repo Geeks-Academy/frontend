@@ -1,8 +1,11 @@
+import { Constants } from './constants';
+import { ScrollType } from './DateInput.model';
 import { Days } from './DaysGrid/DaysGrid.model';
 
 export const currentDateToString = (day: number, month: number, year: number) => {
-  // "sd".padStart()
-  return `${year}-${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}` : day}`;
+  const dayString = `${day}`;
+  const monthString = `${month}`;
+  return `${year}-${monthString.padStart(2, '0')}-${dayString.padStart(2, '0')}`;
 };
 
 export const getDaysInMonth = (month: number, year: number) => {
@@ -15,77 +18,70 @@ export const getFilledArray = (max: number) => {
 
 export const getYearsArray = (minYear: number, maxYear: number) => {
   const amountOfElements = maxYear - minYear + 1;
-  const array = getFilledArray(amountOfElements).map((element) => {
-    return { value: element + minYear - 1, position: (element - 1) * 72 };
-  });
+
+  const array = getFilledArray(amountOfElements).map((element) => ({
+    value: element + minYear - 1,
+    position: (element - 1) * Constants.yearBoxWidth,
+  }));
   return array;
 };
 
 export const getDaysArray = (year: number, month: number, amountOfDaysInMonth: number) => {
-  const tempDate = new Date(currentDateToString(year, month, 1));
+  const tempDate = new Date(currentDateToString(1, month, year));
   const firstDayOfMonth = tempDate.getDay();
   const amountOfprevMonthDays = getDaysInMonth(month === 1 ? 12 : month - 1, year);
 
+  const mapArray = (array: number[], className: string) => {
+    return array.map((day) => ({ value: day, class: className }));
+  };
+
   const filterPrevMonthDays = () => {
     const filledArray = getFilledArray(amountOfprevMonthDays);
-    if (firstDayOfMonth === 0) {
-      return filledArray
-        .filter((day) => day > amountOfprevMonthDays - 6)
-        .map((day) => {
-          return { value: day, class: 'prevDay' };
-        });
+    switch (firstDayOfMonth) {
+      case 0: {
+        const tempArray = filledArray.filter((day) => day > amountOfprevMonthDays - 6);
+        return mapArray(tempArray, 'prevDay');
+      }
+      case 1:
+        return [];
+      default: {
+        const tempArray = filledArray.filter(
+          (day) => day >= amountOfprevMonthDays - firstDayOfMonth + 2
+        );
+        return mapArray(tempArray, 'prevDay');
+      }
     }
-    if (firstDayOfMonth === 1) {
-      return [];
-    }
-    return filledArray
-      .filter((day) => day >= amountOfprevMonthDays - firstDayOfMonth + 2)
-      .map((day) => {
-        return { value: day, class: 'prevDay' };
-      });
   };
 
   const getFinalArray = (array: Days[]) => {
-    const tempArray = [];
-    for (let i = 0; i < array.length; i += 1) {
-      const modifiedObject: Days = array[i];
-      modifiedObject.id = i;
-      tempArray.push(modifiedObject);
-    }
-    return tempArray;
+    array.forEach((obj, index) => {
+      const modifiedObject: Days = obj;
+      modifiedObject.id = index;
+    });
+    return array;
   };
 
   const prevMonthDays = filterPrevMonthDays();
-  const currentMonthDays = getFilledArray(amountOfDaysInMonth)
-    .filter((day) => day <= amountOfDaysInMonth)
-    .map((day) => {
-      return { value: day, class: 'currentDay' };
-    });
-
+  const fillteredCurrentMonthDays = getFilledArray(amountOfDaysInMonth).filter(
+    (day) => day <= amountOfDaysInMonth
+  );
+  const currentMonthDays = mapArray(fillteredCurrentMonthDays, 'currentDay');
   const currentLength = [...prevMonthDays, ...currentMonthDays].length;
-  const nextMonthDays = getFilledArray(amountOfprevMonthDays)
-    .filter((day) => day <= 42 - currentLength)
-    .map((day) => {
-      return { value: day, class: 'nextDay' };
-    });
+  const fillteredNextMonthDays = getFilledArray(amountOfDaysInMonth).filter(
+    (day) => day <= Constants.gridDays - currentLength
+  );
+  const nextMonthDays = mapArray(fillteredNextMonthDays, 'nextDay');
   const valuesArray = [...prevMonthDays, ...currentMonthDays, ...nextMonthDays];
 
   return getFinalArray(valuesArray);
 };
 
-export const scrollToCurrentYear = (element: any, position: number, behavior = 'smooth'): void => {
-  switch (behavior) {
-    case 'smooth':
-      element.current?.scrollTo({ left: position, behavior: 'smooth' });
-      break;
-
-    case 'auto':
-      element.current?.scrollTo({ left: position, behavior: 'auto' });
-      break;
-
-    default:
-      element.current?.scrollTo({ left: position, behavior: undefined });
-  }
+export const scrollToCurrentYear = (
+  element: React.RefObject<HTMLElement>,
+  position: number,
+  behavior: ScrollType = 'smooth'
+) => {
+  element.current?.scrollTo({ left: position, behavior });
 };
 
 export const removeYearClasses = (ref: React.RefObject<HTMLElement>) => {
@@ -100,18 +96,14 @@ export const addYearClasses = (ref: React.RefObject<HTMLElement>, currentYear: n
   if (ref.current) {
     Array.from(ref.current?.children).forEach((element) => {
       switch (+element.id) {
-        case currentYear:
-          element.classList.add('center');
-          break;
         case currentYear - 1:
-          element.classList.add('first');
-          break;
         case currentYear + 1:
           element.classList.add('first');
           break;
-        case currentYear + 2:
-          element.classList.add('second');
+        case currentYear:
+          element.classList.add('center');
           break;
+        case currentYear + 2:
         case currentYear - 2:
           element.classList.add('second');
           break;

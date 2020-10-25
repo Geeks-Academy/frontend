@@ -4,15 +4,8 @@ import WeekBar from './WeekBar';
 import MonthSwiper from './MonthSwiper';
 import DaysGrid from './DaysGrid';
 import YearBar from './YearBar';
-import { IDateInput, SwipeOption, SwipeType, daysOfTheWeek } from './DateInput.model';
-import {
-  addYearClasses,
-  currentDateToString,
-  getDaysArray,
-  getDaysInMonth,
-  removeYearClasses,
-} from './helpers';
 import { Days } from './DaysGrid/DaysGrid.model';
+
 import {
   StyledBottomWrapper,
   StyledCalendarIcon,
@@ -21,6 +14,16 @@ import {
   StyledLabel,
   StyledTopWrapper,
 } from './DateInput.styled';
+
+import {
+  addYearClasses,
+  currentDateToString,
+  getDaysArray,
+  getDaysInMonth,
+  removeYearClasses,
+} from './helpers';
+
+import { IDateInput, SwipeOption, SwipeType, daysOfTheWeek } from './DateInput.model';
 
 const DateInput = ({ isOpen, label, handleDate, minYear, maxYear }: IDateInput): JSX.Element => {
   const containerRef = useRef(null);
@@ -92,6 +95,7 @@ const DateInput = ({ isOpen, label, handleDate, minYear, maxYear }: IDateInput):
   const handleOnClick = (day: Days) => {
     const { value, class: className } = day;
     setSelectedDay(value);
+
     switch (className) {
       case 'prevDay':
         swipeMonth(SwipeOption.DECREMENT);
