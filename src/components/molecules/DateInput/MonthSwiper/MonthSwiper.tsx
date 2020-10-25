@@ -9,14 +9,14 @@ import {
 } from './MonthSwiper.styled';
 
 const MonthSwiper = ({
-  monthNumber,
+  isRightButtonDisabled,
+  isLeftButtonDisabled,
+  setIsAnimationStart,
   animationClassName,
   isAnimationStart,
-  setIsAnimationStart,
-  handleLeftArrow,
   handleRightArrow,
-  isLeftButtonDisabled,
-  isRightButtonDisabled,
+  handleLeftArrow,
+  monthNumber,
 }: IMonthSwiper): JSX.Element => {
   return (
     <StyledMonthSwiper>

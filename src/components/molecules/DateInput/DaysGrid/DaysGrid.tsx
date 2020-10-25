@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import { IDaysGrid } from './DaysGrid.model';
 import { StyledDaysGrid, StyledSquare } from './DaysGrid.styled';
 
@@ -10,20 +11,24 @@ const DaysGrid = ({
   setIsAnimationStart,
   animationClassName,
 }: IDaysGrid): JSX.Element => {
+  const squareClasses = (day: any) =>
+    classNames({
+      prevDay: day.class === 'prevDay',
+      currentDay: day.class === 'currentDay',
+      nextDay: day.class === 'nextDay',
+      point: day.value === currentDay && day.class === 'currentDay',
+    });
+
   return (
     <StyledDaysGrid
       onAnimationEnd={() => setIsAnimationStart(false)}
       className={isAnimationStart ? animationClassName : ''}
     >
-      {days.map((
-        day // install class lib...
-      ) => (
+      {days.map((day) => (
         <StyledSquare
-          className={`${day.class} ${
-            day.value === currentDay && day.class === 'currentDay' ? 'point' : ''
-          }`}
-          key={day.id}
+          className={squareClasses(day)}
           onClick={() => handleOnClick(day)}
+          key={day.id}
         >
           {day.value}
         </StyledSquare>

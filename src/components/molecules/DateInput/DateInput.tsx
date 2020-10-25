@@ -159,11 +159,11 @@ const DateInput = ({ isOpen, label, handleDate, minYear, maxYear }: IDateInput):
       <StyledLabel>{label}</StyledLabel>
       <StyledTopWrapper>
         <StyledInput
+          handleOnChange={(e) => handleOnChange(e)}
+          placeholder={currentDateString}
           inputRef={inputRef}
           value={inputText}
           type="text"
-          placeholder={currentDateString}
-          handleOnChange={(e) => handleOnChange(e)}
         />
         <StyledCalendarIcon onClick={() => setIsOpenState(!isOpenState)} />
       </StyledTopWrapper>
@@ -172,9 +172,9 @@ const DateInput = ({ isOpen, label, handleDate, minYear, maxYear }: IDateInput):
           <MonthSwiper
             handleRightArrow={() => swipeMonth('INCREMENT')}
             handleLeftArrow={() => swipeMonth('DECREMENT')}
-            setIsAnimationStart={setIsAnimationStart}
             isRightButtonDisabled={isRightButtonDisabled}
             isLeftButtonDisabled={isLeftButtonDisabled}
+            setIsAnimationStart={setIsAnimationStart}
             animationClassName={animationClassName}
             isAnimationStart={isAnimationStart}
             monthNumber={selectedMonth - 1}
@@ -189,12 +189,12 @@ const DateInput = ({ isOpen, label, handleDate, minYear, maxYear }: IDateInput):
             days={selectedDays}
           />
           <YearBar
+            handleRemoveClass={removeYearClasses}
+            setSelectedYear={setSelectedYear}
+            handleAddClass={addYearClasses}
+            year={selectedYear}
             minYear={minYear}
             maxYear={maxYear}
-            year={selectedYear}
-            setSelectedYear={setSelectedYear}
-            handleRemoveClass={removeYearClasses}
-            handleAddClass={addYearClasses}
           />
         </StyledBottomWrapper>
       )}
