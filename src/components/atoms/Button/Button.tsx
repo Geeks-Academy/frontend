@@ -14,6 +14,7 @@ const Button = ({
   icon: Icon,
   iconPos = null,
   type,
+  onClick,
 }: IButton): JSX.Element => {
   const content = () => {
     if (Icon && iconPos) {
@@ -55,7 +56,7 @@ const Button = ({
       );
     default:
       return (
-        <FillButton data-testid="fill" className={className} iconPos={iconPos}>
+        <FillButton data-testid="fill" className={className} iconPos={iconPos} onClick={onClick}>
           {content()}
         </FillButton>
       );
