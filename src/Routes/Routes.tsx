@@ -1,5 +1,4 @@
 import Home from 'pages/Home';
-import Rating from 'pages/Rating';
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Spinner from 'components/atoms/Spinner';
@@ -19,9 +18,6 @@ const Routes = (): JSX.Element => {
         </Route>
         <Route path="/public" exact>
           <Spinner />
-        </Route>
-        <Route path="/rating" exact>
-          <Rating />
         </Route>
         <Route path="/reduxtest" exact>
           <ReduxTestComponent />
