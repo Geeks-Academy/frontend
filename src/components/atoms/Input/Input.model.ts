@@ -13,4 +13,5 @@ export interface IProps {
   inputRef?: any;
   defaultValue?: string | number;
   handleOnChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleOnFocus?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

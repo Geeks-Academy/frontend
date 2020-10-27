@@ -1,6 +1,6 @@
 import { Constants } from './constants';
 import { ScrollType } from './DateInput.model';
-import { Days } from './DaysGrid/DaysGrid.model';
+import { Day } from './DaysGrid/DaysGrid.model';
 
 export const currentDateToString = (day: number, month: number, year: number) => {
   const dayString = `${day}`;
@@ -53,9 +53,9 @@ export const getDaysArray = (year: number, month: number, amountOfDaysInMonth: n
     }
   };
 
-  const getFinalArray = (array: Days[]) => {
+  const getFinalArray = (array: Day[]) => {
     array.forEach((obj, index) => {
-      const modifiedObject: Days = obj;
+      const modifiedObject: Day = obj;
       modifiedObject.id = index;
     });
     return array;

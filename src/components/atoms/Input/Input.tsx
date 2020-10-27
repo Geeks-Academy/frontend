@@ -15,6 +15,7 @@ const Input = ({
   className,
   placeholder,
   handleOnChange,
+  handleOnFocus,
   ...props
 }: IProps): JSX.Element => {
   const renderLabel = () => label && <Label>{label}</Label>;
@@ -32,6 +33,7 @@ const Input = ({
           value={value}
           defaultValue={defaultValue}
           placeholder={placeholder}
+          onFocus={handleOnFocus}
           onChange={handleOnChange}
           {...props}
         />

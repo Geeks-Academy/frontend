@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { IDaysGrid } from './DaysGrid.model';
+import { Day, IDaysGrid } from './DaysGrid.model';
 import { StyledDaysGrid, StyledSquare } from './DaysGrid.styled';
 
 const DaysGrid = ({
@@ -11,7 +11,7 @@ const DaysGrid = ({
   setIsAnimationStart,
   animationClassName,
 }: IDaysGrid): JSX.Element => {
-  const squareClasses = (day: any) =>
+  const squareClasses = (day: Day) =>
     classNames({
       prevDay: day.class === 'prevDay',
       currentDay: day.class === 'currentDay',

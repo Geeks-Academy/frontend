@@ -1,14 +1,14 @@
-export interface Days {
+export interface Day {
+  [key: string]: any;
   value: number;
   class: string;
-  [key: string]: any;
 }
 
 export interface IDaysGrid {
-  days: Days[];
-  currentDay: number;
-  handleOnClick: (day: Days) => void;
-  isAnimationStart: boolean;
-  animationClassName: string;
   setIsAnimationStart: (state: boolean) => void;
+  handleOnClick: (day: Day) => void;
+  animationClassName: string;
+  isAnimationStart: boolean;
+  currentDay: number;
+  days: Day[];
 }

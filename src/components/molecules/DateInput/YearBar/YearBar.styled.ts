@@ -7,7 +7,7 @@ export const StyledYearBar = styled.div`
   height: 55px;
 `;
 
-export const StyledWrapper = styled.div`
+export const StyledWrapper = styled.div<{ isMouseDown: boolean }>`
   display: inline-block;
   overflow: auto;
   padding: 0 128px;
@@ -16,6 +16,7 @@ export const StyledWrapper = styled.div`
   user-select: none;
   white-space: nowrap;
   cursor: pointer;
+  /* scroll-behavior: ${({ isMouseDown }) => (isMouseDown ? 'auto' : 'smooth')}; */
   -webkit-overflow-scrolling: touch;
   &::-webkit-scrollbar {
     display: none;
@@ -33,14 +34,6 @@ export const StyledYear = styled.div`
   width: 72px;
   height: 55px;
   color: ${colors.background.Neutral60};
-
-  &:first-of-type {
-    margin-left: 0;
-  }
-
-  &:last-of-type {
-    margin-right: 0;
-  }
 
   &.center {
     color: ${colors.background.Neutral20};
