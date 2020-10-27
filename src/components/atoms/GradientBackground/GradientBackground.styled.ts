@@ -1,7 +1,16 @@
 import styled from 'styled-components';
+import { GradientType } from './GradientBackground.model';
 
-export const StyledHeader = styled.div<{ background: string; gradient: string }>`
+const setGradient = ({ angle, colors }: GradientType): string => {
+  if (angle) {
+    return `linear-gradient(${angle}, ${[...colors]})`;
+  }
+  return `linear-gradient(${[...colors]})`;
+};
+
+export const StyledHeader = styled.div<{ background: string; gradient?: GradientType }>`
   position: relative;
+  height: 594px;
   background-image: ${({ background }) => `url(${background})`};
   background-repeat: no-repeat;
   background-size: cover;
@@ -12,7 +21,7 @@ export const StyledHeader = styled.div<{ background: string; gradient: string }>
     left: 0;
     width: 100%;
     height: 100%;
-    background: ${({ gradient }) => `linear-gradient(${gradient})`};
+    background: ${({ gradient }) => (gradient ? setGradient(gradient) : 'none')};
   }
 `;
 

@@ -1,6 +1,11 @@
+export type GradientType = {
+  angle?: string;
+  colors: string[];
+};
+
 export interface IProps {
   background: string;
-  gradient: string;
-  children?: JSX.Element[] | JSX.Element | undefined;
+  children?: JSX.Element[] | JSX.Element;
   className?: string;
+  gradient?: GradientType;
 }
