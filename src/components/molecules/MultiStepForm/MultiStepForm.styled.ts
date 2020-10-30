@@ -13,8 +13,8 @@ export const StyledContent = styled.div`
 `;
 
 export const StyledSummary = styled.div`
-  padding: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 32px;
 `;
