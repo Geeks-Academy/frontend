@@ -6,7 +6,15 @@ export const Container = styled.div`
   max-width: 328px;
 `;
 
-export const InputWrapper = styled.div`
+export const StyledInput = styled.input<{ isIcon: boolean }>`
+  outline: 0;
+  width: ${({ isIcon }) => (isIcon ? '90%' : '100%')};
+  ${typography.body.L}
+  border: none;
+  color: ${colors.background.Neutral20};
+  ::placeholder {
+    color: ${colors.background.Neutral40};
+  }
   position: relative;
   display: flex;
   align-items: center;
@@ -17,15 +25,8 @@ export const InputWrapper = styled.div`
   background: ${colors.background.NeutralWhite};
 `;
 
-export const StyledInput = styled.input<{ isIcon: boolean }>`
-  outline: 0;
-  width: ${({ isIcon }) => (isIcon ? '90%' : '100%')};
-  ${typography.body.L}
-  border: none;
-  color: ${colors.background.Neutral20};
-  ::placeholder {
-    color: ${colors.background.Neutral40};
-  }
+export const StyledError = styled.span`
+  color: ${colors.background.Error60};
 `;
 
 export const StyledIcon = styled.div`

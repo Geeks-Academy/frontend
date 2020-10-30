@@ -1,27 +1,32 @@
 import React from 'react';
-import { Container, InputWrapper, Label, StyledIcon, StyledInput } from './Input.styled';
+import { Container, Label, StyledError, StyledIcon, StyledInput } from './Input.styled';
 import { IProps } from './Input.model';
 
-const Input = ({
-  type = 'text',
-  icon: Icon,
-  label,
-  ref,
-  className,
-  placeholder,
-  handleOnChange,
-  ...props
-}: IProps): JSX.Element => {
-  const renderLabel = () => label && <Label>{label}</Label>;
-  return (
-    <Container className={className}>
-      {renderLabel()}
-      <InputWrapper>
+const Input = React.forwardRef(
+  (
+    {
+      type = 'text',
+      icon: Icon,
+      label,
+      className,
+      placeholder,
+      error,
+      handleOnChange,
+      ...props
+    }: IProps,
+    ref?: React.Ref<HTMLInputElement>
+  ): JSX.Element => {
+    const renderLabel = () => label && <Label>{label}</Label>;
+    return (
+      <Container className={className}>
+        {renderLabel()}
         <StyledInput
+          name={label?.toLowerCase()}
           isIcon={!!Icon}
           type={type}
           placeholder={placeholder}
           onChange={handleOnChange}
+          ref={ref}
           {...props}
         />
         {Icon && (
@@ -29,9 +34,10 @@ const Input = ({
             <Icon />
           </StyledIcon>
         )}
-      </InputWrapper>
-    </Container>
-  );
-};
+        <StyledError>{error}</StyledError>
+      </Container>
+    );
+  }
+);
 
 export default Input;
