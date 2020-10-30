@@ -12,7 +12,9 @@ export const StyledContent = styled.div`
   padding: 16px;
 `;
 
-export const StyledAction = styled.div`
+export const StyledSummary = styled.div`
+  padding: 32px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `;
