@@ -1,13 +1,13 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f730015e5696eeef31f271e7802cfd3b",
+    "revision": "61e70323dc843f9cf6653676cae71f1a",
     "url": "iframe.html"
   },
   {
-    "url": "main.a14fef7daa2b10e9377d.bundle.js"
+    "url": "main.943edf3ba17bcc2fe8c1.bundle.js"
   },
   {
-    "url": "runtime~main.a14fef7daa2b10e9377d.bundle.js"
+    "url": "runtime~main.943edf3ba17bcc2fe8c1.bundle.js"
   },
   {
     "revision": "fdb91faafaab6feb7ea2fd7203d841f2",
@@ -42,6 +42,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "static/media/listItemIcon.8e3c617d.svg"
   },
   {
+    "revision": "8649edc6b4ff0582eca233c684e2acf6",
+    "url": "static/media/logo.8649edc6.svg"
+  },
+  {
+    "revision": "8b0069aac21c7eb6d5c9c5a068df6b3e",
+    "url": "static/media/rating-header-bg.8b0069aa.jpg"
+  },
+  {
     "revision": "33e4ac4258737c137b352eb4ab9a380c",
     "url": "static/media/spinner-left-bracket.33e4ac42.svg"
   },
@@ -66,9 +74,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "static/media/unchecked-option-icon.5162c00a.svg"
   },
   {
-    "url": "vendors~main.a14fef7daa2b10e9377d.bundle.js"
+    "url": "vendors~main.943edf3ba17bcc2fe8c1.bundle.js"
   },
   {
-    "url": "vendors~main.a14fef7daa2b10e9377d.bundle.js.LICENSE.txt"
+    "url": "vendors~main.943edf3ba17bcc2fe8c1.bundle.js.LICENSE.txt"
   }
 ]);
