@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import useDocumentTitle from './useDocumentTitle';
+import { useDocumentTitle } from 'hooks';
 
 const Component = (): JSX.Element => {
   useDocumentTitle('Document Title');
