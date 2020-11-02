@@ -7,28 +7,28 @@ const Logo = ({ logoOnly = false, textPlacement = 'horizontal' }: IProps): JSX.E
   const renderLogo = () => {
     if (logoOnly) {
       return (
-        <svg width="58" height="58">
+        <svg width="58" height="58" data-testid="logo-only">
           <LogoIcon />
         </svg>
       );
     }
     if (textPlacement === 'horizontal') {
       return (
-        <svg width="377" height="58">
+        <svg width="377" height="58" data-testid="logo-horizontal">
           <LogoText />
           <LogoIcon />
         </svg>
       );
     }
     return (
-      <>
+      <div data-testid="logo-vertical">
         <StyledLogo>
           <LogoIcon />
         </StyledLogo>
         <StyledLogoText>
           <LogoText />
         </StyledLogoText>
-      </>
+      </div>
     );
   };
 
