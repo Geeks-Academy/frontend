@@ -1,11 +1,13 @@
 type InputType = 'text' | 'password' | 'email' | 'date' | 'number';
 
 export interface IProps {
-  type?: InputType;
   placeholder: string;
+  type?: InputType;
   icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   label?: string;
   className?: string;
-  ref?: HTMLInputElement;
+  required?: boolean;
+  register?: boolean;
+  error?: string;
   handleOnChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
