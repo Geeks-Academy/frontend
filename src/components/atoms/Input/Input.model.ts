@@ -9,5 +9,7 @@ export interface IProps {
   required?: boolean;
   register?: boolean;
   error?: string;
-  handleOnChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  name?: string;
+  value?: string | number;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

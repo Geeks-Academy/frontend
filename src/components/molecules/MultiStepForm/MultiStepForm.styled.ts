@@ -9,6 +9,8 @@ export const StyledMultiStepForm = styled.div`
 `;
 
 export const StyledContent = styled.div`
+  display: flex;
+  justify-content: center;
   padding: 16px;
 `;
 

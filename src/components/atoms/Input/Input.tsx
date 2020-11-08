@@ -4,16 +4,7 @@ import { IProps } from './Input.model';
 
 const Input = React.forwardRef(
   (
-    {
-      type = 'text',
-      icon: Icon,
-      label,
-      className,
-      placeholder,
-      error,
-      handleOnChange,
-      ...props
-    }: IProps,
+    { type = 'text', icon: Icon, label, className, placeholder, error, onChange, ...props }: IProps,
     ref?: React.Ref<HTMLInputElement>
   ): JSX.Element => {
     const renderLabel = () => label && <Label>{label}</Label>;
@@ -25,7 +16,7 @@ const Input = React.forwardRef(
           isIcon={!!Icon}
           type={type}
           placeholder={placeholder}
-          onChange={handleOnChange}
+          onChange={onChange}
           ref={ref}
           {...props}
         />

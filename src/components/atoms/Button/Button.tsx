@@ -33,13 +33,25 @@ const Button = ({
   switch (variant) {
     case 'outline':
       return (
-        <OutlineButton data-testid="outline" className={className} type={type} iconPos={iconPos}>
+        <OutlineButton
+          data-testid="outline"
+          className={className}
+          type={type}
+          iconPos={iconPos}
+          onClick={onClick}
+        >
           {content()}
         </OutlineButton>
       );
     case 'disabled':
       return (
-        <DisableButton data-testid="disabled" className={className} type={type} iconPos={iconPos}>
+        <DisableButton
+          data-testid="disabled"
+          className={className}
+          type={type}
+          iconPos={iconPos}
+          onClick={onClick}
+        >
           {content()}
         </DisableButton>
       );
@@ -50,13 +62,20 @@ const Button = ({
           className={className}
           type={type}
           iconPos={iconPos}
+          onClick={onClick}
         >
           {content()}
         </TransparentButton>
       );
     case 'fill':
       return (
-        <FillButton data-testid="fill" className={className} type={type} iconPos={iconPos}>
+        <FillButton
+          data-testid="fill"
+          className={className}
+          type={type}
+          iconPos={iconPos}
+          onClick={onClick}
+        >
           {content()}
         </FillButton>
       );

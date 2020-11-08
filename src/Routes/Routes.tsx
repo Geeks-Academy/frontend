@@ -4,7 +4,12 @@ import { Route, Switch } from 'react-router-dom';
 import Spinner from 'components/atoms/Spinner';
 import { LoginPage } from 'Routes/helpers';
 import PrivateRoute from 'Routes/PrivateRoute';
-import ReduxTestComponent from 'redux/ReduxTestComponent/ReduxTestComponent';
+import MultiStepForm from 'components/molecules/MultiStepForm/MultiStepForm';
+import { Step1, Step2 } from 'components/forms/ExampleForm/steps';
+
+const handleSubmit = (state: Record<string, number | string>) => {
+  console.log(state);
+};
 
 const Routes = (): JSX.Element => {
   return (
@@ -19,8 +24,11 @@ const Routes = (): JSX.Element => {
         <Route path="/public" exact>
           <Spinner />
         </Route>
-        <Route path="/reduxtest" exact>
-          <ReduxTestComponent />
+        <Route path="/multistepform" exact>
+          <MultiStepForm onSubmit={handleSubmit} store="exampleForm">
+            <Step1 />
+            <Step2 />
+          </MultiStepForm>
         </Route>
         <PrivateRoute path="/protected" exact>
           <Spinner />
