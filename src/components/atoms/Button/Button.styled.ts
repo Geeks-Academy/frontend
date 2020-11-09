@@ -11,7 +11,6 @@ const BaseButton = styled.button<{ iconPos: IconPosition }>`
   border: none;
   border-radius: 6px;
   ${typography.body.bold.L};
-  font-weight: 600;
   outline: none;
   div {
     display: flex;
@@ -98,7 +97,10 @@ export const ButtonIcon = styled.div<{ variant: ButtonVariant; iconPos: IconPosi
     width: 24px;
     height: 24px;
     path {
-      fill: ${({ variant }) => setBackgroundColor(variant)};
+      fill: ${({ variant }) => {
+        console.log(variant);
+        return setBackgroundColor(variant);
+      }};
     }
   }
 `;

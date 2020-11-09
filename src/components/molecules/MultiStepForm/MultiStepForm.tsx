@@ -6,10 +6,10 @@ import { RootState } from 'redux/store';
 import { MultistepformNext, MultistepformSubmit } from 'assets';
 import Button from 'components/atoms/Button';
 import Steps from './Steps/Steps';
-import { IMultiStepFrom } from './MultiStepFrom.model';
+import { IMultiStepForm } from './MultiStepForm.model';
 import { StyledAction, StyledContent, StyledMultiStepForm } from './MultiStepForm.styled';
 
-const MultiStepForm = ({ onSubmit, children: steps, store }: IMultiStepFrom): JSX.Element => {
+const MultiStepForm = ({ onSubmit, children: steps, store }: IMultiStepForm): JSX.Element => {
   const state = useSelector((s: RootState) => s[store]);
 
   const [currentStep, goForward, goBack, goTo] = useFormProgress();
@@ -22,6 +22,16 @@ const MultiStepForm = ({ onSubmit, children: steps, store }: IMultiStepFrom): JS
 
   const handleSubmit = () => {
     onSubmit(state);
+  };
+
+  const submitClick = (e: any) => {
+    e.preventDefault();
+
+    if (isLast) {
+      handleSubmit();
+    } else {
+      goForward();
+    }
   };
 
   return (
@@ -47,17 +57,10 @@ const MultiStepForm = ({ onSubmit, children: steps, store }: IMultiStepFrom): JS
         ) : (
           <Button
             type="submit"
+            variant="fill"
             iconPos="right"
             icon={isLast ? MultistepformSubmit : MultistepformNext}
-            onClick={(e: any) => {
-              e.preventDefault();
-
-              if (isLast) {
-                handleSubmit();
-              } else {
-                goForward();
-              }
-            }}
+            onClick={submitClick}
           >
             {isLast ? 'Submit' : `Next`}
           </Button>

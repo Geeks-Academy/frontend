@@ -11,7 +11,7 @@ const Steps = ({ numberOfSteps, currentStep, changeStep }: IStep): JSX.Element =
 
   return (
     <StyledWrapper>
-      {[...Array(numberOfSteps)].map((obj, step) => (
+      {[...Array(numberOfSteps)].map((_, step) => (
         <StyledContainer key={step as number}>
           <StyledNumber onClick={() => selectStep(step)} done={step <= currentStep}>
             {step + 1}

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import colors from 'styles/colors';
+import typography from 'styles/typography';
 
 export const StyledWrapper = styled.div`
   display: flex;
@@ -18,6 +19,7 @@ export const StyledLine = styled.div<{ done?: boolean }>`
 `;
 
 export const StyledNumber = styled.div<{ done?: boolean }>`
+  ${typography.body.bold.L}
   display: flex;
   justify-content: center;
   width: 40px;
