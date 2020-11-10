@@ -97,10 +97,7 @@ export const ButtonIcon = styled.div<{ variant: ButtonVariant; iconPos: IconPosi
     width: 24px;
     height: 24px;
     path {
-      fill: ${({ variant }) => {
-        console.log(variant);
-        return setBackgroundColor(variant);
-      }};
+      fill: ${({ variant }) => setBackgroundColor(variant)};
     }
   }
 `;
