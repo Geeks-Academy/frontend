@@ -56,17 +56,17 @@ export const Step1 = (): JSX.Element => {
             placeholder="surname"
             label="Surname"
             value={state.surname.value}
+            error={state.surname.error}
             onChange={validate}
           />
-          {state.surname.error && <p style={{ color: 'red' }}>{state.surname.error}</p>}
           <Input
             name="name"
             placeholder="name"
             label="Name"
             value={state.name.value}
+            error={state.name.error}
             onChange={validate}
           />
-          {state.name.error && <p style={{ color: 'red' }}>{state.name.error}</p>}
         </div>
       </form>
     </>

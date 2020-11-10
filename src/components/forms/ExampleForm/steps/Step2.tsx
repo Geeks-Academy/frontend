@@ -48,8 +48,8 @@ export const Step2 = (): JSX.Element => {
             type="number"
             onChange={validate}
             value={state.age.value}
+            error={state.age.error}
           />
-          {state.age.error && <p style={{ color: 'red' }}>{state.age.error}</p>}
         </div>
       </form>
     </>
