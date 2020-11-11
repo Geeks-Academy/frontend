@@ -1,5 +1,5 @@
-import React from 'react';
 import { ButtonIcon } from 'assets';
+import React from 'react';
 import Button from './Button';
 import { IButton } from './Button.model';
 
@@ -42,80 +42,80 @@ export default {
   },
 };
 
-export const Default = ({ children, iconPos, type, icon }: IButton): JSX.Element => (
-  <Button type={type} icon={icon} iconPos={iconPos}>
+export const Default = ({ children, iconPos, type, icon, onClick }: IButton): JSX.Element => (
+  <Button type={type} icon={icon} iconPos={iconPos} onClick={onClick}>
     {children}
   </Button>
 );
 
-export const FillWithIconLeft = ({ children, icon }: IButton): JSX.Element => (
-  <Button type="fill" icon={icon} iconPos="left">
+export const FillWithIconLeft = ({ children, icon, onClick }: IButton): JSX.Element => (
+  <Button type="fill" icon={icon} iconPos="left" onClick={onClick}>
     {children}
   </Button>
 );
 
-export const FillWithIconRight = ({ children, icon }: IButton): JSX.Element => (
-  <Button type="fill" icon={icon} iconPos="right">
+export const FillWithIconRight = ({ children, icon, onClick }: IButton): JSX.Element => (
+  <Button type="fill" icon={icon} iconPos="right" onClick={onClick}>
     {children}
   </Button>
 );
 
-export const FillWithoutIcon = ({ children, icon }: IButton): JSX.Element => (
-  <Button type="fill" icon={icon}>
+export const FillWithoutIcon = ({ children, icon, onClick }: IButton): JSX.Element => (
+  <Button type="fill" icon={icon} onClick={onClick}>
     {children}
   </Button>
 );
 
-export const OutlineWithIconLeft = ({ children, icon }: IButton): JSX.Element => (
-  <Button type="outline" icon={icon} iconPos="left">
+export const OutlineWithIconLeft = ({ children, icon, onClick }: IButton): JSX.Element => (
+  <Button type="outline" icon={icon} iconPos="left" onClick={onClick}>
     {children}
   </Button>
 );
 
-export const OutlineWithIconRight = ({ children, icon }: IButton): JSX.Element => (
-  <Button type="outline" icon={icon} iconPos="right">
+export const OutlineWithIconRight = ({ children, icon, onClick }: IButton): JSX.Element => (
+  <Button type="outline" icon={icon} iconPos="right" onClick={onClick}>
     {children}
   </Button>
 );
 
-export const OutlineWithoutIcon = ({ children, icon }: IButton): JSX.Element => (
-  <Button type="outline" icon={icon}>
+export const OutlineWithoutIcon = ({ children, icon, onClick }: IButton): JSX.Element => (
+  <Button type="outline" icon={icon} onClick={onClick}>
     {children}
   </Button>
 );
 
-export const DisabledWithIconLeft = ({ children, icon }: IButton): JSX.Element => (
-  <Button type="disabled" icon={icon} iconPos="left">
+export const DisabledWithIconLeft = ({ children, icon, onClick }: IButton): JSX.Element => (
+  <Button type="disabled" icon={icon} iconPos="left" onClick={onClick}>
     {children}
   </Button>
 );
 
-export const DisabledWithIconRight = ({ children, icon }: IButton): JSX.Element => (
-  <Button type="disabled" icon={icon} iconPos="right">
+export const DisabledWithIconRight = ({ children, icon, onClick }: IButton): JSX.Element => (
+  <Button type="disabled" icon={icon} iconPos="right" onClick={onClick}>
     {children}
   </Button>
 );
 
-export const DisabledWithoutIcon = ({ children, icon }: IButton): JSX.Element => (
-  <Button type="disabled" icon={icon}>
+export const DisabledWithoutIcon = ({ children, icon, onClick }: IButton): JSX.Element => (
+  <Button type="disabled" icon={icon} onClick={onClick}>
     {children}
   </Button>
 );
 
-export const TransparentWithIconLeft = ({ children, icon }: IButton): JSX.Element => (
-  <Button type="transparent" icon={icon} iconPos="left">
+export const TransparentWithIconLeft = ({ children, icon, onClick }: IButton): JSX.Element => (
+  <Button type="transparent" icon={icon} iconPos="left" onClick={onClick}>
     {children}
   </Button>
 );
 
-export const TransparentWithIconRight = ({ children, icon }: IButton): JSX.Element => (
-  <Button type="transparent" icon={icon} iconPos="right">
+export const TransparentWithIconRight = ({ children, icon, onClick }: IButton): JSX.Element => (
+  <Button type="transparent" icon={icon} iconPos="right" onClick={onClick}>
     {children}
   </Button>
 );
 
-export const TransparentWithoutIcon = ({ children, icon }: IButton): JSX.Element => (
-  <Button type="transparent" icon={icon}>
+export const TransparentWithoutIcon = ({ children, icon, onClick }: IButton): JSX.Element => (
+  <Button type="transparent" icon={icon} onClick={onClick}>
     {children}
   </Button>
 );

@@ -7,4 +7,5 @@ export interface IButton {
   iconPos?: IconPosition;
   type?: ButtonType;
   className?: string;
+  onClick?: () => void;
 }
