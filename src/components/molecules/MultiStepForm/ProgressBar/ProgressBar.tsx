@@ -1,20 +1,23 @@
 import React from 'react';
 import { IProgressBar } from './ProgressBar.model';
+import { StyledProgressBar, StyledProgressBarItem } from './ProgressBar.styled';
 
 const ProgressBar = ({ steps, activeStep }: IProgressBar): JSX.Element => {
   return (
-    <>
+    <StyledProgressBar>
       {steps &&
-        steps.map((step: { [key: string]: string }, index: number) => {
-          const { key } = step;
-
+        steps.map((step: number) => {
           return (
-            <div key={key} style={{ backgroundColor: activeStep === index ? 'red' : '' }}>
-              {index}
-            </div>
+            <StyledProgressBarItem
+              key={step}
+              active={activeStep > step - 1}
+              activeBar={activeStep > step}
+            >
+              {step}
+            </StyledProgressBarItem>
           );
         })}
-    </>
+    </StyledProgressBar>
   );
 };
 

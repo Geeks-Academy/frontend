@@ -1,4 +1,4 @@
 export interface IProgressBar {
-  steps: any;
+  steps: number[];
   activeStep: number;
 }

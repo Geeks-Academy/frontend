@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from '../../../atoms/Button/index';
+import { StyledButtonWrapper, StyledPreviousWrapper } from './ActionButton.styled';
 import { IActionButtons } from './ActionButtons.model';
 
 const ActionButtons = ({
@@ -10,18 +12,20 @@ const ActionButtons = ({
   lastStep,
 }: IActionButtons): JSX.Element => {
   return (
-    <>
-      {activeStep > firstStep ? (
-        <button type="button" onClick={handleBack}>
-          Previous
-        </button>
-      ) : null}
-
-      <button type="submit" onClick={handleNext} disabled={numberOfSteps === activeStep}>
-        {lastStep !== activeStep ? 'Next' : 'Finish'}
-      </button>
-    </>
+    <StyledButtonWrapper>
+      <StyledPreviousWrapper>
+        {activeStep > firstStep ? (
+          <Button type="fill" onClick={handleBack}>
+            Previous
+          </Button>
+        ) : null}
+      </StyledPreviousWrapper>
+      <div>
+        <Button type={numberOfSteps === activeStep ? 'disabled' : 'fill'} onClick={handleNext}>
+          {lastStep !== activeStep ? 'Next' : 'Finish'}
+        </Button>
+      </div>
+    </StyledButtonWrapper>
   );
 };
-
 export default ActionButtons;

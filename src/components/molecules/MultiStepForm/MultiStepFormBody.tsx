@@ -10,6 +10,7 @@ const MultiStepFormBody = ({ children, onNext, onBack, onSubmit }: IMultiStepFor
   const numberOfSteps = React.Children.count(children);
   const lastStep = numberOfSteps - 1;
   const steps = React.Children.toArray(children);
+  const numberOfStepsArray = Array.from(Array(steps.length).keys());
 
   const { trigger, watch, errors, clearErrors } = useFormContext();
   const formData = watch();
@@ -29,7 +30,6 @@ const MultiStepFormBody = ({ children, onNext, onBack, onSubmit }: IMultiStepFor
 
   const handleNext = async () => {
     const status = await trigger();
-    await clearErrors();
 
     if (!status) return;
 
@@ -41,10 +41,11 @@ const MultiStepFormBody = ({ children, onNext, onBack, onSubmit }: IMultiStepFor
     }
 
     setActiveStep((step) => step + 1);
+    clearErrors();
     onNext(formData);
   };
 
-  const handleBack = async () => {
+  const handleBack = () => {
     updateCurrentForm();
 
     setActiveStep((step) => step - 1);
@@ -53,18 +54,16 @@ const MultiStepFormBody = ({ children, onNext, onBack, onSubmit }: IMultiStepFor
 
   return (
     <div>
-      <div>
-        <ProgressBar activeStep={activeStep} steps={steps} />
-        <ActionButtons
-          firstStep={firstStep}
-          numberOfSteps={numberOfSteps}
-          lastStep={lastStep}
-          activeStep={activeStep}
-          handleBack={handleBack}
-          handleNext={handleNext}
-        />
-      </div>
+      <ProgressBar activeStep={activeStep} steps={numberOfStepsArray} />
       <form>{steps[activeStep]}</form>
+      <ActionButtons
+        firstStep={firstStep}
+        numberOfSteps={numberOfSteps}
+        lastStep={lastStep}
+        activeStep={activeStep}
+        handleBack={handleBack}
+        handleNext={handleNext}
+      />
     </div>
   );
 };

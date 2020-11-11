@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import MultiStepFormBody from './MultiStepFormBody';
 import { IMultiStepForm } from './Multistep.model';
+import MultiStepFormBody from './MultiStepFormBody';
 
 const MultiStepForm = ({ children, onNext, onBack, onSubmit }: IMultiStepForm): JSX.Element => {
   const methods = useForm();
