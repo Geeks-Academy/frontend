@@ -27,6 +27,16 @@ export default {
         disable: true,
       },
     },
+    ref: {
+      control: {
+        disable: true,
+      },
+    },
+    id: {
+      control: {
+        disable: true,
+      },
+    },
   },
 } as Meta;
 
@@ -42,10 +52,19 @@ export const InputWithIcon = ({ type, placeholder, label }: IProps): JSX.Element
   <Input type={type} placeholder={placeholder} label={label} icon={InputIcon} />
 );
 
-export const InputWithLabel = ({ type, placeholder, icon }: IProps): JSX.Element => (
-  <Input type={type} placeholder={placeholder} label="Example" icon={icon} />
+export const InputWithLabel = ({
+  type,
+  placeholder,
+  icon,
+  label = 'Example',
+}: IProps): JSX.Element => (
+  <Input type={type} placeholder={placeholder} label={label} icon={icon} />
 );
 
-export const InputWithLabelAndIcon = ({ type, placeholder }: IProps): JSX.Element => (
-  <Input type={type} placeholder={placeholder} label="Example" icon={InputIcon} />
+export const InputWithLabelAndIcon = ({
+  type,
+  placeholder,
+  label = 'Example',
+}: IProps): JSX.Element => (
+  <Input type={type} placeholder={placeholder} label={label} icon={InputIcon} />
 );

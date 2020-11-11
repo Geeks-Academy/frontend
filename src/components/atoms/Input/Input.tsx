@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, InputWrapper, Label, StyledIcon, StyledInput } from './Input.styled';
+import { InputWrapper, Label, StyledIcon, StyledInput } from './Input.styled';
 import { IProps } from './Input.model';
 
 const Input = ({
@@ -10,27 +10,28 @@ const Input = ({
   className,
   placeholder,
   handleOnChange,
+  id,
   ...props
 }: IProps): JSX.Element => {
-  const renderLabel = () => label && <Label>{label}</Label>;
+  const inputLabelId = label && id ? `${id}-label` : undefined;
+  const renderLabel = () => label && <Label htmlFor={inputLabelId}>{label}</Label>;
   return (
-    <Container className={className}>
+    <InputWrapper>
       {renderLabel()}
-      <InputWrapper>
-        <StyledInput
-          isIcon={!!Icon}
-          type={type}
-          placeholder={placeholder}
-          onChange={handleOnChange}
-          {...props}
-        />
-        {Icon && (
-          <StyledIcon data-testid="icon">
-            <Icon />
-          </StyledIcon>
-        )}
-      </InputWrapper>
-    </Container>
+      <StyledInput
+        id={inputLabelId}
+        isIcon={!!Icon}
+        type={type}
+        placeholder={placeholder}
+        onChange={handleOnChange}
+        {...props}
+      />
+      {Icon && (
+        <StyledIcon data-testid="icon">
+          <Icon />
+        </StyledIcon>
+      )}
+    </InputWrapper>
   );
 };
 
