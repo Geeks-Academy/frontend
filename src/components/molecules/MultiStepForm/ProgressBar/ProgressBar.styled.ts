@@ -6,7 +6,34 @@ export const StyledProgressBar = styled.div`
   justify-content: space-between;
 `;
 
-export const StyledProgressBarItem = styled.div<{ active: boolean; activeBar: boolean }>`
+export const StyledProgressBarItemWrapper = styled.div<{ activeBar: boolean }>`
+  position: relative;
+
+  :not(:last-child) {
+    width: 100%;
+  }
+
+  :not(:last-child):after {
+    position: absolute;
+    content: '';
+    top: 20px;
+    right: 0;
+
+    z-index: -1;
+
+    width: 100%;
+    height: 10px;
+    background-color: ${colors.background.Neutral80};
+
+    ${({ activeBar }) =>
+      activeBar &&
+      `
+      background-color: ${colors.background.Primary40};
+  `};
+  }
+`;
+
+export const StyledProgressBarItem = styled.div<{ active: boolean }>`
   position: relative;
   display: flex;
   justify-content: center;
@@ -23,19 +50,4 @@ export const StyledProgressBarItem = styled.div<{ active: boolean; activeBar: bo
      color: ${colors.text.Primary20};
     background-color: ${colors.background.Primary40};
   `};
-
-  :not(:last-child):before {
-    position: absolute;
-    content: '';
-    right: -300px;
-    width: 300px;
-    height: 10px;
-    background-color: ${colors.background.Neutral80};
-
-    ${({ activeBar }) =>
-      activeBar &&
-      `
-      background-color: ${colors.background.Primary40};
-  `};
-  }
 `;

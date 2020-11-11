@@ -3,7 +3,7 @@ import { useFormContext } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 
 const Step2 = () => {
-  const { register } = useFormContext();
+  const { register, errors } = useFormContext();
 
   const formState = useSelector((state: { multistep: { threestep: string; fourstep: string } }) => {
     return state.multistep;
@@ -16,6 +16,7 @@ const Step2 = () => {
         defaultValue={formState.threestep}
         ref={register({ required: 'this is required' })}
       />
+      {errors && errors.threestep?.message && 'This one is required'}
       <input name="fourstep" defaultValue={formState.fourstep} ref={register} />
     </div>
   );

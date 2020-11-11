@@ -23,12 +23,14 @@ const MultiStepExample = (): JSX.Element => {
   };
 
   return (
-    <div style={{ width: '750px' }}>
-      <MultiStepForm onSubmit={handleSubmit} onNext={handleNext} onBack={onBack}>
-        <Step1 />
-        <Step2 />
-        <Step3 />
-      </MultiStepForm>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ width: '700px' }}>
+        <MultiStepForm onSubmit={handleSubmit} onNext={handleNext} onBack={onBack}>
+          <Step1 />
+          <Step2 />
+          <Step3 />
+        </MultiStepForm>
+      </div>
     </div>
   );
 };
