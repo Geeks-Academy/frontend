@@ -16,7 +16,7 @@ const Input = ({
   const inputLabelId = label && id ? `${id}-label` : undefined;
   const renderLabel = () => label && <Label htmlFor={inputLabelId}>{label}</Label>;
   return (
-    <InputWrapper>
+    <InputWrapper className={className}>
       {renderLabel()}
       <StyledInput
         id={inputLabelId}
