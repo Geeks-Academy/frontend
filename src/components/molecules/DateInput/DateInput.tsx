@@ -1,9 +1,9 @@
 import React, { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
-import { useOutsideClick } from 'hooks';
 import WeekBar from './WeekBar';
 import MonthSwiper from './MonthSwiper';
 import DaysGrid from './DaysGrid';
 import YearBar from './YearBar';
+import { Constants } from './constants';
 import { Day } from './DaysGrid/DaysGrid.model';
 import {
   StyledBottomWrapper,
@@ -13,7 +13,6 @@ import {
   StyledLabel,
   StyledTopWrapper,
 } from './DateInput.styled';
-
 import {
   addYearClasses,
   currentDateToString,
@@ -21,11 +20,9 @@ import {
   getDaysInMonth,
   removeYearClasses,
 } from './helpers';
-
 import { IDateInput, SwipeOption, SwipeType, daysOfTheWeek } from './DateInput.model';
 
-const DateInput = ({ isOpen, label, handleDate, minYear, maxYear }: IDateInput): JSX.Element => {
-  const containerRef = useRef(null);
+const DateInput = ({ isOpen, label, onClick }: IDateInput): JSX.Element => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [today] = useState(new Date());
@@ -48,14 +45,10 @@ const DateInput = ({ isOpen, label, handleDate, minYear, maxYear }: IDateInput):
   const [disabledLeftButton, setDisabledLeftButton] = useState(false);
   const [disabledRightButton, setDisabledRightButton] = useState(false);
 
-  useOutsideClick(containerRef, () => {
-    setIsOpenState(false);
-  });
-
   const handleArrowButtons = useCallback(() => {
-    setDisabledLeftButton(selectedYear <= minYear && selectedMonth < 2);
-    setDisabledRightButton(selectedYear >= maxYear && selectedMonth > 11);
-  }, [minYear, maxYear, selectedMonth, selectedYear]);
+    setDisabledLeftButton(selectedYear <= Constants.minYear && selectedMonth < 2);
+    setDisabledRightButton(selectedYear >= Constants.maxYear && selectedMonth > 11);
+  }, [selectedMonth, selectedYear]);
 
   const swipeMonth = (swipeType: SwipeType) => {
     if (swipeType === SwipeOption.INCREMENT) {
@@ -115,8 +108,8 @@ const DateInput = ({ isOpen, label, handleDate, minYear, maxYear }: IDateInput):
 
     setInputText(value);
     if (
-      +year >= minYear &&
-      +year <= maxYear &&
+      +year >= Constants.minYear &&
+      +year <= Constants.maxYear &&
       +month <= 12 &&
       +month > 0 &&
       +day > 0 &&
@@ -133,33 +126,33 @@ const DateInput = ({ isOpen, label, handleDate, minYear, maxYear }: IDateInput):
   };
 
   const twinkleAnimation = () => {
-    setIsAnimationStart(true);
     setAnimationClassName('twinkle');
+    setIsAnimationStart(true);
   };
 
   useEffect(() => {
     setCurrentDateString(currentDateToString(selectedDay, selectedMonth, selectedYear));
-    setAmountOfDaysInMonth(getDaysInMonth(selectedMonth, selectedYear));
     setSelectedDays(getDaysArray(selectedYear, selectedMonth, amountOfDaysInMonth));
     setInputText(currentDateToString(selectedDay, selectedMonth, selectedYear));
+    setAmountOfDaysInMonth(getDaysInMonth(selectedMonth, selectedYear));
   }, [selectedDay, selectedMonth, selectedYear, amountOfDaysInMonth]);
 
   useEffect(() => {
+    onClick(currentDateToString(selectedDay, selectedMonth, selectedYear));
     handleArrowButtons();
-    handleDate(currentDateToString(selectedDay, selectedMonth, selectedYear));
-  }, [selectedDay, selectedMonth, selectedYear, handleDate, currentDateString, handleArrowButtons]);
+  }, [selectedDay, selectedMonth, selectedYear, onClick, currentDateString, handleArrowButtons]);
 
   useEffect(() => {
     twinkleAnimation();
   }, [selectedMonth]);
 
   return (
-    <StyledDateInput ref={containerRef}>
+    <StyledDateInput>
       <StyledLabel>{label}</StyledLabel>
       <StyledTopWrapper>
         <StyledInput
-          handleOnChange={(e) => handleOnChange(e)}
           handleOnFocus={() => setIsOpenState(true)}
+          handleOnChange={(e) => handleOnChange(e)}
           placeholder={currentDateString}
           inputRef={inputRef}
           value={inputText}
@@ -170,8 +163,8 @@ const DateInput = ({ isOpen, label, handleDate, minYear, maxYear }: IDateInput):
       {isOpenState && (
         <StyledBottomWrapper>
           <MonthSwiper
-            handleRightArrow={() => swipeMonth('INCREMENT')}
-            handleLeftArrow={() => swipeMonth('DECREMENT')}
+            handleRightArrow={() => swipeMonth(SwipeOption.INCREMENT)}
+            handleLeftArrow={() => swipeMonth(SwipeOption.DECREMENT)}
             isRightButtonDisabled={disabledRightButton}
             isLeftButtonDisabled={disabledLeftButton}
             setIsAnimationStart={setIsAnimationStart}
@@ -192,9 +185,9 @@ const DateInput = ({ isOpen, label, handleDate, minYear, maxYear }: IDateInput):
             handleRemoveClass={removeYearClasses}
             setSelectedYear={setSelectedYear}
             handleAddClass={addYearClasses}
+            minYear={Constants.minYear}
+            maxYear={Constants.maxYear}
             year={selectedYear}
-            minYear={minYear}
-            maxYear={maxYear}
           />
         </StyledBottomWrapper>
       )}

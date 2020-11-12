@@ -3,10 +3,8 @@ export type ScrollType = 'auto' | 'smooth' | undefined;
 
 export interface IDateInput {
   isOpen?: boolean;
-  label: string;
-  minYear: number;
-  maxYear: number;
-  handleDate: (date: string) => void;
+  label?: string;
+  onClick: (date: string) => void;
 }
 
 export enum SwipeOption {

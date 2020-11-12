@@ -1,6 +1,7 @@
 import { Constants } from './constants';
 import { ScrollType } from './DateInput.model';
 import { Day } from './DaysGrid/DaysGrid.model';
+import { IBox } from './YearBar/YearBar.model';
 
 export const currentDateToString = (day: number, month: number, year: number) => {
   const dayString = `${day}`;
@@ -16,7 +17,7 @@ export const getFilledArray = (max: number) => {
   return Array.from({ length: max }, (v, k) => k + 1);
 };
 
-export const getYearsArray = (minYear: number, maxYear: number) => {
+export const getYearsArray = (minYear: number, maxYear: number): IBox[] => {
   const amountOfElements = maxYear - minYear + 1;
 
   const array = getFilledArray(amountOfElements).map((element) => ({
@@ -112,4 +113,8 @@ export const addYearClasses = (ref: React.RefObject<HTMLElement>, currentYear: n
       }
     });
   }
+};
+
+export const isMobileDevice = () => {
+  return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 };

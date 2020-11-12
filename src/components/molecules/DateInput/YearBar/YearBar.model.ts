@@ -1,3 +1,8 @@
+export interface IBox {
+  value: number;
+  position: number;
+}
+
 export interface IYearBar {
   year: number;
   minYear: number;

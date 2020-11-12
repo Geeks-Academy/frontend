@@ -14,13 +14,7 @@ function App(): JSX.Element {
           height: ' 100vh',
         }}
       >
-        <DataInput
-          label="Label name elo elo"
-          isOpen
-          minYear={2000} // infinitive
-          maxYear={2050}
-          handleDate={(date) => console.log(`Selected date: ${date}`)} // onClickDate
-        />
+        <DataInput label="Label name" isOpen onClick={(date) => console.log(date)} />
       </div>
     </>
   );

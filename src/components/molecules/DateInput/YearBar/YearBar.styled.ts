@@ -7,7 +7,7 @@ export const StyledYearBar = styled.div`
   height: 55px;
 `;
 
-export const StyledWrapper = styled.div<{ isMouseDown: boolean }>`
+export const StyledWrapper = styled.div`
   display: inline-block;
   overflow: auto;
   padding: 0 128px;
@@ -16,7 +16,6 @@ export const StyledWrapper = styled.div<{ isMouseDown: boolean }>`
   user-select: none;
   white-space: nowrap;
   cursor: pointer;
-  /* scroll-behavior: ${({ isMouseDown }) => (isMouseDown ? 'auto' : 'smooth')}; */
   -webkit-overflow-scrolling: touch;
   &::-webkit-scrollbar {
     display: none;
