@@ -54,7 +54,11 @@ const MultiStepFormBody = ({ children, onNext, onBack, onSubmit }: IMultiStepFor
 
   return (
     <div>
-      <ProgressBar activeStep={activeStep} steps={numberOfStepsArray} />
+      <ProgressBar
+        activeStep={activeStep}
+        setActiveStep={setActiveStep}
+        steps={numberOfStepsArray}
+      />
       <form>{steps[activeStep]}</form>
       <ActionButtons
         firstStep={firstStep}

@@ -2,13 +2,6 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 export interface InitialLoaderState {
   [key: string]: string | boolean;
-  onestep: string;
-  twostep: string;
-  threestep: string;
-  fourstep: string;
-  fivestep: string;
-  sixstep: string;
-  testcheckbox: boolean;
 }
 
 const initialState: InitialLoaderState = {

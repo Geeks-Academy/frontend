@@ -33,7 +33,7 @@ export const StyledProgressBarItemWrapper = styled.div<{ activeBar: boolean }>`
   }
 `;
 
-export const StyledProgressBarItem = styled.div<{ active: boolean }>`
+export const StyledProgressBarItem = styled.button<{ active: boolean }>`
   position: relative;
   display: flex;
   justify-content: center;
@@ -41,6 +41,7 @@ export const StyledProgressBarItem = styled.div<{ active: boolean }>`
   margin-bottom: 35px;
   width: 50px;
   height: 50px;
+  border: none;
   border-radius: 50px;
   background-color: ${colors.background.Neutral80};
 

@@ -6,19 +6,27 @@ import {
   StyledProgressBarItemWrapper,
 } from './ProgressBar.styled';
 
-const ProgressBar = ({ steps, activeStep }: IProgressBar): JSX.Element => {
+const ProgressBar = ({ steps, activeStep, setActiveStep }: IProgressBar): JSX.Element => {
+  const onChange = (step: number) => () => {
+    if (activeStep > step) {
+      setActiveStep(step);
+    }
+  };
+
   return (
     <StyledProgressBar>
       {steps &&
-        steps.map((step: number) => {
-          return (
-            <StyledProgressBarItemWrapper activeBar={activeStep > step}>
-              <StyledProgressBarItem key={step} active={activeStep > step - 1}>
-                {step}
-              </StyledProgressBarItem>
-            </StyledProgressBarItemWrapper>
-          );
-        })}
+        steps.map((step: number) => (
+          <StyledProgressBarItemWrapper activeBar={activeStep > step}>
+            <StyledProgressBarItem
+              onClick={onChange(step)}
+              key={step}
+              active={activeStep > step - 1}
+            >
+              {step}
+            </StyledProgressBarItem>
+          </StyledProgressBarItemWrapper>
+        ))}
     </StyledProgressBar>
   );
 };
