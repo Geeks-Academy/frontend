@@ -1,7 +1,7 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
 import { IFormData } from 'components/molecules/MultiStepForm/Multistep.model';
 import MultiStepForm from 'components/molecules/MultiStepForm/MultiStepForm';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { updateForm } from 'redux/reducers/multistep';
 import Step1 from './Step1';
 import Step2 from './Step2';
@@ -28,10 +28,6 @@ const MultiStepExample = (): JSX.Element => {
           <Step1 />
           <Step2 />
           <Step1 />
-          <Step2 />
-          <Step1 />
-          <Step2 />
-          {/* <Step3 /> */}
         </MultiStepForm>
       </div>
     </div>

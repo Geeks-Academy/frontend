@@ -9,7 +9,7 @@ const MultiStepForm = ({ children, onNext, onBack, onSubmit }: IMultiStepForm): 
   return (
     <div>
       <FormProvider {...methods}>
-        <MultiStepFormBody onNext={onNext} onBack={onBack} onSubmit={onSubmit}>
+        <MultiStepFormBody title="Test title" onNext={onNext} onBack={onBack} onSubmit={onSubmit}>
           {children}
         </MultiStepFormBody>
       </FormProvider>

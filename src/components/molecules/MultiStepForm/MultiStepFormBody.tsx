@@ -2,11 +2,18 @@ import React, { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import ActionButtons from './ActionButtons/ActionButtons';
 import { IFormData, IMultiStepForm } from './Multistep.model';
+import { StyledTitle } from './MutliStepForm.styled';
 import ProgressBar from './ProgressBar/ProgressBar';
 
 const firstStep = 0;
 
-const MultiStepFormBody = ({ children, onNext, onBack, onSubmit }: IMultiStepForm): JSX.Element => {
+const MultiStepFormBody = ({
+  children,
+  onNext,
+  onBack,
+  onSubmit,
+  title,
+}: IMultiStepForm): JSX.Element => {
   const numberOfSteps = React.Children.count(children);
   const lastStep = numberOfSteps - 1;
   const steps = React.Children.toArray(children);
@@ -53,7 +60,8 @@ const MultiStepFormBody = ({ children, onNext, onBack, onSubmit }: IMultiStepFor
   };
 
   return (
-    <div>
+    <>
+      {title ? <StyledTitle>test</StyledTitle> : null}
       <ProgressBar
         activeStep={activeStep}
         setActiveStep={setActiveStep}
@@ -68,7 +76,7 @@ const MultiStepFormBody = ({ children, onNext, onBack, onSubmit }: IMultiStepFor
         handleBack={handleBack}
         handleNext={handleNext}
       />
-    </div>
+    </>
   );
 };
 

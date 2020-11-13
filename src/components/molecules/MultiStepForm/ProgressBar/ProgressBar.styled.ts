@@ -16,14 +16,14 @@ export const StyledProgressBarItemWrapper = styled.div<{ activeBar: boolean }>`
   :not(:last-child):after {
     position: absolute;
     content: '';
-    top: 20px;
+    top: 14px;
     right: 0;
 
     z-index: -1;
 
     width: 100%;
-    height: 10px;
-    background-color: ${colors.background.Neutral80};
+    height: 6px;
+    background-color: ${colors.background.Primary60};
 
     ${({ activeBar }) =>
       activeBar &&
@@ -39,16 +39,17 @@ export const StyledProgressBarItem = styled.button<{ active: boolean }>`
   justify-content: center;
   align-items: center;
   margin-bottom: 35px;
-  width: 50px;
-  height: 50px;
+  width: 32px;
+  height: 32px;
   border: none;
   border-radius: 50px;
-  background-color: ${colors.background.Neutral80};
-
+  background-color: ${colors.background.Primary60};
+  color: ${colors.text.Primary20};
+  font-weight: bold;
   ${({ active }) =>
     active &&
     `
-     color: ${colors.text.Primary20};
+
     background-color: ${colors.background.Primary40};
   `};
 `;
