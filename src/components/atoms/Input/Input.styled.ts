@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import colors from 'styles/colors';
 import typography from 'styles/typography';
 
-export const Container = styled.div`
-  max-width: 328px;
+export const Container = styled.div<{ fullWidth: boolean | undefined }>`
+  max-width: ${({ fullWidth }) => (fullWidth ? '' : '328px')};
 `;
 
 export const InputWrapper = styled.div`

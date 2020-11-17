@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import ActionButtons from './ActionButtons/ActionButtons';
 import { IFormData, IMultiStepForm } from './Multistep.model';
-import { StyledTitle } from './MutliStepForm.styled';
+import { StyledForm, StyledTitle } from './MutliStepForm.styled';
 import ProgressBar from './ProgressBar/ProgressBar';
 
 const firstStep = 0;
@@ -67,7 +67,7 @@ const MultiStepFormBody = ({
         setActiveStep={setActiveStep}
         steps={numberOfStepsArray}
       />
-      <form>{steps[activeStep]}</form>
+      <StyledForm>{steps[activeStep]}</StyledForm>
       <ActionButtons
         firstStep={firstStep}
         numberOfSteps={numberOfSteps}

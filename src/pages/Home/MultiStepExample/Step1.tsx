@@ -1,8 +1,9 @@
+import Input from 'components/atoms/Input/Input';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 
-const Step1 = () => {
+const Step1 = (): JSX.Element => {
   const { register, errors } = useFormContext();
 
   const formState = useSelector(
@@ -11,23 +12,28 @@ const Step1 = () => {
     }
   );
 
-  const { onestep, twostep, testcheckbox } = formState;
+  const { onestep, twostep } = formState;
 
   return (
     <>
-      <input
+      <Input
+        label="test"
+        placeholder="test"
         name="onestep"
         defaultValue={onestep}
         ref={register({ required: 'this is required' })}
+        fullWidth
       />
       {errors && errors.onestep?.message && 'This one is required'}
-      <input
+      <Input
+        label="test"
+        placeholder="test"
         name="twostep"
         defaultValue={twostep}
         ref={register({ required: 'this is required' })}
+        fullWidth
       />
       {errors && errors.twostep?.message && 'This one is required'}
-      <input type="checkbox" name="testcheckbox" defaultChecked={testcheckbox} ref={register} />
     </>
   );
 };
