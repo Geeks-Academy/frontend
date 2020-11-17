@@ -3,13 +3,19 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { IMultiStepForm } from './Multistep.model';
 import MultiStepFormBody from './MultiStepFormBody';
 
-const MultiStepForm = ({ children, onNext, onBack, onSubmit }: IMultiStepForm): JSX.Element => {
+const MultiStepForm = ({
+  children,
+  title,
+  onNext,
+  onBack,
+  onSubmit,
+}: IMultiStepForm): JSX.Element => {
   const methods = useForm();
 
   return (
     <div>
       <FormProvider {...methods}>
-        <MultiStepFormBody title="Test title" onNext={onNext} onBack={onBack} onSubmit={onSubmit}>
+        <MultiStepFormBody title={title} onNext={onNext} onBack={onBack} onSubmit={onSubmit}>
           {children}
         </MultiStepFormBody>
       </FormProvider>

@@ -1,23 +1,37 @@
+import Input from 'components/atoms/Input/Input';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 
-const Step2 = () => {
+const Step2 = (): JSX.Element => {
   const { register, errors } = useFormContext();
 
-  const formState = useSelector((state: { multistep: { threestep: string; fourstep: string } }) => {
-    return state.multistep;
-  });
+  const { fourstep, threestep } = useSelector(
+    (state: { multistep: { threestep: string; fourstep: string } }) => {
+      return state.multistep;
+    }
+  );
 
   return (
     <div>
-      <input
+      <Input
+        label="test"
+        placeholder="test"
         name="threestep"
-        defaultValue={formState.threestep}
+        defaultValue={threestep}
         ref={register({ required: 'this is required' })}
+        fullWidth
       />
-      {errors && errors.threestep?.message && 'This one is required'}
-      <input name="fourstep" defaultValue={formState.fourstep} ref={register} />
+      {errors && errors.onestep?.message && 'This one is required'}
+      <Input
+        label="test"
+        placeholder="test"
+        name="fourstep"
+        defaultValue={fourstep}
+        ref={register({ required: 'this is required' })}
+        fullWidth
+      />
+      {errors && errors.twostep?.message && 'This one is required'}
     </div>
   );
 };

@@ -61,7 +61,7 @@ const MultiStepFormBody = ({
 
   return (
     <>
-      {title ? <StyledTitle>test</StyledTitle> : null}
+      {title ? <StyledTitle>{title}</StyledTitle> : null}
       <ProgressBar
         activeStep={activeStep}
         setActiveStep={setActiveStep}
