@@ -3,8 +3,11 @@ export enum Constants {
   minYear = 2000,
   maxYear = 2040,
   gridDays = 42,
-  movementDenominator = 3, // desktop
-  scrollDuration = 1200, // desktop
-  scrollingBorder = 3, // mobile
-  clearBorder = 1, // mobile
+  minMovementX = 4,
+  maxMovementX = 10,
+  movementDenominator = 3,
+  scrollDuration = 1200,
+  scrollingBorder = 1.5,
+  clearBorder = 1,
+  scrollRoad = 2000,
 }
