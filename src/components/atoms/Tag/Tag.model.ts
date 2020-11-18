@@ -1,6 +1,6 @@
 export interface IProps {
-  children: string;
+  children: any;
   bgColor?: string;
   fontColor?: string;
-  forwardRef?: any;
+  getWidth?: any;
 }

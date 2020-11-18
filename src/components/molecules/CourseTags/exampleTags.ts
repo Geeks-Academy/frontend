@@ -39,4 +39,14 @@ export const exampleTags: any = [
     fontColor: 'rgba(112, 0, 0, 0.7)',
     bgColor: 'rgba(242, 125, 125, 0.2)',
   },
+  {
+    label: 'dassada',
+    fontColor: 'rgba(112, 0, 0, 0.7)',
+    bgColor: 'rgba(242, 125, 125, 0.2)',
+  },
+  {
+    label: 'SAsdadafSS',
+    fontColor: 'rgba(112, 0, 0, 0.7)',
+    bgColor: 'rgba(242, 125, 125, 0.2)',
+  },
 ];

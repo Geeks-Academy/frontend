@@ -15,7 +15,8 @@ export const TagsLabel = styled.div`
   color: ${colors.text.Neutral20};
 `;
 
-export const Tags = styled.div`
+export const Tags = styled.div<{ show: boolean }>`
+  visibility: ${({ show }) => (show ? 'visible' : 'hidden')};
   min-width: 300px;
 `;
 export const TagsEndCounter = styled.div`
