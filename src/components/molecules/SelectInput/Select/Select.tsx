@@ -1,6 +1,9 @@
-import React, { MouseEvent, useEffect, useRef, useState } from 'react';
 import { ArrowIcon } from 'assets';
 import { useOutsideClick } from 'hooks';
+import React, { MouseEvent, useEffect, useRef, useState } from 'react';
+import Option from '../Option';
+import { ISingleOption } from '../SelectInput.model';
+import { ISelect } from './Select.model';
 import {
   StyledArrowImage,
   StyledInput,
@@ -9,9 +12,6 @@ import {
   StyledTopWrapper,
   StyledWrapper,
 } from './Select.styled';
-import Option from '../Option';
-import { ISelect } from './Select.model';
-import { ISingleOption } from '../SelectInput.model';
 
 const Select = ({
   isMulti,

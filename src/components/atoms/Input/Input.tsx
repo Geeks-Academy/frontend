@@ -2,7 +2,7 @@ import React from 'react';
 import { IProps } from './Input.model';
 import { Container, InputWrapper, Label, StyledIcon, StyledInput } from './Input.styled';
 
-const Input = React.forwardRef(
+const Input = React.forwardRef<HTMLInputElement, IProps>(
   (
     {
       type = 'text',
