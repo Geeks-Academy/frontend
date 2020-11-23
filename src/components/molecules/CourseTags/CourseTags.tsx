@@ -13,7 +13,6 @@ const CourseTags = ({ tags }: IProps): JSX.Element => {
   const tagsToShow: any = tags.map((tag: { label: string; fontColor: string; bgColor: string }) =>
     tagsWidthSummary < containerWidth ? (
       <Tag bgColor={tag.bgColor} fontColor={tag.fontColor} key={`tag-${tag.label}`}>
-        {console.log('render ')}
         {tag.label}
       </Tag>
     ) : (
@@ -23,14 +22,19 @@ const CourseTags = ({ tags }: IProps): JSX.Element => {
 
   const getWidth = (width: number): void => {
     tagsWidthSummary += width;
-    console.log(`${tagsWidthSummary} tags summary`);
     if (tagsWidthSummary > containerWidth) {
       outTags += 1;
       tagsToShow.pop();
-      console.log(tagsToShow);
       setTimeout(() => {
         setTagsToRender(tagsToShow.slice(0, tagsToShow.length - 1));
-        setMoreTags(outTags);
+        setMoreTags(outTags + 1);
+        setShowTags(true);
+      }, 10);
+    }
+
+    if (tagsWidthSummary <= containerWidth) {
+      setTimeout(() => {
+        setTagsToRender(tagsToShow);
         setShowTags(true);
       }, 10);
     }
