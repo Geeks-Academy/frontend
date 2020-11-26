@@ -1,5 +1,6 @@
 import React from 'react';
-import Tag from 'components/atoms/Tag';
+
+import CourseTags from 'components/molecules/CourseTags';
 import { IProps } from './CourseElement.model';
 import {
   CourseDetails,
@@ -46,9 +47,7 @@ const CourseElement = ({
           <span>Price: {price}$</span>
         </CourseDetails>
         <div>
-          {tags.map((tag) => (
-            <Tag>{tag}</Tag>
-          ))}
+          <CourseTags tags={tags} />
         </div>
       </StyledCourseInfo>
       <ScoreCard>
