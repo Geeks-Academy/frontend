@@ -1,13 +1,13 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4725ff8df1b55b7061301bfe7c638b25",
+    "revision": "b96d81458b64009c4181233e0b07f529",
     "url": "iframe.html"
   },
   {
-    "url": "main.929a592c3acb8ed7a292.bundle.js"
+    "url": "main.cc79a4269a7e1949cf89.bundle.js"
   },
   {
-    "url": "runtime~main.929a592c3acb8ed7a292.bundle.js"
+    "url": "runtime~main.cc79a4269a7e1949cf89.bundle.js"
   },
   {
     "revision": "fdb91faafaab6feb7ea2fd7203d841f2",
@@ -54,6 +54,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "static/media/rating-header-bg.8b0069aa.jpg"
   },
   {
+    "revision": "1d32ffbef9668acacbd7ebc7c3ad6936",
+    "url": "static/media/react-logo.1d32ffbe.svg"
+  },
+  {
     "revision": "33e4ac4258737c137b352eb4ab9a380c",
     "url": "static/media/spinner-left-bracket.33e4ac42.svg"
   },
@@ -78,9 +82,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "static/media/unchecked-option-icon.5162c00a.svg"
   },
   {
-    "url": "vendors~main.929a592c3acb8ed7a292.bundle.js"
+    "url": "vendors~main.cc79a4269a7e1949cf89.bundle.js"
   },
   {
-    "url": "vendors~main.929a592c3acb8ed7a292.bundle.js.LICENSE.txt"
+    "url": "vendors~main.cc79a4269a7e1949cf89.bundle.js.LICENSE.txt"
   }
 ]);
