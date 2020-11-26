@@ -19,4 +19,5 @@ export { ReactComponent as LogoIcon } from './logo-icon.svg';
 export { default as HomePageImg_1 } from './homepage-image-1.svg';
 export { default as listItemIcon } from './listItemIcon.svg';
 export { default as ArrowIcon } from './arrow-icon.svg';
+export { default as ReactLogo } from './react-logo.svg';
 export { default as RatingHeader } from './rating-header-bg.jpg';

@@ -3,4 +3,5 @@ export interface IProps {
   bgColor?: string;
   fontColor?: string;
   getWidth?: any;
+  className?: string;
 }
