@@ -5,6 +5,7 @@ import colors from 'styles/colors';
 
 export const StyledCourseElement = styled.div`
   display: flex;
+  justify-content: space-between;
   max-height: 184px;
 `;
 
