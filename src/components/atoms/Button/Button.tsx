@@ -13,13 +13,13 @@ const Button = ({
   className,
   icon: Icon,
   iconPos = null,
-  type,
+  variant,
 }: IButton): JSX.Element => {
   const content = () => {
     if (Icon && iconPos) {
       return (
         <div>
-          <ButtonIcon type={type} iconPos={iconPos}>
+          <ButtonIcon variant={variant} iconPos={iconPos}>
             <Icon />
           </ButtonIcon>
           <span>{children}</span>
@@ -28,7 +28,7 @@ const Button = ({
     }
     return <span>{children}</span>;
   };
-  switch (type) {
+  switch (variant) {
     case 'outline':
       return (
         <OutlineButton data-testid="outline" className={className} iconPos={iconPos}>
