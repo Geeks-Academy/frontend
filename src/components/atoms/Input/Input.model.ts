@@ -8,5 +8,6 @@ export interface IProps {
   className?: string;
   id?: string;
   ref?: HTMLInputElement;
-  handleOnChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeFunc?: any; // do poprawienia typ
+  debounce?: number;
 }

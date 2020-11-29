@@ -77,7 +77,7 @@ const Select = ({
     <StyledWrapper ref={containerRef}>
       <StyledTopWrapper onClick={toggleList}>
         {isOpenState ? (
-          <StyledInput placeholder={inputPlaceholder} handleOnChange={filterOptions} />
+          <StyledInput placeholder={inputPlaceholder} onChangeFunc={filterOptions} />
         ) : (
           <StyledSelectCaption id="selectCaption">{selectCaption}</StyledSelectCaption>
         )}

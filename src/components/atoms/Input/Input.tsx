@@ -1,6 +1,7 @@
 import React from 'react';
 import { InputWrapper, Label, StyledIcon, StyledInput } from './Input.styled';
 import { IProps } from './Input.model';
+import useDebounce from '../../../hooks/useDebounce/useDebounce';
 
 const Input = ({
   type = 'text',
@@ -9,12 +10,21 @@ const Input = ({
   ref,
   className,
   placeholder,
-  handleOnChange,
+  onChangeFunc,
+  debounce,
   id,
   ...props
 }: IProps): JSX.Element => {
   const inputLabelId = label && id ? `${id}-label` : undefined;
   const renderLabel = () => label && <Label htmlFor={inputLabelId}>{label}</Label>;
+  const debounceEffect = useDebounce();
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>, func: () => void) => {
+    if (!func) {
+      return;
+    }
+    debounce ? debounceEffect(func, debounce) : func();
+  };
+
   return (
     <InputWrapper className={className}>
       {renderLabel()}
@@ -23,7 +33,7 @@ const Input = ({
         isIcon={!!Icon}
         type={type}
         placeholder={placeholder}
-        onChange={handleOnChange}
+        onChange={(e) => handleOnChange(e, onChangeFunc)}
         {...props}
       />
       {Icon && (
