@@ -13,9 +13,14 @@ export { ReactComponent as SpinnerLeftBracketSVG } from './spinner-left-bracket.
 export { ReactComponent as SpinnerRightBracketSVG } from './spinner-right-bracket.svg';
 export { ReactComponent as CalendarIcon } from './calendar-icon.svg';
 export { ReactComponent as ArrowIconComponent } from './arrow-icon.svg';
-
+export { ReactComponent as LogoText } from './logo-text.svg';
+export { ReactComponent as LogoIcon } from './logo-icon.svg';
+export { ReactComponent as MultistepformNext } from './multistepform-next.svg';
+export { ReactComponent as MultistepformSubmit } from './multistepform-submit.svg';
 // Exports for src Imgs
 
 export { default as HomePageImg_1 } from './homepage-image-1.svg';
 export { default as listItemIcon } from './listItemIcon.svg';
 export { default as ArrowIcon } from './arrow-icon.svg';
+export { default as ReactLogo } from './react-logo.svg';
+export { default as RatingHeader } from './rating-header-bg.jpg';

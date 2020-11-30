@@ -2,49 +2,49 @@ import React from 'react';
 import { Container, InputWrapper, Label, StyledIcon, StyledInput } from './Input.styled';
 import { IProps } from './Input.model';
 
-const Input = ({
-  type = 'text',
-  icon: Icon,
-  label,
-  inputRef,
-  min,
-  max,
-  value,
-  pattern,
-  defaultValue,
-  className,
-  placeholder,
-  handleOnChange,
-  handleOnFocus,
-  ...props
-}: IProps): JSX.Element => {
-  const renderLabel = () => label && <Label>{label}</Label>;
-  return (
-    <Container className={className}>
-      {renderLabel()}
-      <InputWrapper>
-        <StyledInput
-          isIcon={!!Icon}
-          type={type}
-          min={min}
-          max={max}
-          ref={inputRef}
-          pattern={pattern}
-          value={value}
-          defaultValue={defaultValue}
-          placeholder={placeholder}
-          onFocus={handleOnFocus}
-          onChange={handleOnChange}
-          {...props}
-        />
-        {Icon && (
-          <StyledIcon data-testid="icon">
-            <Icon />
-          </StyledIcon>
-        )}
-      </InputWrapper>
-    </Container>
-  );
-};
+const Input = React.forwardRef<HTMLInputElement, IProps>(
+  (
+    {
+      type = 'text',
+      icon: Icon,
+      label,
+      className,
+      placeholder,
+      onChange,
+      fullWidth,
+      name,
+      id,
+      error,
+      ...props
+    }: IProps,
+    ref
+  ): JSX.Element => {
+    const inputLabelId = label && id && `${id}-label`;
+
+    return (
+      <Container className={className} fullWidth={fullWidth}>
+        <InputWrapper fullWidth={fullWidth}>
+          {label && <Label htmlFor={inputLabelId}>{label}</Label>}
+          <StyledInput
+            id={inputLabelId}
+            isIcon={!!Icon}
+            type={type}
+            name={name}
+            placeholder={placeholder}
+            onChange={onChange}
+            ref={ref}
+            {...props}
+          />
+          {Icon && (
+            <StyledIcon data-testid="icon">
+              <Icon />
+            </StyledIcon>
+          )}
+        </InputWrapper>
+        {error && console.log(error)}
+      </Container>
+    );
+  }
+);
 
 export default Input;

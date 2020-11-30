@@ -2,22 +2,23 @@ import styled from 'styled-components';
 import colors from 'styles/colors';
 import typography from 'styles/typography';
 
-export const Container = styled.div`
-  max-width: 328px;
+export const Container = styled.div<{ fullWidth?: boolean }>`
+  max-width: ${({ fullWidth }) => (fullWidth ? '' : '328px')};
 `;
 
-export const InputWrapper = styled.div`
+export const InputWrapper = styled.div<{ fullWidth?: boolean }>`
   position: relative;
   display: flex;
   align-items: center;
   padding: 14px 14px 14px 24px;
+  max-width: ${({ fullWidth }) => (fullWidth ? '' : '328px')};
   height: 52px;
   border: 1px solid ${colors.background.Neutral80};
   border-radius: 4px;
   background: ${colors.background.NeutralWhite};
 `;
 
-export const StyledInput = styled.input<{ isIcon: boolean }>`
+export const StyledInput = styled.input<{ isIcon?: boolean }>`
   outline: 0;
   width: ${({ isIcon }) => (isIcon ? '90%' : '100%')};
   ${typography.body.L}
@@ -36,7 +37,13 @@ export const StyledIcon = styled.div`
 `;
 
 export const Label = styled.label`
-  ${typography.body.M}
-  margin-bottom: 4px;
-  color: ${colors.background.Neutral20};
+  ${typography.body.XS}
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 0 8px;
+  background: ${colors.background.NeutralWhite};
+  transform: translate(16px, -8px) scale(1);
+  color: ${colors.background.Neutral40};
 `;
