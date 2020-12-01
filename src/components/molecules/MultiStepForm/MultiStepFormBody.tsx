@@ -16,12 +16,12 @@ const MultiStepFormBody = ({
   onCancel,
   title,
 }: IMultiStepForm): JSX.Element => {
-  const steps = _.toArray(children);
-  const numberOfSteps = _.range(steps.length);
-  const lastStep = numberOfSteps[numberOfSteps.length - 1];
-
   const { trigger, watch, errors, clearErrors } = useFormContext();
-  const { currentStep, goForward, goBack } = useFormProgress();
+  const { currentStep, goForward, goBack, goTo } = useFormProgress();
+
+  const lastStep = React.Children.count(children) - 1;
+  const steps = React.Children.toArray(children);
+  const amountOfSteps = Array.from(Array(steps.length).keys());
 
   const formData = watch();
 
@@ -62,7 +62,7 @@ const MultiStepFormBody = ({
   return (
     <>
       {title && <StyledTitle>{title}</StyledTitle>}
-      <ProgressBar activeStep={currentStep} steps={numberOfSteps} />
+      <ProgressBar activeStep={currentStep} steps={amountOfSteps} changeStep={goTo} />
       <StyledForm>{steps[currentStep]}</StyledForm>
       <ActionButtons
         lastStep={lastStep}

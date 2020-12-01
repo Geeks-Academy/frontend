@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { useFormProgress } from 'hooks';
 import { IProgressBar } from './ProgressBar.model';
 import {
   StyledProgressBar,
@@ -8,12 +7,10 @@ import {
   StyledProgressBarItemWrapper,
 } from './ProgressBar.styled';
 
-const ProgressBar = ({ steps, activeStep }: IProgressBar): JSX.Element => {
-  const { goTo } = useFormProgress();
-
+const ProgressBar = ({ steps, activeStep, changeStep }: IProgressBar): JSX.Element => {
   const onChange = (step: number) => () => {
     if (activeStep > step) {
-      goTo(step);
+      changeStep(step);
     }
   };
 
