@@ -1,7 +1,7 @@
 import { IProps as Tag } from 'components/atoms/Tag/Tag.model';
 
 export interface IProps {
-  id?: number;
+  id?: number | string;
   description: string;
   image: string;
   author: string;
