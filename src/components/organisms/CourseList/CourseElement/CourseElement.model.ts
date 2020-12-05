@@ -10,6 +10,5 @@ export interface IProps {
   score: number;
   level: 'Junior' | 'Mid' | 'Senior';
   tags: Tag[];
-  recommendation: string;
-  className?: string;
+  recommendation?: boolean;
 }
