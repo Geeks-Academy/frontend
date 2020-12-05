@@ -2,19 +2,23 @@ import styled from 'styled-components';
 import colors from 'styles/colors';
 import typography from 'styles/typography';
 
-export const InputWrapper = styled.div`
+export const Container = styled.div<{ fullWidth?: boolean }>`
+  max-width: ${({ fullWidth }) => (fullWidth ? '' : '328px')};
+`;
+
+export const InputWrapper = styled.div<{ fullWidth?: boolean }>`
   position: relative;
   display: flex;
   align-items: center;
   padding: 14px 14px 14px 24px;
-  max-width: 328px;
+  max-width: ${({ fullWidth }) => (fullWidth ? '' : '328px')};
   height: 52px;
   border: 1px solid ${colors.background.Neutral80};
   border-radius: 4px;
   background: ${colors.background.NeutralWhite};
 `;
 
-export const StyledInput = styled.input<{ isIcon: boolean }>`
+export const StyledInput = styled.input<{ isIcon?: boolean }>`
   outline: 0;
   width: ${({ isIcon }) => (isIcon ? '90%' : '100%')};
   ${typography.body.L}
