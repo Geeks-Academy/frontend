@@ -17,7 +17,7 @@ import {
 
 const Home = (): JSX.Element => {
   const handleClick = async () => {
-    const a = await fetch('http://auth.programmers.only/auth/github');
+    const a = await fetch('auth.programmers.only/auth/github');
     const b = await a.json();
     console.log(b);
   };
