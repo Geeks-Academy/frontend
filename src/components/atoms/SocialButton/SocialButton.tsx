@@ -7,7 +7,7 @@ export interface IProps {
   logo: Logo;
   userRole: Role;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const SocialButton = ({ className, logo, userRole, onClick }: IProps): JSX.Element => {
