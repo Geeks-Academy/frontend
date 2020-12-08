@@ -1,31 +1,19 @@
-import React, { useCallback, useState } from 'react';
-import { usePaginatedQuery } from 'react-query';
-import axios from 'axios';
-import Pagination from './Pagination';
+import React, { useState } from 'react';
+import useCoursesList from 'hooks/useCoursesList';
+import Pagination from 'components/molecules/Pagination';
+import { ICurrentPage } from './PaginationPage.model';
 
-type PageNumber = number;
+const PaginationPage = (): JSX.Element => {
+  const [page, setPage] = useState<ICurrentPage>(1);
 
-const ParentComponent = (): JSX.Element => {
-  const [page, setPage] = useState<PageNumber>(1);
+  const { isLoading, isError, error, resolvedData, latestData, isFetching } = useCoursesList(page);
 
-  const API = `https://api.instantwebtools.net/v1/passenger?page=`;
-
-  const fetchProjects = useCallback(
-    async (key, p = 0) => {
-      const { data } = await axios.get(`${API}${p}&size=10`);
-      return data;
-    },
-    [API]
-  );
-
-  const { isLoading, isError, error, resolvedData, latestData, isFetching } = usePaginatedQuery(
-    ['data', page],
-    fetchProjects
-  );
-
+  /// how to type this Error correctly?
   function isErr(err: unknown): err is Error {
     return err instanceof Error;
   }
+  // data from request
+  // console.log(resolvedData);
 
   return (
     <div
@@ -54,4 +42,4 @@ const ParentComponent = (): JSX.Element => {
   );
 };
 
-export default ParentComponent;
+export default PaginationPage;

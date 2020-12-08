@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import usePaginationControl from 'hooks/usePaginationControl';
 import { StyledList } from './Pagination.styled';
 import PaginationButton from './PaginationButton';
 import { IPagination, IVisibleButtons } from './Pagination.model';
@@ -14,14 +15,9 @@ const Pagination = ({
 
   /// oddNumberOfButtons = temporary variable - in the future should be set by width of window
   const oddNumberOfButtons = 3;
+  const FIRST_PAGE = 1;
 
-  function setPrevPage(lastPage: number) {
-    return Math.max(lastPage - 1, 0);
-  }
-
-  function setNextPage(lastPage: number) {
-    return !latestData ? lastPage : lastPage + 1;
-  }
+  const { setFirstPage, setPrevPage, setNextPage, setLastPage } = usePaginationControl();
 
   function createArrayOfButtons(currentPage: number, totalPages: number) {
     const SCOPE = 1;
@@ -60,12 +56,13 @@ const Pagination = ({
   function renderButtonsOfNumbers(currentPage: number) {
     return visibleButtonsOfNumbers.map((numberOfButton: number) => {
       const isCurrent = numberOfButton === currentPage;
+      const isDisable = numberOfButton > resolvedData.totalPages;
       return (
         <li key={numberOfButton}>
           <PaginationButton
             type="button"
             onClick={() => setPage(numberOfButton)}
-            disabled={numberOfButton > resolvedData.totalPages}
+            disabled={isDisable}
             isCurrent={isCurrent}
           >
             {numberOfButton}
@@ -81,7 +78,7 @@ const Pagination = ({
         <StyledList>
           <PaginationButton
             type="button"
-            onClick={() => setPage(1)}
+            onClick={() => setPage(setFirstPage(FIRST_PAGE))}
             disabled={!latestData || page === 1}
           >
             First Page
@@ -103,7 +100,7 @@ const Pagination = ({
           </PaginationButton>
           <PaginationButton
             type="button"
-            onClick={() => setPage(latestData.totalPages)}
+            onClick={() => setPage(setLastPage(latestData.totalPages))}
             disabled={!latestData || page === resolvedData.totalPages}
           >
             Last Page

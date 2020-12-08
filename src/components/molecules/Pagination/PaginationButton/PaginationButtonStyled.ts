@@ -3,8 +3,8 @@ import colors from 'styles/colors';
 import typography from 'styles/typography';
 
 export const StyledPaginationButton = styled.button<{ isCurrent?: boolean }>`
-  width: 140px;
-  height: 60px;
+  width: 100px;
+  height: 50px;
   ${typography.body.bold.L}
   border: 2px solid black;
   background-color: ${colors.background.NeutralWhite};

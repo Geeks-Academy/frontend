@@ -5,7 +5,7 @@ import Spinner from 'components/atoms/Spinner';
 import { LoginPage } from 'Routes/helpers';
 import PrivateRoute from 'Routes/PrivateRoute';
 import ReduxTestComponent from 'redux/ReduxTestComponent/ReduxTestComponent';
-import { ParentComponent as PaginationPage } from 'components/molecules/Pagination';
+import PaginationPage from 'pages/PaginationPage';
 
 const Routes = (): JSX.Element => {
   return (
