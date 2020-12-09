@@ -17,7 +17,13 @@ import {
 
 const Home = (): JSX.Element => {
   const handleClick = async () => {
-    const a4 = await fetch('http://auth.programmers.only/auth/github');
+    const a4 = await fetch('http://auth.programmers-only.com/auth/github');
+    const b4 = await a4.json();
+    console.log(b4);
+  };
+
+  const handleClickHttps = async () => {
+    const a4 = await fetch('https://auth.programmers-only.com/auth/github');
     const b4 = await a4.json();
     console.log(b4);
   };
@@ -32,7 +38,7 @@ const Home = (): JSX.Element => {
             <StyledParagraph>{data.paragraph}</StyledParagraph>
             <StyledButtonsWrapper>
               <SocialButton logo="github" userRole="developer" onClick={handleClick} />
-              <SocialButton logo="google" userRole="non-developer" onClick={handleClick} />
+              <SocialButton logo="google" userRole="non-developer" onClick={handleClickHttps} />
             </StyledButtonsWrapper>
           </StyledContainer>
           <StyledHomeImg src={HomePageImg_1} alt="Register" />
