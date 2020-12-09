@@ -10,7 +10,7 @@ RUN npm install && mkdir /react-ui && mv ./node_modules ./react-ui
 WORKDIR /react-ui
 
 COPY . .
-
+EXPOSE 80
 # Build the project and copy the files
 RUN npm run start
 
