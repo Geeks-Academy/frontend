@@ -5,7 +5,7 @@
             "name": "frontend",
             "image": "",
             "cpu": 10,
-            "memory": 128,
+            "memoryReservation": 128,
             "portMappings": [
                 {
                     "containerPort": 80,
