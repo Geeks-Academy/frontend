@@ -14,4 +14,4 @@ RUN npm install
 RUN npm install serve -g
 # Build app
 RUN npm run build
-ENTRYPOINT ["serve", "-s", "build"]
+ENTRYPOINT ["serve", "-l", "80", "-s", "build"]
