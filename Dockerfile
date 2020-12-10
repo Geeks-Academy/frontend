@@ -1,5 +1,5 @@
 # Create image based on the official Node 14 alpine image from dockerhub
-FROM node:14-alpine
+FROM node:14
 # Create a directory where our app will be placed
 RUN mkdir -p /usr/src/app
 # Change directory so that our commands run inside this new directory
