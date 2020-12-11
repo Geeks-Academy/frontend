@@ -1,28 +1,27 @@
 import React from 'react';
+import useDebounce from 'hooks/useDebounce/useDebounce';
 import { InputWrapper, Label, StyledIcon, StyledInput } from './Input.styled';
 import { IProps } from './Input.model';
-import useDebounce from '../../../hooks/useDebounce/useDebounce';
 
 const Input = ({
   type = 'text',
   icon: Icon,
   label,
-  ref,
   className,
   placeholder,
-  onChangeFunc,
+  onChange,
   debounce,
   id,
   ...props
 }: IProps): JSX.Element => {
+  const debounceEffect = useDebounce();
   const inputLabelId = label && id ? `${id}-label` : undefined;
   const renderLabel = () => label && <Label htmlFor={inputLabelId}>{label}</Label>;
-  const debounceEffect = useDebounce();
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>, func: () => void) => {
-    if (!func) {
+  const handleOnChange = (action: () => void) => {
+    if (!action) {
       return;
     }
-    debounce ? debounceEffect(func, debounce) : func();
+    debounce ? debounceEffect(action, debounce) : action();
   };
 
   return (
@@ -33,7 +32,7 @@ const Input = ({
         isIcon={!!Icon}
         type={type}
         placeholder={placeholder}
-        onChange={(e) => handleOnChange(e, onChangeFunc)}
+        onChange={() => handleOnChange(onChange)}
         {...props}
       />
       {Icon && (

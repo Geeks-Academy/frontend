@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useDebounce = <T>() => {
+const useDebounce = () => {
   const [typingTimeout, setTypingTimeout] = useState<number>();
   return (action: () => void, waitTime: number) => {
     clearTimeout(typingTimeout);

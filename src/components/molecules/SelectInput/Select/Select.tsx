@@ -68,7 +68,6 @@ const Select = ({
       setIsOpenState(!isOpenState);
     }
   };
-
   useEffect(() => {
     onChange(selectedOptions);
   }, [selectedOptions, onChange]);
@@ -77,7 +76,7 @@ const Select = ({
     <StyledWrapper ref={containerRef}>
       <StyledTopWrapper onClick={toggleList}>
         {isOpenState ? (
-          <StyledInput placeholder={inputPlaceholder} onChangeFunc={filterOptions} />
+          <StyledInput placeholder={inputPlaceholder} onChange={filterOptions} />
         ) : (
           <StyledSelectCaption id="selectCaption">{selectCaption}</StyledSelectCaption>
         )}

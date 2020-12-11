@@ -1,13 +1,10 @@
-type InputType = 'text' | 'password' | 'email' | 'date' | 'number';
+import React from 'react';
 
-export interface IProps {
-  type?: InputType;
-  placeholder: string;
+export interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  fullWidth?: boolean;
   label?: string;
-  className?: string;
-  id?: string;
-  ref?: HTMLInputElement;
-  onChangeFunc?: any; // do poprawienia typ
+  error?: string;
+  onChange?: any; // todo: add property type
   debounce?: number;
 }
