@@ -1,40 +1,59 @@
 import React, { useState } from 'react';
-import useCoursesList from 'hooks/useCoursesList';
 import Pagination from 'components/molecules/Pagination';
-import { ICurrentPage } from './PaginationPage.model';
+import Spinner from 'components/atoms/Spinner';
+import { useListCoursesQuery } from 'redux/services/courses';
+import { ICourse, ICurrentPage } from './PaginationPage.model';
+
+// Pagination example on /pagiantion route
 
 const PaginationPage = (): JSX.Element => {
   const [page, setPage] = useState<ICurrentPage>(1);
+  const { data: courses, isLoading, isFetching } = useListCoursesQuery(page);
 
-  const { isLoading, isError, error, resolvedData, latestData, isFetching } = useCoursesList(page);
+  // what we got with this hook
+  // console.log(useListCoursesQuery(page));
 
-  /// how to type this Error correctly?
-  function isErr(err: unknown): err is Error {
-    return err instanceof Error;
+  if (!courses?.data) {
+    return <div>No posts :(</div>;
   }
-  // data from request
-  // console.log(resolvedData);
+
+  // isFetching flag can show what data was fetched. If you go to the next page isFetching is true and a new request is running but when you go to the previous page data was saved and isFeatching flag is false and set "This list is fetched"
+
+  // console.log(
+  //   'Current data from first item of array is =>',
+  //   courses.data.map((item) => item.name)[0]
+  // );
+  // console.log('isFetchting =>', isFetching);
 
   return (
     <div
       style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '800px' }}
     >
-      <span style={{ marginTop: '50px', height: '50px' }}>Current Page: {page}</span>
-      {isFetching ? <span> Featch...</span> : null}
+      <span style={{ marginTop: '50px', height: '50px' }}>
+        Current Page: {page} / {courses.totalPages}
+      </span>
       {isLoading ? (
-        <div style={{ height: '400px' }}>Loading...</div>
+        <div style={{ height: '400px' }}>
+          <Spinner />
+        </div>
       ) : (
         <ul style={{ height: '400px' }}>
-          {resolvedData.data.map((item: any) => (
+          {courses.data.map((item: ICourse) => (
             <div key={item.name}> {item.name}</div>
           ))}
         </ul>
       )}
-      {isError && <div>Error: {isErr(error) ? 'is wrong' : null}</div>}
+      {isFetching ? (
+        <span style={{ height: '60px' }}>
+          <Spinner />
+        </span>
+      ) : (
+        <span style={{ height: '60px' }}>This list is fetched</span>
+      )}
       <Pagination
         isLoading={isLoading}
-        resolvedData={resolvedData}
-        latestData={latestData}
+        isFetching={isFetching}
+        courses={courses}
         page={page}
         setPage={setPage}
       />

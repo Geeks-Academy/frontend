@@ -6,15 +6,17 @@ import { IPagination, IVisibleButtons } from './Pagination.model';
 
 const Pagination = ({
   isLoading,
-  resolvedData,
-  latestData,
+  courses,
   page,
   setPage,
+  isFetching,
 }: IPagination): JSX.Element => {
   const [visibleButtonsOfNumbers, setVisibleButtonsOfNumbers] = useState<IVisibleButtons>([]);
 
-  /// oddNumberOfButtons = temporary variable - in the future should be set by width of window
-  const oddNumberOfButtons = 3;
+  // oddNumberOfButtons = temporary variable - in the future should be set by width of window
+  const oddNumberOfButtons = 5;
+
+  //  immutable varialbe
   const FIRST_PAGE = 1;
 
   const { setFirstPage, setPrevPage, setNextPage, setLastPage } = usePaginationControl();
@@ -44,19 +46,20 @@ const Pagination = ({
     function doesArrayConsistNumber(oneOfVisibleNumbers: number) {
       return visibleButtonsOfNumbers.includes(oneOfVisibleNumbers);
     }
-
     if (!isLoading && !doesArrayConsistNumber(page))
-      setVisibleButtonsOfNumbers(createArrayOfButtons(page, resolvedData.totalPages));
-  }, [page, isLoading, resolvedData, visibleButtonsOfNumbers]);
+      setVisibleButtonsOfNumbers(createArrayOfButtons(page, courses.totalPages));
+  }, [page, isLoading, courses, visibleButtonsOfNumbers]);
 
   useEffect(() => {
     createButtonsOfNumbers();
-  }, [createButtonsOfNumbers, visibleButtonsOfNumbers]);
+    // if (isFetching) console.log('Use effect with isFetching');
+    // if (!isFetching) console.log('Use effect without isFetching');
+  }, [createButtonsOfNumbers, visibleButtonsOfNumbers, isFetching]);
 
   function renderButtonsOfNumbers(currentPage: number) {
     return visibleButtonsOfNumbers.map((numberOfButton: number) => {
       const isCurrent = numberOfButton === currentPage;
-      const isDisable = numberOfButton > resolvedData.totalPages;
+      const isDisable = numberOfButton > courses.totalPages;
       return (
         <li key={numberOfButton}>
           <PaginationButton
@@ -79,14 +82,14 @@ const Pagination = ({
           <PaginationButton
             type="button"
             onClick={() => setPage(setFirstPage(FIRST_PAGE))}
-            disabled={!latestData || page === 1}
+            disabled={page === 1}
           >
             First Page
           </PaginationButton>
           <PaginationButton
             type="button"
             onClick={() => setPage(setPrevPage(page))}
-            disabled={!latestData || page === 1}
+            disabled={page === 1}
           >
             Previous Page
           </PaginationButton>
@@ -94,14 +97,14 @@ const Pagination = ({
           <PaginationButton
             type="button"
             onClick={() => setPage(setNextPage(page))}
-            disabled={!latestData || page === resolvedData.totalPages}
+            disabled={page === courses.totalPages}
           >
             Next Page
           </PaginationButton>
           <PaginationButton
             type="button"
-            onClick={() => setPage(setLastPage(latestData.totalPages))}
-            disabled={!latestData || page === resolvedData.totalPages}
+            onClick={() => setPage(setLastPage(courses.totalPages))}
+            disabled={page === courses.totalPages}
           >
             Last Page
           </PaginationButton>
@@ -110,5 +113,4 @@ const Pagination = ({
     </>
   );
 };
-
 export default Pagination;

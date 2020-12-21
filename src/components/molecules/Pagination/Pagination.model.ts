@@ -10,8 +10,8 @@ export interface IPagination {
   page: number;
   setPage: (v: number) => void;
   isLoading: boolean;
-  resolvedData: IRequest;
-  latestData: IRequest;
+  isFetching: boolean;
+  courses: IRequest;
 }
 
 export type IVisibleButtons = Array<number>;
