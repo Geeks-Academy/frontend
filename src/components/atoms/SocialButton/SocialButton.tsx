@@ -7,12 +7,13 @@ export interface IProps {
   logo: Logo;
   userRole: Role;
   className?: string;
+  onClick?: () => void;
 }
 
-const SocialButton = ({ className, logo, userRole }: IProps): JSX.Element => {
+const SocialButton = ({ className, logo, userRole, onClick }: IProps): JSX.Element => {
   return (
     <div>
-      <SocialButtonStyled className={className}>
+      <SocialButtonStyled className={className} onClick={onClick}>
         {logo === DefaultLogo.GITHUB && <GithubLogo />}
         {logo === DefaultLogo.GOOGLE && <GoogleLogo />}
         {userRole === 'developer' && (
