@@ -9,8 +9,8 @@ const useInterval = (callback: () => void, delay: number | null): void => {
 
   useEffect((): (() => void) | undefined => {
     const tick = () => {
-      if (typeof savedCallback?.current !== 'undefined') {
-        savedCallback?.current();
+      if (savedCallback.current) {
+        savedCallback.current();
       }
     };
     if (delay !== null) {
