@@ -1,47 +1,58 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import useDebounce from 'hooks/useDebounce/useDebounce';
-import { InputWrapper, Label, StyledIcon, StyledInput } from './Input.styled';
+import { Container, InputWrapper, Label, StyledIcon, StyledInput } from './Input.styled';
 import { IProps } from './Input.model';
 
-const Input = ({
-  type = 'text',
-  icon: Icon,
-  label,
-  className,
-  placeholder,
-  onChange,
-  debounce,
-  id,
-  ...props
-}: IProps): JSX.Element => {
-  const debounceEffect = useDebounce();
-  const inputLabelId = label && id ? `${id}-label` : undefined;
-  const renderLabel = () => label && <Label htmlFor={inputLabelId}>{label}</Label>;
-  const handleOnChange = (action: () => void) => {
-    if (!action) {
-      return;
-    }
-    debounce ? debounceEffect(action, debounce) : action();
-  };
+const Input = forwardRef<HTMLInputElement, IProps>(
+  (
+    {
+      type = 'text',
+      icon: Icon,
+      label,
+      className,
+      placeholder,
+      onChange,
+      fullWidth,
+      error,
+      name,
+      debounce,
+      id,
+      ...props
+    }: IProps,
+    ref
+  ): JSX.Element => {
+    const debounceEffect = useDebounce();
+    const inputLabelId = label && id ? `${id}-label` : undefined;
+    const handleOnChange = (action: () => void) => {
+      if (!action) {
+        return;
+      }
+      debounce ? debounceEffect(action, debounce) : action();
+    };
 
-  return (
-    <InputWrapper className={className}>
-      {renderLabel()}
-      <StyledInput
-        id={inputLabelId}
-        isIcon={!!Icon}
-        type={type}
-        placeholder={placeholder}
-        onChange={() => handleOnChange(onChange)}
-        {...props}
-      />
-      {Icon && (
-        <StyledIcon data-testid="icon">
-          <Icon />
-        </StyledIcon>
-      )}
-    </InputWrapper>
-  );
-};
+    return (
+      <Container className={className} fullWidth={fullWidth}>
+        <InputWrapper fullWidth={fullWidth}>
+          {label && <Label htmlFor={inputLabelId}>{label}</Label>}
+          <StyledInput
+            id={inputLabelId}
+            isIcon={!!Icon}
+            type={type}
+            placeholder={placeholder}
+            onChange={() => handleOnChange(onChange)}
+            ref={ref}
+            {...props}
+          />
+          {Icon && (
+            <StyledIcon data-testid="icon">
+              <Icon />
+            </StyledIcon>
+          )}
+        </InputWrapper>
+        {error && console.log(error)}
+      </Container>
+    );
+  }
+);
 
 export default Input;
