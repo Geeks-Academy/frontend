@@ -5,6 +5,7 @@ import Spinner from 'components/atoms/Spinner';
 import { LoginPage } from 'Routes/helpers';
 import PrivateRoute from 'Routes/PrivateRoute';
 import ReduxTestComponent from 'redux/ReduxTestComponent/ReduxTestComponent';
+import PaginationPage from 'pages/PaginationPage';
 
 const Routes = (): JSX.Element => {
   return (
@@ -25,6 +26,9 @@ const Routes = (): JSX.Element => {
         <PrivateRoute path="/protected" exact>
           <Spinner />
         </PrivateRoute>
+        <Route path="/pagination" exact>
+          <PaginationPage />
+        </Route>
       </Switch>
     </>
   );
