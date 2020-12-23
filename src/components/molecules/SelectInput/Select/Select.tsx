@@ -68,7 +68,6 @@ const Select = ({
       setIsOpenState(!isOpenState);
     }
   };
-
   useEffect(() => {
     onChange(selectedOptions);
   }, [selectedOptions, onChange]);

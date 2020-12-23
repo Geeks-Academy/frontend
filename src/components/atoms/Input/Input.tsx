@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
+import useDebounce from 'hooks/useDebounce/useDebounce';
 import { Container, InputWrapper, Label, StyledIcon, StyledInput } from './Input.styled';
 import { IProps } from './Input.model';
 
-const Input = React.forwardRef<HTMLInputElement, IProps>(
+const Input = forwardRef<HTMLInputElement, IProps>(
   (
     {
       type = 'text',
@@ -12,13 +13,21 @@ const Input = React.forwardRef<HTMLInputElement, IProps>(
       placeholder,
       onChange,
       fullWidth,
-      name,
-      id,
       error,
+      name,
+      debounce,
+      id,
       ...props
     }: IProps,
     ref
   ): JSX.Element => {
+    const debounceEffect = useDebounce();
+    const handleOnChange = (action: () => void) => {
+      if (!action) {
+        return;
+      }
+      debounce ? debounceEffect(action, debounce) : action();
+    };
     const inputLabelId = label && id && `${id}-label`;
 
     return (
@@ -29,9 +38,9 @@ const Input = React.forwardRef<HTMLInputElement, IProps>(
             id={inputLabelId}
             isIcon={!!Icon}
             type={type}
-            name={name}
             placeholder={placeholder}
-            onChange={onChange}
+            onChange={() => handleOnChange(onChange)}
+            name={name}
             ref={ref}
             {...props}
           />
