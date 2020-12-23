@@ -1,6 +1,7 @@
 import { IProps as Tag } from 'components/atoms/Tag/Tag.model';
 
 export interface IProps {
+  id?: number | string;
   description: string;
   image: string;
   author: string;
@@ -9,6 +10,5 @@ export interface IProps {
   score: number;
   level: 'Junior' | 'Mid' | 'Senior';
   tags: Tag[];
-  recommendation: string;
-  className?: string;
+  recommendation?: boolean;
 }

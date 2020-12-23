@@ -10,10 +10,11 @@ const CourseTags = ({ tags }: IProps): JSX.Element => {
   const [moreTags, setMoreTags] = useState(outTags);
   const [showTags, setShowTags] = useState(false);
   const [tagsToRender, setTagsToRender] = useState<any>(null);
-  const tagsToShow: any = tags.map((tag: { label: string; fontColor: string; bgColor: string }) =>
+
+  const tagsToShow: any = tags.map((tag) =>
     tagsWidthSummary < containerWidth ? (
-      <Tag bgColor={tag.bgColor} fontColor={tag.fontColor} key={`tag-${tag.label}`}>
-        {tag.label}
+      <Tag bgColor={tag.bgColor} fontColor={tag.fontColor} key={`tag-${tag.children}`}>
+        {tag.children}
       </Tag>
     ) : (
       <>{console.log('Add to +more counter')}</>
@@ -40,16 +41,16 @@ const CourseTags = ({ tags }: IProps): JSX.Element => {
     }
   };
   useEffect(() => {
-    const tagsToCount = tags.map((tag: { label: string; fontColor: string; bgColor: string }) =>
+    const tagsToCount = tags.map((tag) =>
       tagsWidthSummary < containerWidth ? (
         <Tag
           getWidth={getWidth}
           bgColor={tag.bgColor}
           fontColor={tag.fontColor}
-          key={`tag-${tag.label}`}
+          key={`tag-${tag.children}`}
         >
           {console.log('render')}
-          {tag.label}
+          {tag.children}
         </Tag>
       ) : (
         <>{console.log('Add to +more counter')}</>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import typography from 'styles/typography';
 import colors from 'styles/colors';
-import { ButtonType, IconPosition } from './Button.model';
+import { ButtonVariant, IconPosition } from './Button.model';
 
 const BaseButton = styled.button<{ iconPos: IconPosition }>`
   box-sizing: border-box;
@@ -78,8 +78,8 @@ const setIconMargin = (pos: IconPosition) => {
   }
 };
 
-const setBackgroundColor = (type: ButtonType): string => {
-  switch (type) {
+const setBackgroundColor = (variant: ButtonVariant): string => {
+  switch (variant) {
     case 'fill':
       return colors.background.NeutralWhite;
     case 'outline':
@@ -91,14 +91,14 @@ const setBackgroundColor = (type: ButtonType): string => {
   }
 };
 
-export const ButtonIcon = styled.div<{ type: ButtonType; iconPos: IconPosition }>`
+export const ButtonIcon = styled.div<{ variant: ButtonVariant; iconPos: IconPosition }>`
   margin: ${({ iconPos }) => setIconMargin(iconPos)};
   height: 24px;
   svg {
     width: 24px;
     height: 24px;
     path {
-      fill: ${({ type }) => setBackgroundColor(type)};
+      fill: ${({ variant }) => setBackgroundColor(variant)};
     }
   }
 `;

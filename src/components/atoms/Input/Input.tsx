@@ -22,13 +22,13 @@ const Input = forwardRef<HTMLInputElement, IProps>(
     ref
   ): JSX.Element => {
     const debounceEffect = useDebounce();
-    const inputLabelId = label && id ? `${id}-label` : undefined;
     const handleOnChange = (action: () => void) => {
       if (!action) {
         return;
       }
       debounce ? debounceEffect(action, debounce) : action();
     };
+    const inputLabelId = label && id && `${id}-label`;
 
     return (
       <Container className={className} fullWidth={fullWidth}>
@@ -40,6 +40,7 @@ const Input = forwardRef<HTMLInputElement, IProps>(
             type={type}
             placeholder={placeholder}
             onChange={() => handleOnChange(onChange)}
+            name={name}
             ref={ref}
             {...props}
           />

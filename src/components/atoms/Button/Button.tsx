@@ -13,13 +13,14 @@ const Button = ({
   className,
   icon: Icon,
   iconPos = null,
-  type,
+  onClick,
+  variant,
 }: IButton): JSX.Element => {
   const content = () => {
     if (Icon && iconPos) {
       return (
         <div>
-          <ButtonIcon type={type} iconPos={iconPos}>
+          <ButtonIcon variant={variant} iconPos={iconPos}>
             <Icon />
           </ButtonIcon>
           <span>{children}</span>
@@ -28,10 +29,15 @@ const Button = ({
     }
     return <span>{children}</span>;
   };
-  switch (type) {
+  switch (variant) {
     case 'outline':
       return (
-        <OutlineButton data-testid="outline" className={className} iconPos={iconPos}>
+        <OutlineButton
+          data-testid="outline"
+          className={className}
+          iconPos={iconPos}
+          onClick={onClick}
+        >
           {content()}
         </OutlineButton>
       );
@@ -43,19 +49,24 @@ const Button = ({
       );
     case 'transparent':
       return (
-        <TransparentButton data-testid="transparent" className={className} iconPos={iconPos}>
+        <TransparentButton
+          data-testid="transparent"
+          className={className}
+          iconPos={iconPos}
+          onClick={onClick}
+        >
           {content()}
         </TransparentButton>
       );
     case 'fill':
       return (
-        <FillButton data-testid="fill" className={className} iconPos={iconPos}>
+        <FillButton data-testid="fill" className={className} iconPos={iconPos} onClick={onClick}>
           {content()}
         </FillButton>
       );
     default:
       return (
-        <FillButton data-testid="fill" className={className} iconPos={iconPos}>
+        <FillButton data-testid="fill" className={className} iconPos={iconPos} onClick={onClick}>
           {content()}
         </FillButton>
       );

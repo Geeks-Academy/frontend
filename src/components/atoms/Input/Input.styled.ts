@@ -18,7 +18,7 @@ export const InputWrapper = styled.div<{ fullWidth?: boolean }>`
   background: ${colors.background.NeutralWhite};
 `;
 
-export const StyledInput = styled.input<{ isIcon: boolean }>`
+export const StyledInput = styled.input<{ isIcon?: boolean }>`
   outline: 0;
   width: ${({ isIcon }) => (isIcon ? '90%' : '100%')};
   ${typography.body.L}
