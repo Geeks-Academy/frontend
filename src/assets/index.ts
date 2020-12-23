@@ -11,6 +11,8 @@ export { ReactComponent as ToastIconError } from './toast-icon-error.svg';
 export { ReactComponent as ToastIconInfo } from './toast-icon-info.svg';
 export { ReactComponent as SpinnerLeftBracketSVG } from './spinner-left-bracket.svg';
 export { ReactComponent as SpinnerRightBracketSVG } from './spinner-right-bracket.svg';
+export { ReactComponent as CalendarIcon } from './calendar-icon.svg';
+export { ReactComponent as ArrowIconComponent } from './arrow-icon.svg';
 export { ReactComponent as LogoText } from './logo-text.svg';
 export { ReactComponent as LogoIcon } from './logo-icon.svg';
 export { ReactComponent as MultistepformNext } from './multistepform-next.svg';

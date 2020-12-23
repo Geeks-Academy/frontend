@@ -1,12 +1,21 @@
 import React from 'react';
 import GlobalStyles from 'styles/GlobalStyles';
-import Routes from 'Routes';
+import DataInput from 'components/molecules/DateInput';
 
 function App(): JSX.Element {
   return (
     <>
       <GlobalStyles />
-      <Routes />
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: ' 100vh',
+        }}
+      >
+        <DataInput label="Label name" isOpen onClick={(date) => console.log(date)} />
+      </div>
     </>
   );
 }
