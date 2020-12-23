@@ -5,15 +5,25 @@ import colors from 'styles/colors';
 
 export const StyledCourseElement = styled.div`
   display: flex;
+  justify-content: space-between;
+  max-width: 1016px;
   max-height: 184px;
 `;
 
 export const StyledCourseImageWrapper = styled.div`
+  position: relative;
   margin-right: 32px;
   background-color: #1cc8ff;
+  img {
+    max-width: 140px;
+    height: 184px;
+  }
 `;
 
 export const StyledCourseLevel = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   height: 55px;
   border-radius: 0px 0px 4px 4px;
   background-color: rgba(25, 29, 36, 0.15);

@@ -22,17 +22,17 @@ describe('Button Component', () => {
     expect(getByTestId('fill')).toBeInTheDocument();
   });
 
-  test('render button with particular type', () => {
-    const { queryByTestId, rerender } = render(<Button type="outline">Click</Button>);
+  test('render button with particular variant', () => {
+    const { queryByTestId, rerender } = render(<Button variant="outline">Click</Button>);
     expect(queryByTestId('outline')).toBeInTheDocument();
 
-    rerender(<Button type="disabled">Click</Button>);
+    rerender(<Button variant="disabled">Click</Button>);
     expect(queryByTestId('disabled')).toBeInTheDocument();
 
-    rerender(<Button type="transparent">Click</Button>);
+    rerender(<Button variant="transparent">Click</Button>);
     expect(queryByTestId('transparent')).toBeInTheDocument();
 
-    rerender(<Button type="fill">Click</Button>);
+    rerender(<Button variant="fill">Click</Button>);
     expect(queryByTestId('fill')).toBeInTheDocument();
   });
 
