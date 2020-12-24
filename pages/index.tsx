@@ -1,5 +1,7 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from 'styles/Home.module.css'
+import SampleComponent from 'components/SampleComponent';
+import Image from 'next/image'
 
 export default function Home() {
   return (
@@ -10,6 +12,8 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <SampleComponent />
+        <Image src="/assets/rating-header-bg.jpg" alt="Logo" width={500} height={300} />
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
