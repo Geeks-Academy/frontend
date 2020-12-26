@@ -1,0 +1,29 @@
+.about{
+    padding: 10px;
+}
+
+.about > a {
+    color: blue;
+}
+
+.about > a:hover {
+    border-bottom: 1px solid blue;
+}
+
+.about > button {
+    padding: 10px 20px;
+}
+
+.about > h1 {
+    font-size: 25px;
+    color: salmon;
+}
+
+.about > h2 {
+    font-size: 22px;
+}
+
+
+.about > p {
+    font-weight: bolder;
+}

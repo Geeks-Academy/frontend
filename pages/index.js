@@ -1,5 +1,6 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Link from "next/link";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
@@ -15,11 +16,33 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
+          Get started by editing{" "}
           <code className={styles.code}>pages/index.js</code>
         </p>
 
         <div className={styles.grid}>
+
+        <Link href="/po/users">
+            <a className={styles.card}>
+              <h3>Users page&rarr;</h3>
+              <p>Check our users and their details!</p>
+            </a>
+          </Link>
+
+          <Link href="/po/">
+            <a className={styles.card}>
+              <h3>Programmers Only &rarr;</h3>
+              <p>Find out more about our work.</p>
+            </a>
+          </Link>
+
+          <Link href="/po/redirection">
+            <a className={styles.card}>
+              <h3>Redirection after 5s. &rarr;</h3>
+              <p>Find out how does the redirection work in nextJS</p>
+            </a>
+          </Link>
+
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h3>Documentation &rarr;</h3>
             <p>Find in-depth information about Next.js features and API.</p>
@@ -56,10 +79,10 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
     </div>
-  )
+  );
 }
