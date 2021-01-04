@@ -1,0 +1,7 @@
+#This is env.local file. It overrides all anothers env files.
+#Don't forget about "NEXT_PUBLIC_" prefix in front environment variables
+#env.local works only in developer mode ("yarn dev" etc.)
+#You can use here env for server and for browser
+
+NEXT_PUBLIC_BROWSER_TEST_ENV = test_env_front
+SERVER_TEST_ENV= test_env_server
