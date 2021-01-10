@@ -1,11 +1,13 @@
+import { IOptions } from './useCookie.model';
+
 const useCookie = () => {
   const getCookie = (name: string) => {
     let cookieValue = null;
     if (document.cookie !== '') {
       const cookies = document.cookie.split(/; */);
       cookies.forEach((cookie) => {
-        const cookieName = cookie.split('=')[0];
-        const cookieVal = cookie.split('=')[1];
+        const [cookieName, cookieVal] = cookie.split('=');
+
         if (cookieName === decodeURIComponent(name)) {
           cookieValue = decodeURIComponent(cookieVal);
         }
@@ -14,33 +16,20 @@ const useCookie = () => {
     return cookieValue;
   };
 
-  const setCookie = (
-    name: string,
-    val: string,
-    date?: Date,
-    path?: string,
-    domain?: string,
-    secure?: string
-  ) => {
+  const setCookie = (name: string, val: string, options?: IOptions) => {
     if (navigator.cookieEnabled) {
       const cookieName = encodeURIComponent(name);
       const cookieVal = encodeURIComponent(val);
+
       let cookieText = `${cookieName}=${cookieVal}`;
 
-      if (typeof date !== 'undefined') {
-        cookieText += `; expires=${date.toUTCString()}`;
-      }
+      if (options) {
+        const { path, date, domain, secure } = options;
 
-      if (path) {
-        cookieText += `; path=${path}`;
-      }
-
-      if (domain) {
-        cookieText += `; domain=${domain}`;
-      }
-
-      if (secure) {
-        cookieText += '; secure';
+        date && (cookieText += `; expires=${date.toUTCString()}`);
+        path && (cookieText += `; path=${path}`);
+        domain && (cookieText += `; domain=${domain}`);
+        secure && (cookieText += '; secure');
       }
 
       document.cookie = cookieText;
