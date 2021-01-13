@@ -10,6 +10,9 @@ import { ServerStyleSheet } from 'styled-components'
 
 // SC feature with next.js
 // serve requierd styles for first redner and then load rest styles for the app
+// generte CSS on the server-side [Check "view sorce" with & w/o _document.js]
+// if JS is disabled all styles are delivered to Head anyway
+// https://medium.com/javascript-in-plain-english/server-side-rendering-styled-components-with-next-js-3197e527763b
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
