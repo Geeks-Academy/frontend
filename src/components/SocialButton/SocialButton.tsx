@@ -1,7 +1,11 @@
 import React from 'react';
 import Image from 'next/image'
-// import GithubLogo from '../../assets/gh.svg'
-// import GoogleLogo from '../../assets/google.svg'
+import {GithubLogo} from 'src/assets/svg';
+import { GoogleLogo} from 'src/assets/svg'
+
+import {GitHubLogoAsImage} from 'src/assets/images'
+import {ExampleImage} from 'src/assets/images'
+
 
 import { SocialButtonParagraph, SocialButtonStyled } from './SocialButton.styled';
 import { DefaultLogo, DefaultRole, Logo, Role } from './SocialButton.model';
@@ -11,7 +15,6 @@ import { DefaultLogo, DefaultRole, Logo, Role } from './SocialButton.model';
 // But I think that if we will have some images(for example course image) we should store them on an external server and then the <Image> feature will be a good solution for optimizing our application.
 // For Images from the external server, Next has a special configuration to the delivery path for "src"
 // I have troubles with absolute imports for SVG images :|
-
 
 
 
@@ -26,11 +29,13 @@ const SocialButton = ({ className, logo, userRole, onClick }: IProps): JSX.Eleme
     return (
         <div>
             <SocialButtonStyled className={className} onClick={onClick}>
-                {/*{logo === DefaultLogo.GITHUB && <GithubLogo/>}*/}
-                {/*{logo === DefaultLogo.GOOGLE && <GoogleLogo/>}*/}
+                {logo === DefaultLogo.GITHUB && <GithubLogo/>}
+                {logo === DefaultLogo.GOOGLE && <GoogleLogo/>}
 
-                {logo === DefaultLogo.GITHUB && <Image src="/icons/gh.svg" alt="GH" width="24" height="24" />}
-                {logo === DefaultLogo.GOOGLE && <Image src="/icons/google.svg" alt="Google" width="24" height="24" />}
+
+                {/* {logo === DefaultLogo.GITHUB && <Image src={ExampleImage} alt="GH" width="24" height="24" />} */}
+                {/* {logo === DefaultLogo.GITHUB && <Image src={GitHubLogoAsImage} alt="GH" width="24" height="24" />} */}
+                {/* {logo === DefaultLogo.GOOGLE && <Image src="/icons/google.svg" alt="Google" width="24" height="24" />} */}
                 {userRole === 'developer' && (
                     <SocialButtonParagraph>{DefaultRole.DEVELOPER}</SocialButtonParagraph>
                 )}

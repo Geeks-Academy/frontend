@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import SocialButton from 'components/SocialButton'
+import SocialButton from 'src/components/SocialButton'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
