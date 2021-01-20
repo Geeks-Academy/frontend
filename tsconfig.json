@@ -17,12 +17,13 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext",
-    "baseUrl": "."
+    "baseUrl": "./src"
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "src"
   ],
   "exclude": [
     "node_modules"
