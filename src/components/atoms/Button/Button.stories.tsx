@@ -42,80 +42,72 @@ export default {
   },
 };
 
-export const Default = ({ children, iconPos, variant, icon }: IButton): JSX.Element => (
-  <Button variant={variant} icon={icon} iconPos={iconPos}>
+export const Default = ({ children, iconPos, icon }: IButton): JSX.Element => (
+  <Button icon={icon} iconPos={iconPos}>
     {children}
   </Button>
 );
 
 export const FillWithIconLeft = ({ children, icon }: IButton): JSX.Element => (
-  <Button variant="fill" icon={icon} iconPos="left">
+  <Button icon={icon} iconPos="left">
     {children}
   </Button>
 );
 
 export const FillWithIconRight = ({ children, icon }: IButton): JSX.Element => (
-  <Button variant="fill" icon={icon} iconPos="right">
+  <Button icon={icon} iconPos="right">
     {children}
   </Button>
 );
 
 export const FillWithoutIcon = ({ children, icon }: IButton): JSX.Element => (
-  <Button variant="fill" icon={icon}>
-    {children}
-  </Button>
+  <Button icon={icon}>{children}</Button>
 );
 
 export const OutlineWithIconLeft = ({ children, icon }: IButton): JSX.Element => (
-  <Button variant="outline" icon={icon} iconPos="left">
+  <Button icon={icon} iconPos="left">
     {children}
   </Button>
 );
 
 export const OutlineWithIconRight = ({ children, icon }: IButton): JSX.Element => (
-  <Button variant="outline" icon={icon} iconPos="right">
+  <Button icon={icon} iconPos="right">
     {children}
   </Button>
 );
 
 export const OutlineWithoutIcon = ({ children, icon }: IButton): JSX.Element => (
-  <Button variant="outline" icon={icon}>
-    {children}
-  </Button>
+  <Button icon={icon}>{children}</Button>
 );
 
 export const DisabledWithIconLeft = ({ children, icon }: IButton): JSX.Element => (
-  <Button variant="disabled" icon={icon} iconPos="left">
+  <Button icon={icon} iconPos="left">
     {children}
   </Button>
 );
 
 export const DisabledWithIconRight = ({ children, icon }: IButton): JSX.Element => (
-  <Button variant="disabled" icon={icon} iconPos="right">
+  <Button icon={icon} iconPos="right">
     {children}
   </Button>
 );
 
 export const DisabledWithoutIcon = ({ children, icon }: IButton): JSX.Element => (
-  <Button variant="disabled" icon={icon}>
-    {children}
-  </Button>
+  <Button icon={icon}>{children}</Button>
 );
 
 export const TransparentWithIconLeft = ({ children, icon }: IButton): JSX.Element => (
-  <Button variant="transparent" icon={icon} iconPos="left">
+  <Button icon={icon} iconPos="left">
     {children}
   </Button>
 );
 
 export const TransparentWithIconRight = ({ children, icon }: IButton): JSX.Element => (
-  <Button variant="transparent" icon={icon} iconPos="right">
+  <Button icon={icon} iconPos="right">
     {children}
   </Button>
 );
 
 export const TransparentWithoutIcon = ({ children, icon }: IButton): JSX.Element => (
-  <Button variant="transparent" icon={icon}>
-    {children}
-  </Button>
+  <Button icon={icon}>{children}</Button>
 );
