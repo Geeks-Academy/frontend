@@ -79,18 +79,14 @@ const setIconMargin = (pos: IconPosition) => {
   }
 };
 
-const setBackgroundColor = (
-  isFill: boolean,
-  isOutline: boolean,
-  isTransparent: boolean
-): string => {
-  if (isFill) {
+const setBackgroundColor = (fill: boolean, outline: boolean, transparent: boolean): string => {
+  if (fill) {
     return colors.background.NeutralWhite;
   }
-  if (isOutline) {
+  if (outline) {
     return colors.background.Primary40;
   }
-  if (isTransparent) {
+  if (transparent) {
     return colors.background.Primary40;
   }
   return colors.background.Neutral40;
@@ -98,9 +94,9 @@ const setBackgroundColor = (
 
 export const ButtonIcon = styled.div<{
   iconPos: IconPosition;
-  isFill: boolean;
-  isTransparent: boolean;
-  isOutline: boolean;
+  fill: boolean;
+  transparent: boolean;
+  outline: boolean;
 }>`
   margin: ${({ iconPos }) => setIconMargin(iconPos)};
   height: 24px;
@@ -108,8 +104,7 @@ export const ButtonIcon = styled.div<{
     width: 24px;
     height: 24px;
     path {
-      fill: ${({ isFill, isTransparent, isOutline }) =>
-        setBackgroundColor(isFill, isTransparent, isOutline)};
+      fill: ${({ fill, transparent, outline }) => setBackgroundColor(fill, transparent, outline)};
     }
   }
 `;

@@ -14,10 +14,10 @@ const Button = ({
   icon: Icon,
   iconPos = null,
   onClick,
-  isFill,
-  isOutline,
-  isDisabled,
-  isTransparent,
+  fill,
+  outline,
+  disabled,
+  transparent,
 }: IButton): JSX.Element => {
   const content = () => {
     if (Icon && iconPos) {
@@ -25,9 +25,9 @@ const Button = ({
         <div>
           <ButtonIcon
             iconPos={iconPos}
-            isFill={!!isFill}
-            isOutline={!!isOutline}
-            isTransparent={!!isTransparent}
+            fill={!!fill}
+            outline={!!outline}
+            transparent={!!transparent}
           >
             <Icon />
           </ButtonIcon>
@@ -38,7 +38,7 @@ const Button = ({
     return <span>{children}</span>;
   };
 
-  if (isOutline) {
+  if (outline) {
     return (
       <OutlineButton
         data-testid="outline"
@@ -51,7 +51,7 @@ const Button = ({
     );
   }
 
-  if (isTransparent) {
+  if (transparent) {
     return (
       <TransparentButton
         data-testid="transparent"
@@ -64,7 +64,7 @@ const Button = ({
     );
   }
 
-  if (isDisabled) {
+  if (disabled) {
     return (
       <DisableButton data-testid="disabled" className={className} iconPos={iconPos}>
         {content()}
