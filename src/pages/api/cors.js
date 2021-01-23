@@ -21,7 +21,7 @@ const cors = initMiddleware(
   // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
   Cors({
     // Only allow requests with GET, POST and OPTIONS
-    methods: ['GET', 'POST', 'OPTIONS'],
+    methods: ['GET', 'POST'],
   })
 )
 
@@ -32,3 +32,23 @@ export default async function handler(req, res) {
   // Rest of the API logic
   res.json({ message: 'Hello Everyone!' })
 }
+
+
+// ALTERNATIVE SOLUTION, WIHOUT NEED TO INITIALIZE init-middleware.js
+// POSSIBILITY OF SETTING UP CONFIGURATION TOGETHER WITH AVAILABLE METHODS AND ORIGIN
+
+// import NextCors from 'nextjs-cors';
+ 
+// async function handler(req, res) {
+//    // Run the cors middleware
+//    // nextjs-cors uses the cors package, so we invite you to check the documentation https://www.npmjs.com/package/cors
+//    await NextCors(req, res, {
+//       // Options
+//       methods: ['GET'],
+//       origin: 'http://example.com',
+//       optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+//    });
+ 
+//    // Rest of the API logic
+//    res.json({ message: 'Hello Everyone!' });
+// }

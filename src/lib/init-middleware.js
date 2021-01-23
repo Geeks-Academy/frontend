@@ -1,5 +1,7 @@
 // Helper method to wait for a middleware to execute before continuing
 // And to throw an error when an error happens in a middleware
+
+// no need to initialize with NextCors
 export default function initMiddleware(middleware) {
     return (req, res) =>
       new Promise((resolve, reject) => {
