@@ -1,10 +1,10 @@
-import React from "react";
+import { StyledPage } from "./UnderConstructionPage.styled";
 
 const UnderConstructionPage = () => {
   return (
-    <div>
-        
-    </div>
+    <StyledPage>
+      
+    </StyledPage>
   );
 };
 
