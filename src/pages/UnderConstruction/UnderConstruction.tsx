@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Text, Href } from "./constants";
 import {
   FacebookIcon,
   LinkedinIcon,
@@ -11,25 +10,25 @@ import {
   StyledParagraph,
   StyledHeading,
   StyledPage
-} from "./UnderConstruction.styled";
+} from "styles/UnderConstruction.styled";
 
 const UnderConstructionPage = (): JSX.Element => {
   return (
     <StyledPage>
       <StyledMainWrapper>
-        <StyledHeading> {Text.HEADING} </StyledHeading>
-        <StyledParagraph> {Text.PARAGRAPH} </StyledParagraph>
+        <StyledHeading>geeks.academy</StyledHeading>
+        <StyledParagraph>is currently under construction. Stay tuned:</StyledParagraph>
         <div>
-          <Link href={Href.FACEBOOK}>
+          <Link href='https://www.facebook.com/Geeksacademy-106394014777915/'>
             <a><FacebookIcon /></a>
           </Link>
-          <Link href={Href.LINKEIN}>
+          <Link href='https://www.linkedin.com/company/geekscademy/'>
             <a><LinkedinIcon /></a>
           </Link>
-          <Link href={Href.BEHANCE}>
+          <Link href='#'>
             <a><BehanceIcon /></a>
           </Link>
-          <Link href={Href.GITHUB}>
+          <Link href='https://github.com/Programmers-Only-Group'>
             <a><GithubIcon /></a>
           </Link>
         </div>
