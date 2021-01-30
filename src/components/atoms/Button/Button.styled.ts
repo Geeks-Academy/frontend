@@ -83,12 +83,10 @@ const setBackgroundColor = (fill: boolean, outline: boolean, transparent: boolea
   if (fill) {
     return colors.background.NeutralWhite;
   }
-  if (outline) {
+  if (outline || transparent) {
     return colors.background.Primary40;
   }
-  if (transparent) {
-    return colors.background.Primary40;
-  }
+
   return colors.background.Neutral40;
 };
 
