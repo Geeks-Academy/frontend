@@ -14,7 +14,7 @@ const Button = ({
   icon: Icon,
   iconPos = null,
   onClick,
-  fill,
+  filled,
   outline,
   disabled,
   transparent,
@@ -25,7 +25,7 @@ const Button = ({
         <div>
           <ButtonIcon
             iconPos={iconPos}
-            fill={!!fill}
+            filled={!!filled}
             outline={!!outline}
             transparent={!!transparent}
           >

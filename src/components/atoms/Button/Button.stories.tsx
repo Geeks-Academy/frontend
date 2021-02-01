@@ -64,37 +64,37 @@ export const Default = ({
   children,
   iconPos,
   icon,
-  fill,
-  transparent,
+  filled,
   outline,
   disabled,
+  transparent,
 }: IButton): JSX.Element => (
   <Button
     icon={icon}
     iconPos={iconPos}
-    fill={fill}
-    transparent={transparent}
+    filled={filled}
     outline={outline}
     disabled={disabled}
+    transparent={transparent}
   >
     {children}
   </Button>
 );
 
 export const FillWithIconLeft = ({ children, icon }: IButton): JSX.Element => (
-  <Button icon={icon} iconPos="left">
+  <Button filled icon={icon} iconPos="left">
     {children}
   </Button>
 );
 
 export const FillWithIconRight = ({ children, icon }: IButton): JSX.Element => (
-  <Button fill icon={icon} iconPos="right">
+  <Button filled icon={icon} iconPos="right">
     {children}
   </Button>
 );
 
 export const FillWithoutIcon = ({ children, icon }: IButton): JSX.Element => (
-  <Button fill icon={icon}>
+  <Button filled icon={icon}>
     {children}
   </Button>
 );

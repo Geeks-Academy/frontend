@@ -22,21 +22,19 @@ describe('Button Component', () => {
     expect(getByTestId('fill')).toBeInTheDocument();
   });
 
-  // to refactor
+  test('render button with particular props', () => {
+    const { queryByTestId, rerender } = render(<Button outline>Click</Button>);
+    expect(queryByTestId('outline')).toBeInTheDocument();
 
-  // test('render button with particular variant', () => {
-  //   const { queryByTestId, rerender } = render(<Button variant="outline">Click</Button>);
-  //   expect(queryByTestId('outline')).toBeInTheDocument();
+    rerender(<Button disabled>Click</Button>);
+    expect(queryByTestId('disabled')).toBeInTheDocument();
 
-  //   rerender(<Button variant="disabled">Click</Button>);
-  //   expect(queryByTestId('disabled')).toBeInTheDocument();
+    rerender(<Button transparent>Click</Button>);
+    expect(queryByTestId('transparent')).toBeInTheDocument();
 
-  //   rerender(<Button variant="transparent">Click</Button>);
-  //   expect(queryByTestId('transparent')).toBeInTheDocument();
-
-  //   rerender(<Button variant="fill">Click</Button>);
-  //   expect(queryByTestId('fill')).toBeInTheDocument();
-  // });
+    rerender(<Button filled>Click</Button>);
+    expect(queryByTestId('fill')).toBeInTheDocument();
+  });
 
   test('checks that icon has rendered', () => {
     const { getByTestId } = render(

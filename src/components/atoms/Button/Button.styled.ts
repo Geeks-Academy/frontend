@@ -92,7 +92,7 @@ const setBackgroundColor = (fill: boolean, outline: boolean, transparent: boolea
 
 export const ButtonIcon = styled.div<{
   iconPos: IconPosition;
-  fill: boolean;
+  filled: boolean;
   transparent: boolean;
   outline: boolean;
 }>`
@@ -102,7 +102,8 @@ export const ButtonIcon = styled.div<{
     width: 24px;
     height: 24px;
     path {
-      fill: ${({ fill, transparent, outline }) => setBackgroundColor(fill, transparent, outline)};
+      fill: ${({ filled, transparent, outline }) =>
+        setBackgroundColor(filled, transparent, outline)};
     }
   }
 `;
