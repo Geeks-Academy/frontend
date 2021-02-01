@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import typography from 'styles/typography';
 import colors from 'styles/colors';
-import { ButtonVariant, IconPosition } from './Button.model';
+import { IconPosition } from './Button.model';
 
 const BaseButton = styled.button<{ iconPos: IconPosition }>`
   box-sizing: border-box;
@@ -13,6 +13,7 @@ const BaseButton = styled.button<{ iconPos: IconPosition }>`
   ${typography.body.bold.L}
   font-weight: 600;
   outline: none;
+  cursor: pointer;
   div {
     display: flex;
     flex-direction: ${({ iconPos }) => (iconPos === 'right' ? 'row-reverse' : 'row')};
@@ -78,27 +79,31 @@ const setIconMargin = (pos: IconPosition) => {
   }
 };
 
-const setBackgroundColor = (variant: ButtonVariant): string => {
-  switch (variant) {
-    case 'fill':
-      return colors.background.NeutralWhite;
-    case 'outline':
-      return colors.background.Primary40;
-    case 'transparent':
-      return colors.background.Primary40;
-    default:
-      return colors.background.Neutral40;
+const setBackgroundColor = (fill: boolean, outline: boolean, transparent: boolean): string => {
+  if (fill) {
+    return colors.background.NeutralWhite;
   }
+  if (outline || transparent) {
+    return colors.background.Primary40;
+  }
+
+  return colors.background.Neutral40;
 };
 
-export const ButtonIcon = styled.div<{ variant: ButtonVariant; iconPos: IconPosition }>`
+export const ButtonIcon = styled.div<{
+  iconPos: IconPosition;
+  filled: boolean;
+  transparent: boolean;
+  outline: boolean;
+}>`
   margin: ${({ iconPos }) => setIconMargin(iconPos)};
   height: 24px;
   svg {
     width: 24px;
     height: 24px;
     path {
-      fill: ${({ variant }) => setBackgroundColor(variant)};
+      fill: ${({ filled, transparent, outline }) =>
+        setBackgroundColor(filled, transparent, outline)};
     }
   }
 `;

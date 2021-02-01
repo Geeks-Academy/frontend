@@ -14,13 +14,21 @@ const Button = ({
   icon: Icon,
   iconPos = null,
   onClick,
-  variant,
+  filled,
+  outline,
+  disabled,
+  transparent,
 }: IButton): JSX.Element => {
   const content = () => {
     if (Icon && iconPos) {
       return (
         <div>
-          <ButtonIcon variant={variant} iconPos={iconPos}>
+          <ButtonIcon
+            iconPos={iconPos}
+            filled={!!filled}
+            outline={!!outline}
+            transparent={!!transparent}
+          >
             <Icon />
           </ButtonIcon>
           <span>{children}</span>
@@ -29,48 +37,46 @@ const Button = ({
     }
     return <span>{children}</span>;
   };
-  switch (variant) {
-    case 'outline':
-      return (
-        <OutlineButton
-          data-testid="outline"
-          className={className}
-          iconPos={iconPos}
-          onClick={onClick}
-        >
-          {content()}
-        </OutlineButton>
-      );
-    case 'disabled':
-      return (
-        <DisableButton data-testid="disabled" className={className} iconPos={iconPos}>
-          {content()}
-        </DisableButton>
-      );
-    case 'transparent':
-      return (
-        <TransparentButton
-          data-testid="transparent"
-          className={className}
-          iconPos={iconPos}
-          onClick={onClick}
-        >
-          {content()}
-        </TransparentButton>
-      );
-    case 'fill':
-      return (
-        <FillButton data-testid="fill" className={className} iconPos={iconPos} onClick={onClick}>
-          {content()}
-        </FillButton>
-      );
-    default:
-      return (
-        <FillButton data-testid="fill" className={className} iconPos={iconPos} onClick={onClick}>
-          {content()}
-        </FillButton>
-      );
+
+  if (outline) {
+    return (
+      <OutlineButton
+        data-testid="outline"
+        className={className}
+        iconPos={iconPos}
+        onClick={onClick}
+      >
+        {content()}
+      </OutlineButton>
+    );
   }
+
+  if (transparent) {
+    return (
+      <TransparentButton
+        data-testid="transparent"
+        className={className}
+        iconPos={iconPos}
+        onClick={onClick}
+      >
+        {content()}
+      </TransparentButton>
+    );
+  }
+
+  if (disabled) {
+    return (
+      <DisableButton data-testid="disabled" className={className} iconPos={iconPos}>
+        {content()}
+      </DisableButton>
+    );
+  }
+
+  return (
+    <FillButton data-testid="fill" className={className} iconPos={iconPos} onClick={onClick}>
+      {content()}
+    </FillButton>
+  );
 };
 
 export default Button;
