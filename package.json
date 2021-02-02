@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 80",
     "storybook": "start-storybook"
   },
   "dependencies": {
+    "@types/styled-components": "^5.1.7",
     "next": "10.0.3",
     "react": "17.0.1",
     "react-dom": "17.0.1"
