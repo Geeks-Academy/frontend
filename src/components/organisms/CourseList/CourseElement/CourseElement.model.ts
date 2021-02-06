@@ -1,7 +1,6 @@
 import { IProps as Tag } from 'components/atoms/Tag/Tag.model';
 
-export interface IProps {
-  id?: number | string;
+export interface IProps extends React.HTMLProps<HTMLDivElement> {
   description: string;
   image: string;
   author: string;
