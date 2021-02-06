@@ -1,8 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-
 import Range from './Range';
-import { IProps } from './Range.model';
 
 export default {
   title: 'atoms/Ranges/Range',
@@ -16,4 +14,6 @@ export default {
   },
 } as Meta;
 
-export const DefaultRange = (props: IProps): JSX.Element => <Range {...props} />;
+export const DefaultRange = (props: React.HTMLProps<HTMLInputElement>): JSX.Element => (
+  <Range {...props} />
+);

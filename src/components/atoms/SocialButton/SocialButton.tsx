@@ -3,11 +3,9 @@ import { GithubLogo, GoogleLogo } from 'assets';
 import { SocialButtonParagraph, SocialButtonStyled } from './SocialButton.styled';
 import { DefaultLogo, DefaultRole, Logo, Role } from './SocialButton.model';
 
-export interface IProps {
+export interface IProps extends React.HTMLProps<HTMLButtonElement> {
   logo: Logo;
   userRole: Role;
-  className?: string;
-  onClick?: () => void;
 }
 
 const SocialButton = ({ className, logo, userRole, onClick }: IProps): JSX.Element => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import TextArea, { IProps } from './TextArea';
+import TextArea from './TextArea';
 
 export default {
   title: 'atoms/TextArea',
@@ -17,6 +17,6 @@ export default {
   },
 };
 
-export const Default = ({ placeholder }: IProps): JSX.Element => (
+export const Default = ({ placeholder }: React.HTMLProps<HTMLTextAreaElement>): JSX.Element => (
   <TextArea placeholder={placeholder} />
 );

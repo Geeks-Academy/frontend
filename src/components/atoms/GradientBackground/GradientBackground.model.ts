@@ -3,9 +3,10 @@ export type GradientType = {
   colors: string[];
 };
 
-export interface IProps {
+export interface IProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    React.RefAttributes<HTMLDivElement> {
   background: string;
   children?: JSX.Element[] | JSX.Element | string;
-  className?: string;
   gradient?: GradientType;
 }

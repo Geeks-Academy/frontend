@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Input } from './Range.styled';
-import { IProps } from './Range.model';
 
-const Range = ({ className }: IProps): JSX.Element => {
+const Range = ({ className }: React.HTMLProps<HTMLInputElement>): JSX.Element => {
   const [rangeValue, setRangeValue] = useState<number>(1);
 
   return (

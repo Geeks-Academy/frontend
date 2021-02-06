@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { StyledTextArea } from './TextArea.styled';
 
-export interface IProps {
-  className?: string;
-  placeholder?: string;
-}
-
-const TextArea = ({ className, placeholder = 'Type something...' }: IProps): JSX.Element => {
+const TextArea = ({
+  className,
+  placeholder = 'Type something...',
+}: React.HTMLProps<HTMLTextAreaElement>): JSX.Element => {
   const [value, setValue] = useState<string>('');
 
   return (

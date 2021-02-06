@@ -3,10 +3,9 @@ import React from 'react';
 import { Item, StyledLink } from './ListItem.styled';
 import { IListItem } from './ListItem.model';
 
-export interface IProps {
+export interface IProps extends React.HTMLProps<HTMLLIElement> {
   item: IListItem;
   icon: string;
-  className?: string;
 }
 
 const ListItem = ({ className, item, icon }: IProps): JSX.Element => {

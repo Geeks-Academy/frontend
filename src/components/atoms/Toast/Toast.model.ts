@@ -1,8 +1,7 @@
 export type ToastType = 'success' | 'error' | 'info';
 
-export interface IProps {
+export interface IProps extends React.HTMLProps<HTMLTextAreaElement> {
   type?: ToastType;
-  className?: string;
   header?: string;
   info?: string;
 }

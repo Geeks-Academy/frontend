@@ -2,8 +2,7 @@ import React from 'react';
 
 import { Title } from './Header.styled';
 
-export interface IProps {
-  className?: string;
+export interface IProps extends React.HTMLProps<HTMLDivElement> {
   children: string;
 }
 

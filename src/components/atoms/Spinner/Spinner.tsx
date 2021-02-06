@@ -1,9 +1,8 @@
 import React from 'react';
 import { SpinnerLeftBracketSVG, SpinnerRightBracketSVG } from 'assets';
-import { IProps } from './Spinner.model';
 import { SpinnerDots, SpinnerWrapper } from './Spinner.styled';
 
-const Spinner = ({ className }: IProps): JSX.Element => {
+const Spinner = ({ className }: React.HTMLProps<HTMLDivElement>): JSX.Element => {
   return (
     <SpinnerWrapper data-testid="spinner" className={className}>
       <div className="bracketLeft">

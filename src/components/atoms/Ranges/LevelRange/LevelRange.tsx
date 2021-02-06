@@ -9,9 +9,8 @@ import {
   ThumbWrapper,
 } from './LevelRange.styled';
 import { data } from './data';
-import { IProps } from './LevelRange.model';
 
-const LevelRange = ({ className }: IProps): JSX.Element => {
+const LevelRange = ({ className }: React.HTMLProps<HTMLInputElement>): JSX.Element => {
   const [rangeValue, setRangeValue] = useState<number>(1);
 
   return (
