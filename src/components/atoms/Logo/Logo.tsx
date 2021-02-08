@@ -3,7 +3,11 @@ import { LogoIcon, LogoText } from 'assets';
 import { IProps } from './Logo.model';
 import { LogoWrapper, StyledLogo, StyledLogoText } from './Logo.styled';
 
-const Logo = ({ logoOnly = false, textPlacement = 'horizontal' }: IProps): JSX.Element => {
+const Logo = ({
+  logoOnly = false,
+  textPlacement = 'horizontal',
+  ...props
+}: IProps): JSX.Element => {
   const renderLogo = () => {
     if (logoOnly) {
       return (
@@ -33,7 +37,7 @@ const Logo = ({ logoOnly = false, textPlacement = 'horizontal' }: IProps): JSX.E
   };
 
   return (
-    <LogoWrapper textPlacement={textPlacement} logoOnly={logoOnly}>
+    <LogoWrapper textPlacement={textPlacement} logoOnly={logoOnly} {...props}>
       {renderLogo()}
     </LogoWrapper>
   );

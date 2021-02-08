@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { IAttributes } from 'types/interfaces';
 import { Container, Input } from './Range.styled';
 
-const Range = ({ className }: React.HTMLProps<HTMLInputElement>): JSX.Element => {
+const Range = ({ ...props }: IAttributes<HTMLInputElement>): JSX.Element => {
   const [rangeValue, setRangeValue] = useState<number>(1);
 
   return (
-    <Container className={className}>
+    <Container {...props}>
       <label htmlFor="range" id="range" aria-label="range">
         <Input
           onChange={(e) => setRangeValue(+e.target.value)}
