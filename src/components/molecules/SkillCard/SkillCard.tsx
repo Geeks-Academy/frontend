@@ -10,9 +10,9 @@ import {
   StyledWrapper,
 } from './SkillCard.styled';
 
-const SkillCard = ({ title, content }: ISkillCard): JSX.Element => {
+const SkillCard = ({ title, content, ...props }: ISkillCard): JSX.Element => {
   return (
-    <StyledSkillCard>
+    <StyledSkillCard {...props}>
       <StyledWrapper>
         <StyledCheckedOptionIcon />
         <StyledTextWrapper>

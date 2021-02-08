@@ -3,7 +3,7 @@ import Tag from 'components/atoms/Tag';
 import { Tags, TagsEndCounter, TagsLabel, TagsWrapper } from './CourseTags.styled';
 import { IProps } from './CourseTags.model';
 
-const CourseTags = ({ tags }: IProps): JSX.Element => {
+const CourseTags = ({ tags, ...props }: IProps): JSX.Element => {
   let tagsWidthSummary = 0;
   const containerWidth = 300;
   let outTags = 0;
@@ -61,7 +61,7 @@ const CourseTags = ({ tags }: IProps): JSX.Element => {
   }, [tags, tagsWidthSummary]);
 
   return (
-    <TagsWrapper>
+    <TagsWrapper {...props}>
       <TagsLabel>Tags:</TagsLabel>
       <Tags show={showTags}>{tagsToRender}</Tags>
       <TagsEndCounter>+{moreTags} more</TagsEndCounter>
