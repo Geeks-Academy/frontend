@@ -1,4 +1,5 @@
 import React from 'react';
+import { IAttributes } from 'types/interfaces';
 import TextArea from './TextArea';
 
 export default {
@@ -17,6 +18,6 @@ export default {
   },
 };
 
-export const Default = ({ placeholder }: React.HTMLProps<HTMLTextAreaElement>): JSX.Element => (
+export const Default = ({ placeholder }: IAttributes<HTMLTextAreaElement>): JSX.Element => (
   <TextArea placeholder={placeholder} />
 );

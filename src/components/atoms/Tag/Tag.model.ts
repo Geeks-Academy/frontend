@@ -1,5 +1,6 @@
-export interface IProps extends React.HTMLProps<HTMLDivElement> {
-  children: any;
+import { IAttributes } from 'types/interfaces';
+
+export interface IProps extends IAttributes<HTMLDivElement> {
   bgColor?: string;
   fontColor?: string;
   getWidth?: any;

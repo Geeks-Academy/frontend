@@ -1,6 +1,8 @@
+import { IAttributes } from 'types/interfaces';
+
 export type ToastType = 'success' | 'error' | 'info';
 
-export interface IProps extends React.HTMLProps<HTMLTextAreaElement> {
+export interface IProps extends IAttributes<HTMLDivElement> {
   type?: ToastType;
   header?: string;
   info?: string;

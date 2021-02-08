@@ -1,4 +1,5 @@
 import React from 'react';
+import { IAttributes } from 'types/interfaces';
 import Spinner from './Spinner';
 
 export default {
@@ -13,6 +14,6 @@ export default {
   },
 };
 
-export const SpinnerComponent = (props: React.HTMLProps<HTMLDivElement>): JSX.Element => (
+export const SpinnerComponent = (props: IAttributes<HTMLDivElement>): JSX.Element => (
   <Spinner {...props} />
 );

@@ -1,10 +1,11 @@
 import React from 'react';
 import { SpinnerLeftBracketSVG, SpinnerRightBracketSVG } from 'assets';
+import { IAttributes } from 'types/interfaces';
 import { SpinnerDots, SpinnerWrapper } from './Spinner.styled';
 
-const Spinner = ({ className }: React.HTMLProps<HTMLDivElement>): JSX.Element => {
+const Spinner = ({ ...props }: IAttributes<HTMLDivElement>): JSX.Element => {
   return (
-    <SpinnerWrapper data-testid="spinner" className={className}>
+    <SpinnerWrapper data-testid="spinner" {...props}>
       <div className="bracketLeft">
         <SpinnerLeftBracketSVG />
       </div>

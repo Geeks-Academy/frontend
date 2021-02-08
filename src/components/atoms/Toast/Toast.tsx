@@ -3,11 +3,11 @@ import { ToastIconError, ToastIconInfo, ToastIconSuccess } from 'assets';
 import { DefaultToastHeaders, DefaultToastInfo, IProps } from './Toast.model';
 import { ToastContent, ToastHeader, ToastIconWrapper, ToastInfo } from './Toast.styled';
 
-const Toast = ({ className, header, info, type }: IProps): JSX.Element => {
+const Toast = ({ header, info, type, ...props }: IProps): JSX.Element => {
   switch (type) {
     case 'success':
       return (
-        <ToastContent data-testid="toastSuccess" className={className}>
+        <ToastContent data-testid="toastSuccess" {...props}>
           <ToastIconWrapper>
             <ToastIconSuccess />
           </ToastIconWrapper>
@@ -19,7 +19,7 @@ const Toast = ({ className, header, info, type }: IProps): JSX.Element => {
       );
     case 'error':
       return (
-        <ToastContent data-testid="toastError" className={className}>
+        <ToastContent data-testid="toastError" {...props}>
           <ToastIconWrapper>
             <ToastIconError />
           </ToastIconWrapper>
@@ -31,7 +31,7 @@ const Toast = ({ className, header, info, type }: IProps): JSX.Element => {
       );
     case 'info':
       return (
-        <ToastContent data-testid="toastInfo" className={className}>
+        <ToastContent data-testid="toastInfo" {...props}>
           <ToastIconWrapper>
             <ToastIconInfo />
           </ToastIconWrapper>
@@ -43,7 +43,7 @@ const Toast = ({ className, header, info, type }: IProps): JSX.Element => {
       );
     default:
       return (
-        <ToastContent data-testid="toastDefault" className={className}>
+        <ToastContent data-testid="toastDefault" {...props}>
           <ToastIconWrapper>
             <ToastIconError />
           </ToastIconWrapper>
