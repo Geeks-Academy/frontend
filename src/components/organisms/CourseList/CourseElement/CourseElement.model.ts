@@ -1,7 +1,7 @@
 import { IProps as Tag } from 'components/atoms/Tag/Tag.model';
+import { IAttributes } from 'types/interfaces';
 
-export interface IProps {
-  id?: number | string;
+export interface IProps extends IAttributes<HTMLDivElement> {
   description: string;
   image: string;
   author: string;

@@ -25,11 +25,12 @@ const CourseElement = ({
   tags,
   recommendation = false,
   releaseDate,
+  ...props
 }: IProps): JSX.Element => {
   const descriptionText = useTextClip(description);
 
   return (
-    <StyledCourseElement>
+    <StyledCourseElement {...props}>
       <StyledCourseImageWrapper>
         <img src={image} alt="Course Logo" />
         <StyledCourseLevel>{level}</StyledCourseLevel>

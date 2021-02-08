@@ -9,6 +9,7 @@ const SelectInput = ({
   selectCaption,
   inputPlaceholder,
   isOpen,
+  ...props
 }: ISelectInput): JSX.Element => {
   return (
     <Select
@@ -18,6 +19,7 @@ const SelectInput = ({
       onChange={onChange}
       options={options}
       isOpen={isOpen}
+      {...props}
     />
   );
 };

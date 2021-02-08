@@ -9,7 +9,6 @@ const Input = forwardRef<HTMLInputElement, IProps>(
       type = 'text',
       icon: Icon,
       label,
-      className,
       placeholder,
       onChange,
       fullWidth,
@@ -31,7 +30,7 @@ const Input = forwardRef<HTMLInputElement, IProps>(
     const inputLabelId = label && id && `${id}-label`;
 
     return (
-      <Container className={className} fullWidth={fullWidth}>
+      <Container fullWidth={fullWidth} {...props}>
         <InputWrapper fullWidth={fullWidth}>
           {label && <Label htmlFor={inputLabelId}>{label}</Label>}
           <StyledInput

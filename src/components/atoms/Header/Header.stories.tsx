@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Header, { IProps } from './Header';
+import Header from './Header';
 
 export default {
   title: 'atoms/header',
@@ -14,7 +14,9 @@ export default {
   },
 } as Meta;
 
-const Template: Story<IProps> = (props: IProps): JSX.Element => <Header {...props} />;
+const Template: Story<React.HTMLAttributes<HTMLDivElement>> = (
+  props: React.HTMLAttributes<HTMLDivElement>
+): JSX.Element => <Header {...props} />;
 
 export const Default = Template.bind({});
 Default.args = {

@@ -3,9 +3,9 @@ import { IProps } from './CourseList.model';
 import { Courses } from './CourseList.styled';
 import CourseElement from './CourseElement';
 
-const CourseList = ({ courses }: IProps): JSX.Element => {
+const CourseList = ({ courses, ...props }: IProps): JSX.Element => {
   return (
-    <div>
+    <div {...props}>
       {courses.map((course) => (
         <Courses>
           <CourseElement {...course} tags={course.tags} />

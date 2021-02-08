@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IAttributes } from 'types/interfaces';
 import {
   Container,
   Datalist,
@@ -9,13 +10,12 @@ import {
   ThumbWrapper,
 } from './LevelRange.styled';
 import { data } from './data';
-import { IProps } from './LevelRange.model';
 
-const LevelRange = ({ className }: IProps): JSX.Element => {
+const LevelRange = ({ ...props }: IAttributes<HTMLInputElement>): JSX.Element => {
   const [rangeValue, setRangeValue] = useState<number>(1);
 
   return (
-    <Container className={className}>
+    <Container {...props}>
       <Label htmlFor="range" aria-label="level-range">
         <Input
           onChange={(e) => setRangeValue(+e.target.value)}

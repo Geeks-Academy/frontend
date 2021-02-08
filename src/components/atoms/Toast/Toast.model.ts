@@ -1,8 +1,9 @@
+import { IAttributes } from 'types/interfaces';
+
 export type ToastType = 'success' | 'error' | 'info';
 
-export interface IProps {
+export interface IProps extends IAttributes<HTMLDivElement> {
   type?: ToastType;
-  className?: string;
   header?: string;
   info?: string;
 }

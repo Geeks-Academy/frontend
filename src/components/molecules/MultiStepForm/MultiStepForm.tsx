@@ -11,11 +11,12 @@ const MultiStepForm = ({
   onBack,
   onSubmit,
   onCancel,
+  ...props
 }: IMultiStepForm): JSX.Element => {
   const methods = useForm();
 
   return (
-    <div style={{ padding: '65px' }}>
+    <div style={{ padding: '65px' }} {...props}>
       <FormProvider {...methods}>
         <MultiStepFormBody
           title={title}

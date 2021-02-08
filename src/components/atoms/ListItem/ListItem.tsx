@@ -3,18 +3,19 @@ import React from 'react';
 import { Item, StyledLink } from './ListItem.styled';
 import { IListItem } from './ListItem.model';
 
-export interface IProps {
-  item: IListItem;
-  icon: string;
-  className?: string;
+export interface IProps
+  extends React.HTMLAttributes<HTMLLIElement>,
+    React.RefAttributes<HTMLLIElement> {
+  item?: IListItem;
+  icon?: string;
 }
 
-const ListItem = ({ className, item, icon }: IProps): JSX.Element => {
+const ListItem = ({ item, icon, ...props }: IProps): JSX.Element => {
   return (
-    <Item className={className}>
+    <Item {...props}>
       <img src={icon} alt="icon" />
       <p>
-        {item.txt} {item.link && <StyledLink to={item.link.url}>{item.link.text}</StyledLink>}
+        {item?.txt} {item?.link && <StyledLink to={item?.link.url}>{item?.link.text}</StyledLink>}
       </p>
     </Item>
   );

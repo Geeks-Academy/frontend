@@ -1,8 +1,8 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 
+import { IAttributes } from 'types/interfaces';
 import LevelRange from './LevelRange';
-import { IProps } from './LevelRange.model';
 
 export default {
   title: 'atoms/Ranges/LevelRange',
@@ -21,4 +21,6 @@ export default {
   },
 } as Meta;
 
-export const RangeWithLevel = (props: IProps): JSX.Element => <LevelRange {...props} />;
+export const RangeWithLevel = (props: IAttributes<HTMLInputElement>): JSX.Element => (
+  <LevelRange {...props} />
+);
