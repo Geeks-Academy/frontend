@@ -57,3 +57,13 @@ export const StyledParagraph = styled.p`
     width: 317px;
   }
 `;
+
+export const StyledAnchor = styled.a`
+  cursor: pointer;
+  :hover svg {
+    path {
+      fill: #8c8cb6;
+      fill-opacity: 1;
+    }
+  }
+`;

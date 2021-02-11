@@ -1,16 +1,12 @@
-import Link from "next/link";
+import Link from 'next/link';
+import { BehanceIcon, FacebookIcon, GithubIcon, LinkedinIcon } from 'assets/svg';
 import {
-  FacebookIcon,
-  LinkedinIcon,
-  BehanceIcon,
-  GithubIcon
-} from 'assets/svg'
-import {
-  StyledMainWrapper,
-  StyledParagraph,
+  StyledAnchor,
   StyledHeading,
-  StyledPage
-} from "styles/UnderConstruction.styled";
+  StyledMainWrapper,
+  StyledPage,
+  StyledParagraph,
+} from 'styles/UnderConstruction.styled';
 
 const UnderConstructionPage = (): JSX.Element => {
   return (
@@ -19,17 +15,25 @@ const UnderConstructionPage = (): JSX.Element => {
         <StyledHeading>geeks.academy</StyledHeading>
         <StyledParagraph>is currently under construction. Stay tuned:</StyledParagraph>
         <div>
-          <Link href='https://www.facebook.com/Geeksacademy-106394014777915/'>
-            <a><FacebookIcon /></a>
+          <Link passHref href="https://www.facebook.com/Geeksacademy-106394014777915/">
+            <StyledAnchor>
+              <FacebookIcon />
+            </StyledAnchor>
           </Link>
-          <Link href='https://www.linkedin.com/company/geekscademy/'>
-            <a><LinkedinIcon /></a>
+          <Link passHref href="https://www.linkedin.com/company/geekscademy/">
+            <StyledAnchor>
+              <LinkedinIcon />
+            </StyledAnchor>
           </Link>
-          <Link href='#'>
-            <a><BehanceIcon /></a>
+          <Link passHref href="#">
+            <StyledAnchor>
+              <BehanceIcon />
+            </StyledAnchor>
           </Link>
-          <Link href='https://github.com/Programmers-Only-Group'>
-            <a><GithubIcon /></a>
+          <Link passHref href="https://github.com/Programmers-Only-Group">
+            <StyledAnchor>
+              <GithubIcon />
+            </StyledAnchor>
           </Link>
         </div>
       </StyledMainWrapper>
@@ -37,4 +41,4 @@ const UnderConstructionPage = (): JSX.Element => {
   );
 };
 
-export default UnderConstructionPage; 
+export default UnderConstructionPage;
