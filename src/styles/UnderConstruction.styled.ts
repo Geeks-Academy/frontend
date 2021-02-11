@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledPage = styled.div`
   display: flex;
@@ -28,7 +28,6 @@ export const StyledMainWrapper = styled.div`
 `;
 
 export const StyledHeading = styled.h2`
-  font-family: 'Manrope', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
@@ -51,9 +50,19 @@ export const StyledParagraph = styled.p`
   font-size: 16px;
   line-height: 135%;
   text-align: center;
-  color: rgba(193, 193, 218, 0.5);
+  color: #8c8cb6;
   margin: 30px 0 20px;
   @media (min-width: 1366px) {
     width: 317px;
+  }
+`;
+
+export const StyledAnchor = styled.a`
+  cursor: pointer;
+  :hover svg {
+    path {
+      fill: #8c8cb6;
+      fill-opacity: 1;
+    }
   }
 `;

@@ -1,5 +1,5 @@
 const defaultStyles = `
-font-family: Lato;
+font-family: Manrope;
 font-style: normal;
 font-weight: normal;
 color: #000000;
