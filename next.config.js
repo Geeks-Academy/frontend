@@ -1,12 +1,15 @@
-const path = require("path");
-const withImages = require("next-images");
+/* eslint-disable @typescript-eslint/no-var-requires */
+// do you have error here with require()?
+
+const path = require('path');
+const withImages = require('next-images');
 
 module.exports = withImages({
-  exclude: path.resolve(__dirname, "src/assets/svg"),
+  exclude: path.resolve(__dirname, 'src/assets/svg'),
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ["@svgr/webpack"],
+      use: ['@svgr/webpack'],
     });
     return config;
   },

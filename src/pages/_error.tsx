@@ -1,17 +1,16 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 
 const errorPage = () => {
   return (
     <div>
       <h1>Error, something went wrong</h1>
       <h2>
-        This is a 404 page handler for unknown routes, there is a default page
-        included by nextjs, but you can override it by creating _error.js file
-        in the main 'pages' directory
+        This is a 404 page handler for unknown routes, there is a default page included by nextjs,
+        but you can override it by creating _error.js file in the main &apos;pages&apos; directory
       </h2>
       <p>
-        Try{" "}
+        Try{' '}
         <Link href="/">
           <a>going back</a>
         </Link>

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledPage = styled.div`
   display: flex;
@@ -28,7 +28,6 @@ export const StyledMainWrapper = styled.div`
 `;
 
 export const StyledHeading = styled.h2`
-  font-family: 'Manrope', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 24px;

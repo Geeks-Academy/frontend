@@ -1,16 +1,11 @@
-import Link from "next/link";
+import Link from 'next/link';
+import { BehanceIcon, FacebookIcon, GithubIcon, LinkedinIcon } from 'assets/svg';
 import {
-  FacebookIcon,
-  LinkedinIcon,
-  BehanceIcon,
-  GithubIcon
-} from 'assets/svg'
-import {
-  StyledMainWrapper,
-  StyledParagraph,
   StyledHeading,
-  StyledPage
-} from "styles/UnderConstruction.styled";
+  StyledMainWrapper,
+  StyledPage,
+  StyledParagraph,
+} from 'styles/UnderConstruction.styled';
 
 const UnderConstructionPage = (): JSX.Element => {
   return (
@@ -19,17 +14,25 @@ const UnderConstructionPage = (): JSX.Element => {
         <StyledHeading>geeks.academy</StyledHeading>
         <StyledParagraph>is currently under construction. Stay tuned:</StyledParagraph>
         <div>
-          <Link href='https://www.facebook.com/Geeksacademy-106394014777915/'>
-            <a><FacebookIcon /></a>
+          <Link href="https://www.facebook.com/Geeksacademy-106394014777915/">
+            <a>
+              <FacebookIcon />
+            </a>
           </Link>
-          <Link href='https://www.linkedin.com/company/geekscademy/'>
-            <a><LinkedinIcon /></a>
+          <Link href="https://www.linkedin.com/company/geekscademy/">
+            <a>
+              <LinkedinIcon />
+            </a>
           </Link>
-          <Link href='#'>
-            <a><BehanceIcon /></a>
+          <Link href="/">
+            <a>
+              <BehanceIcon />
+            </a>
           </Link>
-          <Link href='https://github.com/Programmers-Only-Group'>
-            <a><GithubIcon /></a>
+          <Link href="https://github.com/Programmers-Only-Group">
+            <a>
+              <GithubIcon />
+            </a>
           </Link>
         </div>
       </StyledMainWrapper>
@@ -37,4 +40,4 @@ const UnderConstructionPage = (): JSX.Element => {
   );
 };
 
-export default UnderConstructionPage; 
+export default UnderConstructionPage;
