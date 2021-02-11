@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { BehanceIcon, FacebookIcon, GithubIcon, LinkedinIcon } from 'assets/svg';
 import {
+  StyledAnchor,
   StyledHeading,
   StyledMainWrapper,
   StyledPage,
@@ -14,25 +15,25 @@ const UnderConstructionPage = (): JSX.Element => {
         <StyledHeading>geeks.academy</StyledHeading>
         <StyledParagraph>is currently under construction. Stay tuned:</StyledParagraph>
         <div>
-          <Link href="https://www.facebook.com/Geeksacademy-106394014777915/">
-            <a>
+          <Link passHref href="https://www.facebook.com/Geeksacademy-106394014777915/">
+            <StyledAnchor>
               <FacebookIcon />
-            </a>
+            </StyledAnchor>
           </Link>
-          <Link href="https://www.linkedin.com/company/geekscademy/">
-            <a>
+          <Link passHref href="https://www.linkedin.com/company/geekscademy/">
+            <StyledAnchor>
               <LinkedinIcon />
-            </a>
+            </StyledAnchor>
           </Link>
-          <Link href="/">
-            <a>
+          <Link passHref href="#">
+            <StyledAnchor>
               <BehanceIcon />
-            </a>
+            </StyledAnchor>
           </Link>
-          <Link href="https://github.com/Programmers-Only-Group">
-            <a>
+          <Link passHref href="https://github.com/Programmers-Only-Group">
+            <StyledAnchor>
               <GithubIcon />
-            </a>
+            </StyledAnchor>
           </Link>
         </div>
       </StyledMainWrapper>

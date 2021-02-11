@@ -50,9 +50,19 @@ export const StyledParagraph = styled.p`
   font-size: 16px;
   line-height: 135%;
   text-align: center;
-  color: rgba(193, 193, 218, 0.5);
+  color: #8c8cb6;
   margin: 30px 0 20px;
   @media (min-width: 1366px) {
     width: 317px;
+  }
+`;
+
+export const StyledAnchor = styled.a`
+  cursor: pointer;
+  :hover svg {
+    path {
+      fill: #8c8cb6;
+      fill-opacity: 1;
+    }
   }
 `;
