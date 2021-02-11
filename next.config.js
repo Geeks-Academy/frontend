@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-// do you have error here with require()?
-
 const path = require('path');
 const withImages = require('next-images');
 
