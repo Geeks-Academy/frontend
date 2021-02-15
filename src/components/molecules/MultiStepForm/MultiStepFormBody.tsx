@@ -21,7 +21,7 @@ const MultiStepFormBody = ({
 
   const lastStep = React.Children.count(children) - 1;
   const steps = React.Children.toArray(children);
-  const amountOfSteps = [...Array(steps.length)].map((v, i) => i + 1);
+  const amountOfSteps = Array.from(Array(steps.length).keys());
 
   const formData = watch();
 

@@ -19,7 +19,7 @@ const ProgressBar = ({ steps, activeStep, changeStep }: IProgressBar): JSX.Eleme
       {steps.map((step: number) => (
         <StyledProgressBarItemWrapper key={step} activeBar={activeStep > step}>
           <StyledProgressBarItem onClick={onChange(step)} active={activeStep > step - 1}>
-            {step}
+            {step + 1}
           </StyledProgressBarItem>
         </StyledProgressBarItemWrapper>
       ))}
