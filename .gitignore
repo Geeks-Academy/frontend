@@ -33,3 +33,7 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# code editor files
+/.idea
+/.vscode
