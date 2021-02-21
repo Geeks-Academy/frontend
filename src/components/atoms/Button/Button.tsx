@@ -9,25 +9,25 @@ import {
 } from './Button.styled';
 
 const Button = ({
-                  children,
-                  className,
-                  icon: Icon,
-                  iconPos = null,
-                  onClick,
-                  isFill,
-                  isOutline,
-                  isDisabled,
-                  isTransparent,
-                }: IButton): JSX.Element => {
+  children,
+  icon: Icon,
+  iconPos = null,
+  onClick,
+  filled,
+  outline,
+  disabled,
+  transparent,
+  ...props
+}: IButton): JSX.Element => {
   const content = () => {
     if (Icon && iconPos) {
       return (
         <div>
           <ButtonIcon
             iconPos={iconPos}
-            isFill={!!isFill}
-            isOutline={!!isOutline}
-            isTransparent={!!isTransparent}
+            filled={!!filled}
+            outline={!!outline}
+            transparent={!!transparent}
           >
             <Icon />
           </ButtonIcon>
@@ -35,45 +35,35 @@ const Button = ({
         </div>
       );
     }
-    return <span>{children}</span>;
+    return <span {...props}>{children}</span>;
   };
 
-  if (isOutline) {
+  if (outline) {
     return (
-      <OutlineButton
-        data-testid="outline"
-        className={className}
-        iconPos={iconPos}
-        onClick={onClick}
-      >
+      <OutlineButton data-testid="outline" iconPos={iconPos} onClick={onClick}>
         {content()}
       </OutlineButton>
     );
   }
 
-  if (isTransparent) {
+  if (transparent) {
     return (
-      <TransparentButton
-        data-testid="transparent"
-        className={className}
-        iconPos={iconPos}
-        onClick={onClick}
-      >
+      <TransparentButton data-testid="transparent" iconPos={iconPos} onClick={onClick}>
         {content()}
       </TransparentButton>
     );
   }
 
-  if (isDisabled) {
+  if (disabled) {
     return (
-      <DisableButton data-testid="disabled" className={className} iconPos={iconPos}>
+      <DisableButton data-testid="disabled" iconPos={iconPos}>
         {content()}
       </DisableButton>
     );
   }
 
   return (
-    <FillButton data-testid="fill" className={className} iconPos={iconPos} onClick={onClick}>
+    <FillButton data-testid="fill" iconPos={iconPos} onClick={onClick}>
       {content()}
     </FillButton>
   );
