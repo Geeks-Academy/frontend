@@ -25,7 +25,6 @@ const ExampleForm = (): JSX.Element => {
   };
 
   const handleCancel = () => {
-    console.log('cancel');
     dispatch(clearForm());
   };
 
