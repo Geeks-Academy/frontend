@@ -62,7 +62,12 @@ const MultiStepFormBody = ({
   return (
     <>
       {title && <StyledTitle>{title}</StyledTitle>}
-      <ProgressBar activeStep={currentStep} steps={amountOfSteps} changeStep={goTo} />
+      <ProgressBar
+        activeStep={currentStep}
+        steps={amountOfSteps}
+        changeStep={goTo}
+        formData={formData}
+      />
       <StyledForm>{steps[currentStep]}</StyledForm>
       <ActionButtons
         lastStep={lastStep}

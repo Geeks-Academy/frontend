@@ -1,16 +1,22 @@
 import React from 'react';
 
+import { useDispatch } from 'react-redux';
 import { IProgressBar } from './ProgressBar.model';
 import {
   StyledProgressBar,
   StyledProgressBarItem,
   StyledProgressBarItemWrapper,
 } from './ProgressBar.styled';
+import reducer from '../../../../redux/reducers/multiStepExample';
 
-const ProgressBar = ({ steps, activeStep, changeStep }: IProgressBar): JSX.Element => {
+const ProgressBar = ({ steps, activeStep, changeStep, formData }: IProgressBar): JSX.Element => {
+  const dispatch = useDispatch();
+  const { updateForm } = reducer.actions;
+
   const onChange = (step: number) => () => {
     if (activeStep > step) {
       changeStep(step);
+      dispatch(updateForm(formData));
     }
   };
 
