@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { useDispatch } from 'react-redux';
+import reducer from 'redux/reducers/multiStepExample';
 import { IProgressBar } from './ProgressBar.model';
 import {
   StyledProgressBar,
   StyledProgressBarItem,
   StyledProgressBarItemWrapper,
 } from './ProgressBar.styled';
-import reducer from '../../../../redux/reducers/multiStepExample';
 
 const ProgressBar = ({ steps, activeStep, changeStep, formData }: IProgressBar): JSX.Element => {
   const dispatch = useDispatch();
