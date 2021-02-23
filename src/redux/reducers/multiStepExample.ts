@@ -20,9 +20,7 @@ const multiStepExample = createSlice({
     updateForm: (state, action: PayloadAction<{ [key: string]: string | boolean }>) => {
       return { ...state, ...action.payload };
     },
-    clearForm: (state) => {
-      return { ...state, ...initialState };
-    },
+    clearForm: () => initialState,
   },
 });
 

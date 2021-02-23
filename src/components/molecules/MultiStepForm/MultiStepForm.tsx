@@ -15,6 +15,11 @@ const MultiStepForm = ({
 }: IMultiStepForm): JSX.Element => {
   const methods = useForm();
 
+  const handleCancel = () => {
+    onCancel();
+    methods.reset();
+  };
+
   return (
     <div style={{ padding: '65px' }} {...props}>
       <FormProvider {...methods}>
@@ -23,7 +28,7 @@ const MultiStepForm = ({
           onNext={onNext}
           onBack={onBack}
           onSubmit={onSubmit}
-          onCancel={onCancel}
+          onCancel={handleCancel}
         >
           {children}
         </MultiStepFormBody>
