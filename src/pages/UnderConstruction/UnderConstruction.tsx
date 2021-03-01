@@ -7,7 +7,6 @@ import {
   StyledPage,
   StyledParagraph,
 } from 'styles/UnderConstruction.styled';
-import TextArea from 'components/atoms/TextArea';
 
 const UnderConstructionPage = (): JSX.Element => {
   return (
@@ -33,7 +32,6 @@ const UnderConstructionPage = (): JSX.Element => {
           </Link>
         </div>
       </StyledMainWrapper>
-      <TextArea />
     </StyledPage>
   );
 };
