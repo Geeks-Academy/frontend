@@ -5,3 +5,8 @@ export { default as SpinnerRightBracketSVG } from './spinner-right-bracket.svg';
 export { default as SpinnerLeftBracketSVG } from './spinner-left-bracket.svg';
 export { default as LogoText } from './logo-icon.svg';
 export { default as LogoIcon } from './logo-text.svg';
+export { default as GoogleLogo } from './google-logo.svg';
+export { default as GithubLogo } from './github-logo.svg';
+export { default as ToastIconError } from './toast-icon-error.svg';
+export { default as ToastIconSuccess } from './toast-icon-success.svg';
+export { default as ToastIconInfo } from './toast-icon-info.svg';
