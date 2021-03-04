@@ -10,3 +10,8 @@ export { default as GithubLogo } from './github-logo.svg';
 export { default as ToastIconError } from './toast-icon-error.svg';
 export { default as ToastIconSuccess } from './toast-icon-success.svg';
 export { default as ToastIconInfo } from './toast-icon-info.svg';
+export { default as CheckedOptionIcon } from './checked-option-icon.svg';
+export { default as UnCheckedOptionIcon } from './unchecked-option-icon.svg';
+export { default as ArrowIcon } from './arrow-icon.svg';
+export { default as MultistepformNext } from './multistepform-next.svg';
+export { default as MultistepformSubmit } from './multistepform-submit.svg';
