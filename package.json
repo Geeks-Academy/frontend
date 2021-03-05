@@ -1,17 +1,18 @@
 {
-  "name": "nextapp",
+  "name": "frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p 80",
-    "storybook": "start-storybook",
-    "postinstall": "husky install",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public",
     "lint:css": "stylelint './src/**/*.ts'",
-    "test": "cross-env CI=true react-scripts test --env=jsdom",
-    "test:watch": "react-scripts test --env=jsdom",
-    "test:coverage": "npm test -- --color --coverage"
+    "postinstall": "husky install",
+    "test": "cross-env CI=true react-scripts test --color --env=jsdom",
+    "test:watch": "npm test --env=jsdom",
+    "test:coverage": "npm test -- --coverage"
   },
   "dependencies": {
     "@commitlint/cli": "^11.0.0",
