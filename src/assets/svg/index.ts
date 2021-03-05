@@ -15,3 +15,6 @@ export { default as UnCheckedOptionIcon } from './unchecked-option-icon.svg';
 export { default as ArrowIcon } from './arrow-icon.svg';
 export { default as MultistepformNext } from './multistepform-next.svg';
 export { default as MultistepformSubmit } from './multistepform-submit.svg';
+export { default as ListItemIcon } from './listItemIcon.svg';
+export { default as InputIcon } from './inputIcon.svg';
+export { default as ButtonIcon } from './button-icon.svg';
