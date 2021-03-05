@@ -1,6 +1,5 @@
 import { Meta } from '@storybook/react/types-6-0';
 import { IAttributes } from 'types/interfaces';
-
 import Range from './Range';
 
 export default {

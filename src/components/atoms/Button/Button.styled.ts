@@ -103,7 +103,7 @@ export const ButtonIcon = styled.div<{
     height: 24px;
     path {
       fill: ${({ filled, transparent, outline }) =>
-  setBackgroundColor(filled, transparent, outline)};
+        setBackgroundColor(filled, transparent, outline)};
     }
   }
 `;

@@ -1,6 +1,5 @@
 import { Meta } from '@storybook/react/types-6-0';
 import { IAttributes } from 'types/interfaces';
-
 import LevelRange from './LevelRange';
 
 export default {

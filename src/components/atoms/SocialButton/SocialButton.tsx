@@ -1,4 +1,3 @@
-import React from 'react';
 import { GithubLogo, GoogleLogo } from 'assets/svg';
 import { IAttributes } from 'types/interfaces';
 import { SocialButtonParagraph, SocialButtonStyled } from './SocialButton.styled';
