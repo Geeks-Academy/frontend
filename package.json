@@ -8,7 +8,10 @@
     "start": "next start -p 80",
     "storybook": "start-storybook",
     "postinstall": "husky install",
-    "lint:css": "stylelint './src/**/*.ts'"
+    "lint:css": "stylelint './src/**/*.ts'",
+    "test": "cross-env CI=true react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test --env=jsdom",
+    "test:coverage": "npm test -- --color --coverage"
   },
   "dependencies": {
     "@commitlint/cli": "^11.0.0",
@@ -57,6 +60,10 @@
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^6.1.14",
     "@svgr/webpack": "^5.5.0",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/react-hooks": "^5.1.0",
+    "@testing-library/user-event": "^12.8.1",
     "@types/lodash": "^4.14.168",
     "@types/node": "^14.14.20",
     "@types/react": "^17.0.0",
@@ -81,9 +88,11 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "!src/index.tsx",
       "src/**/*.tsx",
       "src/**/*.ts",
+      "!src/index.tsx",
+      "!src/**/index.tsx",
+      "!src/**/index.ts",
       "!src/**/*.styled.ts",
       "!src/**/*.stories.tsx"
     ]
