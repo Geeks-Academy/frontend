@@ -1,0 +1,10 @@
+{
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "eslint.alwaysShowStatus": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+      "source.fixAll": true
+    },
+    "editor.formatOnSave": false,
+    "javascript.preferences.importModuleSpecifier": "non-relative"
+}
