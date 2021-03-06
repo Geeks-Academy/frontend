@@ -32,7 +32,7 @@ export default class MyDocument extends Document {
 
   render(): JSX.Element {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
           <link
             href="https://fonts.googleapis.com/css2?family=Manrope:wght@600&family=Source+Code+Pro&display=swap"
