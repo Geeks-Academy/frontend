@@ -36,7 +36,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta
             name="desctiption"
-            content="Application for programmers, you can match yourself with mentchors and practise skills on web courses."
+            content="Application for programmers, you can match yourself with mentors and practise skills on web courses."
           />
           <link
             href="https://fonts.googleapis.com/css2?family=Manrope:wght@600&family=Source+Code+Pro&display=swap"
