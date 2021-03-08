@@ -10,4 +10,7 @@ module.exports = withImages({
     });
     return config;
   },
+  images: {
+    domains: ['pixabay.com'],
+  },
 });
