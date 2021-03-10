@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { BehanceIcon, FacebookIcon, GithubIcon, LinkedinIcon } from 'assets/svg';
+import { FacebookIcon, GithubIcon, LinkedinIcon } from 'assets/svg';
 import {
   StyledAnchor,
   StyledHeading,
@@ -23,11 +23,6 @@ const UnderConstructionPage = (): JSX.Element => {
           <Link passHref href="https://www.linkedin.com/company/geekscademy/">
             <StyledAnchor>
               <LinkedinIcon />
-            </StyledAnchor>
-          </Link>
-          <Link passHref href="#">
-            <StyledAnchor>
-              <BehanceIcon />
             </StyledAnchor>
           </Link>
           <Link passHref href="https://github.com/Programmers-Only-Group">

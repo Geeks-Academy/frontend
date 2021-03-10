@@ -7,7 +7,7 @@ export const StyledPage = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100vh;
-  background-color: #e3e3ec;
+  background-color: #f9fafa;
 `;
 
 export const StyledMainWrapper = styled.div`
@@ -33,7 +33,7 @@ export const StyledHeading = styled.h2`
   font-size: 24px;
   line-height: 135%;
   text-align: center;
-  color: #8c8cb6;
+  color: #0057ff;
   margin: 0;
   @media (min-width: 768px) {
     font-size: 36px;
@@ -50,7 +50,7 @@ export const StyledParagraph = styled.p`
   font-size: 16px;
   line-height: 135%;
   text-align: center;
-  color: #8c8cb6;
+  color: #002fb2;
   margin: 30px 0 20px;
   @media (min-width: 1366px) {
     width: 317px;
@@ -59,10 +59,13 @@ export const StyledParagraph = styled.p`
 
 export const StyledAnchor = styled.a`
   cursor: pointer;
+  svg path {
+    fill: #0057ff;
+    fill-opacity: 1;
+  }
   :hover svg {
     path {
-      fill: #8c8cb6;
-      fill-opacity: 1;
+      fill: #002fb2;
     }
   }
 `;
