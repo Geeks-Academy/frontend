@@ -26,6 +26,7 @@ module.exports = {
     },
   },
   webpackFinal: async (config) => {
+    config.resolve.modules = [...(config.resolve.modules || []), path.resolve(__dirname, '../src')];
     config.module.rules.push(
       {
         // rule for svgs from svg dricetory read as SVG Component
