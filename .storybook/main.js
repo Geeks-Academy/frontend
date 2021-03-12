@@ -1,4 +1,5 @@
 const path = require('path');
+const svgs = path.resolve(__dirname, '../src/assets/svg');
 
 module.exports = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -9,6 +10,7 @@ module.exports = {
       name: '@storybook/preset-create-react-app',
       options: {
         craOverrides: {
+          // disable file loader for svgs from preset-create-react-app whitch override SB webpack configuration and broke svgs
           fileLoaderExcludes: ['svg'],
         },
       },
@@ -24,20 +26,34 @@ module.exports = {
     },
   },
   webpackFinal: async (config) => {
-    const nextConfig = require('../next.config.js');
-
-    console.log(nextConfig);
-
-    config.module.rules.push({
-      test: /\.svg$/,
-      issuer: {
-        test: /\.(js|ts)x?$/,
+    config.module.rules.push(
+      {
+        // rule for svgs from svg dricetory read as SVG Component
+        test: /\.svg$/,
+        issuer: {
+          test: /\.(js|ts)x?$/,
+        },
+        include: svgs,
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              svgo: true,
+            },
+          },
+        ],
       },
-      exclude: path.resolve(__dirname, 'src/assets/images'),
-      use: ['@svgr/webpack'],
-    });
-
-    // return {...nextConfig.webpack, ...config };
+      {
+        // rule for svgs from images dricetory read as url for img tag
+        exclude: svgs,
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'url-loader',
+          },
+        ],
+      }
+    );
 
     return config;
   },

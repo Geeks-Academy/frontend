@@ -1,7 +1,7 @@
 import { MemoryRouter } from 'react-router-dom';
 import { Meta, Story } from '@storybook/react/types-6-0';
 
-import { ListItemIcon } from 'assets/svg';
+import { ListItemIcon } from 'assets/images';
 import List, { IProps } from './List';
 
 export default {

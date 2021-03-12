@@ -1,7 +1,5 @@
 import Link from 'next/link';
 import { FacebookIcon, GithubIcon, LinkedinIcon } from 'assets/svg';
-import ListItem from 'components/atoms/ListItem';
-import { ListItemIcon } from 'assets/images';
 import {
   StyledAnchor,
   StyledHeading,
@@ -9,8 +7,6 @@ import {
   StyledPage,
   StyledParagraph,
 } from 'styles/UnderConstruction.styled';
-
-console.log(ListItemIcon);
 
 const UnderConstructionPage = (): JSX.Element => {
   return (
@@ -36,7 +32,6 @@ const UnderConstructionPage = (): JSX.Element => {
           </Link>
         </div>
       </StyledMainWrapper>
-      <ListItem icon={ListItemIcon} />
     </StyledPage>
   );
 };

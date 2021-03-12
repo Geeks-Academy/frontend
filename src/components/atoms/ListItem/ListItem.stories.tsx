@@ -2,7 +2,6 @@ import { MemoryRouter } from 'react-router-dom';
 import { Meta, Story } from '@storybook/react/types-6-0';
 
 import { ListItemIcon } from 'assets/images';
-
 import ListItem, { IProps } from './ListItem';
 
 export default {
@@ -17,8 +16,6 @@ export default {
     },
   },
 } as Meta;
-
-console.log(ListItemIcon);
 
 const Template: Story<IProps> = (props: IProps): JSX.Element => <ListItem {...props} />;
 

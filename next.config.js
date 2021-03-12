@@ -11,7 +11,14 @@ module.exports = withImages({
         test: /\.(js|ts)x?$/,
       },
       exclude: path.resolve(__dirname, 'src/assets/images'),
-      use: ['@svgr/webpack'],
+      use: [
+        {
+          loader: '@svgr/webpack',
+          options: {
+            svgo: true,
+          },
+        },
+      ],
     });
 
     return config;

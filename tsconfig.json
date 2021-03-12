@@ -21,7 +21,7 @@
     "strict": true,
     "target": "esnext",
     "baseUrl": "./src",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
   },
   "include": [
     "next-env.d.ts",
