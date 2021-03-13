@@ -36,3 +36,7 @@ yarn-error.log*
 # code editor files
 /.idea
 /.vscode
+
+# eslint
+
+.eslintcache
