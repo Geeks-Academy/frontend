@@ -34,6 +34,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <title>Geeks-Academy, space for programmers</title>
           <meta
             name="desctiption"
             content="Application for programmers, you can match yourself with mentors and practise skills on web courses."
