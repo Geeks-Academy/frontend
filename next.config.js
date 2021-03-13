@@ -3,11 +3,24 @@ const withImages = require('next-images');
 
 module.exports = withImages({
   exclude: path.resolve(__dirname, 'src/assets/svg'),
+  inlineImageLimit: false,
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ['@svgr/webpack'],
+      issuer: {
+        test: /\.(js|ts)x?$/,
+      },
+      exclude: path.resolve(__dirname, 'src/assets/images'),
+      use: [
+        {
+          loader: '@svgr/webpack',
+          options: {
+            svgo: true,
+          },
+        },
+      ],
     });
+
     return config;
   },
 });

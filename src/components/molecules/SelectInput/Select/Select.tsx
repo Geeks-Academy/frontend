@@ -1,5 +1,5 @@
 import React, { MouseEvent, useEffect, useRef, useState } from 'react';
-import { ArrowIcon } from 'assets/svg';
+import { ArrowIcon } from 'assets/images';
 import { useOutsideClick } from 'hooks';
 import {
   StyledArrowImage,
