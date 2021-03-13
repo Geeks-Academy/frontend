@@ -1,9 +1,7 @@
-import React from 'react';
-
 import { MemoryRouter } from 'react-router-dom';
 import { Meta, Story } from '@storybook/react/types-6-0';
 
-import { listItemIcon } from 'assets';
+import { ListItemIcon } from 'assets/images';
 import ListItem, { IProps } from './ListItem';
 
 export default {
@@ -28,7 +26,7 @@ Default.args = {
     txt: 'Improve your skills and work on amazing IT projects',
     link: undefined,
   },
-  icon: listItemIcon,
+  icon: ListItemIcon,
 };
 
 export const WithLink = Default.bind({});

@@ -1,13 +1,12 @@
-import React from 'react';
 import StyledList from 'components/atoms/List';
-import { listItemIcon } from 'assets';
+import { listItemIcon } from 'assets/svg';
 import { cleanup, render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 
 afterEach(cleanup);
 
 describe('List', () => {
-  test(' render List component', () => {
+  test('render List component', () => {
     const data = [
       { id: 0, txt: 'Build up your team or find your code buddie' },
       { id: 1, txt: 'Improve your skills and work on amazing IT projects' },
@@ -29,7 +28,7 @@ describe('List', () => {
     expect(getByTestId('list')).toBeInTheDocument();
   });
 
-  test(' render List component without link', () => {
+  test('render List component without link', () => {
     const data = [
       { id: 0, txt: 'Build up your team or find your code buddie' },
       { id: 1, txt: 'Improve your skills and work on amazing IT projects' },

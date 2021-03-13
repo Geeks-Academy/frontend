@@ -1,8 +1,8 @@
 {
-    "family": "frontend",
+    "family": "geeks_frontend",
     "containerDefinitions": [
         {
-            "name": "frontend",
+            "name": "geeks_frontend",
             "image": "",
             "cpu": 10,
             "memoryReservation": 128,

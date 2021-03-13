@@ -1,5 +1,4 @@
-import React from 'react';
-import { SpinnerLeftBracketSVG, SpinnerRightBracketSVG } from 'assets';
+import { SpinnerLeftBracketSVG, SpinnerRightBracketSVG } from 'assets/svg';
 import { IAttributes } from 'types/interfaces';
 import { SpinnerDots, SpinnerWrapper } from './Spinner.styled';
 

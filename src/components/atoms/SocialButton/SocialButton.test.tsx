@@ -1,4 +1,3 @@
-import React from 'react';
 import SocialButton from 'components/atoms/SocialButton';
 import { cleanup, render } from '@testing-library/react';
 import { DefaultRole } from './SocialButton.model';

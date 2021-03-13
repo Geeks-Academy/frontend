@@ -1,4 +1,3 @@
-import React from 'react';
 import SocialButton from './SocialButton';
 
 export default {

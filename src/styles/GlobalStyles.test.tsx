@@ -1,4 +1,3 @@
-import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import GlobalStyles from './GlobalStyles';
 import typography from './typography';

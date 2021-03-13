@@ -1,4 +1,3 @@
-import React from 'react';
 import Input from 'components/atoms/Input';
 import { cleanup, render } from '@testing-library/react';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import Toast from './Toast';
 import { DefaultToastHeaders, DefaultToastInfo } from './Toast.model';

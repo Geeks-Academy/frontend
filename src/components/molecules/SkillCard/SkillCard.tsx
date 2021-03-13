@@ -1,7 +1,7 @@
 import React from 'react';
+import { CheckedOptionIcon } from 'assets/svg';
 import { ISkillCard } from './SkillCard.model';
 import {
-  StyledCheckedOptionIcon,
   StyledContent,
   StyledLevelRange,
   StyledSkillCard,
@@ -14,7 +14,7 @@ const SkillCard = ({ title, content, ...props }: ISkillCard): JSX.Element => {
   return (
     <StyledSkillCard {...props}>
       <StyledWrapper>
-        <StyledCheckedOptionIcon />
+        <CheckedOptionIcon />
         <StyledTextWrapper>
           <StyledTitle>{title}</StyledTitle>
           <StyledContent>{content}</StyledContent>

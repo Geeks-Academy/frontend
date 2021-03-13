@@ -1,5 +1,4 @@
-import React from 'react';
-import { InputIcon } from 'assets';
+import { InputIcon } from 'assets/svg';
 import { Meta } from '@storybook/react/types-6-0';
 import Input from './Input';
 import { IProps } from './Input.model';

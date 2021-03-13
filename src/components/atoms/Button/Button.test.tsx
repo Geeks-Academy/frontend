@@ -1,6 +1,5 @@
-import React from 'react';
 import Button from 'components/atoms/Button';
-import { ReactComponent as icon } from 'assets/button-icon.svg';
+import { ReactComponent as icon } from 'assets/svg/button-icon.svg';
 import { cleanup, render } from '@testing-library/react';
 
 afterEach(cleanup);

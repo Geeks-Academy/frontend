@@ -1,5 +1,4 @@
-import React from 'react';
-import { GithubLogo, GoogleLogo } from 'assets';
+import { GithubLogo, GoogleLogo } from 'assets/svg';
 import { IAttributes } from 'types/interfaces';
 import { SocialButtonParagraph, SocialButtonStyled } from './SocialButton.styled';
 import { DefaultLogo, DefaultRole, Logo, Role } from './SocialButton.model';

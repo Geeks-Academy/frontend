@@ -1,4 +1,3 @@
-import React from 'react';
 import { IAttributes } from 'types/interfaces';
 
 import { Title } from './Header.styled';

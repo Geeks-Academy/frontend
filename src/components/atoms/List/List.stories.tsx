@@ -1,9 +1,7 @@
-import React from 'react';
-
 import { MemoryRouter } from 'react-router-dom';
 import { Meta, Story } from '@storybook/react/types-6-0';
 
-import { listItemIcon } from 'assets';
+import { ListItemIcon } from 'assets/images';
 import List, { IProps } from './List';
 
 export default {
@@ -23,7 +21,7 @@ const Template: Story<IProps> = (props: IProps): JSX.Element => <List {...props}
 
 export const MultipleElement = Template.bind({});
 MultipleElement.args = {
-  icon: listItemIcon,
+  icon: ListItemIcon,
   items: [
     { id: 0, txt: 'Build up your team or find your code buddie' },
     { id: 1, txt: 'Improve your skills and work on amazing IT projects' },

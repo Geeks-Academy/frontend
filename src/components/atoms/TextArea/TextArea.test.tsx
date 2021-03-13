@@ -1,4 +1,3 @@
-import React from 'react';
 import TextArea from 'components/atoms/TextArea';
 import { fireEvent, render } from '@testing-library/react';
 
@@ -12,7 +11,7 @@ describe('TextArea', () => {
     };
   };
 
-  test(' render TextArea component', () => {
+  test('render TextArea component', () => {
     const { getByTestId } = render(<TextArea />);
     expect(getByTestId('textarea')).toBeInTheDocument();
   });

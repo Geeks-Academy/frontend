@@ -56,7 +56,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: frontend
+        ECR_REPOSITORY: geeks_frontend
         IMAGE_TAG: ${{ github.sha }}
       run: |
         # Build a docker container and
@@ -65,20 +65,19 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
         task-definition: ./frontend_task_definition.json
-        container-name: frontend
+        container-name: geeks_frontend
         image: ${{ steps.build-image.outputs.image }}
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: frontend
+        service: geeks_frontend
         cluster: ProgrammersOnly
         wait-for-service-stability: false
 
@@ -87,13 +86,12 @@ jobs:
       run: |
         #!/bin/bash
         tasks=`aws ecs list-tasks --cluster ProgrammersOnly | jq '.taskArns'`
-
         for task in $tasks; do
             name=""
             if [ ${#task} -gt 1 ]; then
                 task=`echo $task | tr -d '\"'`
                 name=`aws ecs describe-tasks --cluster ProgrammersOnly --tasks $task | jq '.tasks' | jq '.[0].overrides.containerOverrides' | jq '.[0].name' | tr -d '\"'`
-                if [[ $name == "frontend" ]]; then
+                if [[ $name == "geeks_frontend" ]]; then
                     echo $name
                     aws ecs stop-task --cluster ProgrammersOnly --task $task
                 fi

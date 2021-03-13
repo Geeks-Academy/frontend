@@ -1,5 +1,5 @@
 import React from 'react';
-import { LogoIcon, LogoText } from 'assets';
+import { LogoIcon, LogoText } from 'assets/svg';
 import { IProps } from './Logo.model';
 import { LogoWrapper, StyledLogo, StyledLogoText } from './Logo.styled';
 

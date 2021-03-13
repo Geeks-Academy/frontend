@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { CheckedOptionIcon, UnCheckedOptionIcon } from 'assets/svg';
 import { IOption } from './Option.model';
-import {
-  StyledCheckedOptionIcon,
-  StyledOption,
-  StyledOptionParagraph,
-  StyledUnCheckedOptionIcon,
-} from './Option.styled';
+import { StyledOption, StyledOptionParagraph } from './Option.styled';
 
 const Option = ({
   option,
@@ -46,7 +42,7 @@ const Option = ({
       value={option.value}
       role="option"
     >
-      {isSelected ? <StyledCheckedOptionIcon /> : <StyledUnCheckedOptionIcon />}
+      {isSelected ? <CheckedOptionIcon /> : <UnCheckedOptionIcon />}
       <StyledOptionParagraph isSelected={isSelected}>{option.value}</StyledOptionParagraph>
     </StyledOption>
   );

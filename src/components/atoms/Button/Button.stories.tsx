@@ -1,5 +1,4 @@
-import React from 'react';
-import { ButtonIcon } from 'assets';
+import { ButtonIcon } from 'assets/svg';
 import Button from './Button';
 import { IButton } from './Button.model';
 

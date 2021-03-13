@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToastIconError, ToastIconInfo, ToastIconSuccess } from 'assets';
+import { ToastIconError, ToastIconInfo, ToastIconSuccess } from 'assets/svg';
 import { DefaultToastHeaders, DefaultToastInfo, IProps } from './Toast.model';
 import { ToastContent, ToastHeader, ToastIconWrapper, ToastInfo } from './Toast.styled';
 

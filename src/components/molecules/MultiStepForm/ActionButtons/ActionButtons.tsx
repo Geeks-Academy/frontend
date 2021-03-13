@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Button from 'components/atoms/Button';
-import { MultistepformNext, MultistepformSubmit } from 'assets';
+import { MultistepformNext, MultistepformSubmit } from 'assets/svg';
 import { StyledButtonWrapper } from './ActionButton.styled';
 import { IActionButtons } from './ActionButtons.model';
 
