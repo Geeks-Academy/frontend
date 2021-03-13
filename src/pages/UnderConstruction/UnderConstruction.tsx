@@ -25,7 +25,7 @@ const UnderConstructionPage = (): JSX.Element => {
               <LinkedinIcon />
             </StyledAnchor>
           </Link>
-          <Link passHref href="https://github.com/Programmers-Only-Group">
+          <Link passHref href="https://github.com/Geeks-Academy">
             <StyledAnchor>
               <GithubIcon />
             </StyledAnchor>
