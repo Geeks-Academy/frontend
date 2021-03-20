@@ -78,22 +78,22 @@ jobs:
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: geeks_frontend
-        cluster: ProgrammersOnly
+        cluster: GeeksAcademy
         wait-for-service-stability: false
 
     #TODO can be deleted once we will use Application Load Balancers and dynamic ports
     - name: Stop current task
       run: |
         #!/bin/bash
-        tasks=`aws ecs list-tasks --cluster ProgrammersOnly | jq '.taskArns'`
+        tasks=`aws ecs list-tasks --cluster GeeksAcademy | jq '.taskArns'`
         for task in $tasks; do
             name=""
             if [ ${#task} -gt 1 ]; then
                 task=`echo $task | tr -d '\"'`
-                name=`aws ecs describe-tasks --cluster ProgrammersOnly --tasks $task | jq '.tasks' | jq '.[0].overrides.containerOverrides' | jq '.[0].name' | tr -d '\"'`
+                name=`aws ecs describe-tasks --cluster GeeksAcademy --tasks $task | jq '.tasks' | jq '.[0].overrides.containerOverrides' | jq '.[0].name' | tr -d '\"'`
                 if [[ $name == "geeks_frontend" ]]; then
                     echo $name
-                    aws ecs stop-task --cluster ProgrammersOnly --task $task
+                    aws ecs stop-task --cluster GeeksAcademy --task $task
                 fi
             fi
         done
