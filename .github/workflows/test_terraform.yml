@@ -50,7 +50,7 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Get latest docker image in ECR
-      id: build-image
+      id: get-image
       run: |
         # Build a docker container and
         # push it to ECR so that it can
@@ -64,4 +64,5 @@ jobs:
       run: |
         cd ./infrastructure
         terraform init
-        terraform plan -var 'account_number=${{ secrets.AWS_ACCOUNT_NUMBER }}'
+        terraform plan -var 'account_number=${{ secrets.AWS_ACCOUNT_NUMBER }}' \
+                       -var 'image=${{ steps.get-image.outputs.image }}'
