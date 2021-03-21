@@ -21,6 +21,7 @@ module "geeks_academy" {
 
   account_number     = var.account_number
   service_name       = "geeks_academy"
+  image              = var.image
   ecs_role_name      = aws_iam_role.ecs_role.name
   cluster_name       = "GeeksAcademy"
   region             = "eu-central-1"

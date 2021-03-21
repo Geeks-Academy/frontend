@@ -45,6 +45,21 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-central-1
 
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Get latest docker image in ECR
+      id: build-image
+      run: |
+        # Build a docker container and
+        # push it to ECR so that it can
+        # be deployed to ECS.
+        REGISTRY_ID=`aws ecr describe-images --repository-name geeks_frontend --query 'sort_by(imageDetails,& imagePushedAt)[*]' | jq '.[0].registryId'`
+        REPO_NAME=`aws ecr describe-images --repository-name geeks_frontend --query 'sort_by(imageDetails,& imagePushedAt)[*]' | jq '.[0].repositoryName'`
+        TAG=`aws ecr describe-images --repository-name geeks_frontend --query 'sort_by(imageDetails,& imagePushedAt)[*]' | jq '.[0].imageTags' | jq '.[0]'`
+        echo "::set-output name=image::${{ secrets.AWS_ACCOUNT_NUMBER }}.dkr.ecr.eu-central-1.amazonaws.com/$REPO_NAME:$TAG"
+
     - name: Run terraform PLAN
       run: |
         cd ./infrastructure
