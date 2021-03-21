@@ -31,7 +31,7 @@ on:
 
 jobs:
   deploy:
-    name: Deploy
+    name: Test docker build & terraform plan
     runs-on: ubuntu-latest
 
     steps:

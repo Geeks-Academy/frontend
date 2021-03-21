@@ -17,7 +17,7 @@ data "terraform_remote_state" "project-core" {
 }
 
 module "geeks_academy" {
-  source = "github.com/Geeks-Academy/terraform/tree/master/modules/ecs_service"
+  source = "github.com/Geeks-Academy/terraform/modules/ecs_service"
 
   account_number     = var.account_number
   service_name       = "geeks_academy"
