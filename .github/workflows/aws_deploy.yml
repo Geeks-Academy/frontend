@@ -23,7 +23,7 @@
 #    See the documentation for each action used below for the recommended IAM policies for this IAM user,
 #    and best practices on handling the access key credentials.
 
-name: New terraform apply
+name: Deploy to AWS
 
 on:
   workflow_dispatch:
@@ -34,7 +34,7 @@ on:
 
 jobs:
   deploy:
-    name: Deploy
+    name: terraform apply
     runs-on: ubuntu-latest
 
     steps:
@@ -72,6 +72,6 @@ jobs:
         terraform init
         terraform plan -var 'account_number=${{ secrets.AWS_ACCOUNT_NUMBER }}' \
                        -var 'image=${{ steps.build-image.outputs.image }}'
-                       
+
         terraform apply -var 'account_number=${{ secrets.AWS_ACCOUNT_NUMBER }}' \
                         -var 'image=${{ steps.build-image.outputs.image }}' -auto-approve
