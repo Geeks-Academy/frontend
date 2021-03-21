@@ -22,7 +22,7 @@ module "geeks_academy" {
   account_number     = var.account_number
   service_name       = "geeks_academy"
   task_def_file_path = "./frontend_task_definiotion.json"
-  ecs_role_arn       = aws_iam_role.ecs_role.name
+  ecs_role_name      = aws_iam_role.ecs_role.name
   cluster_name       = "GeeksAcademy"
   region             = "eu-central-1"
   container_port     = "3000"
