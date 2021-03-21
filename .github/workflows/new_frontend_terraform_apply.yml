@@ -73,7 +73,7 @@ jobs:
         container-name: geeks_frontend
         image: ${{ steps.build-image.outputs.image }}
 
-    - name: Run terraform PLAN
+    - name: Run terraform APPLY
       run: |
         cd ./infrastructure
         terraform init
