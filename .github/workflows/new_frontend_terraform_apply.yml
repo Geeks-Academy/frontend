@@ -65,18 +65,13 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-    
-    - name: Fill in the new image ID in the Amazon ECS task definition
-      id: task-def
-      uses: aws-actions/amazon-ecs-render-task-definition@v1
-      with:
-        task-definition: ./frontend_task_definition.json
-        container-name: geeks_frontend
-        image: ${{ steps.build-image.outputs.image }}
 
     - name: Run terraform APPLY
       run: |
         cd ./infrastructure
         terraform init
-        terraform plan -var 'account_number=${{ secrets.AWS_ACCOUNT_NUMBER }}'
-        terraform apply -var 'account_number=${{ secrets.AWS_ACCOUNT_NUMBER }}' -auto-approve
+        terraform plan -var 'account_number=${{ secrets.AWS_ACCOUNT_NUMBER }}' \
+                       -var 'image=${{ steps.build-image.outputs.image }}'
+                       
+        terraform apply -var 'account_number=${{ secrets.AWS_ACCOUNT_NUMBER }}' \
+                        -var 'image=${{ steps.build-image.outputs.image }}' -auto-approve
