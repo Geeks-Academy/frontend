@@ -25,7 +25,7 @@ module "geeks_academy" {
   ecs_role_name      = aws_iam_role.ecs_role.name
   cluster_name       = "GeeksAcademy"
   region             = "eu-central-1"
-  container_port     = "3000"
+  container_port     = "80"
   vpc_id             = data.terraform_remote_state.project-core.outputs.vpc_common_id
   
   tags = map("repository", "git@github.com:Geeks-Academy/frontend.git")
