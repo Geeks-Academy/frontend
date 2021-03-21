@@ -45,18 +45,6 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-central-1
 
-    - name: Build image
-      id: build-image
-      env:
-        ECR_REGISTRY: test_build
-        ECR_REPOSITORY: geeks_frontend
-        IMAGE_TAG: ${{ github.sha }}
-      run: |
-        # Build a docker container and
-        # push it to ECR so that it can
-        # be deployed to ECS.
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-
     - name: Run terraform PLAN
       run: |
         cd ./infrastructure
