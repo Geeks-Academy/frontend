@@ -55,9 +55,9 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        REGISTRY_ID=`aws ecr describe-images --repository-name geeks_frontend --query 'sort_by(imageDetails,& imagePushedAt)[*]' | jq '.[0].registryId'`
-        REPO_NAME=`aws ecr describe-images --repository-name geeks_frontend --query 'sort_by(imageDetails,& imagePushedAt)[*]' | jq '.[0].repositoryName'`
-        TAG=`aws ecr describe-images --repository-name geeks_frontend --query 'sort_by(imageDetails,& imagePushedAt)[*]' | jq '.[0].imageTags' | jq '.[0]'`
+        REGISTRY_ID=`aws ecr describe-images --repository-name geeks_frontend --query 'sort_by(imageDetails,& imagePushedAt)[*]' | jq '.[0].registryId' | tr -d "\""`
+        REPO_NAME=`aws ecr describe-images --repository-name geeks_frontend --query 'sort_by(imageDetails,& imagePushedAt)[*]' | jq '.[0].repositoryName' | tr -d "\""`
+        TAG=`aws ecr describe-images --repository-name geeks_frontend --query 'sort_by(imageDetails,& imagePushedAt)[*]' | jq '.[0].imageTags' | jq '.[0]' | tr -d "\""`
         echo "::set-output name=image::${{ secrets.AWS_ACCOUNT_NUMBER }}.dkr.ecr.eu-central-1.amazonaws.com/$REPO_NAME:$TAG"
 
     - name: Run terraform PLAN
