@@ -2,6 +2,7 @@ import { ButtonIcon } from 'assets/svg';
 import Button from './Button';
 import { IButton } from './Button.model';
 
+
 export default {
   title: 'atoms/Buttton',
   component: Button,
