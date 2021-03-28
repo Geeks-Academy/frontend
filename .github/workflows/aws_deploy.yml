@@ -26,6 +26,8 @@
 name: Deploy to AWS
 
 on:
+  push:
+    branches: [master]
   workflow_dispatch:
     inputs:
       home:
