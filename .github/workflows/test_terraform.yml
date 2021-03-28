@@ -52,9 +52,7 @@ jobs:
     - name: Get latest docker image in ECR
       id: get-image
       run: |
-        # Build a docker container and
-        # push it to ECR so that it can
-        # be deployed to ECS.
+        # Get latest docker container and
         REGISTRY_ID=`aws ecr describe-images --repository-name geeks_frontend --query 'sort_by(imageDetails,& imagePushedAt)[*]' | jq '.[0].registryId' | tr -d "\""`
         REPO_NAME=`aws ecr describe-images --repository-name geeks_frontend --query 'sort_by(imageDetails,& imagePushedAt)[*]' | jq '.[0].repositoryName' | tr -d "\""`
         TAG=`aws ecr describe-images --repository-name geeks_frontend --query 'sort_by(imageDetails,& imagePushedAt)[*]' | jq '.[0].imageTags' | jq '.[0]' | tr -d "\""`
