@@ -12,7 +12,7 @@
     "postinstall": "husky install",
     "test": "cross-env CI=true react-scripts test --color --env=jsdom",
     "test:watch": "npm test --env=jsdom",
-    "test:coverage": "npm test -- --coverage"
+    "test:coverage": "cross-env CI=true react-scripts test --env=jsdom --coverage"
   },
   "dependencies": {
     "@commitlint/cli": "^11.0.0",
