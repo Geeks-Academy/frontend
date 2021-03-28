@@ -11,8 +11,9 @@
     "lint:css": "stylelint './src/**/*.ts'",
     "postinstall": "husky install",
     "test": "cross-env CI=true react-scripts test --color --env=jsdom",
+    "test:ci": "cross-env CI=true react-scripts test --env=jsdom",
     "test:watch": "npm test --env=jsdom",
-    "test:coverage": "npm test -- --coverage"
+    "test:coverage": "npm test:ci -- --coverage"
   },
   "dependencies": {
     "@commitlint/cli": "^11.0.0",
