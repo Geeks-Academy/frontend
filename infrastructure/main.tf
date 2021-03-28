@@ -30,8 +30,8 @@ data "template_file" "geeks_academy" {
 resource "aws_ecs_task_definition" "geeks_academy" {
   family                = "geeks_academy"
   container_definitions = data.template_file.geeks_academy.rendered
-  task_role_arn         = local.task_role_arn
-  execution_role_arn    = local.task_role_arn
+  task_role_arn         = aws_iam_role.ecs_role.arn
+  execution_role_arn    = aws_iam_role.ecs_role.arn
 }
 
 module "geeks_academy" {
@@ -39,7 +39,6 @@ module "geeks_academy" {
 
   account_number      = var.account_number
   service_name        = "geeks_academy"
-  ecs_role_name       = aws_iam_role.ecs_role.name
   cluster_name        = "GeeksAcademy"
   region              = "eu-central-1"
   container_port      = 80
