@@ -23,15 +23,18 @@
 #    See the documentation for each action used below for the recommended IAM policies for this IAM user,
 #    and best practices on handling the access key credentials.
 
-name: New terraform plan
+name: Deploy to AWS
 
 on:
-  pull_request:
-    types: ['opened', 'edited', 'reopened', 'synchronize']
+  workflow_dispatch:
+    inputs:
+      home:
+        description: 'location'
+        required: false
 
 jobs:
   deploy:
-    name: Terraform PLAN
+    name: terraform apply
     runs-on: ubuntu-latest
 
     steps:
@@ -45,8 +48,30 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-central-1
 
-    - name: Run terraform PLAN
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Build, tag, and push image to Amazon ECR
+      id: build-image
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: geeks_frontend
+        IMAGE_TAG: ${{ github.sha }}
+      run: |
+        # Build a docker container and
+        # push it to ECR so that it can
+        # be deployed to ECS.
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+
+    - name: Run terraform APPLY
       run: |
         cd ./infrastructure
         terraform init
-        terraform plan -var 'account_number=${{ secrets.AWS_ACCOUNT_NUMBER }}'
+        terraform plan -var 'account_number=${{ secrets.AWS_ACCOUNT_NUMBER }}' \
+                       -var 'image=${{ steps.build-image.outputs.image }}'
+
+        terraform apply -var 'account_number=${{ secrets.AWS_ACCOUNT_NUMBER }}' \
+                        -var 'image=${{ steps.build-image.outputs.image }}' -auto-approve

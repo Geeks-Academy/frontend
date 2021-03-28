@@ -1,18 +1,15 @@
-{
-    "family": "geeks_academy",
-    "containerDefinitions": [
-        {
-            "name": "geeks_academy",
-            "image": "",
-            "cpu": 10,
-            "memoryReservation": 128,
-            "portMappings": [
-                {
-                    "containerPort": 80,
-                    "hostPort": 0,
-                    "protocol": "tcp"
-                }
-            ]
-        }
-    ]
-}
+[
+    {
+        "name": "${service_name}",
+        "image": "${image}",
+        "cpu": ${cpu},
+        "memory": ${memoryReservation},
+        "portMappings": [
+            {
+                "containerPort": ${containerPort},
+                "hostPort": 0,
+                "protocol": "tcp"
+            }
+        ]
+    }
+]

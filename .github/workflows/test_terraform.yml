@@ -23,18 +23,15 @@
 #    See the documentation for each action used below for the recommended IAM policies for this IAM user,
 #    and best practices on handling the access key credentials.
 
-name: New terraform apply
+name: Test terraform
 
 on:
-  workflow_dispatch:
-    inputs:
-      home:
-        description: 'location'
-        required: false
+  pull_request:
+    types: ['opened', 'edited', 'reopened', 'synchronize']
 
 jobs:
   deploy:
-    name: Deploy
+    name: Terraform PLAN
     runs-on: ubuntu-latest
 
     steps:
@@ -52,26 +49,18 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
-    - name: Build, tag, and push image to Amazon ECR
-      id: build-image
-      env:
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: geeks_frontend
-        IMAGE_TAG: ${{ github.sha }}
+    - name: Get latest docker image in ECR
+      id: get-image
       run: |
-        # Build a docker container and
-        # push it to ECR so that it can
-        # be deployed to ECS.
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+        # Get latest docker container and
+        REGISTRY_ID=`aws ecr describe-images --repository-name geeks_frontend --query 'sort_by(imageDetails,& imagePushedAt)[*]' | jq '.[0].registryId' | tr -d "\""`
+        REPO_NAME=`aws ecr describe-images --repository-name geeks_frontend --query 'sort_by(imageDetails,& imagePushedAt)[*]' | jq '.[0].repositoryName' | tr -d "\""`
+        TAG=`aws ecr describe-images --repository-name geeks_frontend --query 'sort_by(imageDetails,& imagePushedAt)[*]' | jq '.[0].imageTags' | jq '.[0]' | tr -d "\""`
+        echo "::set-output name=image::${{ secrets.AWS_ACCOUNT_NUMBER }}.dkr.ecr.eu-central-1.amazonaws.com/$REPO_NAME:$TAG"
 
-    - name: Run terraform APPLY
+    - name: Run terraform PLAN
       run: |
         cd ./infrastructure
         terraform init
         terraform plan -var 'account_number=${{ secrets.AWS_ACCOUNT_NUMBER }}' \
-                       -var 'image=${{ steps.build-image.outputs.image }}'
-                       
-        terraform apply -var 'account_number=${{ secrets.AWS_ACCOUNT_NUMBER }}' \
-                        -var 'image=${{ steps.build-image.outputs.image }}' -auto-approve
+                       -var 'image=${{ steps.get-image.outputs.image }}'
