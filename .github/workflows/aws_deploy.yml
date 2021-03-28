@@ -34,7 +34,7 @@ on:
 
 jobs:
   deploy:
-    name: terraform apply
+    name: docker build & terraform apply
     runs-on: ubuntu-latest
 
     steps:
