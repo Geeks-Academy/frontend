@@ -14,7 +14,7 @@ const UnderConstructionPage = (): JSX.Element => {
   return (
     <StyledPage>
       <StyledMainWrapper>
-        <StyledHeading>{`Hello ${user.name}`}</StyledHeading>
+        <StyledHeading>{`Hello ${user?.name}`}</StyledHeading>
         <StyledHeading>geeks.academy</StyledHeading>
         <StyledParagraph>is currently under construction. Stay tuned:</StyledParagraph>
         <div>

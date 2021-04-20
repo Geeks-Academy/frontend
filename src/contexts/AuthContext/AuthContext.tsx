@@ -6,8 +6,14 @@ interface AuthProviderProps {
   children: React.ReactNode;
 }
 
+interface User {
+  email?: string | null;
+  image?: string | null;
+  name?: string | null;
+}
+
 interface AuthContextValue {
-  user: any; // Temporary any
+  user: User | null;
   logOut: () => void;
 }
 
@@ -22,7 +28,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }): JSX.Element =
   return (
     <AuthContext.Provider
       value={{
-        user: session?.user,
+        user: session?.user ?? null,
         logOut: signOut,
       }}
     >
