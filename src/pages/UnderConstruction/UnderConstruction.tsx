@@ -7,11 +7,14 @@ import {
   StyledPage,
   StyledParagraph,
 } from 'styles/UnderConstruction.styled';
+import { useAuth } from 'contexts/AuthContext/AuthContext';
 
 const UnderConstructionPage = (): JSX.Element => {
+  const { user } = useAuth();
   return (
     <StyledPage>
       <StyledMainWrapper>
+        <StyledHeading>{`Hello ${user?.name}`}</StyledHeading>
         <StyledHeading>geeks.academy</StyledHeading>
         <StyledParagraph>is currently under construction. Stay tuned:</StyledParagraph>
         <div>
