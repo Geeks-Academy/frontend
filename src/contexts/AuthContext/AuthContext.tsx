@@ -1,6 +1,6 @@
 import { signIn, signOut, useSession } from 'next-auth/client';
 import LoginPage from 'pages/LoginPage';
-import { FC, createContext } from 'react';
+import React, { FC, createContext } from 'react';
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -30,3 +30,5 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }): JSX.Element =
     </AuthContext.Provider>
   );
 };
+
+export const useAuth = (): AuthContextValue => React.useContext(AuthContext);

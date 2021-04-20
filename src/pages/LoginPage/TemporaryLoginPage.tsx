@@ -13,12 +13,12 @@ const LoginPage: FC<LoginPageProps> = ({ signIn }): JSX.Element => {
       <SocialButton
         logo={DefaultLogo.GITHUB}
         userRole="developer"
-        onClick={() => signIn('google')}
+        onClick={() => signIn('github')}
       />
       <SocialButton
         logo={DefaultLogo.GOOGLE}
         userRole="non-developer"
-        onClick={() => signIn('github')}
+        onClick={() => signIn('google')}
       />
     </div>
   );
